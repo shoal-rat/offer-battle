@@ -5,6 +5,12 @@ import type {MatchState,Command} from '../../src/game/types';
 
 test.use({reducedMotion:'no-preference'});
 
+interface DefeatFrame {
+ at:number;flight:boolean;defeat:boolean;result:boolean;
+ outcome?:string;loserId?:string;stage?:string;
+ portrait:{x:number;y:number;width:number;height:number}|null;
+}
+
 function apply(state:MatchState,playerId:string,command:Command){
  const applied=applyCommand(state,playerId,command);
  expect(applied.error,JSON.stringify(command)).toBeUndefined();
@@ -53,14 +59,18 @@ async function wire(page:Page,state:MatchState,reduced=false){
 }
 async function watchFrames(page:Page){
  await page.evaluate(()=>{
-  const samples:{at:number;flight:boolean;defeat:boolean;result:boolean}[]=[];(window as any).__defeatFrames=samples;
+  const samples:DefeatFrame[]=[];(window as any).__defeatFrames=samples;
   (window as any).__stopDefeatFrames=false;
-  const tick=()=>{samples.push({at:performance.now(),flight:!!document.querySelector('.battle-fx-flight'),defeat:!!document.querySelector('.battle-defeat'),result:!!document.querySelector('.result-banner')});if(!(window as any).__stopDefeatFrames)requestAnimationFrame(tick)};requestAnimationFrame(tick);
+  const tick=()=>{
+   const ending=document.querySelector<HTMLElement>('.battle-defeat'),portrait=ending?.querySelector<HTMLElement>('.battle-defeat-medallion')?.getBoundingClientRect();
+   samples.push({at:performance.now(),flight:!!document.querySelector('.battle-fx-flight'),defeat:!!ending,result:!!document.querySelector('.result-banner'),outcome:ending?.dataset.outcome,loserId:ending?.dataset.loserId,stage:ending?.dataset.stage,portrait:portrait?{x:portrait.x,y:portrait.y,width:portrait.width,height:portrait.height}:null});
+   if(!(window as any).__stopDefeatFrames)requestAnimationFrame(tick);
+  };requestAnimationFrame(tick);
  });
 }
 async function resultAfterAnimation(page:Page){
  await expect(page.locator('.result-banner')).toBeVisible();await expect(page.locator('.battle-defeat')).toHaveCount(0);
- const samples=await page.evaluate(()=>{(window as any).__stopDefeatFrames=true;return (window as any).__defeatFrames as {at:number;flight:boolean;defeat:boolean;result:boolean}[]});
+ const samples=await page.evaluate(()=>{(window as any).__stopDefeatFrames=true;return (window as any).__defeatFrames as DefeatFrame[]});
  const start=samples.findIndex(s=>s.defeat);expect(start).toBeGreaterThanOrEqual(0);
  expect(samples.slice(0,start).some(s=>s.result),'result panel must never flash before the defeat presentation').toBe(false);
  expect(samples.some(s=>s.defeat&&s.result),'result panel must not cover the defeat presentation').toBe(false);
@@ -83,10 +93,14 @@ test('opponent lethal defeat waits for the final hit, breaks the correct hero, t
 test('own lethal defeat breaks the own hero and completes before the defeat result',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  const {state,finished}=lethal('p1'),publish=await wire(page,state);await watchFrames(page);await publish(finished);
- const defeat=page.locator('.battle-defeat');await expect(defeat).toHaveAttribute('data-outcome','lose');await expect(defeat).toHaveAttribute('data-loser-id','p1');await expect(defeat).toHaveAttribute('data-stage','fracture');
- const portrait=await page.locator('.battle-defeat-medallion').boundingBox();expect(portrait!.x).toBeGreaterThanOrEqual(0);expect(portrait!.x+portrait!.width).toBeLessThanOrEqual(390);
- await mkdir('evidence/screenshots/defeat',{recursive:true});await page.screenshot({path:'evidence/screenshots/defeat/own-fracture.png'});
- await resultAfterAnimation(page);await expect(page.locator('.result-banner h1')).toHaveText('惜败');
+ const samples=await resultAfterAnimation(page);
+ // The medallion is removed 260 ms after fracture starts. Capture its identity
+ // and geometry in the same rendered frame, rather than separate driver calls.
+ const fracture=samples.filter(s=>s.stage==='fracture'&&s.portrait);
+ expect(fracture.length,'the losing portrait must render before it breaks into shards').toBeGreaterThan(0);
+ for(const frame of fracture){expect(frame.outcome).toBe('lose');expect(frame.loserId).toBe('p1');expect(frame.portrait!.width).toBeGreaterThan(0);expect(frame.portrait!.x).toBeGreaterThanOrEqual(0);expect(frame.portrait!.x+frame.portrait!.width).toBeLessThanOrEqual(390);}
+ await expect(page.locator('.result-banner h1')).toHaveText('惜败');
+ await mkdir('evidence/screenshots/defeat',{recursive:true});await page.screenshot({path:'evidence/screenshots/defeat/own-result.png'});
 });
 
 test('round twelve draw uses a neutral ending without declaring or shattering a loser',async({page})=>{
