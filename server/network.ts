@@ -94,7 +94,7 @@ export function networkPolicy(options:NetworkOptions={}) {
   }
   function admitHttp(req:IncomingMessage,path:string) {
     if(req.method!=='POST')return;
-    const kind=path==='/api/session'?'session':path==='/api/rooms'||path==='/api/rooms/join'||/^\/api\/rooms\/[^/]+\/rematch$/.test(path)?'room':path==='/api/uploads'?'upload':path==='/api/offers'||/^\/api\/(offers\/[^/]+\/appearance|generation\/jobs\/[^/]+\/retry)$/.test(path)?'creation':undefined;
+    const kind=path==='/api/session'?'session':path==='/api/rooms'||path==='/api/rooms/join'||path.startsWith('/api/invitations/')||/^\/api\/rooms\/[^/]+\/rematch$/.test(path)?'room':path==='/api/uploads'||path==='/api/extractions'?'upload':path==='/api/offers'||path.startsWith('/api/migrations/')||/^\/api\/(offers\/[^/]+\/appearance|generation\/jobs\/[^/]+\/retry)$/.test(path)?'creation':undefined;
     if(kind)take(kind,clientIp(req));
   }
   return {cors,acceptOrigin,clientIp,take,admitHttp,

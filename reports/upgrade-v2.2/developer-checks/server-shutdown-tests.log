@@ -1,0 +1,17 @@
+✔ Node Offer transactions: concurrent retries, stable revision, frozen active match, copy, delete and restore (345.408667ms)
+✔ Node optional generation sends saved preferences and seed; late results cannot overwrite a revision (78.67775ms)
+✔ Node image failure keeps the playable card; retry persists the current job and returns real art (132.608542ms)
+✔ Node profile CAS, explicit migration and public invite projection share the service contract (44.421459ms)
+✔ P2 Node: server flags gate fixtures and series; legitimate experiments retain replay metadata (201.231166ms)
+✔ atomic writes preserve invocation order, capture mutable data immediately, and retain one complete previous snapshot (266.468541ms)
+✔ atomic write errors reach the caller and do not poison a subsequent explicit retry (5.549625ms)
+✔ server shutdown cancels queued generation and persists a retryable job without recreating removed data (172.640334ms)
+✔ server shutdown aborts an in-flight remote generation and saves its retryable status (50.513792ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1316.062666

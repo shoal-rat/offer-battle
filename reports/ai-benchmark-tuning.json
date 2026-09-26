@@ -1,0 +1,1481 @@
+{
+  "schemaVersion": 1,
+  "botVersion": "2.2.0",
+  "battleRulesVersion": "2.0.0",
+  "offerCompilerVersion": "2.1.0",
+  "generatedAt": "2026-09-26T18:03:01.358Z",
+  "environment": {
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "command": [
+    "scripts/benchmark-bots.ts",
+    "--pairs",
+    "30",
+    "--output",
+    "reports/ai-benchmark-tuning.json"
+  ],
+  "method": "Same legal initialization seed and loadouts twice; exchange algorithm seats, never mutate firstPlayerId or dealt state. 2000-resample paired-cluster bootstrap. Deterministic production node budgets, time guard disabled for reproducibility.",
+  "status": "completed",
+  "requestedPairs": 30,
+  "completedGames": 60,
+  "elapsedSeconds": 60.603642875000006,
+  "educationCombinationCoverage": 30,
+  "allReplaysMatch": true,
+  "comparisons": [
+    {
+      "challenger": "hard",
+      "opponent": "legacy",
+      "pairs": 6,
+      "games": 12,
+      "scoreRate": 0.4166666666666667,
+      "pairedBootstrap95": [
+        0.25,
+        0.5
+      ],
+      "firstPlayer": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "secondPlayer": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "styles": {
+        "aggressive": {
+          "games": 4,
+          "scoreRate": 0.25
+        },
+        "control": {
+          "games": 4,
+          "scoreRate": 0.5
+        },
+        "growth": {
+          "games": 4,
+          "scoreRate": 0.5
+        }
+      }
+    },
+    {
+      "challenger": "expert",
+      "opponent": "normal",
+      "pairs": 6,
+      "games": 12,
+      "scoreRate": 0.9166666666666666,
+      "pairedBootstrap95": [
+        0.75,
+        1
+      ],
+      "firstPlayer": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "secondPlayer": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "styles": {
+        "aggressive": {
+          "games": 4,
+          "scoreRate": 1
+        },
+        "control": {
+          "games": 4,
+          "scoreRate": 1
+        },
+        "growth": {
+          "games": 4,
+          "scoreRate": 0.75
+        }
+      }
+    },
+    {
+      "challenger": "easy",
+      "opponent": "legacy",
+      "pairs": 6,
+      "games": 12,
+      "scoreRate": 0.3333333333333333,
+      "pairedBootstrap95": [
+        0.16666666666666666,
+        0.5
+      ],
+      "firstPlayer": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "secondPlayer": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "styles": {
+        "aggressive": {
+          "games": 4,
+          "scoreRate": 0.5
+        },
+        "control": {
+          "games": 4,
+          "scoreRate": 0.5
+        },
+        "growth": {
+          "games": 4,
+          "scoreRate": 0
+        }
+      }
+    },
+    {
+      "challenger": "normal",
+      "opponent": "legacy",
+      "pairs": 6,
+      "games": 12,
+      "scoreRate": 0.4166666666666667,
+      "pairedBootstrap95": [
+        0.25,
+        0.5
+      ],
+      "firstPlayer": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "secondPlayer": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "styles": {
+        "aggressive": {
+          "games": 4,
+          "scoreRate": 0.25
+        },
+        "control": {
+          "games": 4,
+          "scoreRate": 0.5
+        },
+        "growth": {
+          "games": 4,
+          "scoreRate": 0.5
+        }
+      }
+    },
+    {
+      "challenger": "hard",
+      "opponent": "normal",
+      "pairs": 6,
+      "games": 12,
+      "scoreRate": 0.875,
+      "pairedBootstrap95": [
+        0.7083333333333334,
+        1
+      ],
+      "firstPlayer": [
+        0,
+        1,
+        0.5,
+        1,
+        1,
+        1
+      ],
+      "secondPlayer": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "styles": {
+        "aggressive": {
+          "games": 4,
+          "scoreRate": 0.75
+        },
+        "control": {
+          "games": 4,
+          "scoreRate": 1
+        },
+        "growth": {
+          "games": 4,
+          "scoreRate": 0.875
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "hard": {
+      "decisions": 752,
+      "fallbacks": 1,
+      "timeouts": 0,
+      "skills": 36,
+      "immediateSelfLoss": 0,
+      "illegal": 0,
+      "missedImmediatePublicWin": 0,
+      "immediatePublicWinOpportunities": 8,
+      "thinkMs": {
+        "p50": 5.275709000000461,
+        "p95": 50.958458000000974
+      },
+      "nodes": {
+        "p50": 56,
+        "p95": 576
+      },
+      "fallbackRate": 0.0013297872340425532
+    },
+    "legacy": {
+      "decisions": 1224,
+      "fallbacks": 0,
+      "timeouts": 0,
+      "skills": 77,
+      "immediateSelfLoss": 0,
+      "illegal": 0,
+      "missedImmediatePublicWin": 1,
+      "immediatePublicWinOpportunities": 17,
+      "thinkMs": {
+        "p50": 0.0031669999989389908,
+        "p95": 0.01424999999994725
+      },
+      "nodes": {
+        "p50": null,
+        "p95": null
+      },
+      "fallbackRate": 0
+    },
+    "expert": {
+      "decisions": 411,
+      "fallbacks": 1,
+      "timeouts": 0,
+      "skills": 29,
+      "immediateSelfLoss": 0,
+      "illegal": 0,
+      "missedImmediatePublicWin": 0,
+      "immediatePublicWinOpportunities": 6,
+      "thinkMs": {
+        "p50": 48.36220800000001,
+        "p95": 295.55520799999795
+      },
+      "nodes": {
+        "p50": 612,
+        "p95": 3446
+      },
+      "fallbackRate": 0.0024330900243309003
+    },
+    "normal": {
+      "decisions": 1068,
+      "fallbacks": 0,
+      "timeouts": 0,
+      "skills": 72,
+      "immediateSelfLoss": 0,
+      "illegal": 0,
+      "missedImmediatePublicWin": 0,
+      "immediatePublicWinOpportunities": 2,
+      "thinkMs": {
+        "p50": 2.376583000001119,
+        "p95": 25.14141599999857
+      },
+      "nodes": {
+        "p50": 26,
+        "p95": 294
+      },
+      "fallbackRate": 0
+    },
+    "easy": {
+      "decisions": 353,
+      "fallbacks": 27,
+      "timeouts": 0,
+      "skills": 20,
+      "immediateSelfLoss": 0,
+      "illegal": 0,
+      "missedImmediatePublicWin": 0,
+      "immediatePublicWinOpportunities": 1,
+      "thinkMs": {
+        "p50": 3.1357499999976426,
+        "p95": 7.565332999998645
+      },
+      "nodes": {
+        "p50": 36,
+        "p95": 80
+      },
+      "fallbackRate": 0.0764872521246459
+    }
+  },
+  "targets": {
+    "hardVsLegacy": 0.7,
+    "expertVsNormal": 0.6
+  },
+  "limits": [
+    "Runtime timings are this Node host, not mobile/browser UI measurements.",
+    "Missed multi-command certain lethal has no exhaustive oracle; only public immediate-win opportunities are measured.",
+    "Confidence intervals are based on paired seed/loadout groups, not independent games."
+  ],
+  "records": [
+    {
+      "pair": 0,
+      "swap": 0,
+      "seed": 1327322613,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S00",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 10,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "4ef9d59e"
+    },
+    {
+      "pair": 0,
+      "swap": 1,
+      "seed": 1327322613,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S00",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 0,
+      "round": 12,
+      "commands": 80,
+      "replayVerified": true,
+      "stateHash": "da869318"
+    },
+    {
+      "pair": 1,
+      "swap": 0,
+      "seed": 1327427342,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H01/S01",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 9,
+      "commands": 56,
+      "replayVerified": true,
+      "stateHash": "f843f2cb"
+    },
+    {
+      "pair": 1,
+      "swap": 1,
+      "seed": 1327427342,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H01/S01",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 71,
+      "replayVerified": true,
+      "stateHash": "02797e61"
+    },
+    {
+      "pair": 2,
+      "swap": 0,
+      "seed": 1327532071,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S02",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 8,
+      "commands": 60,
+      "replayVerified": true,
+      "stateHash": "20c86ba3"
+    },
+    {
+      "pair": 2,
+      "swap": 1,
+      "seed": 1327532071,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S02",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 8,
+      "commands": 60,
+      "replayVerified": true,
+      "stateHash": "567abaef"
+    },
+    {
+      "pair": 3,
+      "swap": 0,
+      "seed": 1327636800,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S03",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 12,
+      "commands": 86,
+      "replayVerified": true,
+      "stateHash": "40f86310"
+    },
+    {
+      "pair": 3,
+      "swap": 1,
+      "seed": 1327636800,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H01/S03",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 0,
+      "round": 7,
+      "commands": 55,
+      "replayVerified": true,
+      "stateHash": "1a43db78"
+    },
+    {
+      "pair": 4,
+      "swap": 0,
+      "seed": 1327741529,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H01/S04",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 12,
+      "commands": 69,
+      "replayVerified": true,
+      "stateHash": "49a6e75a"
+    },
+    {
+      "pair": 4,
+      "swap": 1,
+      "seed": 1327741529,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H01/S04",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "3bd4e89a"
+    },
+    {
+      "pair": 5,
+      "swap": 0,
+      "seed": 1327846258,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S05",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 8,
+      "commands": 56,
+      "replayVerified": true,
+      "stateHash": "0cb7b11c"
+    },
+    {
+      "pair": 5,
+      "swap": 1,
+      "seed": 1327846258,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S05",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 8,
+      "commands": 58,
+      "replayVerified": true,
+      "stateHash": "b193e457"
+    },
+    {
+      "pair": 6,
+      "swap": 0,
+      "seed": 1327950987,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H01/S06",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 10,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "5554a890"
+    },
+    {
+      "pair": 6,
+      "swap": 1,
+      "seed": 1327950987,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H01/S06",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "50ba5335"
+    },
+    {
+      "pair": 7,
+      "swap": 0,
+      "seed": 1328055716,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S07",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 11,
+      "commands": 79,
+      "replayVerified": true,
+      "stateHash": "8b23b156"
+    },
+    {
+      "pair": 7,
+      "swap": 1,
+      "seed": 1328055716,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S07",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 11,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "3d59a5c6"
+    },
+    {
+      "pair": 8,
+      "swap": 0,
+      "seed": 1328160445,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S08",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 60,
+      "replayVerified": true,
+      "stateHash": "eef00126"
+    },
+    {
+      "pair": 8,
+      "swap": 1,
+      "seed": 1328160445,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H01/S08",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 0,
+      "round": 8,
+      "commands": 47,
+      "replayVerified": true,
+      "stateHash": "ced7fd81"
+    },
+    {
+      "pair": 9,
+      "swap": 0,
+      "seed": 1328265174,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H01/S09",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 55,
+      "replayVerified": true,
+      "stateHash": "ebc2fc4f"
+    },
+    {
+      "pair": 9,
+      "swap": 1,
+      "seed": 1328265174,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H01/S09",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 51,
+      "replayVerified": true,
+      "stateHash": "0c2bec55"
+    },
+    {
+      "pair": 10,
+      "swap": 0,
+      "seed": 1328369903,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H01/S10",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 7,
+      "commands": 54,
+      "replayVerified": true,
+      "stateHash": "458a6775"
+    },
+    {
+      "pair": 10,
+      "swap": 1,
+      "seed": 1328369903,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H01/S10",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 0,
+      "round": 10,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "da0a99fd"
+    },
+    {
+      "pair": 11,
+      "swap": 0,
+      "seed": 1328474632,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H02/S00",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 8,
+      "commands": 47,
+      "replayVerified": true,
+      "stateHash": "4c442c32"
+    },
+    {
+      "pair": 11,
+      "swap": 1,
+      "seed": 1328474632,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H02/S00",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 77,
+      "replayVerified": true,
+      "stateHash": "a2d189c6"
+    },
+    {
+      "pair": 12,
+      "swap": 0,
+      "seed": 1328579361,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H02/S01",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 6,
+      "commands": 40,
+      "replayVerified": true,
+      "stateHash": "7b69322c"
+    },
+    {
+      "pair": 12,
+      "swap": 1,
+      "seed": 1328579361,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H02/S01",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 0,
+      "round": 7,
+      "commands": 51,
+      "replayVerified": true,
+      "stateHash": "1de5fb5e"
+    },
+    {
+      "pair": 13,
+      "swap": 0,
+      "seed": 1328684090,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H02/S02",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 8,
+      "commands": 65,
+      "replayVerified": true,
+      "stateHash": "1f13d9eb"
+    },
+    {
+      "pair": 13,
+      "swap": 1,
+      "seed": 1328684090,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H02/S02",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 10,
+      "commands": 82,
+      "replayVerified": true,
+      "stateHash": "bd8ea4ee"
+    },
+    {
+      "pair": 14,
+      "swap": 0,
+      "seed": 1328788819,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H02/S03",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": null,
+      "score": 0.5,
+      "round": 12,
+      "commands": 68,
+      "replayVerified": true,
+      "stateHash": "8929b4ae"
+    },
+    {
+      "pair": 14,
+      "swap": 1,
+      "seed": 1328788819,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H02/S03",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 69,
+      "replayVerified": true,
+      "stateHash": "af412303"
+    },
+    {
+      "pair": 15,
+      "swap": 0,
+      "seed": 1328893548,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S04",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 11,
+      "commands": 80,
+      "replayVerified": true,
+      "stateHash": "fb153c03"
+    },
+    {
+      "pair": 15,
+      "swap": 1,
+      "seed": 1328893548,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S04",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 70,
+      "replayVerified": true,
+      "stateHash": "28eb6581"
+    },
+    {
+      "pair": 16,
+      "swap": 0,
+      "seed": 1328998277,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H02/S05",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "b567d0b6"
+    },
+    {
+      "pair": 16,
+      "swap": 1,
+      "seed": 1328998277,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H02/S05",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "d930792e"
+    },
+    {
+      "pair": 17,
+      "swap": 0,
+      "seed": 1329103006,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S06",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 8,
+      "commands": 55,
+      "replayVerified": true,
+      "stateHash": "812eaa0f"
+    },
+    {
+      "pair": 17,
+      "swap": 1,
+      "seed": 1329103006,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S06",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 9,
+      "commands": 58,
+      "replayVerified": true,
+      "stateHash": "16556c90"
+    },
+    {
+      "pair": 18,
+      "swap": 0,
+      "seed": 1329207735,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S07",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "43d9c4f4"
+    },
+    {
+      "pair": 18,
+      "swap": 1,
+      "seed": 1329207735,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "aggressive",
+      "education": "H02/S07",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 0,
+      "round": 8,
+      "commands": 50,
+      "replayVerified": true,
+      "stateHash": "858bdd54"
+    },
+    {
+      "pair": 19,
+      "swap": 0,
+      "seed": 1329312464,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H02/S08",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 63,
+      "replayVerified": true,
+      "stateHash": "b9551a46"
+    },
+    {
+      "pair": 19,
+      "swap": 1,
+      "seed": 1329312464,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "aggressive",
+      "education": "H02/S08",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 12,
+      "commands": 58,
+      "replayVerified": true,
+      "stateHash": "6c6e5cbe"
+    },
+    {
+      "pair": 20,
+      "swap": 0,
+      "seed": 1329417193,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H02/S09",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 6,
+      "commands": 39,
+      "replayVerified": true,
+      "stateHash": "f2609247"
+    },
+    {
+      "pair": 20,
+      "swap": 1,
+      "seed": 1329417193,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H02/S09",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 0,
+      "round": 7,
+      "commands": 46,
+      "replayVerified": true,
+      "stateHash": "86225278"
+    },
+    {
+      "pair": 21,
+      "swap": 0,
+      "seed": 1329521922,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H02/S10",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 11,
+      "commands": 64,
+      "replayVerified": true,
+      "stateHash": "1dc0ed96"
+    },
+    {
+      "pair": 21,
+      "swap": 1,
+      "seed": 1329521922,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H02/S10",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 8,
+      "commands": 46,
+      "replayVerified": true,
+      "stateHash": "47323505"
+    },
+    {
+      "pair": 22,
+      "swap": 0,
+      "seed": 1329626651,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H03/S00",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 12,
+      "commands": 76,
+      "replayVerified": true,
+      "stateHash": "be1b9415"
+    },
+    {
+      "pair": 22,
+      "swap": 1,
+      "seed": 1329626651,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H03/S00",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 10,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "3f97ce3c"
+    },
+    {
+      "pair": 23,
+      "swap": 0,
+      "seed": 1329731380,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H03/S01",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 11,
+      "commands": 76,
+      "replayVerified": true,
+      "stateHash": "7237061d"
+    },
+    {
+      "pair": 23,
+      "swap": 1,
+      "seed": 1329731380,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "control",
+      "education": "H03/S01",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 8,
+      "commands": 60,
+      "replayVerified": true,
+      "stateHash": "b8d15373"
+    },
+    {
+      "pair": 24,
+      "swap": 0,
+      "seed": 1329836109,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H03/S02",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "d3b07767"
+    },
+    {
+      "pair": 24,
+      "swap": 1,
+      "seed": 1329836109,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "control",
+      "education": "H03/S02",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 7,
+      "commands": 51,
+      "replayVerified": true,
+      "stateHash": "1f54bff7"
+    },
+    {
+      "pair": 25,
+      "swap": 0,
+      "seed": 1329940838,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S03",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 7,
+      "commands": 54,
+      "replayVerified": true,
+      "stateHash": "3cc1ff4d"
+    },
+    {
+      "pair": 25,
+      "swap": 1,
+      "seed": 1329940838,
+      "algorithms": [
+        "hard",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S03",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 10,
+      "commands": 72,
+      "replayVerified": true,
+      "stateHash": "226bf8fb"
+    },
+    {
+      "pair": 26,
+      "swap": 0,
+      "seed": 1330045567,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H03/S04",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 0,
+      "round": 9,
+      "commands": 59,
+      "replayVerified": true,
+      "stateHash": "34086b72"
+    },
+    {
+      "pair": 26,
+      "swap": 1,
+      "seed": 1330045567,
+      "algorithms": [
+        "expert",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H03/S04",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "b",
+      "score": 1,
+      "round": 8,
+      "commands": 55,
+      "replayVerified": true,
+      "stateHash": "9d6f52fe"
+    },
+    {
+      "pair": 27,
+      "swap": 0,
+      "seed": 1330150296,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S05",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 0,
+      "round": 8,
+      "commands": 67,
+      "replayVerified": true,
+      "stateHash": "93d4f510"
+    },
+    {
+      "pair": 27,
+      "swap": 1,
+      "seed": 1330150296,
+      "algorithms": [
+        "easy",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S05",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 0,
+      "round": 7,
+      "commands": 52,
+      "replayVerified": true,
+      "stateHash": "e51e72fe"
+    },
+    {
+      "pair": 28,
+      "swap": 0,
+      "seed": 1330255025,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S06",
+      "challengerFirst": false,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 75,
+      "replayVerified": true,
+      "stateHash": "70921367"
+    },
+    {
+      "pair": 28,
+      "swap": 1,
+      "seed": 1330255025,
+      "algorithms": [
+        "normal",
+        "legacy"
+      ],
+      "style": "growth",
+      "education": "H03/S06",
+      "challengerFirst": true,
+      "firstPlayerId": "b",
+      "winnerId": "a",
+      "score": 0,
+      "round": 8,
+      "commands": 62,
+      "replayVerified": true,
+      "stateHash": "8d3161bc"
+    },
+    {
+      "pair": 29,
+      "swap": 0,
+      "seed": 1330359754,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H03/S07",
+      "challengerFirst": true,
+      "firstPlayerId": "a",
+      "winnerId": "a",
+      "score": 1,
+      "round": 12,
+      "commands": 54,
+      "replayVerified": true,
+      "stateHash": "e5eac328"
+    },
+    {
+      "pair": 29,
+      "swap": 1,
+      "seed": 1330359754,
+      "algorithms": [
+        "hard",
+        "normal"
+      ],
+      "style": "growth",
+      "education": "H03/S07",
+      "challengerFirst": false,
+      "firstPlayerId": "a",
+      "winnerId": "b",
+      "score": 1,
+      "round": 9,
+      "commands": 48,
+      "replayVerified": true,
+      "stateHash": "c42b4e07"
+    }
+  ]
+}

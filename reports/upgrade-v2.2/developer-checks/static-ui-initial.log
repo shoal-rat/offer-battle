@@ -1,0 +1,126 @@
+
+> offer-battle@2.2.0-dev.1 test:e2e:static
+> playwright test --config playwright.static.config.ts
+
+[WebServer] (node:22867) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 15 tests using 1 worker
+
+(node:22869) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/static/account.spec.ts:26:1 › guest bot and tutorial stay local; friend action requires account (1.3s)
+  ✓   2 tests/static/account.spec.ts:30:1 › invite survives registration and recovery code confirmation, mobile account fits (1.1s)
+  ✓   3 tests/static/account.spec.ts:39:1 › login errors are readable and recovery rotates credentials (823ms)
+  ✓   4 tests/static/account.spec.ts:43:1 › finished local match survives registration and saves its real journal; history replay delete and logout (3.1s)
+  ✘   5 tests/static/account.spec.ts:50:1 › guest JSON report requires login and cancelling keeps finished match (16.4s)
+(node:22918) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 tests/static/account.spec.ts:54:1 › expired cloud room can authenticate in recovery without losing its seat (1.2s)
+  ✘   7 tests/static/account.spec.ts:62:1 › late unauthorized history response cannot clear a newer account login (2.0s)
+(node:22942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 tests/static/bot-worker.spec.ts:5:1 › expert guest search runs in a real worker while animation frames continue; new match cancels old work (1.3s)
+  ✓   9 tests/static/guest.spec.ts:13:31 › static guest 1440px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup (3.8s)
+  ✘  10 tests/static/guest.spec.ts:13:31 › static guest 390px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup (16.4s)
+(node:23000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 tests/static/guest.spec.ts:53:1 › expired or missing guest temporary room returns home without a network recovery request (356ms)
+  ✓  12 tests/static/offer-forge.spec.ts:11:1 › Q01–Q10: empty draft, replacement, explicit confirmation, idempotent collection, revision and copy (1.7s)
+  ✓  13 tests/static/offer-forge.spec.ts:25:1 › Q04/Q05: merge requires visible review, job classification changes invalidate the template, and reload preserves drafts (1.6s)
+  ✓  14 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 390px local creation uses real preferences, readable source rows and actionable incomplete values (2.5s)
+  ✓  15 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 320px local creation uses real preferences, readable source rows and actionable incomplete values (2.5s)
+
+
+  1) tests/static/account.spec.ts:50:1 › guest JSON report requires login and cancelling keeps finished match 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: '保存战报', exact: true })
+
+
+      49 |
+      50 | test('guest JSON report requires login and cancelling keeps finished match',async({page})=>{
+    > 51 |  await prepare(page);await seedEnding(page);await page.goto('./');await expect(page.locator('.battle-page')).toBeVisible();await page.getByRole('button',{name:'结束回合',exact:true}).click();await expect(page.locator('.result-banner')).toBeVisible();let download=false;page.on('download',()=>{download=true});await page.getByRole('button',{name:'回放本局',exact:true}).click();await page.getByRole('button',{name:'保存战报',exact:true}).click();await expect(page.locator('.account-layer')).toBeVisible();expect(download).toBe(false);await page.locator('.account-layer').getByRole('button',{name:'关闭',exact:true}).click();await expect(page.locator('.result-banner')).toBeVisible();await expect(page.getByRole('button',{name:'长期保存这局',exact:true})).toBeVisible();
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      52 | });
+      53 |
+      54 | test('expired cloud room can authenticate in recovery without losing its seat',async({page})=>{
+        at <repo>/tests/static/account.spec.ts:51:426
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    work/static-playwright-results/account-guest-JSON-report--4cec0-elling-keeps-finished-match/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: work/static-playwright-results/account-guest-JSON-report--4cec0-elling-keeps-finished-match/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    work/static-playwright-results/account-guest-JSON-report--4cec0-elling-keeps-finished-match/trace.zip
+    Usage:
+
+        npx playwright show-trace work/static-playwright-results/account-guest-JSON-report--4cec0-elling-keeps-finished-match/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/static/account.spec.ts:62:1 › late unauthorized history response cannot clear a newer account login 
+
+    Error: page.evaluate: Execution context was destroyed, most likely because of a navigation
+
+      63 |  await prepare(page);await page.addInitScript(({account})=>{localStorage.setItem('offer-account',JSON.stringify(account));localStorage.setItem('offer-account-token','old-history-token')},{account});let releaseOld:()=>void=()=>{};const oldResponse=new Promise<void>(resolve=>{releaseOld=resolve});let requested=false,responded=false;
+      64 |  await page.route('**/api/matches',async route=>{requested=true;await oldResponse;await route.fulfill({status:401,json:{error:'旧会话失效',code:'AUTH_REQUIRED'}});responded=true});await page.route('**/api/auth/logout',route=>route.fulfill({json:{ok:true}}));await page.route('**/api/auth/login',route=>route.fulfill({json:{token:'new-history-token',profile:{id:'second-account',nickname:'另一位玩家',offers:[]},account:{id:'second-account',username:'second_player',nickname:'另一位玩家'}}}));
+    > 65 |  await page.goto('./');await expect(page.getByRole('button',{name:/^(账号 · test_player|你好，留一手的朋友)$/})).toBeVisible();await page.reload();await expect(page.getByRole('button',{name:/^(账号 · test_player|你好，留一手的朋友)$/})).toBeVisible();await page.locator('.hotspot-history').click();await expect.poll(()=>requested).toBe(true);await page.getByRole('button',{name:/^(账号 · test_player|你好，留一手的朋友)$/}).click();await page.getByRole('button',{name:'退出账号',exact:true}).click();await page.getByRole('button',{name:'确认退出账号'}).click();await page.getByRole('button',{name:'游客 · 登录 / 注册'}).click();await fillAuth(page,'login');await expect(page.getByRole('button',{name:/^(账号 · second_player|你好，另一位玩家)$/})).toBeVisible();releaseOld();await expect.poll(()=>responded).toBe(true);await expect.poll(()=>page.evaluate(()=>localStorage.getItem('offer-account-token'))).toBe('new-history-token');await expect(page.getByRole('button',{name:/^(账号 · second_player|你好，另一位玩家)$/})).toBeVisible();await expect(page.locator('.match-history-item')).toHaveCount(0);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+      66 | });
+      67 |
+        at <repo>/tests/static/account.spec.ts:65:787
+        at <repo>/tests/static/account.spec.ts:65:760
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    work/static-playwright-results/account-late-unauthorized--12e38-clear-a-newer-account-login/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: work/static-playwright-results/account-late-unauthorized--12e38-clear-a-newer-account-login/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    work/static-playwright-results/account-late-unauthorized--12e38-clear-a-newer-account-login/trace.zip
+    Usage:
+
+        npx playwright show-trace work/static-playwright-results/account-late-unauthorized--12e38-clear-a-newer-account-login/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/static/guest.spec.ts:13:31 › static guest 390px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-offer-id="E02"] button.offer-card')
+
+
+      24 |   await expect(page.locator('.tutorial-coach')).toBeVisible();
+      25 |   const first=await temporaryRoom(page);expect(first.room.id).toMatch(/^local_/);
+    > 26 |   await page.locator('[data-offer-id="E02"] button.offer-card').click();
+         |                                                                 ^
+      27 |   await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
+      28 |   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(1);
+      29 |   await page.reload();await expect(page.locator('.tutorial-coach')).toBeVisible();
+        at <repo>/tests/static/guest.spec.ts:26:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    work/static-playwright-results/guest-static-guest-390px-b-f22f5--and-temporary-data-cleanup/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: work/static-playwright-results/guest-static-guest-390px-b-f22f5--and-temporary-data-cleanup/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    work/static-playwright-results/guest-static-guest-390px-b-f22f5--and-temporary-data-cleanup/trace.zip
+    Usage:
+
+        npx playwright show-trace work/static-playwright-results/guest-static-guest-390px-b-f22f5--and-temporary-data-cleanup/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/static/account.spec.ts:50:1 › guest JSON report requires login and cancelling keeps finished match 
+    tests/static/account.spec.ts:62:1 › late unauthorized history response cannot clear a newer account login 
+    tests/static/guest.spec.ts:13:31 › static guest 390px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup 
+  12 passed (58.4s)

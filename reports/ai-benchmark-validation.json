@@ -1,0 +1,116 @@
+{
+  "scope": "developer-evidence-audit",
+  "generatedAt": "2026-09-26T19:45:33.408Z",
+  "command": "npx tsx scripts/check-bot-benchmark.ts",
+  "independentReleaseAcceptance": "not-run",
+  "status": "passed",
+  "implementationHash": "1e31572df9a5a034383019d38b9beafe43d6271fe590e94e2846276b28cd6b30",
+  "environment": {
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "uniquePairs": 500,
+  "completedGames": 1000,
+  "educationCombinationCoverage": 110,
+  "allReplaysMatch": true,
+  "totalIllegal": 0,
+  "targets": {
+    "hardVsLegacy": {
+      "minimum": 0.7,
+      "observed": 0.7775,
+      "met": true
+    },
+    "expertVsNormal": {
+      "minimum": 0.6,
+      "observed": 0.6175,
+      "met": true,
+      "pairedIntervalLowerExceedsHalf": true
+    }
+  },
+  "comparisons": [
+    {
+      "challenger": "hard",
+      "opponent": "legacy",
+      "scoreRate": 0.7775,
+      "pairedBootstrap95": [
+        0.715,
+        0.8325
+      ],
+      "educationCombinations": 22,
+      "presetIndices": [
+        0,
+        5
+      ]
+    },
+    {
+      "challenger": "expert",
+      "opponent": "normal",
+      "scoreRate": 0.6175,
+      "pairedBootstrap95": [
+        0.5725,
+        0.6625
+      ],
+      "educationCombinations": 22,
+      "presetIndices": [
+        1,
+        6
+      ]
+    },
+    {
+      "challenger": "easy",
+      "opponent": "legacy",
+      "scoreRate": 0.68,
+      "pairedBootstrap95": [
+        0.625,
+        0.735
+      ],
+      "educationCombinations": 22,
+      "presetIndices": [
+        2,
+        7
+      ]
+    },
+    {
+      "challenger": "normal",
+      "opponent": "legacy",
+      "scoreRate": 0.735,
+      "pairedBootstrap95": [
+        0.6775,
+        0.7875
+      ],
+      "educationCombinations": 22,
+      "presetIndices": [
+        3,
+        8
+      ]
+    },
+    {
+      "challenger": "hard",
+      "opponent": "normal",
+      "scoreRate": 0.65,
+      "pairedBootstrap95": [
+        0.5975,
+        0.7025
+      ],
+      "educationCombinations": 22,
+      "presetIndices": [
+        4,
+        9
+      ]
+    }
+  ],
+  "hashes": {
+    "reports/ai-benchmark.json": "30d9d8a141aed37195b7c6058e7546e2fb1d60e98a0ae047b58f96e930447f33",
+    "reports/ai-benchmark-shard-0.json": "0389171ba8a1fa9c3a756e194397c1697114404fb939bbe46ffc8863036a4adb",
+    "reports/ai-benchmark-shard-1.json": "1ebc8d34996f2a5a015de58080d5cbcb187f68b3a8359b2146e3b2554cdab699",
+    "reports/ai-benchmark-shard-2.json": "c966c8d0a588c4df08fa9641b6fbc29710c115bb57b2d561290221ff92fd14ca",
+    "reports/ai-benchmark-shard-3.json": "232ee94cd5969c426d14af4ba209828785e9f198b951a3cade15deaa41c9c6ba"
+  },
+  "limits": [
+    "The 110 education combinations are covered across the full pool. Each comparison covers 22 combinations and two preset indices, not all combinations.",
+    "Time guards were disabled for deterministic search; zero benchmark timeouts is not a production timeout-rate claim.",
+    "Public immediate-win probes are bounded to the benchmark action subset; no exhaustive multi-command lethal oracle is claimed.",
+    "Thought times came from four concurrent Node processes, not mobile devices or single-game browser latency."
+  ]
+}

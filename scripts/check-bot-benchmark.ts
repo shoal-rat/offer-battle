@@ -1,0 +1,20 @@
+/** Validate already executed evidence; does not run or modify any planner. */
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const path='reports/ai-benchmark.json',report=JSON.parse(readFileSync(path,'utf8'));
+const sha=(text:string|Buffer)=>createHash('sha256').update(text).digest('hex');
+const current=sha(readdirSync('src/game/ai').sort().map(file=>readFileSync('src/game/ai/'+file,'utf8')).join('\n'));
+assert.equal(report.implementationHash,current,'planner differs from benchmarked source');
+assert.equal(report.status,'completed');assert.equal(report.completedGames,1000);assert.equal(report.records.length,1000);assert.equal(report.requestedPairs,500);
+const groups=new Map<number,any[]>();for(const row of report.records){const rows=groups.get(row.pair)??[];rows.push(row);groups.set(row.pair,rows);assert.equal(row.replayVerified,true);assert.ok([0,.5,1].includes(row.score));}
+assert.equal(groups.size,500);assert.deepEqual([...groups.keys()].sort((a,b)=>a-b),Array.from({length:500},(_,i)=>i));
+for(const rows of groups.values()){assert.deepEqual(rows.map(row=>row.swap).sort(),[0,1]);assert.equal(rows[0].seed,rows[1].seed);assert.equal(rows[0].education,rows[1].education);assert.deepEqual(rows[0].algorithms,rows[1].algorithms);assert.notEqual(rows[0].challengerFirst,rows[1].challengerFirst);}
+assert.equal(new Set(report.records.map((row:any)=>row.education)).size,110);assert.equal(report.educationCombinationCoverage,110);assert.equal(report.allReplaysMatch,true);
+for(const metric of Object.values(report.metrics) as any[])assert.equal(metric.illegal,0);
+const comparisons=report.comparisons.map((row:any)=>{const records=report.records.filter((r:any)=>r.algorithms[0]===row.challenger&&r.algorithms[1]===row.opponent);assert.equal(records.length,200);assert.equal(row.pairs,100);assert.equal(row.firstPlayer.games,100);assert.equal(row.secondPlayer.games,100);assert.equal(records.reduce((sum:number,r:any)=>sum+r.score,0)/records.length,row.scoreRate);return {challenger:row.challenger,opponent:row.opponent,scoreRate:row.scoreRate,pairedBootstrap95:row.pairedBootstrap95,educationCombinations:new Set(records.map((r:any)=>r.education)).size,presetIndices:[...new Set(records.map((r:any)=>r.pair%10))].sort()};});
+const hard=comparisons.find((r:any)=>r.challenger==='hard'&&r.opponent==='legacy'),expert=comparisons.find((r:any)=>r.challenger==='expert'&&r.opponent==='normal');
+const targets={hardVsLegacy:{minimum:.7,observed:hard.scoreRate,met:hard.scoreRate>=.7},expertVsNormal:{minimum:.6,observed:expert.scoreRate,met:expert.scoreRate>=.6,pairedIntervalLowerExceedsHalf:expert.pairedBootstrap95[0]>.5}};
+const result={scope:'developer-evidence-audit',generatedAt:new Date().toISOString(),command:'npx tsx scripts/check-bot-benchmark.ts',independentReleaseAcceptance:'not-run',status:'passed',implementationHash:current,environment:{node:process.version,platform:process.platform,arch:process.arch},uniquePairs:500,completedGames:1000,educationCombinationCoverage:110,allReplaysMatch:true,totalIllegal:0,targets,comparisons,hashes:Object.fromEntries([path,...report.sourceReports].map((p:string)=>[p,sha(readFileSync(p))])),limits:['The 110 education combinations are covered across the full pool. Each comparison covers 22 combinations and two preset indices, not all combinations.','Time guards were disabled for deterministic search; zero benchmark timeouts is not a production timeout-rate claim.','Public immediate-win probes are bounded to the benchmark action subset; no exhaustive multi-command lethal oracle is claimed.','Thought times came from four concurrent Node processes, not mobile devices or single-game browser latency.']};
+assert.equal(targets.hardVsLegacy.met,true);assert.equal(targets.expertVsNormal.met,true);assert.equal(targets.expertVsNormal.pairedIntervalLowerExceedsHalf,true);
+writeFileSync('reports/ai-benchmark-validation.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

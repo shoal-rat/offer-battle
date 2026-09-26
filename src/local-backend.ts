@@ -1,3 +1,9 @@
+import {deriveAchievements,mergeAchievements,type AchievementEvidence,createChallenge,challengeGoal,createBoss,experimentFlags,createSeries,recordSeriesResult,seriesNextLoadouts,setSeriesFlex,seriesSummary,seriesDescriptor,type ExperimentDescriptor,type SeriesState} from './game/experiments';
+import {patchProfile,profileRevision,ProfileWriteError} from './game/profile-sync';
+import {previewMigration,commitMigration} from './game/migration';
+import {BOT_BUDGETS,BOT_VERSION,createBotKnowledge,updateBotKnowledge,decideBotCommand,normalizeDifficulty,normalizeSetupMode,type BotDifficulty,type SetupMode,type BotKnowledge,type BotDecision} from './game/ai';
+import {BotWorkerClient} from './workers/bot-client';
+import {saveOffer,deleteOffer,restoreOffer,OfferSaveError} from './game/draft-save';
 import {currentLoadout as compileCurrentLoadout,upgradeOfferCollection} from './game/offer-compat';
 import {applyCommand,chooseBotCommand,compileOffer,createMatch,createShowcase,defaultLoadout,exampleOffers,getView,showcaseCatalog} from './game/index';
 import {createTutorial,getTutorialView,isLessonId,sameTutorialCommand,tutorialCoachCommands,type TutorialProgress} from './game/tutorial';
@@ -19,13 +25,13 @@ type Strategy='aggressive'|'control'|'growth';
 interface Seat {id:string;name:string;loadout:Loadout;isBot:boolean;ready:boolean}
 interface JournalEntry {actorId:string;command:Command}
 interface Receipt {fingerprint:string;version:number;view:ReturnType<typeof getView>}
-interface LocalRoom {
-  id:string;code:string;mode:'bot';strategy:Strategy;training:boolean;status:'playing'|'finished';seats:Seat[];
+interface LocalRoom {trackAchievements?:boolean;earnedAchievements?:AchievementEvidence[];challengeSolved?:boolean;experiment?:ExperimentDescriptor;series?:SeriesState;
+  id:string;code:string;mode:'bot';strategy:Strategy;difficulty:BotDifficulty;setupMode:SetupMode;botVersion:string;botSeed:number;botKnowledge?:BotKnowledge;botDecisions?:Omit<BotDecision,'principalVariation'|'command'>[];training:boolean;status:'playing'|'finished';seats:Seat[];
   state:MatchState;initialState:MatchState;journal:JournalEntry[];receipts:Record<string,Receipt>;
   deadline:number|null;lastBotAt:number;seed:number;skipSetup:boolean;tutorial?:TutorialProgress;
   scenario?:{id:string;title:string;instructions:string[]};
 }
-export class LocalBackendError extends Error {constructor(message:string,public status=400,public code?:string){super(message)}}
+export class LocalBackendError extends Error {constructor(message:string,public status=400,public code?:string,public profile?:Profile){super(message)}}
 function currentLoadout(value:Loadout){try{return compileCurrentLoadout(value)}catch(error){throw new LocalBackendError((error as Error).message)}}
 const profileKey='offer-local-profile-v1',activeKey='offer-local-active-v1',ttl=12*60*60*1000;
 const id=(prefix:string)=>`${prefix}_${crypto.randomUUID()}`;
@@ -42,59 +48,68 @@ export class LocalBackend {
   private timer?:ReturnType<typeof setInterval>;
   private now:()=>number;
   private activeRoomId:string|null=null;
+  private botRunner=new BotWorkerClient();
+  private pendingBot?:{roomId:string;matchId:string;version:number;requestId:string};
   constructor(private options:Options) {
     this.now=options.now??Date.now;
     let stored:Profile|undefined;
     try {const value=JSON.parse(options.persistentStorage.getItem(profileKey)||'null');if(value?.id&&Array.isArray(value.offers))stored=value}catch{}
     this.profile=stored??{id:id('guest'),nickname:'秋招挑战者',offers:[]};
-    upgradeOfferCollection(this.profile);this.saveProfile();
+    upgradeOfferCollection(this.profile);this.profile.revision=profileRevision(this.profile);this.saveProfile();
     try {
       const saved=JSON.parse(options.transientStorage.getItem(activeKey)||'null');
-      if(saved?.expiresAt>this.now()&&saved.room?.id?.startsWith('local_')&&saved.room.state?.rulesVersion==='2.0.0'&&saved.room.status==='playing'&&Array.isArray(saved.room.journal)) {
+      if(saved?.expiresAt>this.now()&&saved.room?.id?.startsWith('local_')&&saved.room.state?.rulesVersion==='2.0.0'&&(saved.room.status==='playing'||saved.room.status==='finished'&&saved.room.series?.status==='between')&&Array.isArray(saved.room.journal)) {
+        saved.room.difficulty=normalizeDifficulty(saved.room.difficulty);saved.room.setupMode=normalizeSetupMode(saved.room.setupMode,saved.room.skipSetup);saved.room.botVersion??=BOT_VERSION;saved.room.botSeed??=seed();
         this.rooms.set(saved.room.id,saved.room);this.activeRoomId=saved.room.id;
       } else options.transientStorage.removeItem(activeKey);
     }catch{try{options.transientStorage.removeItem(activeKey)}catch{}}
     if(options.autoTick!==false)this.timer=setInterval(()=>this.tick(),150);
   }
-  dispose(){if(this.timer)clearInterval(this.timer);this.timer=undefined;for(const socket of [...this.sockets.keys()])socket.close();}
+  dispose(){this.cancelBot();if(this.timer)clearInterval(this.timer);this.timer=undefined;for(const socket of [...this.sockets.keys()])socket.close();}
+  private commitProfile(next:Profile){try{this.options.persistentStorage.setItem(profileKey,JSON.stringify(next))}catch{throw new LocalBackendError('设备未能保存存档，请释放存储空间后重试',507,'STORAGE_FULL')}this.profile=next;}
   private saveProfile(){try{this.options.persistentStorage.setItem(profileKey,JSON.stringify(this.profile))}catch{/* Live play remains available when storage is full or unavailable. */}}
   private saveRoom(room:LocalRoom){
     if(this.activeRoomId!==room.id)return;
-    try {if(room.status==='finished'||(room.tutorial&&getTutorialView(room.state,room.tutorial).completed))this.options.transientStorage.removeItem(activeKey);
+    try {if(room.status==='finished'&&room.series?.status!=='between'||(room.tutorial&&getTutorialView(room.state,room.tutorial).completed))this.options.transientStorage.removeItem(activeKey);
       else this.options.transientStorage.setItem(activeKey,JSON.stringify({expiresAt:this.now()+ttl,room}));
     }catch{}
   }
   private roomFor(roomId:string){const room=this.rooms.get(roomId);if(!room)throw new LocalBackendError('本地牌桌已结束或当前标签页的临时记录已清除',404,'ROOM_NOT_FOUND');return room}
-  private loadoutFor(input:any,playerId='p1'):Loadout {
-    const fallback=defaultLoadout(playerId,this.profile.nickname,Number(input?.presetIndex??5));
-    if(!input)return this.profile.loadout?currentLoadout({...this.profile.loadout,playerId,name:this.profile.nickname}):fallback;
-    const available=new Map([...exampleOffers,...this.profile.offers].map(o=>[o.id,o]));
+  private loadoutFor(input:any,playerId='p1',profile=this.profile):Loadout {
+    const fallback=defaultLoadout(playerId,profile.nickname,Number(input?.presetIndex??5));
+    if(!input)return profile.loadout?currentLoadout({...profile.loadout,playerId,name:profile.nickname}):fallback;
+    const available=new Map([...exampleOffers,...profile.offers].map(o=>[o.id,o]));
     const requested=input.offerIds??input.offers?.map((o:any)=>typeof o==='string'?o:o.id);
     const offers=requested?requested.map((offerId:string)=>available.get(offerId)):fallback.offers;
     if(offers.length!==3||offers.some((o:any)=>!o)||new Set(offers.map((o:any)=>o.id)).size!==3)throw new LocalBackendError('请选择三张不同的已收藏 Offer');
-    const value:Loadout={...fallback,playerId,name:this.profile.nickname,primaryId:input.primaryId??fallback.primaryId,secondaryId:input.secondaryId??fallback.secondaryId,offers:clone(offers),baseDeck:input.baseDeck??fallback.baseDeck,flexDeck:input.flexDeck??fallback.flexDeck};
+    const value:Loadout={...fallback,playerId,name:profile.nickname,primaryId:input.primaryId??fallback.primaryId,secondaryId:input.secondaryId??fallback.secondaryId,offers:clone(offers),baseDeck:input.baseDeck??fallback.baseDeck,flexDeck:input.flexDeck??fallback.flexDeck};
     if(!/^H(0[1-9]|10)$/.test(value.primaryId)||!/^S(0[0-9]|10)$/.test(value.secondaryId))throw new LocalBackendError('学历选择无效');
     if(!Array.isArray(value.baseDeck)||value.baseDeck.length!==12||value.baseDeck.some(c=>!/^N(0[1-9]|1[0-9]|2[0-4])$/.test(c))||value.baseDeck.some(c=>value.baseDeck.filter(x=>x===c).length>2))throw new LocalBackendError('基础牌需要 12 张，同名最多 2 张');
     if(!Array.isArray(value.flexDeck)||value.flexDeck.length!==3||new Set(value.flexDeck).size!==3||value.flexDeck.some(c=>!/^F0[1-6]$/.test(c)))throw new LocalBackendError('请选择三张不同的应对牌');
     return currentLoadout(value);
   }
-  private start(room:LocalRoom,skipSetup=false){
+  private cancelBot(){this.pendingBot=undefined;this.botRunner.cancel()}
+  private start(room:LocalRoom,skipSetup=room.setupMode==='quick'){
+    this.cancelBot();room.botVersion=BOT_VERSION;room.botDecisions=[];room.botKnowledge=undefined;
     room.skipSetup=skipSetup;
     if(!room.tutorial&&!room.scenario)for(const seat of room.seats)seat.loadout=currentLoadout(seat.loadout);
-    if(room.tutorial){const lesson=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:this.profile.nickname});room.seats.forEach((seat,i)=>seat.loadout=lesson.loadouts[i]);room.state=lesson.state;room.tutorial=lesson.progress;room.deadline=null}
+    room.challengeSolved=false;room.earnedAchievements=[];
+    if(room.experiment&&room.experiment.kind!=='series'){const fixture=room.experiment.kind==='challenge'?createChallenge(room.experiment.id,experimentFlags({challenges:true}),id('match')):createBoss(room.experiment.id,experimentFlags({boss:true}),id('match'));room.state=fixture.state;room.seed=fixture.seed;room.experiment=fixture.descriptor;room.seats.forEach((seat,index)=>seat.loadout=fixture.loadouts[index]);room.deadline=null;}
+    else if(room.tutorial){const lesson=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:this.profile.nickname});room.seats.forEach((seat,i)=>seat.loadout=lesson.loadouts[i]);room.state=lesson.state;room.tutorial=lesson.progress;room.deadline=null}
     else {room.state=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.deadline=room.training&&room.state.phase==='playing'?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000))}
     room.initialState=clone(room.state);room.status='playing';room.journal=[];room.receipts={};room.lastBotAt=0;
   }
   private snapshot(room:LocalRoom):RoomResponse {
     const view=getView(room.state,'p1');if(room.tutorial)view.legalActions=getTutorialView(room.state,room.tutorial).allowedCommands;
-    return clone({roomId:room.id,playerId:'p1',room:{id:room.id,code:room.code,mode:room.mode,status:room.status,strategy:room.strategy,training:room.training,scenario:room.scenario,tutorial:room.tutorial?getTutorialView(room.state,room.tutorial):undefined,deadline:room.deadline,version:room.state.version,players:room.seats.map(s=>({id:s.id,name:s.name,ready:s.ready,isBot:s.isBot,connected:true}))},view,events:view.events});
+    return clone({roomId:room.id,playerId:'p1',room:{id:room.id,code:room.code,mode:room.mode,status:room.status,earnedAchievements:room.earnedAchievements??[],...(room.experiment?{experimentId:room.experiment.id,experiment:{...room.experiment,...(room.experiment.kind==='challenge'?{solved:room.challengeSolved===true}:{})}}:{}),...(room.series?{series:seriesSummary(room.series)}:{}),strategy:room.strategy,difficulty:room.difficulty,setupMode:room.setupMode,botVersion:room.botVersion,botThinking:this.pendingBot?.roomId===room.id,training:room.training,scenario:room.scenario,tutorial:room.tutorial?getTutorialView(room.state,room.tutorial):undefined,deadline:room.deadline,version:room.state.version,players:room.seats.map(s=>({id:s.id,name:s.name,ready:s.ready,isBot:s.isBot,connected:true}))},view,events:view.events});
   }
   private broadcast(room:LocalRoom){for(const [socket,roomId]of this.sockets)if(roomId===room.id)socket.deliver({type:'state',...this.snapshot(room)})}
   private apply(room:LocalRoom,actorId:string,command:Command){
     const before=room.state,result=applyCommand(before,actorId,command);
     if(result.error)return {ok:false,rejection:result.error};
-    room.state=result.state;room.journal.push({actorId,command:clone(command)});
-    if(room.state.phase==='finished'){room.status='finished';room.deadline=null}
+    if(this.pendingBot?.roomId===room.id)this.cancelBot();
+    room.state=result.state;if(room.trackAchievements){const earned=deriveAchievements(before,result.state,actorId,command,experimentFlags({achievements:true}),'p1');if(earned.length){room.earnedAchievements=mergeAchievements(room.earnedAchievements??[],earned);const next=clone(this.profile);next.achievements=mergeAchievements(next.achievements??[],earned);try{this.commitProfile(next)}catch{/* A valid game action must still complete if only cosmetic storage is unavailable. */}}}if(room.experiment?.kind==='challenge'&&!room.challengeSolved)room.challengeSolved=challengeGoal(createChallenge(room.experiment.id,experimentFlags({challenges:true}),room.state.matchId),room.state);room.journal.push({actorId,command:clone(command)});
+    if(room.state.phase==='finished'){room.status='finished';room.deadline=null;if(room.series)room.series=recordSeriesResult(room.series,room.state.matchId,room.state.result)}
     else if(room.state.phase!==before.phase||room.state.activePlayerId!==before.activePlayerId||room.state.round!==before.round)room.deadline=room.training&&room.state.phase==='playing'?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000));
     return {ok:true};
   }
@@ -117,7 +132,24 @@ export class LocalBackend {
       if(room.state.phase!=='finished'&&this.now()-room.lastBotAt>=(this.options.botDelayMs??650)){
         const bot=room.state.players.find(p=>p.id==='p2')!;
         const shouldAct=(room.state.phase==='flex'&&!bot.flexReady)||(room.state.phase==='mulligan'&&!bot.mulliganReady)||(room.state.phase==='playing'&&(room.state.pendingChoice?.ownerId??room.state.activePlayerId)==='p2');
-        if(shouldAct){const command=chooseBotCommand(getView(room.state,'p2'),room.strategy);if(command){changed=this.apply(room,'p2',{...command,commandId:id('bot')}).ok||changed;room.lastBotAt=this.now()}}
+        if(shouldAct&&room.id===this.activeRoomId&&!this.pendingBot){
+          const view=getView(room.state,'p2');room.botKnowledge=updateBotKnowledge(room.botKnowledge??createBotKnowledge(view,room.seats[1].loadout),view);
+          const request={view,knowledge:room.botKnowledge,difficulty:room.difficulty,style:room.strategy,botSeed:room.botSeed+view.version,requestId:id('think'),...(room.deadline===null?{}:{budget:{maxMs:Math.max(5,Math.min(BOT_BUDGETS[room.difficulty].maxMs,room.deadline-this.now()-250))}})};
+          const accept=(decision:BotDecision)=>{
+            if(room.id!==this.activeRoomId||room.state.matchId!==decision.matchId||room.state.version!==decision.stateVersion||room.status!=='playing')return false;
+            const {principalVariation:_private,command:_privateCommand,...diagnostic}=decision;room.botDecisions??=[];room.botDecisions.push(diagnostic);
+            room.botKnowledge=updateBotKnowledge(room.botKnowledge,view,decision.command);
+            room.lastBotAt=this.now();return this.apply(room,'p2',{...decision.command,commandId:id('bot')}).ok;
+          };
+          if(typeof Worker==='undefined'){changed=accept(decideBotCommand(request))||changed}
+          else if([...this.sockets.values()].includes(room.id)){
+            this.pendingBot={roomId:room.id,matchId:view.matchId,version:view.version,requestId:request.requestId};this.broadcast(room);
+            void this.botRunner.request(request).then(decision=>{
+              if(this.pendingBot?.requestId!==request.requestId)return;
+              this.pendingBot=undefined;if(decision&&accept(decision)){this.saveRoom(room);this.broadcast(room)}
+            });
+          }
+        }
       }
       if(changed){this.saveRoom(room);this.broadcast(room)}
     }
@@ -139,44 +171,60 @@ export class LocalBackend {
     if(outcome.ok){const view=getView(room.state,'p1');if(room.tutorial)view.legalActions=getTutorialView(room.state,room.tutorial).allowedCommands;room.receipts[key]={fingerprint,version:room.state.version,view};this.saveRoom(room);this.broadcast(room)}
     return {...outcome,...this.snapshot(room)};
   }
-  getReplay(roomId:string){const room=this.roomFor(roomId);return clone({initialState:room.initialState,journal:room.journal,seed:room.seed,loadouts:room.seats.map(seat=>seat.loadout),skipSetup:room.skipSetup,...(room.tutorial?{lessonId:room.tutorial.lessonId}:{}),...(room.scenario?{practiceScenario:room.scenario.id}:{})})}
+  getReplay(roomId:string){const room=this.roomFor(roomId);return clone({...(room.experiment?{experiment:room.experiment}:{}),initialState:room.initialState,journal:room.journal,seed:room.seed,loadouts:room.seats.map(seat=>seat.loadout),skipSetup:room.skipSetup,difficulty:room.difficulty,strategy:room.strategy,setupMode:room.setupMode,botVersion:room.botVersion,botSeed:room.botSeed,botDecisions:room.botDecisions??[],...(room.tutorial?{lessonId:room.tutorial.lessonId}:{}),...(room.scenario?{practiceScenario:room.scenario.id}:{})})}
   connect(roomId:string):GameSocket {const room=this.roomFor(roomId);const socket=new LocalSocket(data=>{
       const message=JSON.parse(data);
       if(message.type==='ping')socket.deliver({type:'pong',at:this.now()});
       else if(message.type==='reconnect')socket.deliver({type:'state',...this.snapshot(room)});
       else if(message.type==='command')socket.deliver({type:'ack',...this.execute(room,message.command??message)});
-    },()=>this.sockets.delete(socket));
+    },()=>{this.sockets.delete(socket);if(![...this.sockets.values()].includes(roomId)&&this.pendingBot?.roomId===roomId)this.cancelBot()});
     this.sockets.set(socket,roomId);queueMicrotask(()=>socket.open({type:'state',...this.snapshot(room)}));return socket;
   }
   request<T=any>(path:string,input:any={},method='GET'):T {
     const url=new URL(path,'http://local.invalid'),route=url.pathname;
-    if(route==='/api/session'&&method==='POST'){this.profile.nickname=nickname(input.nickname??this.profile.nickname);this.saveProfile();return clone({token:'local-guest',profile:this.profile}) as T}
-    if(route==='/api/capabilities')return {localArt:true,localText:true,extract:false,textProvider:false,imageProvider:false,voiceProvider:false,localGuest:true} as T;
+    // Other tabs may have advanced the durable profile while this instance was idle.
+    try{const stored=JSON.parse(this.options.persistentStorage.getItem(profileKey)||'null');if(stored?.id===this.profile.id&&Array.isArray(stored.offers)){this.profile=stored;this.profile.revision=profileRevision(stored)}}catch{}
+    if(route==='/api/session'&&method==='POST'){this.saveProfile();return clone({token:'local-guest',profile:this.profile}) as T}
+    if(route==='/api/capabilities')return {localArt:true,localText:true,extract:false,textProvider:false,imageProvider:false,voiceProvider:false,localGuest:true,experimental:{challenges:true,boss:true,bestOfThree:true},offerRevision:true,offerIdempotency:true,generation:{text:{available:true,provider:'local'},image:{available:false,provider:'none'},extract:{available:false,provider:'none'},reference:{available:true,provider:'browser'},localAssembly:{available:true,provider:'bundled'}}} as T;
     if(route==='/api/profile'){
-      if(method==='PATCH'){if(input.nickname)this.profile.nickname=nickname(input.nickname);if(input.loadout)this.profile.loadout=this.loadoutFor(input.loadout);this.saveProfile()}
+      if(method==='PATCH'){try{const next=patchProfile(this.profile,input,(profile,loadout)=>this.loadoutFor(loadout,'p1',profile));this.commitProfile(next)}catch(error){if(error instanceof ProfileWriteError)throw new LocalBackendError(error.message,error.status,error.code,error.profile as Profile);throw error}}
       return clone(this.profile) as T;
     }
-    if(route==='/api/offers'&&method==='POST'){
-      const source=input.profile;if(!source||typeof source!=='object')throw new LocalBackendError('请确认 Offer 基础字段');
-      const values:Record<string,number>={};for(const key of ['monthly_fixed_cny','guaranteed_months','annual_fixed_allowance_cny','annual_target_bonus_cny','annual_equity_cny','one_time_signing_cny']){if(source[key]===null||source[key]===undefined||source[key]==='')throw new LocalBackendError(`请确认缺失字段：${key}`);const value=Number(source[key]);if(!Number.isFinite(value)||value<0||value>1e10)throw new LocalBackendError(`金额或月数无效：${key}`);values[key]=value}
-      if(values.monthly_fixed_cny<=0||values.guaranteed_months<1||values.guaranteed_months>36)throw new LocalBackendError('请填写有效月薪与保证发薪月数（1—36）');
-      const normalized={...source,...values,company_display_name:String(source.company_display_name??'').trim().slice(0,60),role_title:String(source.role_title??'综合业务岗').slice(0,60),city:String(source.city??'').slice(0,60),confirmed_benefits:Array.isArray(source.confirmed_benefits)?source.confirmed_benefits.filter((v:any)=>typeof v==='string'&&/^B0[1-7]$/.test(v)):[]} as OfferProfile;
-      if(!normalized.company_display_name)throw new LocalBackendError('请填写公司显示名');const benefit=input.benefitId??input.selectedBenefitId??null;if(benefit&&!normalized.confirmed_benefits.includes(benefit))throw new LocalBackendError('请选择已确认拥有的条款');
-      let offer:OfferDefinition;try{offer=compileOffer(normalized,benefit,id('offer'))}catch(error){throw new LocalBackendError((error as Error).message)}
-      this.profile.offers.push(offer);this.saveProfile();return clone({offer,job:{id:id('local-job'),state:'ready',stage:'local'},creative:{name:offer.name,description:`${offer.role}，${offer.annualPackage/10000} 万年包。`,quote:'工资先亮，底牌后出。'}}) as T;
+    if(route==='/api/migrations/preview'&&method==='POST'){try{return previewMigration(this.profile,input) as T}catch(error){if(error instanceof OfferSaveError)throw new LocalBackendError(error.message,error.status,error.code);throw error}}
+    if(route==='/api/migrations/commit'&&method==='POST'){try{const result=commitMigration(this.profile,input,()=>id('offer'));this.commitProfile(result.profile);return clone(result) as T}catch(error){if(error instanceof ProfileWriteError)throw new LocalBackendError(error.message,error.status,error.code,error.profile as Profile);if(error instanceof OfferSaveError)throw new LocalBackendError(error.message,error.status,error.code);throw error}}
+    const reviseOffer=route.match(/^\/api\/offers\/([^/]+)$/);
+    if(route==='/api/offers'&&method==='POST'||reviseOffer&&method==='PATCH'){
+      const next=clone(this.profile);
+      try{
+        const result=saveOffer(next,input,{newId:()=>id('offer'),targetId:method==='PATCH'?reviseOffer![1]:undefined,now:this.now()});
+        try{this.options.persistentStorage.setItem(profileKey,JSON.stringify(next))}catch{throw new LocalBackendError('设备未能保存收藏，请释放存储空间后重试',507,'STORAGE_FULL')}
+        this.profile=next;const offer=result.offer;
+        return clone({...result,profileRevision:profileRevision(next),job:{id:`local-${offer.id}-${offer.definitionRevision}`,state:'ready',stage:'local',offerId:offer.id,definitionRevision:offer.definitionRevision,draftRevision:offer.draftRevision},creative:{name:offer.name,description:offer.persona!.description,quote:offer.persona!.quote}}) as T;
+      }catch(error){if(error instanceof OfferSaveError)throw new LocalBackendError(error.message,error.status,error.code);throw error}
     }
+    const restoreMatch=route.match(/^\/api\/offers\/([^/]+)\/restore$/);
     const offerMatch=route.match(/^\/api\/offers\/([^/]+)(?:\/(appearance))?$/);
-    if(offerMatch){const offer=this.profile.offers.find(o=>o.id===offerMatch[1]);if(!offer)throw new LocalBackendError('Offer 不存在',404);if(method==='DELETE'&&!offerMatch[2]){this.profile.offers=this.profile.offers.filter(o=>o.id!==offer.id);if(this.profile.loadout?.offers.some(o=>o.id===offer.id))delete this.profile.loadout;this.saveProfile();return {ok:true} as T}throw new LocalBackendError('本地模式使用随包插画，未连接生成服务',400,'PROVIDER_UNAVAILABLE')}
+    if(restoreMatch&&method==='POST'||offerMatch&&method==='DELETE'&&!offerMatch[2]){
+      const next=clone(this.profile);
+      try{const result=restoreMatch?restoreOffer(next,restoreMatch[1],this.now()):deleteOffer(next,offerMatch![1],this.now());
+        try{this.options.persistentStorage.setItem(profileKey,JSON.stringify(next))}catch{throw new LocalBackendError('设备未能保存变更，请释放存储空间后重试',507,'STORAGE_FULL')}
+        this.profile=next;return clone({...result,profileRevision:profileRevision(next)}) as T;
+      }catch(error){if(error instanceof OfferSaveError)throw new LocalBackendError(error.message,error.status,error.code);throw error}
+    }
+    if(offerMatch)throw new LocalBackendError('本地模式使用随包插画，未连接生成服务',400,'PROVIDER_UNAVAILABLE');
     if(route==='/api/generation/jobs')return {jobs:[]} as T;
     if(route==='/api/rooms'&&method==='POST'){
+      if(input.tempo||input.variant||input.experimental)throw new LocalBackendError('数值实验仅由独立配对实验器运行',400,'EXPERIMENT_DISABLED');
+      if(input.experiment&&(input.experiment.enabled!==true||!['challenge','boss','series'].includes(input.experiment.kind)||input.training!==true||input.lessonId||input.practiceScenario||input.mode==='friend'))throw new LocalBackendError('实验只支持明确启用的独立单人练习',400,'EXPERIMENT_DISABLED');
       if(input.mode==='friend')throw new LocalBackendError('注册或登录后才能和朋友联机',401,'AUTH_REQUIRED');
       if(input.lessonId!==undefined&&(!isLessonId(input.lessonId)||input.training!==true||input.practiceScenario))throw new LocalBackendError('教程只支持明确选择的单人练习课程');
       if(input.practiceScenario&&(input.training!==true||!showcaseCatalog.some(s=>s.id===input.practiceScenario)))throw new LocalBackendError('演示场景仅用于明确选择的单人练习');
       const strategy:Strategy=['aggressive','control','growth'].includes(input.strategy)?input.strategy:'aggressive';
       const names={aggressive:'卷王 · 进攻型',control:'合同大师 · 控制型',growth:'长期主义 · 养成型'};
       const seats=[{id:'p1',name:this.profile.nickname,isBot:false,ready:true,loadout:this.loadoutFor(input.lessonId?{presetIndex:5}:input.loadout)},{id:'p2',name:input.lessonId?'前辈 · 秋招导师':names[strategy],isBot:true,ready:true,loadout:defaultLoadout('p2',names[strategy],strategy==='aggressive'?5:strategy==='control'?6:8)}];
-      const room={id:id('local'),code:'LOCAL',mode:'bot',strategy,training:input.training===true,seats,seed:seed(),...(input.lessonId?{tutorial:{lessonId:input.lessonId,stepIndex:0}}:{}),...(input.practiceScenario?{scenario:showcaseCatalog.find(s=>s.id===input.practiceScenario)}:{})} as LocalRoom;
-      this.start(room,input.skipSetup===true);this.rooms.set(room.id,room);this.activeRoomId=room.id;this.saveRoom(room);return this.snapshot(room) as T;
+      const room={trackAchievements:input.achievementsEnabled===true,id:id('local'),code:'LOCAL',mode:'bot',strategy,difficulty:normalizeDifficulty(input.difficulty),setupMode:normalizeSetupMode(input.setupMode,input.skipSetup===true),botVersion:BOT_VERSION,botSeed:seed(),training:input.training===true,seats,seed:seed(),...(input.lessonId?{tutorial:{lessonId:input.lessonId,stepIndex:0}}:{}),...(input.practiceScenario?{scenario:showcaseCatalog.find(s=>s.id===input.practiceScenario)}:{})} as LocalRoom;
+      if(input.experiment){if(input.experiment.kind==='series'){room.experiment=seriesDescriptor();room.series=createSeries(seats.map(s=>s.loadout) as [Loadout,Loadout],experimentFlags({series:true}));}else{const fixture=input.experiment.kind==='challenge'?createChallenge(input.experiment.id,experimentFlags({challenges:true})):createBoss(input.experiment.id,experimentFlags({boss:true}));room.experiment=fixture.descriptor;if(input.experiment.kind==='boss')room.difficulty='hard';}room.training=true;}
+      this.start(room,room.setupMode==='quick');this.rooms.set(room.id,room);this.activeRoomId=room.id;this.saveRoom(room);return this.snapshot(room) as T;
     }
     if(route==='/api/rooms/join')throw new LocalBackendError('注册或登录后才能加入好友房',401,'AUTH_REQUIRED');
     const match=route.match(/^\/api\/rooms\/([^/]+)(?:\/(command|ready|replay|rematch))?$/);
@@ -184,12 +232,13 @@ export class LocalBackend {
       if(action==='command'&&method==='POST')return this.execute(room,input) as T;
       if(action==='rematch'&&method==='POST'){
         if(room.status!=='finished'&&!(room.tutorial&&getTutorialView(room.state,room.tutorial).completed))throw new LocalBackendError('结束对局后可以重赛',409);
+        if(room.series){if(input.flexDeck)room.series=setSeriesFlex(room.series,'p1',input.flexDeck);const next=seriesNextLoadouts(room.series);room.series=next.series;room.seats.forEach((seat,index)=>seat.loadout=next.loadouts[index]);}
         room.seed=seed();this.start(room);this.activeRoomId=room.id;this.saveRoom(room);this.broadcast(room);return this.snapshot(room) as T;
       }
       if(action==='replay'&&method==='GET'){
         const requested=url.searchParams.get('matchId');if(requested&&requested!==room.state.matchId)throw new LocalBackendError('游客只保留当前对局回放，长期保存请登录',404,'REPLAY_NOT_FOUND');
         let state=clone(room.initialState);const frames=[getView(state,'p1')];for(const entry of room.journal){const next=applyCommand(state,entry.actorId,entry.command);if(next.error)throw Error('回放日志校验失败');state=next.state;frames.push(getView(state,'p1'))}
-        return clone({matchId:state.matchId,rulesVersion:state.rulesVersion,frames,events:getView(state,'p1').events,result:state.result,verified:canonical(state)===canonical(room.state)}) as T;
+        return clone({...(room.experiment?{experiment:room.experiment}:{}),matchId:state.matchId,rulesVersion:state.rulesVersion,difficulty:room.difficulty,strategy:room.strategy,setupMode:room.setupMode,botVersion:room.botVersion,botDecisions:room.botDecisions??[],frames,events:getView(state,'p1').events,result:state.result,verified:canonical(state)===canonical(room.state)}) as T;
       }
       if(!action&&method==='GET'){if(this.expire(room)){this.saveRoom(room);this.broadcast(room)}return this.snapshot(room) as T}
     }

@@ -1,0 +1,155 @@
+{
+  "runId": "SMOKE-31210e6a-aa4a-4c77-a01f-e5042d4e3329",
+  "agentRole": "A01",
+  "agentSessionId": "01a0df3d-767a-7b61-b0c6-dd3a2b1763f1",
+  "browserContextId": "7a186762-9707-49c2-b985-8ad621cacdf0",
+  "commit": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "model": "gpt-6-astra",
+  "requestedModel": "gpt-6-astra",
+  "actualModel": null,
+  "modelProvenance": "explicit-cli-argument; ephemeral JSON events do not expose a resolved model unless supplied by the CLI",
+  "preflight": {
+    "role": "A01",
+    "status": "ready",
+    "canLaunch": true,
+    "tools": [
+      "screenshot",
+      "click",
+      "scroll",
+      "keyboard",
+      "currentUrl"
+    ],
+    "browser": "chromium",
+    "capabilities": {
+      "screenshots": true,
+      "coordinates": true,
+      "sourceRead": false,
+      "arbitraryJavaScript": false,
+      "arbitraryShell": false,
+      "nativeVideoObservation": false
+    },
+    "blockedReasons": [],
+    "partialCoverage": []
+  },
+  "browser": {
+    "name": "chromium",
+    "version": "153.0.8010.12"
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "deviceMode": "desktop",
+  "status": "blocked",
+  "attempt": 1,
+  "scope": "toolchain-smoke-excluded-from-acceptance",
+  "toolPolicy": [
+    "screenshot",
+    "click",
+    "scroll",
+    "keyboard",
+    "currentUrl"
+  ],
+  "observedMcpTools": [
+    {
+      "id": "item_1",
+      "server": "qa",
+      "tool": "currentUrl",
+      "status": "completed"
+    },
+    {
+      "id": "item_2",
+      "server": "qa",
+      "tool": "screenshot",
+      "status": "completed"
+    }
+  ],
+  "startedAt": "2026-09-26T19:42:21.921Z",
+  "finishedAt": "2026-09-26T19:43:08.020Z",
+  "agentTaskCompletion": null,
+  "normalSpeedMotionReview": null,
+  "findings": [],
+  "completedTaskCount": 4,
+  "artifacts": [
+    {
+      "id": "actions.jsonl",
+      "sha256": "dc6e5a9d9d85098364abeca6b04d9b616c1e806d57b67073abefb168d0539c5f",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "agent-events.jsonl",
+      "sha256": "0bded50098cb506e4000523138a5cff98d7541f5906859a2cd5fa758ea099b01",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "agent-stderr.txt",
+      "sha256": "4770fcd3642a5459f5a1f14b5caff9a53ba17534a26bf870852c82a0cf108077",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "browser-metrics.json",
+      "sha256": "39bafaa2b2a5aea7c57838c8301d76449d64a27fe046102804b57302c63defdd",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "cli-policy.json",
+      "sha256": "d5a92e6afdd2129ca253db3025d7710cbe9e72beed054d50b64a0299709c3137",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "gateway-session.json",
+      "sha256": "1bbb0be7f2a42ba46c2bc1d8b21a752a93b7752db45c229a8a61fb56b2975c48",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/instructions.md",
+      "sha256": "2850ebe2b295e8d9cabf41bd3b40763493809708bfbfa612b1192ffc1763377a",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/result-schema.json",
+      "sha256": "54445fd712c98635bd4e67c9f6c44963a1759ddbf41dc8717b5a843a888b335d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "private-input.json",
+      "sha256": "9a636a294b361ced79cb3cb741162f49e039a7a86df79bff4d188f6df281464f",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00001.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00002.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00003.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "task.md",
+      "sha256": "61624336c6278fdfb8402c61b96e30b4573bf83e73c970591c39cded5bf1ed4d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "trace.zip",
+      "sha256": "4b5d6166245e28b11e2344e064f190bd8e38a83c3c2b1dc257622726d91dfe2b",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "video/page@df1c2c31c10af5e54bb1a3eb7699525a.webm",
+      "sha256": "0d9537aa7413496b213e1f20e4ec93d27d6497981d27440dde2970626c612498",
+      "visibility": "restricted-local"
+    }
+  ],
+  "limitations": [],
+  "realUserRetention": null,
+  "sharingRate": null,
+  "rawEvidenceVisibility": "restricted-local-work-directory",
+  "credentialsPublished": false
+}

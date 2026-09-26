@@ -89,10 +89,10 @@
   background: #273b30f2;
 }
 @media (prefers-reduced-motion: reduce) {
-  .card-drag-ghost {
+  html:not([data-reduced="false"]) .card-drag-ghost {
     transform: translate(-50%, -50%);
   }
-  .card-drag-target {
+  html:not([data-reduced="false"]) .card-drag-target {
     filter: none;
   }
 }

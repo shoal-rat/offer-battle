@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "developer-validation-not-independent-acceptance",
+  "date": "2026-09-27",
+  "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "workingTree": true,
+  "unit": {
+    "passed": 279,
+    "failed": 0
+  },
+  "staticBrowser": {
+    "passed": 15,
+    "failed": 0,
+    "mode": "Vite static at /offer-battle/; network mocked only for cloud account contracts; tutorial and bot run real LocalBackend/Worker"
+  },
+  "layoutProfileStarterBrowser": {
+    "passed": 17,
+    "failed": 0,
+    "viewports": [
+      "1440x900",
+      "1280x720",
+      "390x844",
+      "360x740",
+      "320x568",
+      "844x390"
+    ],
+    "scope": "collection layout, full eight-unit/eight-hand/three-Offer battle fixture, profile retries/conflict/empty draft, six starter selection"
+  },
+  "repairs": [
+    "separate card illustration/name/body/stats rows",
+    "keep paper-edge pseudo layers anchored to their own benefit chip",
+    "fit narrow deck curve and card columns",
+    "show skill rules and precise availability before submit",
+    "preserve empty local line-up after reload",
+    "make failed-save retry visible inside settings and homepage",
+    "keep invitation join button stationary while async preview loads",
+    "restore account-gated complete JSON event export"
+  ],
+  "limitations": [
+    "these are development checks, not the 48 independent agent runs",
+    "account UI requests use synthetic mocked Cloudflare responses; backend integration tested separately",
+    "no claim of all real devices or 200 percent zoom from these viewport checks",
+    "old home visual baseline is intentionally retained and differs; not accepted as a passing screenshot comparison"
+  ],
+  "evidencePaths": [
+    "reports/upgrade-v2.2/developer-checks/static-ui-final.log",
+    "reports/upgrade-v2.2/developer-checks/build-prepush.log",
+    "reports/upgrade-v2.2/developer-checks/unit-prepush.log",
+    "reports/upgrade-v2.2/developer-checks/static-ui-initial.log",
+    "reports/upgrade-v2.2/developer-checks/layout-profile-starter-ui.log",
+    "reports/upgrade-v2.2/developer-checks/unit-final.log",
+    "reports/upgrade-v2.2/developer-checks/static-production-build.log",
+    "reports/upgrade-v2.2/developer-checks/static-production-final.log"
+  ],
+  "staticProductionBrowser": {
+    "passed": 14,
+    "failed": 0,
+    "url": "http://127.0.0.1:5344/offer-battle/",
+    "mode": "Vite production static bundle, mock cloud account UI routes, real offline LocalBackend",
+    "excluded": "bot-worker source-import development probe tested separately"
+  }
+}

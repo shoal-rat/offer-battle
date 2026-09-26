@@ -1,15 +1,18 @@
+import {ProfileWriteError,profileRevision,bumpProfile} from '../src/game/profile-sync';
+import {preserveOfferPresentation} from '../src/game/draft-persona';
+import {OfferSaveError} from '../src/game/draft-save';
 import {currentLoadout,historicalLoadout} from '../src/game/offer-compat';
 import {compileOffer,defaultLoadout,exampleOffers,applyCommand,getView,createMatch} from '../src/game/index';
 import type {Loadout,OfferDefinition,OfferProfile,MatchState,Command} from '../src/game/types';
-export interface Env {ACCOUNTS:DurableObjectNamespace;ROOMS:DurableObjectNamespace;ALLOWED_ORIGINS:string;TURN_MS?:string;SETUP_MS?:string;ROOM_RETENTION_MS?:string;WAITING_RETENTION_MS?:string;MAX_SAVED_MATCHES?:string}
-export interface Profile {id:string;nickname:string;offers:OfferDefinition[];loadout?:Loadout}
+export interface Env {ACCOUNTS:DurableObjectNamespace;ROOMS:DurableObjectNamespace;ALLOWED_ORIGINS:string;TURN_MS?:string;SETUP_MS?:string;ROOM_RETENTION_MS?:string;WAITING_RETENTION_MS?:string;MAX_SAVED_MATCHES?:string;ENABLE_BEST_OF_THREE?:string}
+export interface Profile {revision?:number;id:string;nickname:string;offers:OfferDefinition[];loadout?:Loadout}
 export interface Principal {account:{id:string;username:string;nickname:string};profile:Profile;expires:number;tokenHash:string}
 export interface Journal {actorId:string;command:Command}
-export interface RecordInput {initialState:MatchState;journal:Journal[];seed?:number;loadouts?:[Loadout,Loadout];skipSetup?:boolean;selfId?:string}
+export interface RecordInput {experiment?:unknown;initialState:MatchState;journal:Journal[];seed?:number;loadouts?:[Loadout,Loadout];skipSetup?:boolean;selfId?:string}
 export const DAY=86400000;
 export class Fault extends Error {constructor(public status:number,message:string,public code='REQUEST_REJECTED'){super(message);}}
 export const json=(value:unknown,status=200)=>new Response(JSON.stringify(value),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
-export const failure=(error:unknown)=>error instanceof Fault?json({ok:false,error:error.message,errorCode:error.code},error.status):json({ok:false,error:'服务暂时不可用，请稍后再试',errorCode:'SERVER_ERROR'},500);
+export const failure=(error:unknown)=>error instanceof Fault||error instanceof OfferSaveError||error instanceof ProfileWriteError?json({ok:false,error:error.message,errorCode:error.code,...(error instanceof ProfileWriteError&&error.profile?{profile:error.profile}:{})},error.status):json({ok:false,error:'服务暂时不可用，请稍后再试',errorCode:'SERVER_ERROR'},500);
 export const uid=(prefix:string)=>prefix+'_'+crypto.randomUUID();
 export const random=(bytes=32)=>Array.from(crypto.getRandomValues(new Uint8Array(bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 export async function hash(value:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))),b=>b.toString(16).padStart(2,'0')).join('');}
@@ -38,7 +41,7 @@ export function loadoutFor(profile:Profile,input:any,playerId:string):Loadout {
  if(Array.isArray(input.offers))for(const candidate of input.offers){
   if(typeof candidate==='string'||!candidate?.id||exampleOffers.some(o=>o.id===candidate.id))continue;
   if(!/^[a-zA-Z0-9_-]{1,100}$/.test(candidate.id)||/^E\d+$/.test(candidate.id))throw new Fault(400,'自定义 Offer 标识无效');
-  if(candidate.profile){const offer=compile(candidate.profile,candidate.id,candidate.benefitId??null);const i=profile.offers.findIndex(o=>o.id===offer.id);if(i>=0)profile.offers[i]=offer;else{if(profile.offers.length>=100)throw new Fault(409,'云端卡册最多保存 100 张自定义 Offer');profile.offers.push(offer);}}
+  if(candidate.profile&&!profile.offers.some(o=>o.id===candidate.id)){const offer=preserveOfferPresentation(candidate,compile(candidate.profile,candidate.id,candidate.benefitId??null));if(profile.offers.length>=100)throw new Fault(409,'云端卡册最多保存 100 张自定义 Offer');profile.offers.push(offer);bumpProfile(profile);}
  }
  const available=new Map([...exampleOffers,...profile.offers].map(o=>[o.id,o]));
  const requested=input.offerIds??input.offers?.map((o:any)=>typeof o==='string'?o:o.id);
@@ -61,6 +64,7 @@ export function replay(record:RecordInput,selfId:string,requireFinished=true){
  return {frames,events:last.events,result:state.result,verified:true,matchId:state.matchId,rulesVersion:state.rulesVersion,round:state.round};
 }
 export function validateLocalRecord(record:RecordInput):RecordInput {
+ if(record?.experiment)throw new Fault(400,'实验关卡请保留本机回放，不纳入标准云端战报','EXPERIMENT_RECORD');
  if(!record?.initialState||record.initialState.version!==0||record.initialState.result||!Array.isArray(record.loadouts)||record.loadouts.length!==2||!Number.isSafeInteger(record.seed))throw new Fault(400,'本地战报需要完整初始阵容、种子和指令日志');
  if(record.initialState.rulesVersion!=='2.0.0')throw new Fault(400,'不支持的战斗规则版本');
  let loadouts:[Loadout,Loadout];

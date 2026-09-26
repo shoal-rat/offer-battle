@@ -1,0 +1,6 @@
+import {Modal,Icon} from '../ui';
+import type {OfferDefinition} from '../game/types';
+export function costCurve(offers:OfferDefinition[]){return Array.from({length:6},(_,i)=>({cost:i+2,count:offers.filter(o=>o.originalTime===i+2).length}))}
+export default function OfferReplacement({incoming,current,onReplace,onClose}:{incoming:OfferDefinition;current:OfferDefinition[];onReplace:(index:number)=>void;onClose:()=>void}){
+ return <Modal title="用这张卡替换哪一份？" onClose={onClose}><p>阵容有三个 Offer 位置。选定位置后才会替换；原卡仍在卡册中。</p><div className="replacement-incoming"><strong>{incoming.name}</strong><span>{incoming.originalTime} 时 · {incoming.baseAttack} 排面 / {incoming.baseHealth} 底气</span></div><div className="replacement-slots">{current.map((o,i)=>{const next=current.map((x,index)=>index===i?incoming:x);return <button className="replacement-choice" key={o.id} onClick={()=>onReplace(i)}><span><small>位置 {i+1}</small><strong>{o.name}</strong><span>{o.originalTime} 时 → {incoming.originalTime} 时</span></span><span className="curve-preview" aria-label={`替换后耗时分布：${costCurve(next).map(b=>`${b.cost}小时${b.count}张`).join('，')}`}>{costCurve(next).map(b=><span key={b.cost}><i style={{height:4+b.count*10}}/><small>{b.cost}</small></span>)}</span><Icon name="arrow"/></button>})}</div><button className="btn subtle full" onClick={onClose}>保留当前阵容</button></Modal>
+}

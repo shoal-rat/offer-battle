@@ -89,7 +89,7 @@ test('custom offers persist locally and loadouts use the compiled collection ins
     const source={...exampleOffers[0].profile!,company_display_name:'自主选择的公司',card_display_name:'制造业研发',monthly_fixed_cny:18000};
     const {offer}=backend.request<{offer:OfferDefinition}>('/api/offers',{profile:source,benefitId:null},'POST');
     const loadout=defaultLoadout('p1','本地玩家',5);loadout.offers=[{...offer,baseAttack:999},...exampleOffers.filter(o=>o.id!==offer.id).slice(0,2)];
-    backend.request('/api/profile',{loadout},'PATCH');backend.dispose();backend=f.make();
+    backend.request('/api/profile',{loadout,expectedRevision:backend.request('/api/profile').revision},'PATCH');backend.dispose();backend=f.make();
     const profile=backend.request('/api/profile');assert.equal(profile.offers[0].name,'制造业研发');assert.notEqual(profile.loadout.offers[0].baseAttack,999);
     const room=backend.request('/api/rooms',{mode:'bot',training:true,skipSetup:true,loadout},'POST');assert.equal(room.view.players[0].offerZone[0].definition.baseAttack,offer.baseAttack);
     backend.request(`/api/offers/${offer.id}`,undefined,'DELETE');assert.equal(backend.request('/api/profile').offers.length,0);
@@ -132,4 +132,49 @@ test('local persisted 2.0 collection upgrades while a resumed match stays frozen
     const fresh=backend.request('/api/rooms',{mode:'bot',training:true,skipSetup:true},'POST');
     assert.equal(fresh.view.players[0].offerZone[0].definition.rulesVersion,'2.1.0');
   }finally{backend.dispose()}
+});
+
+test('local Offer saves are durable and idempotent; revision and recycle operations preserve running definitions',()=>{
+ const f=fixture(),backend=f.make();try{
+  const input={profile:exampleOffers[0].profile,idempotencyKey:'local-save-first',draftRevision:3,preferences:{tone:'calm',appearance:'casual',variation:0}};
+  const original=backend.request('/api/offers',input,'POST').offer;assert.equal(backend.request('/api/offers',input,'POST').duplicate,true);assert.equal(backend.request('/api/profile').offers.length,1);
+  const loadout=defaultLoadout('p1','本地玩家',5);loadout.offers[0]=original;backend.request('/api/profile',{loadout,expectedRevision:backend.request('/api/profile').revision},'PATCH');
+  const room=backend.request('/api/rooms',{mode:'bot',training:true,skipSetup:true,loadout},'POST');
+  const revised=backend.request(`/api/offers/${original.id}`,{...input,idempotencyKey:'local-save-revise',draftRevision:4,expectedDefinitionRevision:1,profile:{...input.profile,monthly_fixed_cny:12000}},'PATCH');assert.equal(revised.offer.definitionRevision,2);
+  assert.equal(backend.request(`/api/rooms/${room.room.id}`).view.players[0].offerZone[0].definition.definitionRevision,1);
+  assert.equal(backend.request(`/api/offers/${original.id}`,undefined,'DELETE').affectedLoadout,true);assert.equal(backend.request('/api/profile').deletedOffers.length,1);
+  assert.equal(backend.request(`/api/offers/${original.id}/restore`,{},'POST').offer.definitionRevision,2);assert.equal(backend.request(`/api/offers/${original.id}/restore`,{},'POST').duplicate,true);
+  assert.equal(backend.request(`/api/rooms/${room.room.id}/replay`).verified,true);
+  const setItem=f.persistentStorage.setItem;f.persistentStorage.setItem=()=>{throw Error('quota')};
+  assert.throws(()=>backend.request('/api/offers',{...input,idempotencyKey:'local-storage-full'},'POST'),(error:unknown)=>error instanceof LocalBackendError&&error.code==='STORAGE_FULL');
+  f.persistentStorage.setItem=setItem;assert.equal(backend.request('/api/profile').offers.length,1,'failed storage must not create a phantom in-memory entity');
+  assert.equal(backend.request('/api/offers',{...input,idempotencyKey:'local-storage-full'},'POST').duplicate,false);
+ }finally{backend.dispose()}
+});
+
+test('local profile revisions detect a second tab and preserve the draft on storage failure; migration preserves its source',()=>{
+ const f=fixture(),first=f.make(),second=f.make();try{
+  const initial=first.request('/api/profile');assert.equal(initial.revision,0);
+  const updated=first.request('/api/profile',{nickname:'第一页',expectedRevision:0,idempotencyKey:'local-profile-once'},'PATCH');assert.equal(updated.revision,1);
+  assert.throws(()=>second.request('/api/profile',{nickname:'过期页面',expectedRevision:0},'PATCH'),(e:unknown)=>e instanceof LocalBackendError&&e.status===409&&e.profile?.nickname==='第一页');
+  assert.throws(()=>second.request('/api/profile',{nickname:'无版本'},'PATCH'),(e:unknown)=>e instanceof LocalBackendError&&e.status===428);
+  const setter=f.persistentStorage.setItem.bind(f.persistentStorage);f.persistentStorage.setItem=()=>{throw Error('quota')};assert.throws(()=>first.request('/api/profile',{nickname:'未落盘',expectedRevision:1},'PATCH'),(e:unknown)=>e instanceof LocalBackendError&&e.code==='STORAGE_FULL');f.persistentStorage.setItem=setter;assert.equal(first.request('/api/profile').nickname,'第一页');
+  const profile={...exampleOffers[0].profile!,company_display_name:'迁移原件'},offer={...exampleOffers[0],id:'external_local',profile},input={sourceId:'another-browser',offers:[offer],expectedRevision:1,idempotencyKey:'local-migration-once'};
+  assert.equal(first.request('/api/migrations/preview',input,'POST').items[0].status,'new');const result=first.request('/api/migrations/commit',input,'POST');assert.equal(result.profile.offers.length,1);assert.notEqual(result.idMap.external_local,'external_local');assert.equal(first.request('/api/migrations/commit',input,'POST').duplicate,true);assert.equal(offer.id,'external_local');
+ }finally{first.dispose();second.dispose()}
+});
+
+test('P2 local runtime: explicit challenge fixtures solve through commands, cosmetics persist, and replay is marked experimental',async()=>{
+ const {createChallenge,experimentFlags}=await import('../src/game/experiments');const f=fixture(),backend=f.make();try{
+  assert.throws(()=>backend.request('/api/rooms',{mode:'bot',training:true,experiment:{kind:'challenge',id:'CH01'}},'POST'),/明确启用/);assert.throws(()=>backend.request('/api/rooms',{mode:'bot',training:true,experiment:{kind:'challenge',id:'CH01',enabled:'false'}},'POST'),/明确启用/);
+  for(const id of ['CH01','CH02','CH03','CH04','CH05']){let room=backend.request<RoomResponse>('/api/rooms',{mode:'bot',training:true,achievementsEnabled:true,experiment:{enabled:true,kind:'challenge',id}},'POST');assert.equal(room.room.experiment?.standard,false);const fixture=createChallenge(id,experimentFlags({challenges:true}));for(const step of fixture.solution){room=command(backend,room,step.command);assert.equal(room.ok,true);}assert.equal(room.room.experiment?.solved,true);const replay=backend.request(`/api/rooms/${room.room.id}/replay`);assert.equal(replay.verified,true);assert.equal(replay.experiment.kind,'challenge');assert.equal(backend.getReplay(room.room.id).experiment?.id,id);}
+  const earned=backend.request('/api/profile').achievements;assert.ok(earned.some((e:any)=>e.id==='small-big'));assert.ok(earned.some((e:any)=>e.id==='notice-cleared'));
+  const boss=backend.request<RoomResponse>('/api/rooms',{mode:'bot',training:true,experiment:{enabled:true,kind:'boss',id:'BOSS01'}},'POST');assert.equal(boss.view!.players[1].mind,30);assert.equal(boss.room.difficulty,'hard');
+ }finally{backend.dispose()}
+});
+test('P2 local best of three: intermission survives reload, locks cards, accepts flex changes and stops after two wins',()=>{
+ const f=fixture();let backend=f.make();try{
+  let room=backend.request<RoomResponse>('/api/rooms',{mode:'bot',training:true,skipSetup:true,experiment:{kind:'series',enabled:true}},'POST');const original=room.view!.players[0].offerZone.map(o=>o.definition.id);assert.equal(room.room.series?.gameIndex,1);
+  room=command(backend,room,{type:'CONCEDE'});assert.equal(room.room.series?.wins.p2,1);backend.dispose();backend=f.make();const resumed=backend.request(`/api/rooms/${room.room.id}`);assert.deepEqual(resumed.room.series,room.room.series);assert.equal(backend.request(`/api/rooms/${room.room.id}/replay`).verified,true);room=backend.request(`/api/rooms/${room.room.id}/rematch`,{flexDeck:['F02','F03','F06']},'POST');assert.equal(room.room.series?.gameIndex,2);assert.deepEqual(room.view!.players[0].offerZone.map(o=>o.definition.id),original);assert.deepEqual(backend.getReplay(room.room.id).loadouts[0].flexDeck,['F02','F03','F06']);room=command(backend,room,{type:'CONCEDE'});assert.equal(room.room.series?.status,'finished');assert.equal(room.room.series?.winnerId,'p2');assert.equal(f.transientStorage.getItem('offer-local-active-v1'),null);assert.throws(()=>backend.request(`/api/rooms/${room.room.id}/rematch`,{},'POST'),/不能开始/);
+ }finally{backend.dispose()}
 });

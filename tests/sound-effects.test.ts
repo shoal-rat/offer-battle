@@ -25,10 +25,10 @@ test("semantic cues schedule attack, impact, retirement and education audio at t
     soundsForCue(cue(1, "attack")).map((s) => [s.file, s.delay]),
     [
       ["attack", 40],
-      ["damage", 350],
+      ["damage", 220],
     ],
   );
-  assert.equal(soundsForCue(cue(2, "retire"))[0].delay, 480);
+  assert.equal(soundsForCue(cue(2, "retire"))[0].delay, 0);
   assert.equal(
     soundsForCue(cue(3, "primary_skill", { effectId: "jlu_signin" }))[0].file,
     "jlu_collect",
@@ -168,21 +168,21 @@ test("ending sound plays once at the fracture beat after the final attack, with 
  const cues=[cue(1,"attack"),cue(2,"result",{effectId:"winner",targetId:"a"})];
  for(const [selfId,file] of [["a","win"],["b","lose"]]){
   const groups=soundsForBatch(cues,selfId);
-  assert.equal(groups.length,2);assert.equal(groups[1].duration,2400);
-  assert.deepEqual(groups[1].sounds.map(s=>[s.file,s.delay]),[[file,600]]);
+  assert.equal(groups.length,1);assert.equal(groups[0].duration,850);
+  assert.deepEqual(groups[0].sounds.map(s=>[s.file,s.delay]),[["attack",0],["damage",95],[file,350]]);
  }
  assert.deepEqual(soundsForBatch([cue(3,"result",{effectId:"draw"})],"a")[0].sounds,[]);
- assert.equal(soundsForBatch(cues,"a",true)[1].duration,420);
+ assert.equal(soundsForBatch(cues,"a",true)[0].duration,100);
  const env=fakeAudioEnvironment();
  try{
   const sounds=new SoundEffects();sounds.set(true,.5);sounds.consume("m",[]);sounds.consume("m",cues,"a");
-  env.tick(1499);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav"]);
+  env.tick(349);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav"]);
   env.tick(1);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav","win.wav"]);
   sounds.consume("m",cues,"a");env.tick(3000);assert.equal(env.instances.length,3);sounds.dispose();
  }finally{env.restore()}
 });
 
-test("real simultaneous combat death produces one impact at 350 ms and one shared retirement at 480 ms", () => {
+test("real simultaneous combat death produces one impact and shared retirement at the 220 ms contact", () => {
   let state = engineGame();
   state = play(state, "N01");
   state = play(state, "N01", "b");
@@ -208,8 +208,8 @@ test("real simultaneous combat death produces one impact at 350 ms and one share
     groups[0].sounds.map((s) => [s.file, s.delay]),
     [
       ["attack", 40],
-      ["damage", 350],
-      ["optimization", 480],
+      ["damage", 220],
+      ["optimization", 220],
     ],
   );
   const env = fakeAudioEnvironment();
@@ -220,9 +220,8 @@ test("real simultaneous combat death produces one impact at 350 ms and one share
     sounds.consume(state.matchId, cues, "a");
     env.tick(150);
     assert.deepEqual(filenames(env.instances), ["attack.wav"]);
-    env.tick(200);
-    assert.deepEqual(filenames(env.instances), ["attack.wav", "damage.wav"]);
-    env.tick(130);
+    env.tick(69);assert.deepEqual(filenames(env.instances), ["attack.wav"]);
+    env.tick(1);
     assert.deepEqual(filenames(env.instances), [
       "attack.wav",
       "damage.wav",
@@ -254,8 +253,8 @@ test("real eight-target action coalesces eight damage and retirement cues into o
     groups[0].sounds.map((s) => [s.file, s.delay]),
     [
       ["card_pick", 0],
-      ["damage", 430],
-      ["optimization", 480],
+      ["damage", 160],
+      ["optimization", 160],
     ],
   );
 });
@@ -293,7 +292,7 @@ test("real JLU ultimate followed by an eight-target action keeps its charge and 
     sounds.consume(state.matchId, cues, "a");
     env.tick(0);
     assert.deepEqual(filenames(env.instances), ["jlu_ultimate.wav"]);
-    env.tick(1049);
+    env.tick(groups[0].duration-1);
     assert.equal(env.instances[0].paused, false);
     assert.equal(env.instances.length, 1);
     env.tick(1);
@@ -301,7 +300,7 @@ test("real JLU ultimate followed by an eight-target action keeps its charge and 
       "jlu_ultimate.wav",
       "card_pick.wav",
     ]);
-    env.tick(480);
+    env.tick(groups[1].duration);
     assert.equal(
       filenames(env.instances).filter((file) => file === "damage.wav").length,
       1,

@@ -1,0 +1,92 @@
+{
+  "scope": "2.2 development branch, local production build; not a deployed-release claim",
+  "browser": {
+    "stats": {
+      "startTime": "2026-09-26T18:53:42.705Z",
+      "duration": 47955.749,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "normal-speed contact keeps reserved slots and readable UI, then compacts after retirement",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2231
+          }
+        ]
+      },
+      {
+        "title": "rapid confirmed snapshots cannot strand results behind battle queues; full and reduced finish once",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2378
+          }
+        ]
+      },
+      {
+        "title": "reduced mode, hidden lifecycle and ten match replacements clean all battle resources",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1967
+          }
+        ]
+      },
+      {
+        "title": "normal 30-second interaction recording measures frame budget without speeding time",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 35148
+          }
+        ]
+      },
+      {
+        "title": "mobile result recap links to its actual replay event and opponent rules remain legible",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1217
+          }
+        ]
+      }
+    ],
+    "transport": "Controlled HTTP/WebSocket fixtures with real engine commands; terminal backlog also uses synthetic accepted public groups."
+  },
+  "unit": {
+    "command": "npx tsx --test tests/motion-director.test.ts tests/battle-motion.test.ts tests/board-presentation.test.ts tests/audio.test.ts tests/sound-effects.test.ts tests/share-privacy.test.ts tests/highlights.test.ts",
+    "tests": 43,
+    "passed": 43,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typecheck": "passed",
+  "measurements": {
+    "normalGameplay": "frame-budget.json",
+    "remountStress": "frame-budget-remount-stress.json",
+    "terminal": "result-deadline.json"
+  },
+  "limitations": [
+    "Synthetic one-second full-Battle remount stress exceeded 25 ms P95 target (33.3 ms); retained separately, not included as a passing scenario.",
+    "Headless desktop Chromium is not physical mobile or Windows verification.",
+    "Previous production 2.1 missing-result issue did not reproduce; transport root cause remains unknown.",
+    "40 runtime cue mappings are not 40 separately filmed independent visual acceptances."
+  ],
+  "additionalRegression": {
+    "case": "SVG clone mask isolation after remapCloneIds repair",
+    "passed": 1,
+    "failed": 0,
+    "durationMs": 1600,
+    "evidence": "clone-masks.json",
+    "samples": 66,
+    "flights": 28,
+    "ghosts": 38,
+    "errors": [],
+    "scope": "Separately executed against a rebuilt development production bundle; not merged into original five-test batch."
+  }
+}

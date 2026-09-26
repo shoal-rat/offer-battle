@@ -1,0 +1,133 @@
+{
+  "runId": "SMOKE-20fe6344-23fe-48a5-83ea-e9a8c16cfa46",
+  "agentRole": "A01",
+  "agentSessionId": "01a0df37-9fe6-7e62-b86c-2d5be3152cab",
+  "browserContextId": "bd8689ce-cae7-4427-bb26-92d762609287",
+  "commit": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "model": null,
+  "browser": {
+    "name": "chromium",
+    "version": "153.0.8010.12"
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "deviceMode": "desktop",
+  "status": "blocked",
+  "attempt": 1,
+  "scope": "toolchain-smoke-excluded-from-acceptance",
+  "toolPolicy": [
+    "screenshot",
+    "click",
+    "scroll",
+    "keyboard",
+    "currentUrl"
+  ],
+  "observedMcpTools": [
+    {
+      "server": "qa",
+      "tool": "currentUrl"
+    },
+    {
+      "server": "qa",
+      "tool": "currentUrl"
+    },
+    {
+      "server": "qa",
+      "tool": "screenshot"
+    },
+    {
+      "server": "qa",
+      "tool": "screenshot"
+    }
+  ],
+  "startedAt": "2026-09-26T19:35:59.267Z",
+  "finishedAt": "2026-09-26T19:36:27.868Z",
+  "agentTaskCompletion": null,
+  "normalSpeedMotionReview": null,
+  "findings": [],
+  "completedTaskCount": 4,
+  "artifacts": [
+    {
+      "id": "actions.jsonl",
+      "sha256": "65cea7c623ba1641ee8c9a17d8b4f89b3c7c15b13f1e693c588257d06901c66f",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "agent-events.jsonl",
+      "sha256": "b1b31de2900ce6143774a9b188091fc6584de85d66740a43c3de89caa0522b3d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "agent-stderr.txt",
+      "sha256": "4040c965813a0374eb1ff9a0f816f2c2d0c0df6f4623007306fa808e79d24435",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "browser-metrics.json",
+      "sha256": "e12c415ec72750cad0fd46bb1567b569a498e729d4af41165b273fd20674f14e",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "cli-policy.json",
+      "sha256": "b9ebd07de9f754990b41ad2fc61c5cd88f04df13c2816cee5bbd149d8d6559f5",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "gateway-session.json",
+      "sha256": "4687596249f39aa4c961dd00873c8bef3959408784838b0268a200afc543b2cc",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/instructions.md",
+      "sha256": "2850ebe2b295e8d9cabf41bd3b40763493809708bfbfa612b1192ffc1763377a",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/result-schema.json",
+      "sha256": "54445fd712c98635bd4e67c9f6c44963a1759ddbf41dc8717b5a843a888b335d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "private-input.json",
+      "sha256": "9a636a294b361ced79cb3cb741162f49e039a7a86df79bff4d188f6df281464f",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00001.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00002.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00003.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "task.md",
+      "sha256": "61624336c6278fdfb8402c61b96e30b4573bf83e73c970591c39cded5bf1ed4d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "trace.zip",
+      "sha256": "b7c1ec2c2b7c8f38685c943f86899d2c5f05319f73e0fb189c58825167077d45",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "video/page@35b87ad0c1d856d8964e9fc1953620dc.webm",
+      "sha256": "86351d6ce30c6104ce4145dc5e20ec671ebb3c3c2c83cea083ffc3b4b98e73cc",
+      "visibility": "restricted-local"
+    }
+  ],
+  "limitations": [],
+  "realUserRetention": null,
+  "sharingRate": null,
+  "rawEvidenceVisibility": "restricted-local-work-directory",
+  "credentialsPublished": false
+}

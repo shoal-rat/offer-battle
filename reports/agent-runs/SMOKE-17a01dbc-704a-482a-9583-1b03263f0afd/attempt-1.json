@@ -1,0 +1,103 @@
+{
+  "runId": "SMOKE-17a01dbc-704a-482a-9583-1b03263f0afd",
+  "agentRole": "A01",
+  "agentSessionId": "01a0df30-c9e4-7040-af35-df605b32282d",
+  "browserContextId": "fd5f98d5-759e-4388-af9c-438faa1a2ede",
+  "commit": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "model": null,
+  "browser": {
+    "name": "chromium",
+    "version": "153.0.8010.12"
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "deviceMode": "desktop",
+  "status": "blocked",
+  "attempt": 1,
+  "scope": "toolchain-smoke-excluded-from-acceptance",
+  "toolPolicy": [
+    "screenshot",
+    "click",
+    "scroll",
+    "keyboard",
+    "currentUrl"
+  ],
+  "observedMcpTools": [],
+  "startedAt": "2026-09-26T19:28:31.463Z",
+  "finishedAt": "2026-09-26T19:29:03.787Z",
+  "agentTaskCompletion": null,
+  "normalSpeedMotionReview": null,
+  "findings": [],
+  "completedTaskCount": 2,
+  "artifacts": [
+    {
+      "id": "agent-events.jsonl",
+      "sha256": "944f73b4fcfc2d0d44799992adf5f72a1724d39f151f562511b56d27def34ce7",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "agent-stderr.txt",
+      "sha256": "fe30fd5c0aa4855334145768fd264e812ae39526074a7630e0f311823219c70c",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "browser-metrics.json",
+      "sha256": "e3d66240e0e66687c38e5df0f308bcbade23464faa2c2ea6b43e8cba9c14be28",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "cli-policy.json",
+      "sha256": "c42fd2ddb9472f6dbbd24d190b9dc64d79c48bd8cf531eda7d811ba29b4110bb",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "gateway-session.json",
+      "sha256": "d4e1378310d8fbc80d06245a15d9db2904a094e18a4825c3f2e065b0f373874a",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/instructions.md",
+      "sha256": "2850ebe2b295e8d9cabf41bd3b40763493809708bfbfa612b1192ffc1763377a",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "isolated-cwd/result-schema.json",
+      "sha256": "54445fd712c98635bd4e67c9f6c44963a1759ddbf41dc8717b5a843a888b335d",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "private-input.json",
+      "sha256": "9a636a294b361ced79cb3cb741162f49e039a7a86df79bff4d188f6df281464f",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "screenshots/frame-00001.jpg",
+      "sha256": "d6ca907cc89e0337b2abab608950c9f0b29f7a467441c4b7237e364fb5ea05d0",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "task.md",
+      "sha256": "2da6da6639c380f8d0e61819f81a53d5cb7ce81badd6276d0a8c4db3ccb097bc",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "trace.zip",
+      "sha256": "2940042faab3b397bac702b6b18179b77445aed0d7b505d8e466651f564ba95e",
+      "visibility": "restricted-local"
+    },
+    {
+      "id": "video/page@fd59c701d35ba85e5f0b57d3ca009d05.webm",
+      "sha256": "c68128db1d482e6daf665a438ffc52e982cbc9d32d3eb9f8c1e5c6b8f1f2fd57",
+      "visibility": "restricted-local"
+    }
+  ],
+  "limitations": [
+    "Agent reported tools outside the role allowlist: functions.exec, functions.wait, functions.request_user_input, functions.request_user_input_async, collaboration.followup_task, collaboration.interrupt_agent, collaboration.list_agents, collaboration.send_message, collaboration.spawn_agent, collaboration.wait_agent, tools.apply_patch, tools.list_mcp_resource_templates, tools.list_mcp_resources, tools.read_mcp_resource, tools.clock__curr_time"
+  ],
+  "realUserRetention": null,
+  "sharingRate": null,
+  "rawEvidenceVisibility": "restricted-local-work-directory",
+  "credentialsPublished": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "scope": "non-sample CLI/MCP transport and tool isolation only",
+  "smokeRunId": "SMOKE-31210e6a-aa4a-4c77-a01f-e5042d4e3329",
+  "agentSessionId": "01a0df3d-767a-7b61-b0c6-dd3a2b1763f1",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "policyHash": "3ce99570377a955f7de56ba5cc256e57a237fb18551935b70adfd2f78c24c159",
+  "visibleTools": [
+    "mcp__qa__click",
+    "mcp__qa__currentUrl",
+    "mcp__qa__keyboard",
+    "mcp__qa__screenshot",
+    "mcp__qa__scroll"
+  ],
+  "observedActions": 2,
+  "actualModel": null,
+  "requestedModel": "gpt-6-astra",
+  "formalAcceptance": "not-run",
+  "evidenceHash": "0bded50098cb506e4000523138a5cff98d7541f5906859a2cd5fa758ea099b01",
+  "verifiedAt": "2026-09-26T19:43:08.028Z"
+}

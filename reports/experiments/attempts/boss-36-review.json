@@ -1,0 +1,7 @@
+{
+  "status": "superseded",
+  "kind": "boss",
+  "initialBossMind": 36,
+  "reason": "Exceeds standard healing cap 30; use boss30,challenger24 and one predeployed legal Offer instead.",
+  "firstTestResult": "Failed before public-condition correction: challenger mind was 30 while the description said24."
+}

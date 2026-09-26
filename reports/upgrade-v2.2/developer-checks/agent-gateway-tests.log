@@ -1,0 +1,14 @@
+✔ QA gateway novice allowlists contain only visible image/coordinate operations and deny source tools (0.700584ms)
+✔ QA readiness is per role and missing references cannot block independent rules or accessibility sessions (0.116666ms)
+✔ QA target and invitation validation prevent browser navigation into source, APIs or external sites (0.352875ms)
+✔ QA public projections drop secret keys and local paths while CLI configuration disables alternate capabilities (0.321708ms)
+✔ real browser gateway enforces novice tool isolation over MCP and saves actual screenshots, actions, video and trace (271.438ms)
+✔ every role gets only its authoritative tools, and WebKit gets a real independent touch context (15313.444667ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15934.985666

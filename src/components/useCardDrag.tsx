@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
   useState,
@@ -17,6 +18,8 @@ import {
   type CardDropLocation,
 } from "./card-drag-model";
 import "../styles/card-drag.css";
+import {motionDirector,type MotionHandle} from "../motion/MotionDirector";
+import {getMotionPreferences} from "../motion/useMotionPreferences";
 
 interface Options {
   arenaRef: RefObject<HTMLElement | null>;
@@ -103,6 +106,8 @@ export function useCardDrag(options: Options) {
   const suppressClickUntil = useRef(0),
     mounted = useRef(false);
   const [ghost, setGhost] = useState<Ghost | null>(null);
+  const motion=useRef<MotionHandle|null>(null),dragSerial=useRef(0),position=useRef({x:0,y:0});
+  const motionScope=useId();
   function clearHighlights() {
     for (const el of highlighted.current)
       el.classList.remove("card-drag-target", "card-drag-board-target");
@@ -113,6 +118,7 @@ export function useCardDrag(options: Options) {
   function clear(show = true) {
     const previous = session.current;
     session.current = null;
+    const oldMotion=motion.current;motion.current=null;oldMotion?.cancel();
     if (previous?.started) {
       suppressClickUntil.current = performance.now() + 500;
       previous.element.classList.remove("card-dragging-source");
@@ -194,6 +200,7 @@ export function useCardDrag(options: Options) {
       )
         return;
       active.started = true;
+      motion.current=motionDirector.play({cue:'dragFollow',id:`follow:${++dragSerial.current}`,scope:motionScope,hold:true,run:ctx=>ctx.addCleanup(()=>{if(session.current===active)clear()})});
       latest.current.onStart?.();
       active.element.classList.add("card-dragging-source");
       document.documentElement.classList.add("card-drag-in-progress");
@@ -217,6 +224,7 @@ export function useCardDrag(options: Options) {
       } catch {}
     }
     event.preventDefault();
+    position.current={x:event.clientX,y:event.clientY};
     const drop = at(event.clientX, event.clientY),
       commands = commandsForDrop(actions, drop.location, latest.current.selfId);
     hovered.current?.classList.remove("card-drag-hover");
@@ -259,6 +267,10 @@ export function useCardDrag(options: Options) {
         latest.current.selfId,
       ),
       label = active.source.label;
+    if(!commands.length&&!getMotionPreferences().reduced&&active.clone){
+      const original=active.element.getBoundingClientRect(),at=position.current,copy=active.clone.cloneNode(true) as HTMLElement;
+      motionDirector.play({cue:'snapReturn',id:`return:${dragSerial.current}`,scope:motionScope,run:ctx=>{Object.assign(copy.style,{position:'fixed',left:(at.x-active.width/2)+'px',top:(at.y-active.height/2)+'px',width:active.width+'px',height:active.height+'px',pointerEvents:'none',zIndex:'86'});copy.setAttribute('aria-hidden','true');document.body.append(copy);ctx.addCleanup(()=>copy.remove());ctx.animate(copy,[{opacity:.8,transform:'translate(0,0)'},{opacity:0,transform:`translate(${original.left-at.x+active.width/2}px,${original.top-at.y+active.height/2}px)`}])}});
+    }
     clear();
     if (commands.length)
       latest.current.onDrop(
@@ -315,6 +327,7 @@ export function useCardDrag(options: Options) {
     return () => {
       mounted.current = false;
       handlers.current.clear(false);
+      motionDirector.cancelScope(motionScope);
       window.removeEventListener("pointerdown", newPointer, true);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);

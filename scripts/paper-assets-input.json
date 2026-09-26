@@ -1,0 +1,359 @@
+{
+  "version": "2.2.1",
+  "assets": [
+    {
+      "id": "algorithm",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dd0b-677d-7800-b7b6-0d68f503c028/exec-631d106a-459d-49e9-b570-a5b1065c1385.png",
+      "ruleIds": [
+        "T01",
+        "T10"
+      ],
+      "prompt": "Approved algorithm master supplied by parent. Specification: adult anime office cutout, 2.8-head body, navy hoodie, coral badge, laptop and node prop. Exact originating tool prompt is tracked by parent thread.",
+      "promptProvenance": "approved-existing-master-specification",
+      "characterSheet": "algorithm-v1"
+    },
+    {
+      "id": "research",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-c03b03da-a684-4f2f-8d86-da63c74a3e7a.png",
+      "ruleIds": [
+        "T04",
+        "T07"
+      ],
+      "prompt": "Use case: style-transfer. Asset type: production transparent full-body character sprite for an original anime office paper-theatre card game. Adapt the attached approved algorithm engineer's visual language into a DISTINCT adult FEMALE manufacturing R&D engineer, preserving exactly its approximately 2.8-head-tall compact proportions, clean dark contour line width, anime face maturity, flat color blocks, restrained cel shading and narrow cream cardstock cutout edge. Brown hair in a practical short bob, a small side clip, calm knowing smile; sage-green short work jacket with rolled cuffs, cream tee, dark charcoal work trousers, low cream sneakers. Hold ONE small vernier caliper clearly diagonally across the body; one coral blank ID badge. Stable relaxed pose, three-quarter facing left toward the other character; hands anatomically coherent. Whole single character including both feet, no cropped hair or shoes, reserve 6% safe whitespace around. True transparent alpha background, absolutely NO checkerboard, no ground plane, no floor shadow, no pedestal, no scene, no text, no numbers, no logos, no bloom, no metallic rendering. Adult professional despite compact stylized proportions. Same drawing finish as reference; shape reads at 72 px. Vertical portrait canvas. Feet together centered on x=0.5 at y=0.94.",
+      "characterSheet": "research-v1"
+    },
+    {
+      "id": "support",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-7b8ba95f-d955-4d88-997a-d9c4f21948ba.png",
+      "ruleIds": [],
+      "prompt": "Use case: style-transfer. Asset type: production transparent full-body support character sprite for original anime office paper-theatre card game. Adapt the attached approved algorithm engineer's drawing language into a DISTINCT young ADULT graduate recruit, human woman with a tiny mouse-shaped hairclip, never an animal. Preserve the approximately 2.8-head-tall compact proportions, mature anime eyes and facial contours, clean dark outline, flat cel shading, cream narrow cardstock cutout edge. Short fluffy charcoal brown hair, mischievous narrowed eyes and tiny confident grin. Pale dove-gray hoodie, light sage backpack straps, simple navy cropped trousers and cream sneakers; hugging a neat small stack of cream interview-study papers with one mint folder, no writing. Mouse motif only a small gray mouse silhouette hairclip on the left fringe. Light-footed relaxed pose, both feet visible. One person only, whole body. True transparent alpha, no checkerboard, no backdrop, no scene, NO floor shadow or base. No text, letters, UI, logo, sparkles or gradients. Same controlled detail level as reference; prioritize readable broad shapes at 72px. Vertical portrait, 6% breathing room on all sides, soles centered near x=.5,y=.94.",
+      "characterSheet": "support-v1",
+      "identityAssignmentNote": "Retained original human graduate illustration; no longer used for N01-N06 support cards after all-animal art direction."
+    },
+    {
+      "id": "N07",
+      "category": "action",
+      "ruleIds": [
+        "N07"
+      ],
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-47842011-f0df-468b-b74b-33ad871125ef.png",
+      "prompt": "Use case: stylized-concept. Asset type: illustration for a real original anime office card game, 3:2 landscape card art. Bright clean paper-theatre cutout look, sharp dark blue-gray contour lines, narrow cream paper edges, flat sage/coral/navy/warm yellow color blocks, restrained cel shading, crisp adult office stationery shapes, enough simplicity to read at 128px. Warm off-white flat background. No text, letters, numbers, logo, watermark, frame, fake UI or button. Fill central 75% with one visually coherent action vignette. A large magnifying glass examining one detail on a cream employment contract; inside lens the tiny coral checkmark becomes oversized, three short coral emphasis strokes, a dark blue pen rests beside the page. Mood: sharp questioning, spotting a flaw. One main object group."
+    },
+    {
+      "id": "N08",
+      "category": "action",
+      "ruleIds": [
+        "N08"
+      ],
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-d49aa332-9db5-411e-8729-7c037e756887.png",
+      "prompt": "Use case: stylized-concept. Asset type: illustration for a real original anime office card game, 3:2 landscape card art. Bright clean paper-theatre cutout look, sharp dark blue-gray contour lines, narrow cream paper edges, flat sage/coral/navy/warm yellow color blocks, restrained cel shading, crisp adult office stationery shapes, enough simplicity to read at 128px. Warm off-white flat background. No text, letters, numbers, logo, watermark, frame, fake UI or button. Fill central 75% with one visually coherent action vignette. A closed navy laptop beside a cozy sage green mug and a small yellow crescent moon cutout rising behind them; one clock with blank face and simple hands indicating evening, coral power-button silhouette on laptop lid. Mood: calm relief and finishing work tonight. No people."
+    },
+    {
+      "id": "N09",
+      "category": "action",
+      "ruleIds": [
+        "N09"
+      ],
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-cb934929-cf2b-41e7-9634-b2c1eb1c68b2.png",
+      "prompt": "Use case: stylized-concept. Asset type: illustration for a real original anime office card game, 3:2 landscape card art. Bright clean paper-theatre cutout look, sharp dark blue-gray contour lines, narrow cream paper edges, flat sage/coral/navy/warm yellow color blocks, restrained cel shading, crisp adult office stationery shapes, enough simplicity to read at 128px. Warm off-white flat background. No text, letters, numbers, logo, watermark, frame, fake UI or button. Fill central 75% with one visually coherent action vignette. A tidy open mint folder with three cream interview-note sheets fanning out, two coral sticky tabs, an oversized yellow paperclip and one navy pencil tracing a loop around a simple checkmark. Mood: thoughtful review and learning. No pseudo-writing or simulated text lines."
+    },
+    {
+      "id": "F04",
+      "category": "action",
+      "ruleIds": [
+        "F04"
+      ],
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-f7503eca-b47f-48e6-9883-b1932069e730.png",
+      "prompt": "Use case: stylized-concept. Asset type: illustration for a real original anime office card game, 3:2 landscape card art. Bright clean paper-theatre cutout look, sharp dark blue-gray contour lines, narrow cream paper edges, flat sage/coral/navy/warm yellow color blocks, restrained cel shading, crisp adult office stationery shapes, enough simplicity to read at 128px. Warm off-white flat background. No text, letters, numbers, logo, watermark, frame, fake UI or button. Fill central 75% with one visually coherent action vignette. A cream employment contract unrolled assertively in front of a coral circular rubber stamp, one large red checkmark seal without any letters, dark blue clip at top, two short impact marks. Mood: confident proof, the contract settles the argument. No people, no tiny writing."
+    },
+    {
+      "id": "chair",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-e50ab8e0-c28a-4431-b371-8e119458fe0a.png",
+      "prompt": "Use case: stylized-concept. Asset type: one independent animated scene prop layer for an original anime office paper-theatre game. Create ONLY the requested SINGLE OBJECT isolated on a TRUE TRANSPARENT ALPHA background. Original clean paper-cutout cartoon, hand-inked deep navy contour lines, cream cardstock rim, broad flat colors with subtle cel shading, visible folded paper thickness and lightly bent corners. Front three-quarter view from a little above, suitable for a tabletop pop-up book stage, playful but adult office setting. Soft light from upper left, NO cast floor shadow (rendered separately by game), no floor plane, NO backdrop, no texture sheet, no text, letters, numbers, brand, logo, watermark, buttons or UI. Object wholly visible with 7% transparent padding. Colors only cream #FFFCF5, navy #25313C, sage #A8C8BB, warm yellow #F8D578 and coral #F47463. One object centered, ground pivot x=.5,y=.94.One EMPTY friendly office visitor chair made from folded pale sage cardstock, cream seat, simple rectangular backrest with soft corners, four navy-edged folded legs, no wheels. Three-quarter view, seat clear and inviting. No tag, no other furniture, no people.",
+      "layer": "chair",
+      "canvasRatio": 0.85,
+      "anchor": [
+        0.5,
+        0.94
+      ],
+      "zOrder": 45
+    },
+    {
+      "id": "printer",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-1aff8b81-24e4-4d90-a4a0-c4c3623abeb0.png",
+      "prompt": "Use case: stylized-concept. Asset type: one independent animated scene prop layer for an original anime office paper-theatre game. Create ONLY the requested SINGLE OBJECT isolated on a TRUE TRANSPARENT ALPHA background. Original clean paper-cutout cartoon, hand-inked deep navy contour lines, cream cardstock rim, broad flat colors with subtle cel shading, visible folded paper thickness and lightly bent corners. Front three-quarter view from a little above, suitable for a tabletop pop-up book stage, playful but adult office setting. Soft light from upper left, NO cast floor shadow (rendered separately by game), no floor plane, NO backdrop, no texture sheet, no text, letters, numbers, brand, logo, watermark, buttons or UI. Object wholly visible with 7% transparent padding. Colors only cream #FFFCF5, navy #25313C, sage #A8C8BB, warm yellow #F8D578 and coral #F47463. One object centered, ground pivot x=.5,y=.94.One cute squat sage-green tabletop office ID-card printer, dark navy paper slot, one small blank cream ID card emerging toward viewer, a stack of blank cream paper in rear feeder, one circular warm yellow status lamp. Broad simple shape instantly recognizable at 72px. No text, no labels, no table or people.",
+      "layer": "printer",
+      "canvasRatio": 1,
+      "anchor": [
+        0.5,
+        0.94
+      ],
+      "zOrder": 45
+    },
+    {
+      "id": "folder",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-6b52c561-2178-4fc1-8bce-a7b33ebdeb47.png",
+      "prompt": "Use case: stylized-concept. Asset type: one independent animated scene prop layer for an original anime office paper-theatre game. Create ONLY the requested SINGLE OBJECT isolated on a TRUE TRANSPARENT ALPHA background. Original clean paper-cutout cartoon, hand-inked deep navy contour lines, cream cardstock rim, broad flat colors with subtle cel shading, visible folded paper thickness and lightly bent corners. Front three-quarter view from a little above, suitable for a tabletop pop-up book stage, playful but adult office setting. Soft light from upper left, NO cast floor shadow (rendered separately by game), no floor plane, NO backdrop, no texture sheet, no text, letters, numbers, brand, logo, watermark, buttons or UI. Object wholly visible with 7% transparent padding. Colors only cream #FFFCF5, navy #25313C, sage #A8C8BB, warm yellow #F8D578 and coral #F47463. One object centered, ground pivot x=.5,y=.94.One large upright golden-yellow office folder, partly opened cover exposing three broad cream sheets with coral and sage index tabs. Thick folded paper construction, clean cream blank rectangular label patch on front (NO writing). Three-quarter view, no pencils, no plant, no people, no extra scene.",
+      "layer": "folder",
+      "canvasRatio": 0.9,
+      "anchor": [
+        0.5,
+        0.94
+      ],
+      "zOrder": 45
+    },
+    {
+      "id": "table",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-855de801-3460-4b0b-8045-5f1629d9c099.png",
+      "prompt": "Use case: stylized-concept. Asset type: one independent animated scene prop layer for an original anime office paper-theatre game. Create ONLY the requested SINGLE OBJECT isolated on a TRUE TRANSPARENT ALPHA background. Original clean paper-cutout cartoon, hand-inked deep navy contour lines, cream cardstock rim, broad flat colors with subtle cel shading, visible folded paper thickness and lightly bent corners. Front three-quarter view from a little above, suitable for a tabletop pop-up book stage, playful but adult office setting. Soft light from upper left, NO cast floor shadow (rendered separately by game), no floor plane, NO backdrop, no texture sheet, no text, letters, numbers, brand, logo, watermark, buttons or UI. Object wholly visible with 7% transparent padding. Colors only cream #FFFCF5, navy #25313C, sage #A8C8BB, warm yellow #F8D578 and coral #F47463. One object centered, ground pivot x=.5,y=.94.A small low rectangular card table made from folded warm honey-yellow cardboard, sturdy folded legs, a broad clean cream top with a faint central fold, two tiny blank playing-card rectangles lying on its top. This object is 30% wider than tall. The main table surface must remain quiet. No chairs or people.",
+      "layer": "table",
+      "canvasRatio": 1.5,
+      "zOrder": 35
+    },
+    {
+      "id": "badge-rack",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-051cacea-6713-4e56-a995-955f8dca8834.png",
+      "prompt": "Use case: stylized-concept. Asset type: independent transparent prop layer in original anime office paper-theatre game. One isolated object on TRUE TRANSPARENT ALPHA. Clean original cartoon with crisp dark navy ink contours, narrow cream cardstock edge, broad flat pale sage/coral/warm yellow blocks, light cel shading, visible paper fold and edge thickness. Camera three-quarter from a little above. Every contour crisp: absolutely no outer glow, no blur, no floor shadows, no haze, no backdrop. Only the requested object with 7% transparent space around it. No text, letters, numbers, logo, UI or buttons.A little freestanding navy paper ID badge rack, broad horizontal crossbar and two simple feet, three blank cream employee badges hanging on coral lanyards from the crossbar. Badge faces use ONLY small abstract navy head silhouette icon with no letters, one sage badge surround and two cream surrounds. Full rack clearly visible, composition wider than tall.",
+      "layer": "badge-rack",
+      "canvasRatio": 1.5,
+      "zOrder": 45
+    },
+    {
+      "id": "booth",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-1da8b6ca-dcd4-4fb7-857a-dca813968088.png",
+      "prompt": "Use case: stylized-concept. Asset type: independent transparent prop layer in original anime office paper-theatre game. One isolated object on TRUE TRANSPARENT ALPHA. Clean original cartoon with crisp dark navy ink contours, narrow cream cardstock edge, broad flat pale sage/coral/warm yellow blocks, light cel shading, visible paper fold and edge thickness. Camera three-quarter from a little above. Every contour crisp: absolutely no outer glow, no blur, no floor shadows, no haze, no backdrop. Only the requested object with 7% transparent space around it. No text, letters, numbers, logo, UI or buttons.One campus autumn recruiting stall made of folded paper: pale sage counter with a large completely blank cream panel; a coral-and-cream striped shallow awning supported by two posts; low matching side wall. No surrounding trees, no table in front, no posters, no workers. Welcoming compact pop-up-book structure, slightly turned to right; whole stand seen in landscape composition.",
+      "layer": "booth",
+      "canvasRatio": 1.5,
+      "zOrder": 20
+    },
+    {
+      "id": "paper-book",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-54d9936a-a25a-4164-beaf-dbf6c99aeb94.png",
+      "prompt": "Use case: stylized-concept. Asset type: independent transparent prop layer in original anime office paper-theatre game. One isolated object on TRUE TRANSPARENT ALPHA. Clean original cartoon with crisp dark navy ink contours, narrow cream cardstock edge, broad flat pale sage/coral/warm yellow blocks, light cel shading, visible paper fold and edge thickness. Camera three-quarter from a little above. Every contour crisp: absolutely no outer glow, no blur, no floor shadows, no haze, no backdrop. Only the requested object with 7% transparent space around it. No text, letters, numbers, logo, UI or buttons.An OPEN oversized blank paper book used as a wide game stage floor, viewed from above at a shallow theatre perspective. Two broad clean warm cream pages make a quiet nearly flat platform, soft central binding crease, layered page edges visible along the near front, muted sage cover underneath. No writing, NO other objects on the pages, no decorations, no people, no landscape. Very wide landscape ratio around 3:1, thin book fills width. Perspective top left to lower right with front page layers clearly readable.",
+      "layer": "paper-book",
+      "canvasRatio": 3,
+      "zOrder": 10
+    },
+    {
+      "id": "public",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-133fa736-2d10-483d-a5a3-6f19d634274a.png",
+      "prompt": "Use case: style-transfer. Asset: adult office anime paper-cutout character for an original card game. Use approved reference ONLY as unified style and exact approximately 2.8-head-tall body proportion guide. New DISTINCT adult identity. Match mature anime eyes, face contour, crisp deep navy outline thickness, flat color blocks, restrained cel-shading and narrow cream cardboard rim. Full-body single adult, relaxed expressive three-quarter pose, both feet fully visible, one main professional prop and one small accent. Genuine transparent alpha, NO floor shadows, no background, no platform, no glows, no text/letters/logos/numbers/UI. Large readable shapes at72px. Vertical 3:4 portrait composition, same full-body height, feet center x=.5 y=.94 and 6% padding.Adult man in his early thirties, neat dark warm-brown side-part hair, rectangular glasses, warm mustard cardigan over cream shirt and relaxed dark brown trousers, white shoes. Calm easy smile with one raised brow. Hold a pale mint thermos cup in one hand and a simple cream folder tucked under opposite arm. Stable grounded stance, welcoming reliable colleague.",
+      "ruleIds": [
+        "T02",
+        "T03",
+        "T08"
+      ],
+      "characterSheet": "public-v1"
+    },
+    {
+      "id": "sales",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-9831c76a-4ba1-4626-b5ef-f95e2c151f09.png",
+      "prompt": "Use case: style-transfer. Asset: adult office anime paper-cutout character for an original card game. Use approved reference ONLY as unified style and exact approximately 2.8-head-tall body proportion guide. New DISTINCT adult identity. Match mature anime eyes, face contour, crisp deep navy outline thickness, flat color blocks, restrained cel-shading and narrow cream cardboard rim. Full-body single adult, relaxed expressive three-quarter pose, both feet fully visible, one main professional prop and one small accent. Genuine transparent alpha, NO floor shadows, no background, no platform, no glows, no text/letters/logos/numbers/UI. Large readable shapes at72px. Vertical 3:4 portrait composition, same full-body height, feet center x=.5 y=.94 and 6% padding.Adult woman with warm brown high ponytail, confident playful smile, muted coral blazer over cream shirt and dark navy straight trousers, cream low shoes. Hold a single cream signed-contract folder with one blank coral circular seal and carry small navy shoulder bag. Open friendly stance, self-assured negotiator; no sexualized outfit.",
+      "ruleIds": [
+        "T06"
+      ],
+      "characterSheet": "sales-v1"
+    },
+    {
+      "id": "product",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-9daee4ed-126d-47c4-989d-907bb34fc618.png",
+      "prompt": "Use case: style-transfer. Asset: adult office anime paper-cutout character for an original card game. Use approved reference ONLY as unified style and exact approximately 2.8-head-tall body proportion guide. New DISTINCT adult identity. Match mature anime eyes, face contour, crisp deep navy outline thickness, flat color blocks, restrained cel-shading and narrow cream cardboard rim. Full-body single adult, relaxed expressive three-quarter pose, both feet fully visible, one main professional prop and one small accent. Genuine transparent alpha, NO floor shadows, no background, no platform, no glows, no text/letters/logos/numbers/UI. Large readable shapes at72px. Vertical 3:4 portrait composition, same full-body height, feet center x=.5 y=.94 and 6% padding.Adult man with warm medium-brown skin, dark wavy short hair, slate-blue loose overshirt and cream tee, charcoal trousers, cream sneakers. Thoughtful clever smile. Hold one navy clipboard with two large blank yellow and coral sticky notes, one navy pencil tucked behind ear. Modern approachable project coordinator, relaxed competent stance.",
+      "ruleIds": [
+        "T05"
+      ],
+      "characterSheet": "product-v1"
+    },
+    {
+      "id": "finance",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-cc94bc56-cecd-4d02-9217-028a32f47811.png",
+      "prompt": "Use case: style-transfer. Asset: one DISTINCT adult finance/consulting professional paper-cutout character for original anime office card game. Match attached master in clean mature anime face, EXACT 2.8-head compact full-body proportions, narrow cream cardstock rim and deep navy linework, broad color shapes with restrained cel shading. Adult woman early thirties, dark plum-brown straight hair to jawline, round fine glasses, pale lavender blazer and cream blouse, dark plum trousers and cream flat loafers. Wry confident smile. Holds ONE neatly rolled cream proposal with coral ribbon and ONE navy calculator with blank square keys, no writing. Friendly competent upright three-quarter pose. Vertical3:4, both shoes and all hair present, 6%padding, foot pivot(.5,.94). TRUE transparent alpha; NO shadow, background, platform, scene, numbers, letters, logo, UI, text or glow. Same original world, clean silhouette at72px.",
+      "ruleIds": [
+        "T09"
+      ],
+      "characterSheet": "finance-v1"
+    },
+    {
+      "id": "far",
+      "category": "prop",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-478b0a0a-97a3-4934-a3dd-db0feaafa304.png",
+      "prompt": "Use case: stylized-concept. Asset type: separate distant background layer for original paper office game homepage, wide3:1 panorama. Low-contrast silhouette collage on TRUE TRANSPARENT alpha. A soft pale blue cut-paper sky arch, two simple cream paper cloud shapes, a few pale muted yellow autumn tree crowns at far left and far right, barely visible pale gray-blue university office building silhouettes across the horizon. Broad flat color planes, modest paper thickness at cut edges, no dark outlines in this distant layer. Central lower half remains visually quiet and almost blank for foreground characters and table. ONLY distant backdrop; no foreground, no floor/book, no people, no stand/table/chair/printer, no text, no lettering, no signage, no UI/buttons. Wide landscape with whole scene silhouette contained inside the canvas and transparent exterior; no vignette, no outer glow.",
+      "layer": "distant-backdrop",
+      "canvasRatio": 3,
+      "zOrder": 0
+    },
+    {
+      "id": "H01",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-08a083c0-656a-4bdd-afad-89a9c17e1733.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the master drawing language into a DISTINCT identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp outlines, flat restrained cel shading, narrow cream cardstock cutout edge. Same finish and gentle light from upper left. Full single adult including both shoes, vertical3:4, 6%empty margin, feet center(.5,.94). True transparent alpha. No cast floor shadow or base, no backdrop, no text, numbers, letters, logos or emblems. One key prop. All graduates equally confident and attractive with different personality, never a beauty hierarchy. Broad forms clear at72px. Adult woman with long dark blue hair tied low, side fringe and small round glasses, cobalt blue cropped academic-style jacket over cream blouse, charcoal straight trousers and cream shoes. Holds an open cream logic notebook with only a simple navy geometric diagram. Wry clever calm smile, one fingertip raised thoughtfully. No graduation cap, no school crest.",
+      "ruleIds": [
+        "H01"
+      ],
+      "characterSheet": "H01-v1"
+    },
+    {
+      "id": "H02",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-9d82e315-0ce8-462e-80c9-12384410bfad.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the master drawing language into a DISTINCT identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp outlines, flat restrained cel shading, narrow cream cardstock cutout edge. Same finish and gentle light from upper left. Full single adult including both shoes, vertical3:4, 6%empty margin, feet center(.5,.94). True transparent alpha. No cast floor shadow or base, no backdrop, no text, numbers, letters, logos or emblems. One key prop. All graduates equally confident and attractive with different personality, never a beauty hierarchy. Broad forms clear at72px. Adult man with soft copper-brown curly hair, green round glasses, sage utility cardigan over cream shirt, navy trousers and cream sneakers. Carries one closed research notebook with blank warm yellow tab, thoughtful friendly smile and relaxed pose. No graduation cap, no school crest.",
+      "ruleIds": [
+        "H02"
+      ],
+      "characterSheet": "H02-v1"
+    },
+    {
+      "id": "H03",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-9b7f1f08-6fc5-4791-8143-6bb878d06a67.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the master drawing language into a DISTINCT identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp outlines, flat restrained cel shading, narrow cream cardstock cutout edge. Same finish and gentle light from upper left. Full single adult including both shoes, vertical3:4, 6%empty margin, feet center(.5,.94). True transparent alpha. No cast floor shadow or base, no backdrop, no text, numbers, letters, logos or emblems. One key prop. All graduates equally confident and attractive with different personality, never a beauty hierarchy. Broad forms clear at72px. Adult woman with short black spiky pixie cut and a coral headband, coral varsity-style jacket with cream sleeves (no badge), charcoal trousers and cream athletic sneakers. Holds a single navy planner with a blank yellow sticky note, confident energetic smile and lightly braced stance. No graduation cap or school crest.",
+      "ruleIds": [
+        "H03"
+      ],
+      "characterSheet": "H03-v1"
+    },
+    {
+      "id": "H04",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-8fcfb834-c506-40d0-b6aa-17d0d5cc1d6f.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the master drawing language into a DISTINCT identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp outlines, flat restrained cel shading, narrow cream cardstock cutout edge. Same finish and gentle light from upper left. Full single adult including both shoes, vertical3:4, 6%empty margin, feet center(.5,.94). True transparent alpha. No cast floor shadow or base, no backdrop, no text, numbers, letters, logos or emblems. One key prop. All graduates equally confident and attractive with different personality, never a beauty hierarchy. Broad forms clear at72px. Adult man with neat chestnut side-part hair and warm medium-brown skin, slate blue blazer over cream tee, brown straight trousers, cream sneakers. Holds one sage envelope with a large paperclip, warm confident grin and an open free hand as if introducing a friend. No graduation cap, no school crest.",
+      "ruleIds": [
+        "H04"
+      ],
+      "characterSheet": "H04-v1"
+    },
+    {
+      "id": "H05",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-566c15a0-8c3e-406b-b7a2-22ba6833bd82.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the reference master style into a DISTINCT new identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp contours, flat restrained cel shading, thin cream cardstock cutout edge with a subtle naturally cut-paper irregularity. Same gentle light upper left. One adult only, whole body and shoes, vertical3:4, 6%empty margin, foot pivot(.5,.94). True transparent alpha, no floor shadow/base/background, no glow, no text, letters, numbers, emblems, logos. One key prop. All graduates equally confident and attractive; no hierarchy. Shapes readable at72px. Adult woman with dark brown wavy shoulder-length hair and a tiny sage clip, mustard yellow cardigan over cream tee, navy ankle trousers and cream sneakers. Holds one simple mint thermos with both hands in front, relaxed grounded posture, gentle knowing smile and raised brow. No graduation cap or school crest.",
+      "ruleIds": [
+        "H05"
+      ],
+      "characterSheet": "H05-v1"
+    },
+    {
+      "id": "H06",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-0d7331c2-ce97-407d-b073-d69f27544251.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the reference master style into a DISTINCT new identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp contours, flat restrained cel shading, thin cream cardstock cutout edge with a subtle naturally cut-paper irregularity. Same gentle light upper left. One adult only, whole body and shoes, vertical3:4, 6%empty margin, foot pivot(.5,.94). True transparent alpha, no floor shadow/base/background, no glow, no text, letters, numbers, emblems, logos. One key prop. All graduates equally confident and attractive; no hierarchy. Shapes readable at72px. Adult man with tousled short charcoal hair, slate-green short work jacket with rolled cuffs, cream shirt, dark gray trousers and cream sneakers. Holds a small closed navy laptop with a single blank coral sticky note; one pencil behind ear. Energetic clever half-smile, one free hand confidently on hip. No graduation cap or school crest.",
+      "ruleIds": [
+        "H06"
+      ],
+      "characterSheet": "H06-v1"
+    },
+    {
+      "id": "H07",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-3c3ae440-b59e-46a7-9fef-b2ca851b7bbd.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt the reference master style into a DISTINCT new identity specified below: EXACT 2.8-head compact full-body proportions, adult anime face, dark navy crisp contours, flat restrained cel shading, thin cream cardstock cutout edge with a subtle naturally cut-paper irregularity. Same gentle light upper left. One adult only, whole body and shoes, vertical3:4, 6%empty margin, foot pivot(.5,.94). True transparent alpha, no floor shadow/base/background, no glow, no text, letters, numbers, emblems, logos. One key prop. All graduates equally confident and attractive; no hierarchy. Shapes readable at72px. Adult woman with short softly curled auburn hair, small round glasses, pale sky-blue travel blazer, cream shirt, charcoal wide-leg trousers and cream loafers. Holds a small cream closed passport-like notebook with a simple navy globe icon only, sage shoulder bag; calmly amused smile, one hand holding the strap. No country flag, text, cap or institution crest.",
+      "ruleIds": [
+        "H07"
+      ],
+      "characterSheet": "H07-v1"
+    },
+    {
+      "id": "H08",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-2874c1fe-fdfa-411c-98dc-f65f6f8d124e.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt attached reference master style into a DISTINCT new identity: exactly2.8-head compact full body proportions, adult anime face, sharp navy ink contour, flat restrained cel shading, very thin cream cardstock cutout edge with slight paper-cut irregularity. Same upper-left gentle lighting. One single whole adult with all hair and shoes visible, vertical3:4, 6%empty margins, feet pivot(.5,.94). True transparent alpha, no background, platform, floor shadow, glow, writing, letters, numbers, logos, crests. One main prop. Every graduate equally capable and charming without prestige-based beauty differences. Broad recognizable forms at72px. Adult man with softly curled sandy-brown hair and short subtle stubble, warm brown skin, muted lavender open overshirt over cream tee, charcoal trousers and cream shoes. Holds a mint project clipboard displaying exactly three large blank colored rectangles (navy/coral/yellow); relaxed self-assured smile with slightly raised brow and one free hand in pocket. No graduation cap.",
+      "ruleIds": [
+        "H08"
+      ],
+      "characterSheet": "H08-v1"
+    },
+    {
+      "id": "H09",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-b9e46c95-3317-4823-8a72-f95aceaa7090.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt attached reference master style into a DISTINCT new identity: exactly2.8-head compact full body proportions, adult anime face, sharp navy ink contour, flat restrained cel shading, very thin cream cardstock cutout edge with slight paper-cut irregularity. Same upper-left gentle lighting. One single whole adult with all hair and shoes visible, vertical3:4, 6%empty margins, feet pivot(.5,.94). True transparent alpha, no background, platform, floor shadow, glow, writing, letters, numbers, logos, crests. One main prop. Every graduate equally capable and charming without prestige-based beauty differences. Broad recognizable forms at72px. Adult woman with straight charcoal bob and one coral clip, sage light trench-style short jacket, cream blouse, navy straight trousers and cream shoes. Holds one broad slate-blue portfolio with a simple cream abstract triangle illustration on its cover; confident mischievous smile, hip slightly shifted, free hand on portfolio edge. No graduation cap.",
+      "ruleIds": [
+        "H09"
+      ],
+      "characterSheet": "H09-v1"
+    },
+    {
+      "id": "H10",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-d78aea92-2cc5-43ed-b663-031a2f8ee2f1.png",
+      "prompt": "Use case: style-transfer. Original adult graduate protagonist sprite for anime office paper-theatre card game. Adapt attached reference master style into a DISTINCT new identity: exactly2.8-head compact full body proportions, adult anime face, sharp navy ink contour, flat restrained cel shading, very thin cream cardstock cutout edge with slight paper-cut irregularity. Same upper-left gentle lighting. One single whole adult with all hair and shoes visible, vertical3:4, 6%empty margins, feet pivot(.5,.94). True transparent alpha, no background, platform, floor shadow, glow, writing, letters, numbers, logos, crests. One main prop. Every graduate equally capable and charming without prestige-based beauty differences. Broad recognizable forms at72px. Adult man with black slightly messy medium hair, warm cream sweater with a loose coral-and-sage striped scarf, navy straight trousers and cream sneakers. Holds a folded cream campus map with ONLY a simple navy block diagram, no lettering, and has one blank coral ID tag on a simple navy lanyard. Wide friendly confident grin, relaxed welcoming stance. No university logo, no cap, no flag.",
+      "ruleIds": [
+        "H10"
+      ],
+      "characterSheet": "H10-v1"
+    },
+    {
+      "id": "campus-rat",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-64db3914-c993-474a-a841-ac05cd09d88f.png",
+      "ruleIds": [
+        "N03"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body sprite for an ORIGINAL anime office paper-theatre card game, card identity: confident campus-recruit RAT. The character is a REAL ANTHROPOMORPHIC VERY FAT ROUND GRAY RAT, never a human in a costume or a person with animal accessories. A delightfully rotund pear-shaped belly dominates the silhouette, short stout legs, small paws, rounded pink-inner ears, long thin curved pink rat tail, charcoal gray fur with warm cream muzzle and belly, tiny black nose, two visible buck teeth and a cheeky determined grin. Friendly funny graduate recruit who dares to talk back: narrow expressive anime-inspired eyes and one small paw clenched cheerfully near the chest. Wear a short open navy varsity-style jacket with cream sleeve cuffs, a coral blank office ID lanyard and a small sage backpack; hold ONE cream résumé folder tucked under the other paw, with simple colored divider tabs but absolutely no writing. Character must clearly read as a large fat rat with a big belly rather than a hamster, bear or human. About 2.5 compact head-heights including ears, stout adult-coded office mascot, grounded pose with both cream low-top sneakers visible. Original hand-drawn paper cutout style: bold clean deep charcoal outlines, flat cel-shaded navy/sage/coral/cream palette, only two-value shadows, narrow warm cream irregular cardstock cut edge with a few fine paper fibers; matte paper, no plastic or metallic shading. Single whole character centered on vertical 3:4 canvas, 6% safe transparent space, both feet at x=.5 y=.94. True transparent alpha, NO ground shadow, NO pedestal, no floor, no background, no checkerboard, no text, letters, numbers, logos, watermark, glow or decorative floating objects. Distinct readable silhouette at 72px; held folder should be separately readable for runtime paper-puppet masking.",
+      "characterSheet": "campus-rat-v1"
+    },
+    {
+      "id": "intern-beagle",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-4176791f-0ff2-40b9-8cf5-d1da3a1797f9.png",
+      "ruleIds": [
+        "N01"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body character sprite for an ORIGINAL office paper-theatre card game. Subject must be a TRUE anthropomorphic ANIMAL with its species' actual face, fur/feathers/scales, ears and paws/wings, NEVER a human wearing animal ears, a mask or a costume. Friendly witty adult office colleague, compact approx 2.7 head-heights, clearly distinct round silhouette, both cream low-top shoes visible. Original hand-drawn anime-inspired animal mascot on matte cut cardstock: clean dark-charcoal outlines, broad flat cel-shaded shapes, very restrained warm paper grain, two-value shadows, thin warm cream irregular paper cut rim. Palette navy/sage/coral/lavender/cream. ONE character only, single held career prop, no extra floating objects. Full figure centered on 3:4 vertical canvas, leave 6 percent genuinely transparent margin on ALL sides including above ears; feet centered x=.5 y=.94. True transparent alpha; no backdrop, floor, ground shadow, pedestal, checkerboard, text, letters, numbers, logos, watermark, sparkle, glow, 3D plastic or metallic bevel. Readable at72px. Animal identity: an enthusiastic adult BEAGLE DOG, white-and-tan fur, long soft floppy chestnut ears, broad white muzzle, dark nose, round friendly eyes. Slightly stocky office intern. Wear a pale sage casual hoodie under a short navy jacket, coral blank ID badge. Hold one small cream onboarding notebook against the belly with one paw; the other paw makes a little thumbs-up-like cheerful dog gesture. Visible short wagging dog tail. Energetic eager expression. No graduation cap, no glasses. Clear dog's muzzle and floppy ears.",
+      "characterSheet": "intern-beagle-v1"
+    },
+    {
+      "id": "interview-owl",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-e6810fc1-b4fc-4f28-bc55-99740890d2b3.png",
+      "ruleIds": [
+        "N02"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body character sprite for an ORIGINAL office paper-theatre card game. Subject must be a TRUE anthropomorphic ANIMAL with its species' actual face, fur/feathers/scales, ears and paws/wings, NEVER a human wearing animal ears, a mask or a costume. Friendly witty adult office colleague, compact approx 2.7 head-heights, clearly distinct round silhouette, both cream low-top shoes visible. Original hand-drawn anime-inspired animal mascot on matte cut cardstock: clean dark-charcoal outlines, broad flat cel-shaded shapes, very restrained warm paper grain, two-value shadows, thin warm cream irregular paper cut rim. Palette navy/sage/coral/lavender/cream. ONE character only, single held career prop, no extra floating objects. Full figure centered on 3:4 vertical canvas, leave 6 percent genuinely transparent margin on ALL sides including above ears; feet centered x=.5 y=.94. True transparent alpha; no backdrop, floor, ground shadow, pedestal, checkerboard, text, letters, numbers, logos, watermark, sparkle, glow, 3D plastic or metallic bevel. Readable at72px. Animal identity: a plump adult TAWNY BROWN OWL, actual round feathered owl head with symmetrical cream facial discs, small amber beak, big alert eyes behind thin round spectacles, tiny pointed ear tufts, layered brown feather wings and a short owl tail. The meticulous interview-notes collector. Wear a short muted blue waistcoat, coral blank office badge. Wings hug ONE thick cream study-file binder with sage and coral page tabs; a tiny pencil tucked behind one feather tuft. Bird feet inside cream low sneakers. Clever attentive and slightly smug expression. The whole round feathered belly remains clearly visible; no human hands or human face.",
+      "characterSheet": "interview-owl-v1"
+    },
+    {
+      "id": "mentor-capybara",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-d699835a-c687-4562-8235-da999b13d811.png",
+      "ruleIds": [
+        "N04"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body character sprite for an ORIGINAL office paper-theatre card game. Subject must be a TRUE anthropomorphic ANIMAL with its species' actual face, fur/feathers/scales, ears and paws/wings, NEVER a human wearing animal ears, a mask or a costume. Friendly witty adult office colleague, compact approx 2.7 head-heights, clearly distinct round silhouette, both cream low-top shoes visible. Original hand-drawn anime-inspired animal mascot on matte cut cardstock: clean dark-charcoal outlines, broad flat cel-shaded shapes, very restrained warm paper grain, two-value shadows, thin warm cream irregular paper cut rim. Palette navy/sage/coral/lavender/cream. ONE character only, single held career prop, no extra floating objects. Full figure centered on 3:4 vertical canvas, leave 6 percent genuinely transparent margin on ALL sides including above ears; feet centered x=.5 y=.94. True transparent alpha; no backdrop, floor, ground shadow, pedestal, checkerboard, text, letters, numbers, logos, watermark, sparkle, glow, 3D plastic or metallic bevel. Readable at72px. Animal identity: a calm friendly adult CAPYBARA, warm chestnut fur, broad blunt rectangular capybara snout, small round ears, short brown paws and heavy compact body, tiny dark eyes with reassuring smile. The experienced university senior who gives referrals. Wear a sage open cardigan over a cream collared shirt, simple navy trousers and coral blank office ID. One paw extends ONE cream referral card with a simple coral round seal shape and no text; other paw rests confidently at hip. No long tail, no beaver teeth, no glasses. Calm dependable humorous capybara demeanor.",
+      "characterSheet": "mentor-capybara-v1"
+    },
+    {
+      "id": "veteran-tortoise",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-29de5271-2729-4247-a38d-9c7821a0ad50.png",
+      "ruleIds": [
+        "N05"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body character sprite for an ORIGINAL office paper-theatre card game. Subject must be a TRUE anthropomorphic ANIMAL with its species' actual face, fur/feathers/scales, ears and paws/wings, NEVER a human wearing animal ears, a mask or a costume. Friendly witty adult office colleague, compact approx 2.7 head-heights, clearly distinct round silhouette, both cream low-top shoes visible. Original hand-drawn anime-inspired animal mascot on matte cut cardstock: clean dark-charcoal outlines, broad flat cel-shaded shapes, very restrained warm paper grain, two-value shadows, thin warm cream irregular paper cut rim. Palette navy/sage/coral/lavender/cream. ONE character only, single held career prop, no extra floating objects. Full figure centered on 3:4 vertical canvas, leave 6 percent genuinely transparent margin on ALL sides including above ears; feet centered x=.5 y=.94. True transparent alpha; no backdrop, floor, ground shadow, pedestal, checkerboard, text, letters, numbers, logos, watermark, sparkle, glow, 3D plastic or metallic bevel. Readable at72px. Animal identity: a sturdy friendly adult TORTOISE office veteran, actual olive-green reptile face, short sturdy green limbs, rounded beak-like smiling mouth, relaxed knowing half-lidded eyes. Large warm ochre domed tortoise shell visible behind shoulders and at sides with simple flat hexagonal shell panels. Wear a short mustard cardigan and coral blank office badge over cream shirt, navy trousers. Hold ONE mint insulated tea mug with a cream lid between both short turtle paws at belly level. Unhurried veteran colleague, mildly amused expression, no cane, no pipe, no fantasy armor. Shell and reptile face must clearly distinguish it from any furry animal.",
+      "characterSheet": "veteran-tortoise-v1"
+    },
+    {
+      "id": "headhunter-fox",
+      "category": "character",
+      "source": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-4030577c-4fc3-4892-9dd9-4551584828d8.png",
+      "ruleIds": [
+        "N06"
+      ],
+      "prompt": "Use case: illustration-story. Production transparent full-body character sprite for an ORIGINAL office paper-theatre card game. Subject must be a TRUE anthropomorphic ANIMAL with its species' actual face, fur/feathers/scales, ears and paws/wings, NEVER a human wearing animal ears, a mask or a costume. Friendly witty adult office colleague, compact approx 2.7 head-heights, clearly distinct round silhouette, both cream low-top shoes visible. Original hand-drawn anime-inspired animal mascot on matte cut cardstock: clean dark-charcoal outlines, broad flat cel-shaded shapes, very restrained warm paper grain, two-value shadows, thin warm cream irregular paper cut rim. Palette navy/sage/coral/lavender/cream. ONE character only, single held career prop, no extra floating objects. Full figure centered on 3:4 vertical canvas, leave 6 percent genuinely transparent margin on ALL sides including above ears; feet centered x=.5 y=.94. True transparent alpha; no backdrop, floor, ground shadow, pedestal, checkerboard, text, letters, numbers, logos, watermark, sparkle, glow, 3D plastic or metallic bevel. Readable at72px. Animal identity: a confident friendly adult FEMALE RED FOX professional, real pointed orange-red fox muzzle and triangular ears with dark tips, cream cheeks, bushy orange tail with a wide cream tip, slender but compact upright animal figure. Expressive clever dark eyes with subtle lashes and a knowing smile. Wear a tailored muted lavender blazer over a cream blouse with a small coral silk scarf and navy trousers. Hold ONE simple slim sage smartphone in one fox paw at shoulder height, other paw rests at hip. No glasses. Elegant competent recruiter, approachable and lively; not seductive. Real fox paws and fox head, never human anatomy with fox ears.",
+      "characterSheet": "headhunter-fox-v1"
+    }
+  ]
+}

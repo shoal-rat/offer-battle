@@ -1,0 +1,349 @@
+{
+  "scope": "evidence-integrity-and-completion",
+  "generatedAt": "2026-09-26T19:45:25.400Z",
+  "plannedRuns": 48,
+  "actualSessions": 0,
+  "passed": 0,
+  "status": "blocked",
+  "countingRule": "Retries remain attempts of the original run ID; SMOKE IDs are excluded.",
+  "independentRunCompletion": [
+    {
+      "runId": "A01-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A01-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A01-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A01-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A02-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A02-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A02-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A02-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A03-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A03-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A03-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A03-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A04-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A04-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A04-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A04-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A05-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A05-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A05-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A05-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A06-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A06-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A06-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A06-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A07-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A07-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A07-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A07-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A08-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A08-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A08-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A08-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A09-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A09-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A09-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A09-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A10-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A10-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A10-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A10-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A11-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A11-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A11-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A11-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A12-R01",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A12-R02",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A12-R03",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    },
+    {
+      "runId": "A12-R04",
+      "status": "not-run",
+      "issues": [
+        "No executed session"
+      ]
+    }
+  ],
+  "realUserRetention": null,
+  "sharingRate": null
+}

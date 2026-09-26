@@ -1,0 +1,41 @@
+✔ P2 defaults: every feature is false, explicit opt-in only; ordinary match initialization is untouched (13.967334ms)
+✔ EXP02 CH01: fixed seed solution is legal, goal requires actual effects and replay repeats (24.209667ms)
+✔ EXP02 CH02: fixed seed solution is legal, goal requires actual effects and replay repeats (7.151333ms)
+✔ EXP02 CH03: fixed seed solution is legal, goal requires actual effects and replay repeats (8.90475ms)
+✔ EXP02 CH04: fixed seed solution is legal, goal requires actual effects and replay repeats (13.95375ms)
+✔ EXP02 CH05: fixed seed solution is legal, goal requires actual effects and replay repeats (9.905291ms)
+✔ EXP03: scores are idempotent, loadouts lock, flex changes only between games, final result blocks another match (7.752542ms)
+✔ EXP03: draws are explicit and nine drawn games stop the experiment without fabricating a winner (6.5195ms)
+✔ EXP04: boss public conditions match the actual initial snapshot, future commands remain ordinary (1.781333ms)
+✔ EXP05: achievements verify engine transitions; forged text and cosmetic fields cannot add rewards (12.686416ms)
+✔ EXP01: one variable, baseline evidence gate, frozen experiment metadata and deterministic replay (21.209625ms)
+✔ local guest L01: legal learner steps, mentor, duplicate protection and deterministic replay (432.704292ms)
+✔ local guest L02: legal learner steps, mentor, duplicate protection and deterministic replay (382.93125ms)
+✔ local guest L03: legal learner steps, mentor, duplicate protection and deterministic replay (230.208667ms)
+✔ local guest L04: legal learner steps, mentor, duplicate protection and deterministic replay (314.397584ms)
+✔ local guest L05: legal learner steps, mentor, duplicate protection and deterministic replay (478.05975ms)
+✔ local bot plays a complete match with engine-only decisions, replay and reconstructible cloud-save seed (3585.264916ms)
+✔ local temporary resume keeps tutorial, receipts and current replay; expired cache is discarded (120.786584ms)
+✔ local timer advances setup and turn deadlines, rejects forged TIMEOUT, and keeps training untimed (76.61ms)
+✔ local command envelope rejects stale state, altered reuse and previous-match IDs without changing state (71.710875ms)
+✔ custom offers persist locally and loadouts use the compiled collection instead of client-forged attributes (7.764708ms)
+✔ all practice setups use existing showcase engine and remain marked as practice for cloud-save restrictions (72.347208ms)
+✔ local socket emits open/state updates and closes cleanly, with no remote connection (85.700541ms)
+✔ local persisted 2.0 collection upgrades while a resumed match stays frozen until rematch (22.125333ms)
+✔ local Offer saves are durable and idempotent; revision and recycle operations preserve running definitions (13.092833ms)
+✔ local profile revisions detect a second tab and preserve the draft on storage failure; migration preserves its source (1.972042ms)
+✔ P2 local runtime: explicit challenge fixtures solve through commands, cosmetics persist, and replay is marked experimental (215.846167ms)
+✔ P2 local best of three: intermission survives reload, locks cards, accepts flex changes and stops after two wins (22.783125ms)
+✔ Node Offer transactions: concurrent retries, stable revision, frozen active match, copy, delete and restore (273.981459ms)
+✔ Node optional generation sends saved preferences and seed; late results cannot overwrite a revision (180.786875ms)
+✔ Node image failure keeps the playable card; retry persists the current job and returns real art (167.862666ms)
+✔ Node profile CAS, explicit migration and public invite projection share the service contract (135.918834ms)
+✔ P2 Node: server flags gate fixtures and series; legitimate experiments retain replay metadata (109.950959ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6673.533958

@@ -1,0 +1,45 @@
+/* The artwork, name, rules and numbers own separate rows, including in hand. */
+.offer-card[data-variant]:not(.small){display:grid;grid-template-rows:minmax(0,1fr) 25px 126px 35px;gap:4px;height:396px;padding:9px;align-content:stretch}
+.offer-card[data-variant]:not(.small)>.card-art{height:auto;min-height:0;overflow:hidden;display:grid;place-items:center}
+.offer-card[data-variant]:not(.small)>.card-art>.paper-character{height:100%;width:100%;top:0;max-height:190px}
+.offer-card[data-variant]:not(.small)>.card-art>img{height:100%;top:0}
+.offer-card[data-variant]:not(.small)>.card-ribbon{margin:0;min-height:0;line-height:25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.offer-card[data-variant]:not(.small)>.card-copy{position:static;padding:0;display:grid;grid-template-rows:18px 27px 43px 22px;gap:4px;min-width:0}
+.offer-card[data-variant]:not(.small) .card-company{font-size:12px;line-height:18px;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.offer-card[data-variant]:not(.small) .card-salary{font-size:20px;line-height:27px}
+.offer-card[data-variant]:not(.small) .card-copy p{font-size:13px;line-height:20px;margin:0;padding:0;min-height:0;max-height:40px;align-self:start;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.offer-card[data-variant]:not(.small) .benefit-pill{position:relative;inset:auto;transform:none;grid-row:4;justify-self:center;align-self:center;white-space:nowrap;max-width:100%;font-size:12px;line-height:16px;margin:0;padding:2px 8px}
+.offer-card[data-variant]:not(.small)>.card-stats{position:static;inset:auto;min-width:0;gap:6px;height:35px;margin:0}
+.offer-card[data-variant]:not(.small) .stats-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;margin:0}
+.common-card[data-variant]:not(.small){display:grid;grid-template-rows:minmax(0,1fr) 25px 84px 30px;gap:5px;height:310px;padding:9px}
+.common-card[data-variant]:not(.small)>.common-art{height:auto;min-height:0}
+.common-card[data-variant]:not(.small)>.card-ribbon{min-height:0;line-height:25px;margin:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.common-card[data-variant]:not(.small)>p{font-size:13px;line-height:20px;margin:0;padding:2px 0;max-height:84px;min-height:0;overflow:hidden}
+.common-card[data-variant]:not(.small)>.common-bottom{position:static;inset:auto;height:30px;min-height:0;margin:0;gap:6px}
+.common-art>.paper-character{display:block;width:100%;height:100%}
+.card-grid>div,.card-grid>article,.common-grid>div,.loadout-card{min-width:0;width:100%}
+.paper-card-details details summary{cursor:pointer;list-style:disclosure-closed;padding:12px 0;min-height:44px}
+.paper-card-details details[open] summary{list-style:disclosure-open}
+/* These selectors also outrank legacy battle and setup card sizing rules. */
+:is(.battle-page.battle-fit,.modal,.page) :is(.offer-card,.common-card).small[data-variant]{display:grid;grid-template-rows:minmax(0,1fr) 18px 34px 26px;gap:3px;align-content:stretch}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant]>:is(.card-art,.common-art){height:auto;min-height:0;overflow:hidden}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant]>.card-ribbon{margin:0;min-height:0;height:18px;padding:0;font-size:13px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant]>.card-copy{padding:0;position:static;min-height:0;overflow:hidden}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant] :is(.card-company,.card-salary,.benefit-pill){display:none}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant]>p,
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant] .card-copy p{font-size:12px;line-height:16px;padding:0;margin:0;min-height:0;height:32px;max-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant]>:is(.card-stats,.common-bottom){position:static;inset:auto;height:26px;min-height:0;margin:0;gap:4px;line-height:1.2}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant] .stat{width:27px;height:25px;font-size:18px;flex-shrink:0}
+:is(.battle-page.battle-fit,.modal,.page) .small[data-variant] :is(.stats-label,.common-bottom>span:not(.stat)){font-size:10px;letter-spacing:0;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis;align-self:center;margin:0}
+@media(max-width:760px){
+ .card-grid .offer-card[data-variant]:not(.small){height:364px;grid-template-rows:minmax(0,1fr) 23px 123px 30px;padding:7px;gap:4px}
+ .card-grid .offer-card[data-variant]:not(.small)>.card-ribbon{font-size:15px;line-height:23px}
+ .card-grid .offer-card[data-variant]:not(.small)>.card-copy{grid-template-rows:17px 25px 43px 22px}
+ .card-grid .offer-card[data-variant]:not(.small) .card-company{font-size:11px;line-height:17px}
+ .card-grid .offer-card[data-variant]:not(.small) .card-copy p{font-size:12px}
+ .card-grid .offer-card[data-variant]:not(.small)>.card-stats{height:30px}
+ .card-grid .offer-card[data-variant]:not(.small) .stats-label{font-size:10px}
+ .common-grid .common-card[data-variant]:not(.small){height:292px;grid-template-rows:minmax(0,1fr) 23px 84px 30px;padding:7px}
+ .common-grid .common-card[data-variant]:not(.small)>.card-ribbon{font-size:15px;line-height:23px}
+}
+@media(max-width:350px){.card-grid .offer-card[data-variant]:not(.small){height:396px}.common-grid .common-card[data-variant]:not(.small){height:335px}}

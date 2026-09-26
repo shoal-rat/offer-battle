@@ -1,0 +1,9 @@
+{
+  "scope": "Public Markdown filesystem links and private-path/name scan; not an external URL or deployment check",
+  "reviewedAt": "2026-09-27",
+  "markdownFiles": 50,
+  "relativeLinksChecked": 153,
+  "brokenLinks": [],
+  "privateFindings": [],
+  "independentQA": "not-run"
+}

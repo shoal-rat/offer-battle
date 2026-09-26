@@ -6,9 +6,9 @@ const leaders=new Set(['attack','primary_skill','secondary_skill','card','deploy
 export function cueOffset(group:MotionGroup,index:number){
  if(index===0)return 0;
  const lead=group.cues[0],cue=group.cues[index];
- // An attacker that also died returns to its own slot before its exit starts.
- if(lead.kind==='attack'&&lead.sourceId&&cue.kind==='retire'&&(cue.targetId??cue.sourceId)===lead.sourceId)return 780;
- return lead.kind==='attack'?480:['primary_skill','secondary_skill','card'].includes(lead.kind)?430:120;
+ // Lethal counter-damage folds the attacker at contact, without a living return pose.
+ if(lead.kind==='attack'&&lead.sourceId&&cue.kind==='retire'&&(cue.targetId??cue.sourceId)===lead.sourceId)return 220;
+ return lead.kind==='attack'?220:['primary_skill','secondary_skill','card'].includes(lead.kind)?160:80;
 }
 export function groupBattleCues(cues:BattleCue[],reduced=false):MotionGroup[]{
  const groups:MotionGroup[]=[];
@@ -17,12 +17,12 @@ export function groupBattleCues(cues:BattleCue[],reduced=false):MotionGroup[]{
   const last=groups.at(-1);
   // A single resolver's aftermath belongs to its attack/cast, not a long serial queue.
   if(!last||leaders.has(cue.kind)){
-   groups.push({id:cue.id,cues:[cue],duration:cue.kind==='result'?resultMotionDuration(cue,reduced):reduced?260:cue.kind==='secondary_skill'?1450:cue.kind==='primary_skill'?1050:cue.kind==='attack'?900:700});
+   groups.push({id:cue.id,cues:[cue],duration:cue.kind==='result'?resultMotionDuration(cue,reduced):reduced?100:cue.kind==='secondary_skill'?550:cue.kind==='primary_skill'?460:cue.kind==='attack'?460:cue.kind==='deploy'?340:320});
   }else last.cues.push(cue);
  }
  // Never unlock/compact a board while an aftermath ghost is still on screen.
  for(const group of groups)if(!reduced&&group.cues.some(c=>c.kind==='retire'||c.kind==='bounce')){
-  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+540]:[]);
+  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+320]:[]);
   group.duration=Math.max(group.duration,...exits);
  }
  return groups;

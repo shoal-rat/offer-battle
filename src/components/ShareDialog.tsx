@@ -1,0 +1,12 @@
+import {useEffect,useMemo,useState} from 'react';
+import {Modal,Icon} from '../ui';
+import type {Loadout,MatchView,OfferDefinition} from '../game/types';
+import {PRIVATE_SHARE_DEFAULTS,projectOfferShare,projectLineupShare,projectBattleShare,renderShare,exportProjection,exportPublicJSON,type ShareChoices} from '../share';
+export type ShareSource={offer:OfferDefinition}|{loadout:Loadout;roomCode?:string}|{view:MatchView};
+export default function ShareDialog({source,onClose,notify}:{source:ShareSource;onClose:()=>void;notify:(message:string)=>void}){
+ const [choices,setChoices]=useState<ShareChoices>({...PRIVATE_SHARE_DEFAULTS}),[preview,setPreview]=useState(''),[rendering,setRendering]=useState(false),[failed,setFailed]=useState(false);
+ const projection=useMemo(()=>'offer'in source?projectOfferShare(source.offer,choices):'view'in source?projectBattleShare(source.view,choices):projectLineupShare(source.loadout,choices,source.roomCode),[source,choices]);
+ useEffect(()=>{let active=true;setRendering(true);setFailed(false);setPreview('');void renderShare(projection).then(canvas=>{if(active){setPreview(canvas.toDataURL('image/png'));setRendering(false)}}).catch(()=>{if(active){setRendering(false);setFailed(true)}});return()=>{active=false}},[projection]);
+ const available=([['company','公司名称'],['salary','精确年包'],['role','具体岗位'],['nickname','我的昵称'],['education','学历标签']] as const).filter(([key])=>'offer'in source?['company','salary','role'].includes(key):'view'in source?key==='nickname':true);
+ return <Modal title="这张分享图，公开什么？" onClose={onClose} wide><div className="share-dialog"><div className="share-preview">{preview?<img src={preview} alt={projection.alt}/>:<p role="status">{failed?'图片预览暂时不可用，可以导出相同范围的文字战报。':'正在排版分享图…'}</p>}</div><section><p>默认隐藏工作详情。勾选后，预览、图片与 JSON 会使用相同的公开范围。</p><fieldset className="share-choices"><legend>允许公开</legend>{available.map(([key,label])=><label key={key}><input type="checkbox" checked={choices[key]} onChange={e=>setChoices(old=>({...old,[key]:e.target.checked}))}/><span>{label}</span></label>)}</fieldset>{'view'in source&&<p>对方使用匿名称呼；不导出手牌、原始 Offer 或私密金额。</p>}<button className="btn gold full" disabled={rendering||failed} onClick={()=>void exportProjection(projection).catch(()=>notify('图片导出失败，请重试'))}><Icon name="download"/>保存这张图片</button><button className="btn subtle full" onClick={()=>exportPublicJSON(projection)}>导出相同范围的 JSON</button><details><summary>文字预览</summary><p>{projection.alt}</p>{projection.highlights?.map(h=><p key={h.sequence}>{h.text}</p>)}</details></section></div></Modal>
+}

@@ -1,3 +1,4 @@
+import type {OfferPersona} from './draft-persona';
 export type Topic = "salary" | "life" | "future";
 export type Phase = "flex" | "mulligan" | "playing" | "finished";
 export interface OfferProfile {
@@ -40,6 +41,9 @@ export interface OfferDefinition {
   profile?: OfferProfile;
   artId?: string;
   tuning?: OfferTuning;
+  definitionRevision?: number;
+  draftRevision?: number;
+  persona?: OfferPersona;
 }
 export interface OfferTuning {
   version: "2.1.0";

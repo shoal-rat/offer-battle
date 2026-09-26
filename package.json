@@ -1,6 +1,6 @@
 {
   "name": "offer-battle",
-  "version": "2.1.0",
+  "version": "2.2.0-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,8 @@
     "start": "tsx server/index.ts --production",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
+    "test:bot": "tsx --test tests/bot-*.test.ts",
+    "benchmark:bots": "tsx scripts/benchmark-bots.ts",
     "test:e2e": "playwright test",
     "test:visual": "playwright test --grep visual",
     "assets:check": "tsx scripts/check-assets.ts",
@@ -23,7 +25,10 @@
     "build:cloudflare": "wrangler deploy --dry-run --outdir work/cloudflare-bundle",
     "test:cloudflare": "npm run typecheck:cloudflare && npm run build:cloudflare && tsx --test tests/cloudflare/*.test.ts",
     "deploy:cloudflare": "wrangler deploy",
-    "test:e2e:static": "playwright test --config playwright.static.config.ts"
+    "test:e2e:static": "playwright test --config playwright.static.config.ts",
+    "test:agents:plan": "tsx scripts/agent-testing/runner.ts plan",
+    "test:agents:run": "tsx scripts/agent-testing/runner.ts run",
+    "test:agents:verify": "tsx scripts/agent-testing/runner.ts verify"
   },
   "dependencies": {
     "react": "19.3.0",

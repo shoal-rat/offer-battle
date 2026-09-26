@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-09-26T19:51:23.629Z",
+  "apiBaseUrl": "https://offer-battle-api.offer-battle.workers.dev",
+  "workerName": "offer-battle-api",
+  "versionId": "b34a8571-5982-41b6-8698-e9fd608cbc3c",
+  "bundleSha256": "6fec56ad07c8b00ad017bfcba2287182dbee00218a9e0c91e9a11bb1ea9eacf0",
+  "scope": "Production 2.2 Worker deployment and read-only HTTP health/capability/CORS checks; not the 48-session agent acceptance.",
+  "storageReset": false,
+  "secretChanges": false,
+  "productionBestOfThree": false,
+  "checks": {
+    "health": {
+      "status": 200,
+      "allowOrigin": null,
+      "body": {
+        "ok": true,
+        "rulesVersion": "2.0.0",
+        "offerCompilerVersion": "2.1.0",
+        "mode": "cloudflare",
+        "storage": "sqlite-durable-objects"
+      }
+    },
+    "capabilities": {
+      "status": 200,
+      "allowOrigin": "https://weikezhang.cn",
+      "body": {
+        "localArt": true,
+        "localText": true,
+        "extract": false,
+        "textProvider": false,
+        "imageProvider": false,
+        "voiceProvider": false,
+        "experimental": {
+          "bestOfThree": false
+        },
+        "accounts": true,
+        "friendRequiresAccount": true,
+        "guestMode": "local",
+        "offerRevision": true,
+        "offerIdempotency": true,
+        "generation": {
+          "text": {
+            "available": true,
+            "provider": "local"
+          },
+          "image": {
+            "available": false,
+            "provider": "none"
+          },
+          "extract": {
+            "available": false,
+            "provider": "none"
+          },
+          "reference": {
+            "available": true,
+            "provider": "browser"
+          },
+          "localAssembly": {
+            "available": true,
+            "provider": "bundled"
+          }
+        }
+      }
+    },
+    "anonymousProfile": {
+      "status": 401,
+      "allowOrigin": "https://weikezhang.cn",
+      "body": {
+        "ok": false,
+        "error": "登录后才能联机和保存战报",
+        "errorCode": "AUTH_REQUIRED"
+      }
+    },
+    "allowedPreflight": {
+      "status": 204,
+      "allowOrigin": "https://weikezhang.cn",
+      "body": null
+    },
+    "unknownOrigin": {
+      "status": 403,
+      "allowOrigin": null,
+      "body": {
+        "ok": false,
+        "error": "请求来源未获允许",
+        "errorCode": "ORIGIN_DENIED"
+      }
+    }
+  },
+  "failures": []
+}

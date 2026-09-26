@@ -1,0 +1,28 @@
+{
+  "thinking": true,
+  "version": 1,
+  "startVersion": 0,
+  "started": 2,
+  "terminated": 2,
+  "messages": 1,
+  "frameCount": 66,
+  "maxFrameGap": 16.799999999999955,
+  "decision": {
+    "command": {
+      "type": "DEPLOY_OFFER",
+      "offerId": "E01"
+    },
+    "matchId": "worker-live-fixture",
+    "stateVersion": 0,
+    "requestId": "think_79c5c164-810c-449c-93fd-baebdd65f724",
+    "botVersion": "2.2.0",
+    "reasonCode": "BUDGET_FALLBACK",
+    "nodesVisited": 4431,
+    "elapsedMs": 800.2999999821186,
+    "fallbackReason": "time",
+    "sampleCount": 4
+  },
+  "beforeCancel": 1,
+  "afterCancel": 1,
+  "freshMatchId": "match_0e34d666-2d39-4edc-8bc4-c78bfb3724c9"
+}

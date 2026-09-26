@@ -1,0 +1,2035 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "2.2",
+  "status": "not-run",
+  "roleCount": 12,
+  "runCount": 48,
+  "runsPerRole": 4,
+  "resultsProvenance": "Plan only; no game-agent sessions executed in this deliverable.",
+  "runs": [
+    {
+      "runId": "A01-R01",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R02",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R03",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R04",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "webkit",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R01",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R02",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R03",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R04",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R01",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R02",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R03",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R04",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R01",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R02",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R03",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R04",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R01",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-01",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R02",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-02",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R03",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-03",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R04",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-04",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R01",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-01",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R02",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-02",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R03",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-03",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R04",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-04",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R01",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R02",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R03",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R04",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R01",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R02",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R03",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R04",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R01",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R02",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R03",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R04",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R01",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R02",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R03",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R04",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R01",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R02",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R03",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R04",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R01",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R02",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R03",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R04",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    }
+  ],
+  "createdAt": "2026-09-26T19:44:45.138Z",
+  "scope": "execution plan only; no agent sessions launched",
+  "target": "http://127.0.0.1:5344/offer-battle/",
+  "configuredModel": "gpt-6-astra",
+  "cliAvailable": true,
+  "browsers": {
+    "chromium": true,
+    "webkit": true
+  },
+  "tools": {
+    "A01": [
+      "screenshot",
+      "click",
+      "scroll",
+      "keyboard",
+      "currentUrl"
+    ],
+    "A02": [
+      "screenshot",
+      "tap",
+      "touchScroll",
+      "keyboard",
+      "currentUrl"
+    ],
+    "A03": [
+      "browser",
+      "accessibilityTree",
+      "ownSeededStorage"
+    ],
+    "A04": [
+      "browser",
+      "accessibilityTree",
+      "syntheticFixture",
+      "sandboxFaults"
+    ],
+    "A05": [
+      "browser",
+      "ownAccount",
+      "publicInviteOutbox"
+    ],
+    "A06": [
+      "browser",
+      "ownAccount",
+      "publicInviteInbox"
+    ],
+    "A07": [
+      "browser",
+      "repoRead",
+      "engineFixtures",
+      "testRunner"
+    ],
+    "A08": [
+      "screenshot",
+      "approvedReferences",
+      "blindedCaptures"
+    ],
+    "A09": [
+      "browser",
+      "video",
+      "timelineFrames",
+      "eventTiming"
+    ],
+    "A10": [
+      "browser",
+      "performanceTrace",
+      "networkTrace",
+      "testRunner"
+    ],
+    "A11": [
+      "browser",
+      "accessibilityTree",
+      "keyboard",
+      "touchEmulation",
+      "mediaEmulation"
+    ],
+    "A12": [
+      "browser",
+      "sandboxFaults",
+      "repoRead",
+      "testRunner"
+    ]
+  },
+  "preflight": [
+    {
+      "runId": "A01-R01",
+      "role": "A01",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "click",
+        "scroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A01-R02",
+      "role": "A01",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "click",
+        "scroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A01-R03",
+      "role": "A01",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "click",
+        "scroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A01-R04",
+      "role": "A01",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "click",
+        "scroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A02-R01",
+      "role": "A02",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "tap",
+        "touchScroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A02-R02",
+      "role": "A02",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "tap",
+        "touchScroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A02-R03",
+      "role": "A02",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "tap",
+        "touchScroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A02-R04",
+      "role": "A02",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "screenshot",
+        "tap",
+        "touchScroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A03-R01",
+      "role": "A03",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "ownSeededStorage"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A03-R02",
+      "role": "A03",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "ownSeededStorage"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A03-R03",
+      "role": "A03",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "ownSeededStorage"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A03-R04",
+      "role": "A03",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "ownSeededStorage"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A04-R01",
+      "role": "A04",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "syntheticFixture",
+        "sandboxFaults"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A04-R02",
+      "role": "A04",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "syntheticFixture",
+        "sandboxFaults"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A04-R03",
+      "role": "A04",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "syntheticFixture",
+        "sandboxFaults"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A04-R04",
+      "role": "A04",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "syntheticFixture",
+        "sandboxFaults"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A05-R01",
+      "role": "A05",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteOutbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A05-R02",
+      "role": "A05",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteOutbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A05-R03",
+      "role": "A05",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteOutbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A05-R04",
+      "role": "A05",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteOutbox"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A06-R01",
+      "role": "A06",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteInbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A06-R02",
+      "role": "A06",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteInbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A06-R03",
+      "role": "A06",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteInbox"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A06-R04",
+      "role": "A06",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "ownAccount",
+        "publicInviteInbox"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A07-R01",
+      "role": "A07",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "repoRead",
+        "engineFixtures",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A07-R02",
+      "role": "A07",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "repoRead",
+        "engineFixtures",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A07-R03",
+      "role": "A07",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "repoRead",
+        "engineFixtures",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A07-R04",
+      "role": "A07",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "repoRead",
+        "engineFixtures",
+        "testRunner"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A08-R01",
+      "role": "A08",
+      "status": "blocked",
+      "canLaunch": false,
+      "tools": [
+        "screenshot",
+        "approvedReferences",
+        "blindedCaptures"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": false,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [
+        "Approved reference and two anonymous real captures are required."
+      ],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A08-R02",
+      "role": "A08",
+      "status": "blocked",
+      "canLaunch": false,
+      "tools": [
+        "screenshot",
+        "approvedReferences",
+        "blindedCaptures"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": false,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [
+        "Approved reference and two anonymous real captures are required."
+      ],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A08-R03",
+      "role": "A08",
+      "status": "blocked",
+      "canLaunch": false,
+      "tools": [
+        "screenshot",
+        "approvedReferences",
+        "blindedCaptures"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": false,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [
+        "Approved reference and two anonymous real captures are required."
+      ],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A08-R04",
+      "role": "A08",
+      "status": "blocked",
+      "canLaunch": false,
+      "tools": [
+        "screenshot",
+        "approvedReferences",
+        "blindedCaptures"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": false,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [
+        "Approved reference and two anonymous real captures are required."
+      ],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A09-R01",
+      "role": "A09",
+      "status": "partial-ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "video",
+        "timelineFrames",
+        "eventTiming"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": [
+        "Normal-speed native model video observation is unavailable; actual timed-frame review may run, but full motion acceptance remains blocked."
+      ]
+    },
+    {
+      "runId": "A09-R02",
+      "role": "A09",
+      "status": "partial-ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "video",
+        "timelineFrames",
+        "eventTiming"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": [
+        "Normal-speed native model video observation is unavailable; actual timed-frame review may run, but full motion acceptance remains blocked."
+      ]
+    },
+    {
+      "runId": "A09-R03",
+      "role": "A09",
+      "status": "partial-ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "video",
+        "timelineFrames",
+        "eventTiming"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": [
+        "Normal-speed native model video observation is unavailable; actual timed-frame review may run, but full motion acceptance remains blocked."
+      ]
+    },
+    {
+      "runId": "A09-R04",
+      "role": "A09",
+      "status": "partial-ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "video",
+        "timelineFrames",
+        "eventTiming"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": [
+        "Normal-speed native model video observation is unavailable; actual timed-frame review may run, but full motion acceptance remains blocked."
+      ]
+    },
+    {
+      "runId": "A10-R01",
+      "role": "A10",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "performanceTrace",
+        "networkTrace",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A10-R02",
+      "role": "A10",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "performanceTrace",
+        "networkTrace",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A10-R03",
+      "role": "A10",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "performanceTrace",
+        "networkTrace",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A10-R04",
+      "role": "A10",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "performanceTrace",
+        "networkTrace",
+        "testRunner"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A11-R01",
+      "role": "A11",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "keyboard",
+        "touchEmulation",
+        "mediaEmulation"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A11-R02",
+      "role": "A11",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "keyboard",
+        "touchEmulation",
+        "mediaEmulation"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A11-R03",
+      "role": "A11",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "keyboard",
+        "touchEmulation",
+        "mediaEmulation"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A11-R04",
+      "role": "A11",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "accessibilityTree",
+        "keyboard",
+        "touchEmulation",
+        "mediaEmulation"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": false,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A12-R01",
+      "role": "A12",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "sandboxFaults",
+        "repoRead",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A12-R02",
+      "role": "A12",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "sandboxFaults",
+        "repoRead",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A12-R03",
+      "role": "A12",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "sandboxFaults",
+        "repoRead",
+        "testRunner"
+      ],
+      "browser": "chromium",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    },
+    {
+      "runId": "A12-R04",
+      "role": "A12",
+      "status": "ready",
+      "canLaunch": true,
+      "tools": [
+        "browser",
+        "sandboxFaults",
+        "repoRead",
+        "testRunner"
+      ],
+      "browser": "webkit",
+      "capabilities": {
+        "screenshots": true,
+        "coordinates": true,
+        "sourceRead": true,
+        "arbitraryJavaScript": false,
+        "arbitraryShell": false,
+        "nativeVideoObservation": false
+      },
+      "blockedReasons": [],
+      "partialCoverage": []
+    }
+  ],
+  "requirements": [
+    "Run only after the initial source commit has been pushed; --published-commit is mandatory.",
+    "Each formal run requires --model or QA_MODEL so its actual requested model is recorded.",
+    "A05/A06 launch together; only their public invitation is shared.",
+    "A08 needs --references manifest with approved reference and blinded image inputs.",
+    "A09 can review timed frames, but native normal-speed model video observation is unavailable and must stay blocked."
+  ],
+  "sourcePlanHash": "c9c6cbb83611c0427db3bf1fcf2691f3bf00fea504ae48d65085f348e26d976c"
+}

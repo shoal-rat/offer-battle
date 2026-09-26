@@ -1,6 +1,6 @@
 import {publicUrl} from './deployment';
 import type { BattleCue } from "./game/types";
-import { groupBattleCues } from "./components/battle-motion";
+import { cueOffset, groupBattleCues } from "./components/battle-motion";
 
 export type SoundFile =
   | "attack"
@@ -30,10 +30,10 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
     case "attack":
       return [
         { file: "attack", delay: 40, duck: 0.55, protectMs: 380 },
-        { file: "damage", delay: 350, duck: 0.4 },
+        { file: "damage", delay: 220, duck: 0.4 },
       ];
     case "retire":
-      return [{ file: "optimization", delay: 480, duck: 0.6 }];
+      return [{ file: "optimization", delay: 0, duck: 0.6 }];
     case "primary_skill":
       return [
         {
@@ -53,9 +53,9 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
     case "retort":
       return [{ file: "retort", delay: 0, duck: 0.45 }];
     case "deploy":
-      return [{ file: "deploy", delay: 310, duck: 0.65 }];
+      return [{ file: "deploy", delay: 255, duck: 0.65 }];
     case "damage":
-      return [{ file: "damage", delay: 150, duck: 0.5 }];
+      return [{ file: "damage", delay: 0, duck: 0.5 }];
     case "heal":
       return [{ file: "heal", delay: 80, duck: 0.7 }];
     case "draw":
@@ -70,7 +70,7 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
         : cue.effectId === "age"
           ? [{ file: "age_up", delay: 120 }]
           : cue.effectId === "notice"
-            ? [{ file: "optimization", delay: 150, duck: 0.55 }]
+            ? [{ file: "optimization", delay: 0, duck: 0.55 }]
             : [];
     case "result":
       return cue.effectId === "draw"
@@ -78,7 +78,7 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
         : [
             {
               file: cue.targetId === selfId ? "win" : "lose",
-              delay: 600,
+              delay: 160,
               duck: 0.4,
             },
           ];
@@ -110,9 +110,9 @@ export function soundsForBatch(
         if (index > 0 && sound.file === "damage")
           delay =
             lead.kind === "attack"
-              ? 350
+              ? 220
               : ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
-                ? 430
+                ? 160
                 : lead.kind === "retort"
                   ? 120
                   : delay;
@@ -121,13 +121,14 @@ export function soundsForBatch(
           sound.file === "heal" &&
           ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
         )
-          delay = 510;
+          delay = 160;
+        if (index > 0 && sound.file === "optimization") delay = cueOffset(group,index);
         layers.set(sound.file, { ...sound, delay: reduced ? 0 : delay });
       }
     return {
       id: group.id,
       sounds: [...layers.values()],
-      duration: Math.max(reduced ? 280 : 0, group.duration),
+      duration: group.duration,
     };
   });
   // These cues have no visual motion group, but still get one quiet feedback cue.
@@ -150,6 +151,14 @@ export function soundsForBatch(
         sounds: [...extraSounds.values()],
         duration: reduced ? 280 : 700,
       });
+  }
+  const result=cues.find(c=>c.kind==='result');
+  if(result){
+    const attack=[...cues].reverse().find(c=>c.kind==='attack');
+    const sounds:CueSound[]=[];
+    if(attack&&!reduced)sounds.push({file:'attack',delay:0,duck:.55},{file:'damage',delay:95,duck:.4});
+    sounds.push(...soundsForCue(result,selfId).map(sound=>({...sound,delay:reduced?0:(attack?350:160)})));
+    return [{id:result.id,sounds,duration:reduced?100:850}];
   }
   return groups;
 }
@@ -204,11 +213,9 @@ export class SoundEffects {
       accepted.add(cue.id);
       return true;
     });
-    const reduced =
-      (typeof document !== "undefined" &&
-        document.documentElement?.dataset.reduced === "true") ||
-      (typeof matchMedia !== "undefined" &&
-        matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const explicit = typeof document !== 'undefined' ? document.documentElement?.dataset.reduced : undefined;
+    const reduced = explicit !== undefined ? explicit === 'true' : typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(unique.some(c=>c.kind==='result'))this.stop();
     this.queue = [
       ...this.queue,
       ...soundsForBatch(unique, selfId, reduced),

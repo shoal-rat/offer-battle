@@ -1,0 +1,1629 @@
+{
+  "kind": "asset-production-qa",
+  "generatedAt": "2026-09-26T19:45:38.693Z",
+  "counts": {
+    "assets": 56,
+    "runtimeFiles": 199,
+    "characters": 23
+  },
+  "browser": "Chromium",
+  "deviceScaleFactor": 1,
+  "failures": [],
+  "checks": [
+    {
+      "id": "algorithm",
+      "size": "128",
+      "bytes": 4952,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "algorithm",
+      "size": "256",
+      "bytes": 13416,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "algorithm",
+      "size": "768",
+      "bytes": 62664,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "algorithm",
+      "size": "portrait-128",
+      "bytes": 9004,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm",
+      "size": "portrait-256",
+      "bytes": 23942,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research",
+      "size": "128",
+      "bytes": 3802,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "research",
+      "size": "256",
+      "bytes": 10270,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "research",
+      "size": "768",
+      "bytes": 49452,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "research",
+      "size": "portrait-128",
+      "bytes": 7654,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research",
+      "size": "portrait-256",
+      "bytes": 20890,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "support",
+      "size": "128",
+      "bytes": 3822,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "support",
+      "size": "256",
+      "bytes": 10220,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "support",
+      "size": "768",
+      "bytes": 48084,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "support",
+      "size": "portrait-128",
+      "bytes": 6896,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "support",
+      "size": "portrait-256",
+      "bytes": 18476,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "N07",
+      "size": "128",
+      "bytes": 8234,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N07",
+      "size": "256",
+      "bytes": 22144,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N07",
+      "size": "768",
+      "bytes": 97774,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N08",
+      "size": "128",
+      "bytes": 6304,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N08",
+      "size": "256",
+      "bytes": 15926,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N08",
+      "size": "768",
+      "bytes": 73278,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N09",
+      "size": "128",
+      "bytes": 7662,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N09",
+      "size": "256",
+      "bytes": 20728,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "N09",
+      "size": "768",
+      "bytes": 89562,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "F04",
+      "size": "128",
+      "bytes": 6612,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "F04",
+      "size": "256",
+      "bytes": 16514,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "F04",
+      "size": "768",
+      "bytes": 70632,
+      "hashMatches": true,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "chair",
+      "size": "256",
+      "bytes": 10782,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "chair",
+      "size": "768",
+      "bytes": 47852,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "chair",
+      "size": "1536",
+      "bytes": 128720,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "printer",
+      "size": "256",
+      "bytes": 13558,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "printer",
+      "size": "768",
+      "bytes": 61024,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "printer",
+      "size": "1536",
+      "bytes": 158186,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "folder",
+      "size": "256",
+      "bytes": 10926,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "folder",
+      "size": "768",
+      "bytes": 47972,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "folder",
+      "size": "1536",
+      "bytes": 128760,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "table",
+      "size": "256",
+      "bytes": 8092,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "table",
+      "size": "768",
+      "bytes": 34146,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "table",
+      "size": "1536",
+      "bytes": 91700,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "badge-rack",
+      "size": "256",
+      "bytes": 10476,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "badge-rack",
+      "size": "768",
+      "bytes": 44958,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "badge-rack",
+      "size": "1536",
+      "bytes": 118786,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "booth",
+      "size": "256",
+      "bytes": 9824,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "booth",
+      "size": "768",
+      "bytes": 40812,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "booth",
+      "size": "1536",
+      "bytes": 107394,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "paper-book",
+      "size": "256",
+      "bytes": 4296,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "paper-book",
+      "size": "768",
+      "bytes": 19206,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "paper-book",
+      "size": "1536",
+      "bytes": 55252,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "public",
+      "size": "128",
+      "bytes": 4572,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "public",
+      "size": "256",
+      "bytes": 12394,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "public",
+      "size": "768",
+      "bytes": 59182,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "public",
+      "size": "portrait-128",
+      "bytes": 8146,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "public",
+      "size": "portrait-256",
+      "bytes": 21622,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "sales",
+      "size": "128",
+      "bytes": 4378,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "sales",
+      "size": "256",
+      "bytes": 11626,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "sales",
+      "size": "768",
+      "bytes": 56482,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "sales",
+      "size": "portrait-128",
+      "bytes": 8240,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "sales",
+      "size": "portrait-256",
+      "bytes": 22458,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "product",
+      "size": "128",
+      "bytes": 4406,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "product",
+      "size": "256",
+      "bytes": 11464,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "product",
+      "size": "768",
+      "bytes": 51904,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "product",
+      "size": "portrait-128",
+      "bytes": 7380,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "product",
+      "size": "portrait-256",
+      "bytes": 18616,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "finance",
+      "size": "128",
+      "bytes": 4384,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "finance",
+      "size": "256",
+      "bytes": 11986,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "finance",
+      "size": "768",
+      "bytes": 57098,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "finance",
+      "size": "portrait-128",
+      "bytes": 8372,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "finance",
+      "size": "portrait-256",
+      "bytes": 22936,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "far",
+      "size": "256",
+      "bytes": 2902,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "far",
+      "size": "768",
+      "bytes": 13304,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "far",
+      "size": "1536",
+      "bytes": 37722,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H01",
+      "size": "128",
+      "bytes": 4230,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H01",
+      "size": "256",
+      "bytes": 11588,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H01",
+      "size": "768",
+      "bytes": 54366,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H01",
+      "size": "portrait-128",
+      "bytes": 8214,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H01",
+      "size": "portrait-256",
+      "bytes": 22348,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H02",
+      "size": "128",
+      "bytes": 4318,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H02",
+      "size": "256",
+      "bytes": 11706,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H02",
+      "size": "768",
+      "bytes": 57116,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H02",
+      "size": "portrait-128",
+      "bytes": 7910,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H02",
+      "size": "portrait-256",
+      "bytes": 21742,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H03",
+      "size": "128",
+      "bytes": 4574,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H03",
+      "size": "256",
+      "bytes": 12226,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H03",
+      "size": "768",
+      "bytes": 59884,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H03",
+      "size": "portrait-128",
+      "bytes": 8360,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H03",
+      "size": "portrait-256",
+      "bytes": 22330,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H04",
+      "size": "128",
+      "bytes": 4522,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H04",
+      "size": "256",
+      "bytes": 12106,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H04",
+      "size": "768",
+      "bytes": 56598,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H04",
+      "size": "portrait-128",
+      "bytes": 7846,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H04",
+      "size": "portrait-256",
+      "bytes": 20932,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H05",
+      "size": "128",
+      "bytes": 4078,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H05",
+      "size": "256",
+      "bytes": 10806,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H05",
+      "size": "768",
+      "bytes": 51184,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H05",
+      "size": "portrait-128",
+      "bytes": 7366,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H05",
+      "size": "portrait-256",
+      "bytes": 19460,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H06",
+      "size": "128",
+      "bytes": 4312,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H06",
+      "size": "256",
+      "bytes": 11690,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H06",
+      "size": "768",
+      "bytes": 54258,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H06",
+      "size": "portrait-128",
+      "bytes": 7180,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H06",
+      "size": "portrait-256",
+      "bytes": 19062,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H07",
+      "size": "128",
+      "bytes": 4072,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H07",
+      "size": "256",
+      "bytes": 11222,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H07",
+      "size": "768",
+      "bytes": 55092,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H07",
+      "size": "portrait-128",
+      "bytes": 7824,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H07",
+      "size": "portrait-256",
+      "bytes": 21526,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H08",
+      "size": "128",
+      "bytes": 4786,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H08",
+      "size": "256",
+      "bytes": 13100,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H08",
+      "size": "768",
+      "bytes": 63866,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H08",
+      "size": "portrait-128",
+      "bytes": 8750,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H08",
+      "size": "portrait-256",
+      "bytes": 24070,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H09",
+      "size": "128",
+      "bytes": 4138,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H09",
+      "size": "256",
+      "bytes": 11190,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H09",
+      "size": "768",
+      "bytes": 52048,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H09",
+      "size": "portrait-128",
+      "bytes": 7390,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H09",
+      "size": "portrait-256",
+      "bytes": 19690,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H10",
+      "size": "128",
+      "bytes": 4596,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "H10",
+      "size": "256",
+      "bytes": 12788,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "H10",
+      "size": "768",
+      "bytes": 62886,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "H10",
+      "size": "portrait-128",
+      "bytes": 8594,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "H10",
+      "size": "portrait-256",
+      "bytes": 23160,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "campus-rat",
+      "size": "128",
+      "bytes": 4502,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "campus-rat",
+      "size": "256",
+      "bytes": 11400,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "campus-rat",
+      "size": "768",
+      "bytes": 55148,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "campus-rat",
+      "size": "portrait-128",
+      "bytes": 5892,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "campus-rat",
+      "size": "portrait-256",
+      "bytes": 15576,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "intern-beagle",
+      "size": "128",
+      "bytes": 4704,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "intern-beagle",
+      "size": "256",
+      "bytes": 12064,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "intern-beagle",
+      "size": "768",
+      "bytes": 57326,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "intern-beagle",
+      "size": "portrait-128",
+      "bytes": 7338,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "intern-beagle",
+      "size": "portrait-256",
+      "bytes": 19566,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "interview-owl",
+      "size": "128",
+      "bytes": 5360,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "interview-owl",
+      "size": "256",
+      "bytes": 14722,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "interview-owl",
+      "size": "768",
+      "bytes": 76836,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "interview-owl",
+      "size": "portrait-128",
+      "bytes": 7898,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "interview-owl",
+      "size": "portrait-256",
+      "bytes": 22636,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "mentor-capybara",
+      "size": "128",
+      "bytes": 4134,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "mentor-capybara",
+      "size": "256",
+      "bytes": 10556,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "mentor-capybara",
+      "size": "768",
+      "bytes": 51678,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "mentor-capybara",
+      "size": "portrait-128",
+      "bytes": 6598,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "mentor-capybara",
+      "size": "portrait-256",
+      "bytes": 18312,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "veteran-tortoise",
+      "size": "128",
+      "bytes": 4488,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "veteran-tortoise",
+      "size": "256",
+      "bytes": 11876,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "veteran-tortoise",
+      "size": "768",
+      "bytes": 56166,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "veteran-tortoise",
+      "size": "portrait-128",
+      "bytes": 7108,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "veteran-tortoise",
+      "size": "portrait-256",
+      "bytes": 19438,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "headhunter-fox",
+      "size": "128",
+      "bytes": 4014,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9375
+    },
+    {
+      "id": "headhunter-fox",
+      "size": "256",
+      "bytes": 10202,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.94140625
+    },
+    {
+      "id": "headhunter-fox",
+      "size": "768",
+      "bytes": 49340,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true,
+      "footY": 0.9401041666666666
+    },
+    {
+      "id": "headhunter-fox",
+      "size": "portrait-128",
+      "bytes": 6472,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "headhunter-fox",
+      "size": "portrait-256",
+      "bytes": 18018,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "secondary-S00",
+      "size": "accessory",
+      "bytes": 689,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S00",
+      "size": "seal",
+      "bytes": 527,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S01",
+      "size": "accessory",
+      "bytes": 687,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S01",
+      "size": "seal",
+      "bytes": 525,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S02",
+      "size": "accessory",
+      "bytes": 667,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S02",
+      "size": "seal",
+      "bytes": 505,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S03",
+      "size": "accessory",
+      "bytes": 639,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S03",
+      "size": "seal",
+      "bytes": 477,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S04",
+      "size": "accessory",
+      "bytes": 626,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S04",
+      "size": "seal",
+      "bytes": 464,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S05",
+      "size": "accessory",
+      "bytes": 648,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S05",
+      "size": "seal",
+      "bytes": 486,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S06",
+      "size": "accessory",
+      "bytes": 665,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S06",
+      "size": "seal",
+      "bytes": 503,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S07",
+      "size": "accessory",
+      "bytes": 698,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S07",
+      "size": "seal",
+      "bytes": 536,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S08",
+      "size": "accessory",
+      "bytes": 730,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S08",
+      "size": "seal",
+      "bytes": 568,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S09",
+      "size": "accessory",
+      "bytes": 642,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S09",
+      "size": "seal",
+      "bytes": 480,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S10",
+      "size": "accessory",
+      "bytes": 658,
+      "hashMatches": true
+    },
+    {
+      "id": "secondary-S10",
+      "size": "seal",
+      "bytes": 496,
+      "hashMatches": true
+    },
+    {
+      "id": "shadow",
+      "size": "vector",
+      "bytes": 140,
+      "hashMatches": true
+    },
+    {
+      "id": "title-sign",
+      "size": "vector",
+      "bytes": 763,
+      "hashMatches": true
+    },
+    {
+      "id": "algorithm-hit",
+      "size": "128",
+      "bytes": 5062,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-hit",
+      "size": "256",
+      "bytes": 13706,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-hit",
+      "size": "768",
+      "bytes": 63510,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-happy",
+      "size": "128",
+      "bytes": 5124,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-happy",
+      "size": "256",
+      "bytes": 14094,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-happy",
+      "size": "768",
+      "bytes": 65926,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-thinking",
+      "size": "128",
+      "bytes": 5006,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-thinking",
+      "size": "256",
+      "bytes": 13738,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-thinking",
+      "size": "768",
+      "bytes": 63656,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-blink",
+      "size": "128",
+      "bytes": 5100,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-blink",
+      "size": "256",
+      "bytes": 13868,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "algorithm-blink",
+      "size": "768",
+      "bytes": 63686,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-hit",
+      "size": "128",
+      "bytes": 3966,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-hit",
+      "size": "256",
+      "bytes": 10864,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-hit",
+      "size": "768",
+      "bytes": 52220,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-happy",
+      "size": "128",
+      "bytes": 3978,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-happy",
+      "size": "256",
+      "bytes": 10796,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-happy",
+      "size": "768",
+      "bytes": 51338,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-thinking",
+      "size": "128",
+      "bytes": 3910,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-thinking",
+      "size": "256",
+      "bytes": 10720,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-thinking",
+      "size": "768",
+      "bytes": 51368,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-blink",
+      "size": "128",
+      "bytes": 3912,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-blink",
+      "size": "256",
+      "bytes": 10606,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    },
+    {
+      "id": "research-blink",
+      "size": "768",
+      "bytes": 51002,
+      "hashMatches": true,
+      "dimensionsMatch": true,
+      "realAlpha": true
+    }
+  ],
+  "screenshots": [
+    "assets/paper-source/evidence/characters-thumbnails.png",
+    "assets/paper-source/evidence/animals-support-512.png",
+    "assets/paper-source/evidence/professions-512.png",
+    "assets/paper-source/evidence/education-512.png",
+    "assets/paper-source/evidence/props-actions-overlays.png"
+  ],
+  "manualReview": "pending",
+  "limitations": [
+    "Characters have real complementary runtime SVG body/face/prop masks, not independently painted source layers; hidden surfaces are not reconstructed.",
+    "Algorithm and research have hit/happy/thinking/blink imagegen face edits; other characters retain their approved neutral face.",
+    "Four action illustrations are distinct. Remaining action rules use explicit nearest-theme assets. N01-N06 each have a distinct animal; derived tokens share named animal identities.",
+    "Static asset contact sheets do not prove game-page integration or animation acceptance."
+  ]
+}

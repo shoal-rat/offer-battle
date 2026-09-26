@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "scope": "developer-verification-only",
+  "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "workingTree": true,
+  "branch": "codex/offer-upgrade-2-2",
+  "environment": {
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "independentReleaseAcceptance": "not-run; scheduled after initial GitHub submission",
+  "publicDeployment": "not-run for 2.2 by this agent",
+  "checks": [
+    {
+      "id": "draft-browser-tests",
+      "status": "developer-check-passed",
+      "passedCases": 4,
+      "failedCases": 0,
+      "command": "npx playwright test --config playwright.static.config.ts tests/static/offer-forge.spec.ts",
+      "scope": "Chromium desktop and emulated widths 390/320",
+      "sourceLogCapturedAt": "2026-09-26T18:19:56.151801+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/draft-browser-tests.log",
+      "sha256": "d61f55fb0e3fd32b66a2ba03e6490b2a8c47e7012c6e61cb0b607e76c5abcbcc"
+    },
+    {
+      "id": "profile-data-tests",
+      "status": "developer-check-passed",
+      "passedCases": 31,
+      "failedCases": 0,
+      "command": "npx tsx --test tests/draft.test.ts tests/profile-data.test.ts tests/local-backend.test.ts tests/server-draft.test.ts",
+      "scope": "Node local/HTTP developer checks",
+      "sourceLogCapturedAt": "2026-09-26T18:32:32.331821+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+      "sha256": "8444f5c388a46795b484ff9043d92bacebd978c97526cc0207650d8a2cb807a9"
+    },
+    {
+      "id": "experiments-runtime-tests",
+      "status": "developer-check-passed",
+      "passedCases": 33,
+      "failedCases": 0,
+      "command": "npx tsx --test tests/experiments.test.ts tests/local-backend.test.ts tests/server-draft.test.ts",
+      "scope": "Node rule and runtime checks",
+      "sourceLogCapturedAt": "2026-09-26T18:54:03.052457+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+      "sha256": "a8b1e3bece11655ccd8891161db71349b26063959f4f402971572092ac28a3e1"
+    },
+    {
+      "id": "experiments-cloudflare-tests",
+      "status": "developer-check-passed",
+      "passedCases": 10,
+      "failedCases": 0,
+      "command": "npm run test:cloudflare",
+      "scope": "Local workerd/Miniflare SQLite Durable Objects",
+      "sourceLogCapturedAt": "2026-09-26T18:47:27.897829+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+      "sha256": "eba4a8f011ef71b8a7894889bf9c48889eee10d93b0f9bff3762fb664a404e8f"
+    },
+    {
+      "id": "server-persistence-tests",
+      "status": "developer-check-passed",
+      "passedCases": 49,
+      "failedCases": 0,
+      "command": "npx tsx --test tests/server*.test.ts tests/profile-data.test.ts tests/local-backend.test.ts",
+      "scope": "Node local/HTTP developer checks",
+      "sourceLogCapturedAt": "2026-09-26T18:59:35.071545+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/server-persistence-tests.log",
+      "sha256": "2c2416e21a50bded4958336f44743c603b8db09ac1a6293b80acb495083cbaf6"
+    },
+    {
+      "id": "server-shutdown-tests",
+      "status": "developer-check-passed",
+      "passedCases": 9,
+      "failedCases": 0,
+      "command": "npx tsx --test tests/server-storage.test.ts tests/server-draft.test.ts",
+      "scope": "Node storage concurrency and remote-generation cancellation",
+      "sourceLogCapturedAt": "2026-09-26T19:00:16.625881+00:00",
+      "evidencePath": "reports/upgrade-v2.2/developer-checks/server-shutdown-tests.log",
+      "sha256": "587f7b94deaa7dd5299943a6ad68e3221df641b86376a9bbaf3314b32f8e9d21"
+    }
+  ],
+  "countingNote": "The runs overlap; their passing case counts must not be added to claim unique coverage. Logs retain original run times; this manifest is not a new execution.",
+  "limitations": [
+    "Browser developer checks cover the named forge paths and widths only, not all device/zoom acceptance cases.",
+    "Cloudflare checks use actual local workerd, not the public deployment.",
+    "Optional remote generation is tested through controlled HTTP adapters, not an external paid provider.",
+    "P2 experiment pilot is not a balance recommendation or live-player metric."
+  ]
+}

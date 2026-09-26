@@ -1,0 +1,2023 @@
+{
+  "schemaVersion": 2,
+  "baseline": "46e42fef527907f73a73545103b954690bbdb943",
+  "taskCount": 58,
+  "tasks": [
+    {
+      "id": "BASE01",
+      "priority": "P0",
+      "title": "记录新旧基线",
+      "change": "在当前分支与审查提交间做差异清单，保留后续修改。",
+      "status": "passed",
+      "targets": [
+        "src/",
+        "tests/"
+      ],
+      "dependencies": [],
+      "acceptance": [
+        "Q69"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/baseline.json"
+      ]
+    },
+    {
+      "id": "INPUT01",
+      "priority": "P0",
+      "title": "空草稿与字段来源",
+      "change": "移除私人卡默认薪酬；实现未确认、确认零、示例三种语义。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q07"
+      ],
+      "evidenceRefs": [
+        "R03"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/draft.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/draft-browser-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Empty private fields and explicit confirmation; example/unknown/zero separated."
+    },
+    {
+      "id": "INPUT02",
+      "priority": "P0",
+      "title": "粘贴与模板推荐",
+      "change": "新文本默认覆盖空草稿；合并前展示差异；岗位归类需重新确认。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx",
+        "src/game/offers.ts"
+      ],
+      "dependencies": [
+        "INPUT01"
+      ],
+      "acceptance": [
+        "Q02",
+        "Q03",
+        "Q04"
+      ],
+      "evidenceRefs": [
+        "R03"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/draft.test.ts",
+        "reports/upgrade-v2.2/developer-checks/draft-browser-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Replacement parsing starts a fresh draft; merge shows differences; annual-only input never invents monthly pay."
+    },
+    {
+      "id": "INPUT03",
+      "priority": "P0",
+      "title": "版本化预览",
+      "change": "用draftRevision绑定确认、预览与异步生成结果。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx"
+      ],
+      "dependencies": [
+        "INPUT01"
+      ],
+      "acceptance": [
+        "Q05",
+        "Q06",
+        "Q12"
+      ],
+      "evidenceRefs": [
+        "R03"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/server-draft.test.ts",
+        "reports/upgrade-v2.2/developer-checks/draft-browser-tests.log",
+        "reports/upgrade-v2.2/developer-checks/server-shutdown-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Draft revisions invalidate previews and async results; reload retains drafts; late jobs cannot overwrite revised cards."
+    },
+    {
+      "id": "INPUT04",
+      "priority": "P0",
+      "title": "保存幂等与修订",
+      "change": "创建、更新、复制明确分离，保护进行中对局定义。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx",
+        "src/local-backend.ts",
+        "server/",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "INPUT03"
+      ],
+      "acceptance": [
+        "Q08",
+        "Q09",
+        "Q10"
+      ],
+      "evidenceRefs": [
+        "R03",
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/draft.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Create/revise/copy and idempotency shared by local, Node and Cloud; active match snapshots remain frozen."
+    },
+    {
+      "id": "GEN01",
+      "priority": "P1",
+      "title": "真实生成能力入口",
+      "change": "按capabilities展示提取与图片功能，接通本地创作和可选模型任务。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx",
+        "src/api.ts"
+      ],
+      "dependencies": [
+        "INPUT04"
+      ],
+      "acceptance": [
+        "Q11",
+        "Q12"
+      ],
+      "evidenceRefs": [
+        "R03"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/developer-checks/server-shutdown-tests.log",
+        "reports/upgrade-v2.2/developer-checks/draft-browser-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Capabilities accurately distinguish bundled assembly and optional Node providers; remote failure/retry/cancellation preserve the playable card."
+    },
+    {
+      "id": "GEN02",
+      "priority": "P1",
+      "title": "保存角色口吻",
+      "change": "绑定卡ID与人物设定，保存事件台词，支持固定本地兜底。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/CreateOffer.tsx",
+        "src/game/content/"
+      ],
+      "dependencies": [
+        "GEN01"
+      ],
+      "acceptance": [
+        "Q12",
+        "Q57"
+      ],
+      "evidenceRefs": [
+        "R03"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/draft.test.ts",
+        "reports/upgrade-v2.2/developer-checks/server-shutdown-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Validated appearance/tone preferences and stable persona seed; actual lifecycle line budgets and stale result checks."
+    },
+    {
+      "id": "DECK01",
+      "priority": "P0",
+      "title": "显式替换与删除",
+      "change": "满阵容时选择替换位置；删除确认并保护引用。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/pages/Loadout.tsx"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q16",
+        "Q17"
+      ],
+      "evidenceRefs": [
+        "R04",
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json",
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "DECK02",
+      "priority": "P0",
+      "title": "可靠存档反馈",
+      "change": "防抖保存、失败重试、本地草稿与版本冲突。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/local-backend.ts",
+        "src/api.ts"
+      ],
+      "dependencies": [
+        "DECK01"
+      ],
+      "acceptance": [
+        "Q13",
+        "Q54"
+      ],
+      "evidenceRefs": [
+        "R05",
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/profile-data.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json",
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "DECK03",
+      "priority": "P1",
+      "title": "卡册详情与筛选",
+      "change": "区分公共与个人，增加稳定详情、属性来源与筛选。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/ui.tsx"
+      ],
+      "dependencies": [
+        "UI02"
+      ],
+      "acceptance": [
+        "Q15",
+        "Q18",
+        "Q32"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "DECK04",
+      "priority": "P1",
+      "title": "渐进配队与体检",
+      "change": "三套易懂路线，高级牌组编辑折叠，给可验证的构筑提示。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Loadout.tsx"
+      ],
+      "dependencies": [
+        "DECK01",
+        "UI02"
+      ],
+      "acceptance": [
+        "Q19",
+        "Q20"
+      ],
+      "evidenceRefs": [
+        "R04"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "HOME01",
+      "priority": "P1",
+      "title": "场景式纸片标题菜单",
+      "change": "移除左右营销分栏和功能面板；使用秋招纸片广场、真实道具热点和稳定按钮。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/scene/",
+        "src/styles/"
+      ],
+      "dependencies": [
+        "UI01",
+        "ART01"
+      ],
+      "acceptance": [
+        "Q24",
+        "Q60",
+        "Q81",
+        "Q82",
+        "Q85",
+        "Q90"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "HOME02",
+      "priority": "P1",
+      "title": "继续对局与邀请优先",
+      "change": "回访恢复最近阵容，有邀请时优先返回邀请。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/components/RecoveryScreen.tsx"
+      ],
+      "dependencies": [
+        "HOME01"
+      ],
+      "acceptance": [
+        "Q24",
+        "Q50",
+        "Q58"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "TUTOR01",
+      "priority": "P1",
+      "title": "边打边学",
+      "change": "首次提示按局面出现，五课教程保留进阶入口。",
+      "status": "not-run",
+      "targets": [
+        "src/game/tutorial.ts",
+        "src/components/TutorialGuide.tsx",
+        "src/pages/TutorialHub.tsx"
+      ],
+      "dependencies": [
+        "UI02"
+      ],
+      "acceptance": [
+        "Q25",
+        "Q49"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/components/ContextHints.tsx",
+        "src/pages/Battle.tsx",
+        "tests/ui-models.test.ts",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "按当前合法视图提示，关闭不提交或暂停；模型测试通过，真实新手整局可用性待验收。"
+      }
+    },
+    {
+      "id": "UI01",
+      "priority": "P1",
+      "title": "纸艺语义主题",
+      "change": "建立tokens和基础组件，减少硬编码样式覆盖。",
+      "status": "not-run",
+      "targets": [
+        "src/styles.css",
+        "src/styles/"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q60",
+        "Q63"
+      ],
+      "evidenceRefs": [
+        "R01"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/styles/paper.css",
+        "src/styles/paper-edges.css",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "代码接入已核查；实际状态对比度和跨页视觉一致性尚待独立验收。"
+      }
+    },
+    {
+      "id": "UI02",
+      "priority": "P0",
+      "title": "三种卡片与可读详情",
+      "change": "收藏、手牌、场上拆分表现；消除关键规则的6至7px依赖。",
+      "status": "not-run",
+      "targets": [
+        "src/ui.tsx",
+        "src/pages/Battle.tsx",
+        "src/styles/battle-viewport.css"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q26",
+        "Q30",
+        "Q32"
+      ],
+      "evidenceRefs": [
+        "R02",
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/components/CardDetails.tsx",
+        "src/game/cardSummaries.ts",
+        "src/ui.tsx",
+        "src/pages/Battle.tsx",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "三种表现及完整详情已接入；关键规则不只依赖缩略标签，仍待全卡/满场可读性复核。"
+      }
+    },
+    {
+      "id": "UI03",
+      "priority": "P1",
+      "title": "手机正式牌桌",
+      "change": "竖屏概览、手牌托盘、目标区与详情层；横屏独立验收。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/styles/battle-viewport.css"
+      ],
+      "dependencies": [
+        "UI01",
+        "UI02"
+      ],
+      "acceptance": [
+        "Q26",
+        "Q29",
+        "Q64"
+      ],
+      "evidenceRefs": [
+        "R02",
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/styles/battle-viewport.css",
+        "tests/e2e/motion-v22.spec.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "390px 技能与回放专项通过；满场、横屏、200% 缩放和软键盘任务矩阵未完整执行。"
+      }
+    },
+    {
+      "id": "UI04",
+      "priority": "P0",
+      "title": "点击与提交分离",
+      "change": "触屏点选再使用，保留拖拽替代，取消明确。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/components/useCardDrag.tsx",
+        "src/components/card-drag-model.ts"
+      ],
+      "dependencies": [
+        "UI02"
+      ],
+      "acceptance": [
+        "Q27",
+        "Q28",
+        "Q29"
+      ],
+      "evidenceRefs": [
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/pages/Battle.tsx",
+        "src/components/useCardDrag.tsx",
+        "src/components/card-drag-model.ts",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "读牌、目标选择、确认及取消已分离；拖拽保留版本检查。多输入完整交互矩阵待独立执行。"
+      }
+    },
+    {
+      "id": "UI05",
+      "priority": "P1",
+      "title": "信息安全的结果预览",
+      "change": "根据玩家视图给伤害和费用预览，未知反话不泄露。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/game/views.ts"
+      ],
+      "dependencies": [
+        "UI04",
+        "AI01"
+      ],
+      "acceptance": [
+        "Q31",
+        "Q33",
+        "Q34"
+      ],
+      "evidenceRefs": [
+        "R06",
+        "R08"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/actionPreview.ts",
+        "tests/ui-models.test.ts",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "6项 UI 模型检查含实际引擎预览、过期拒绝及隐藏信息等价；非全卡穷举。"
+      }
+    },
+    {
+      "id": "UI06",
+      "priority": "P1",
+      "title": "时间与状态解释",
+      "change": "通知、年龄、费用修正和技能禁用原因可查询。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/components/OpponentSkills.tsx"
+      ],
+      "dependencies": [
+        "UI02"
+      ],
+      "acceptance": [
+        "Q20",
+        "Q31",
+        "Q35"
+      ],
+      "evidenceRefs": [
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/components/CardDetails.tsx",
+        "src/components/OpponentSkills.tsx",
+        "src/pages/Battle.tsx",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "我方双技能新增可点击只读弹窗与具体不可用原因；只禁用发动入口。技能说明、状态与实际手机交互仍待独立复核。"
+      }
+    },
+    {
+      "id": "UI07",
+      "priority": "P1",
+      "title": "全屏改为用户选择",
+      "change": "移除默认强制请求，保留按钮与用户偏好。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/fullscreen.ts"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q24",
+        "Q29"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/App.tsx",
+        "src/fullscreen.ts",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "默认全屏关闭且保留偏好；原生浏览器拒绝/退出与多设备行为待独立验收。"
+      }
+    },
+    {
+      "id": "MOTION01",
+      "priority": "P0",
+      "title": "动画锁与输入分离",
+      "change": "裁定、提交、展示分离；局部目标保护与追帧；保留阅读和正式计时。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/components/BattleEffects.tsx",
+        "src/components/board-presentation.ts"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q37",
+        "Q38",
+        "Q95",
+        "Q96",
+        "Q100"
+      ],
+      "evidenceRefs": [
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/pages/Battle.tsx",
+        "src/components/BattleEffects.tsx",
+        "src/motion/eventAdapter.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "浏览器中演出时可读日志，独立提交/展示状态和终局上限已接入；旧线上问题未复现且根因未知。"
+      }
+    },
+    {
+      "id": "MOTION02",
+      "priority": "P1",
+      "title": "纸片事件演出",
+      "change": "40项纸片动作映射真实事件；目标锚点、透明层、减少动态与去重统一。",
+      "status": "not-run",
+      "targets": [
+        "src/components/BattleEffects.tsx",
+        "src/components/battle-motion.ts",
+        "src/components/result-motion.ts",
+        "src/sound-effects.ts"
+      ],
+      "dependencies": [
+        "MOTION01",
+        "ART01",
+        "MOTION04"
+      ],
+      "acceptance": [
+        "Q35",
+        "Q38",
+        "Q39"
+      ],
+      "evidenceRefs": [
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/motion/cues.ts",
+        "src/components/BattleEffects.tsx",
+        "src/components/battle-motion.ts",
+        "src/sound-effects.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "40项有运行映射；并非40项均有独立录像或观感验收。"
+      }
+    },
+    {
+      "id": "ART01",
+      "priority": "P1",
+      "title": "纸艺垂直切片",
+      "change": "先完成分层纸书首页、代表角色与真实战斗切片；独立视觉agent审稿后扩展。",
+      "status": "not-run",
+      "targets": [
+        "src/assets.ts",
+        "public/assets/",
+        "assets/"
+      ],
+      "dependencies": [
+        "UI01",
+        "UI02"
+      ],
+      "acceptance": [
+        "Q60",
+        "Q61"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "public/art2.2-manifest.json",
+        "assets/paper-source/HANDOFF.md",
+        "assets/paper-source/evidence/qa-report.json",
+        "assets/paper-source/evidence/rig-qa-report.json",
+        "assets/paper-source/evidence/typecheck.log",
+        "assets/paper-source/evidence/animals-support-512.png"
+      ],
+      "developerChecks": {
+        "kind": "asset-production-and-component-compositing",
+        "checkedAt": "2026-09-26T19:33:15.544255+00:00",
+        "result": "passed",
+        "runtimeFiles": 199,
+        "rigCharacters": 23,
+        "maskRecombinationMaxChannelDelta": 0,
+        "nonEmptyRigLayers": true,
+        "alphaAndPivotChecks": "passed",
+        "typecheck": "passed",
+        "evidencePaths": [
+          "public/art2.2-manifest.json",
+          "assets/paper-source/HANDOFF.md",
+          "assets/paper-source/evidence/qa-report.json",
+          "assets/paper-source/evidence/rig-qa-report.json",
+          "assets/paper-source/evidence/typecheck.log",
+          "assets/paper-source/evidence/animals-support-512.png"
+        ],
+        "independentQA": "not-run",
+        "note": "Delivered actual transparent scene props, 23 runtime characters, representative facial edits and six distinct animal supports. Production contact review passed; independent integrated scene/battle acceptance remains not-run."
+      }
+    },
+    {
+      "id": "ART02",
+      "priority": "P1",
+      "title": "全卡池资源映射",
+      "change": "从当前catalog枚举资源，保留/加工/重绘逐项登记，导出多尺寸。",
+      "status": "not-run",
+      "targets": [
+        "src/assets.ts",
+        "src/game/catalog.ts",
+        "assets/",
+        "public/assets/"
+      ],
+      "dependencies": [
+        "ART01"
+      ],
+      "acceptance": [
+        "Q61",
+        "Q62",
+        "Q65"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "public/art2.2-manifest.json",
+        "assets/paper-source/HANDOFF.md",
+        "assets/paper-source/evidence/qa-report.json",
+        "assets/paper-source/evidence/rig-qa-report.json",
+        "assets/paper-source/evidence/typecheck.log",
+        "assets/paper-source/evidence/animals-support-512.png"
+      ],
+      "developerChecks": {
+        "kind": "asset-production-and-component-compositing",
+        "checkedAt": "2026-09-26T19:33:15.544255+00:00",
+        "result": "passed",
+        "runtimeFiles": 199,
+        "rigCharacters": 23,
+        "maskRecombinationMaxChannelDelta": 0,
+        "nonEmptyRigLayers": true,
+        "alphaAndPivotChecks": "passed",
+        "typecheck": "passed",
+        "evidencePaths": [
+          "public/art2.2-manifest.json",
+          "assets/paper-source/HANDOFF.md",
+          "assets/paper-source/evidence/qa-report.json",
+          "assets/paper-source/evidence/rig-qa-report.json",
+          "assets/paper-source/evidence/typecheck.log",
+          "assets/paper-source/evidence/animals-support-512.png"
+        ],
+        "independentQA": "not-run",
+        "note": "All 65 catalog/rule IDs mapped, 56 assets and 199 runtime files; N01-N06 each have unique animal artwork, derived K tokens explicitly share named animal identities, other action fallbacks remain explicit."
+      }
+    },
+    {
+      "id": "ART03",
+      "priority": "P1",
+      "title": "统一分享视觉",
+      "change": "三套纸艺分享模板，人物、文字、图标与页面一致。",
+      "status": "not-run",
+      "targets": [
+        "src/share.ts"
+      ],
+      "dependencies": [
+        "ART01",
+        "SHARE01"
+      ],
+      "acceptance": [
+        "Q55",
+        "Q56",
+        "Q60"
+      ],
+      "evidenceRefs": [
+        "R07"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "AI01",
+      "priority": "P0",
+      "title": "旧AI缺陷修复",
+      "change": "按附录先修目标、斩杀、自损、选择，冻结legacy。",
+      "status": "not-run",
+      "targets": [
+        "src/game/views.ts",
+        "src/game/engine.ts",
+        "tests/"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q41",
+        "Q43"
+      ],
+      "evidenceRefs": [
+        "R08"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/ai-evidence.json",
+        "reports/ai-benchmark-validation.json",
+        "reports/AI_IMPLEMENTATION.md"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Implemented planner/runtime has completed fixed-source developer tests and 1000 paired benchmark games; official independent acceptance status remains not-run."
+    },
+    {
+      "id": "AI02",
+      "priority": "P1",
+      "title": "难度风格与完整开局",
+      "change": "四档难度独立于风格，setupMode独立于training。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/api.ts",
+        "src/local-backend.ts",
+        "server/"
+      ],
+      "dependencies": [
+        "AI01"
+      ],
+      "acceptance": [
+        "Q44",
+        "Q45",
+        "Q49"
+      ],
+      "evidenceRefs": [
+        "R05",
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/ai-evidence.json",
+        "reports/ai-benchmark-validation.json",
+        "reports/AI_IMPLEMENTATION.md"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Implemented planner/runtime has completed fixed-source developer tests and 1000 paired benchmark games; official independent acceptance status remains not-run."
+    },
+    {
+      "id": "AI03",
+      "priority": "P1",
+      "title": "本回合搜索",
+      "change": "共用正式规则模拟，只执行首动作，新观测后重规划。",
+      "status": "not-run",
+      "targets": [
+        "src/game/",
+        "tests/"
+      ],
+      "dependencies": [
+        "AI01"
+      ],
+      "acceptance": [
+        "Q42",
+        "Q43"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/ai-evidence.json",
+        "reports/ai-benchmark-validation.json",
+        "reports/AI_IMPLEMENTATION.md"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Implemented planner/runtime has completed fixed-source developer tests and 1000 paired benchmark games; official independent acceptance status remains not-run."
+    },
+    {
+      "id": "AI04",
+      "priority": "P1",
+      "title": "回应与合法信息推演",
+      "change": "实现困难与极难的限定搜索，不读取真实隐藏信息。",
+      "status": "not-run",
+      "targets": [
+        "src/game/",
+        "tests/"
+      ],
+      "dependencies": [
+        "AI03"
+      ],
+      "acceptance": [
+        "Q34",
+        "Q46"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/ai-evidence.json",
+        "reports/ai-benchmark-validation.json",
+        "reports/AI_IMPLEMENTATION.md"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Implemented planner/runtime has completed fixed-source developer tests and 1000 paired benchmark games; official independent acceptance status remains not-run."
+    },
+    {
+      "id": "AI05",
+      "priority": "P1",
+      "title": "worker与取消",
+      "change": "游客搜索在独立线程，绑定版本，超时安全回退。",
+      "status": "not-run",
+      "targets": [
+        "src/local-backend.ts",
+        "src/game/"
+      ],
+      "dependencies": [
+        "AI03"
+      ],
+      "acceptance": [
+        "Q47",
+        "Q66"
+      ],
+      "evidenceRefs": [
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/ai-evidence.json",
+        "reports/ai-benchmark-validation.json",
+        "reports/AI_IMPLEMENTATION.md"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Implemented planner/runtime has completed fixed-source developer tests and 1000 paired benchmark games; official independent acceptance status remains not-run."
+    },
+    {
+      "id": "SOCIAL01",
+      "priority": "P1",
+      "title": "邀请前置与登录返回",
+      "change": "保留邀请和配队，公开邀请预览独立于私有房间视图。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/deployment.ts",
+        "src/components/AccountPanel.tsx",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "HOME02",
+        "DECK02"
+      ],
+      "acceptance": [
+        "Q50",
+        "Q51",
+        "Q52"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/profile-data.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json",
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "SOCIAL02",
+      "priority": "P1",
+      "title": "本地与账号数据迁移",
+      "change": "预览、去重和ID映射，保留原件，处理冲突。",
+      "status": "not-run",
+      "targets": [
+        "src/api.ts",
+        "src/local-backend.ts",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "DECK02",
+        "INPUT04"
+      ],
+      "acceptance": [
+        "Q54"
+      ],
+      "evidenceRefs": [
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/profile-data.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json",
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "SHARE01",
+      "priority": "P0",
+      "title": "公开字段投影",
+      "change": "先分享预览，所有导出与公开文本共用allowlist。",
+      "status": "not-run",
+      "targets": [
+        "src/share.ts",
+        "src/game/views.ts",
+        "server/",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q55",
+        "Q56",
+        "Q59"
+      ],
+      "evidenceRefs": [
+        "R07",
+        "R08"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/publicProjection.ts",
+        "src/components/ShareDialog.tsx",
+        "src/share.ts",
+        "tests/share-privacy.test.ts",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "统一公开投影与默认隐私已接入；3项隐私单测通过，实际导出全主题仍需复核。"
+      }
+    },
+    {
+      "id": "SHARE02",
+      "priority": "P1",
+      "title": "结构化名场面",
+      "change": "从事件和状态差识别转折，不按关键词截最后三条。",
+      "status": "not-run",
+      "targets": [
+        "src/share.ts",
+        "src/pages/Replay.tsx",
+        "src/game/types.ts"
+      ],
+      "dependencies": [
+        "SHARE01"
+      ],
+      "acceptance": [
+        "Q57"
+      ],
+      "evidenceRefs": [
+        "R07"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/highlights.ts",
+        "src/components/BattleRecap.tsx",
+        "src/pages/Replay.tsx",
+        "tests/highlights.test.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "6项高光测试及移动回放定位通过；自动回合结算边界未穷举。"
+      }
+    },
+    {
+      "id": "RESULT01",
+      "priority": "P1",
+      "title": "结算后闭环",
+      "change": "三个主去向、可解释回放和稳定重赛设置。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/Battle.tsx",
+        "src/pages/Replay.tsx",
+        "src/pages/MatchHistory.tsx"
+      ],
+      "dependencies": [
+        "SHARE02",
+        "AI02"
+      ],
+      "acceptance": [
+        "Q57",
+        "Q58"
+      ],
+      "evidenceRefs": [
+        "R06"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "ACCESS01",
+      "priority": "P1",
+      "title": "可访问性",
+      "change": "尺寸、对比度、键盘、焦点、点击替代与减少动态。",
+      "status": "not-run",
+      "targets": [
+        "src/ui.tsx",
+        "src/styles/",
+        "src/components/"
+      ],
+      "dependencies": [
+        "UI03",
+        "UI04"
+      ],
+      "acceptance": [
+        "Q28",
+        "Q39",
+        "Q40",
+        "Q63",
+        "Q64"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "PERF01",
+      "priority": "P1",
+      "title": "加载与内存治理",
+      "change": "测网络瀑布，资源分级与路由分包，重复对局无持续堆积。",
+      "status": "not-run",
+      "targets": [
+        "src/App.tsx",
+        "src/assets.ts",
+        "src/audio.ts",
+        "public/assets/"
+      ],
+      "dependencies": [
+        "ART02",
+        "AI05"
+      ],
+      "acceptance": [
+        "Q65",
+        "Q66",
+        "Q67"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "DATA01",
+      "priority": "P1",
+      "title": "最小化分析与反馈",
+      "change": "事件枚举无私人字段；agent指标与真实线上遥测分开；错误报告脱敏。",
+      "status": "not-run",
+      "targets": [
+        "src/api.ts",
+        "src/App.tsx",
+        "server/",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "SHARE01"
+      ],
+      "acceptance": [
+        "Q59"
+      ],
+      "evidenceRefs": [
+        "R05"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "tests/profile-data.test.ts",
+        "reports/upgrade-v2.2/developer-checks/profile-data-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Local event/error allowlist removes raw private fields and makes no network request or synthetic user-metric claim."
+    },
+    {
+      "id": "RELEASE01",
+      "priority": "P1",
+      "title": "迁移与路径回归",
+      "change": "核对三种运行入口，旧卡旧回放保留，生成构建报告。",
+      "status": "not-run",
+      "targets": [
+        "scripts/",
+        "tests/",
+        "src/local-backend.ts",
+        "server/",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "INPUT04",
+        "AI05",
+        "SOCIAL02"
+      ],
+      "acceptance": [
+        "Q10",
+        "Q53",
+        "Q68"
+      ],
+      "evidenceRefs": [
+        "R09"
+      ],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "DEPLOYMENT.md",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/developer-checks/server-persistence-tests.log",
+        "reports/upgrade-v2.2/developer-checks/server-shutdown-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json",
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "VERIFY01",
+      "priority": "P1",
+      "title": "Agent完整实测与证据交付",
+      "change": "执行110项验收、48个独立agent run、新旧AI配对；附真实视频、trace、截图和独立复核。",
+      "status": "not-run",
+      "targets": [
+        "tests/",
+        "scripts/",
+        "reports/"
+      ],
+      "dependencies": [
+        "ART03",
+        "RESULT01",
+        "ACCESS01",
+        "PERF01",
+        "RELEASE01",
+        "QA05"
+      ],
+      "acceptance": [
+        "Q48",
+        "Q60",
+        "Q69",
+        "Q73",
+        "Q75",
+        "Q76",
+        "Q110"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "not-started",
+      "evidencePaths": []
+    },
+    {
+      "id": "EXP01",
+      "priority": "P2",
+      "title": "先后手与节奏实验",
+      "change": "配对数据支持后一次修改一个数值变量。",
+      "status": "not-run",
+      "targets": [
+        "scripts/simulate.ts",
+        "tests/"
+      ],
+      "dependencies": [
+        "VERIFY01"
+      ],
+      "acceptance": [
+        "Q48",
+        "Q70"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": false,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "scripts/simulate-tempo.ts",
+        "reports/experiments/tempo-pairs.json",
+        "reports/experiments/attempts",
+        "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Opt-in one-variable pilot; normal rules unchanged; 24 frozen-legacy games replay-verified; superseded attempts retained."
+    },
+    {
+      "id": "EXP02",
+      "priority": "P2",
+      "title": "验证过的残局挑战",
+      "change": "使用固定种子与正常引擎验证解答，独立入口。",
+      "status": "not-run",
+      "targets": [
+        "src/game/showcase.ts",
+        "src/pages/"
+      ],
+      "dependencies": [
+        "VERIFY01"
+      ],
+      "acceptance": [
+        "Q70"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": false,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/experiments/challenges.ts",
+        "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Five fixed-seed challenges have legal normal-engine solutions and require actual goal effects."
+    },
+    {
+      "id": "EXP03",
+      "priority": "P2",
+      "title": "三局两胜",
+      "change": "保留阵容并在局间调整应对牌，默认关闭。",
+      "status": "not-run",
+      "targets": [
+        "src/pages/",
+        "cloudflare/"
+      ],
+      "dependencies": [
+        "VERIFY01"
+      ],
+      "acceptance": [
+        "Q70"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": false,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/experiments/series.ts",
+        "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+        "reports/upgrade-v2.2/developer-checks/experiments-cloudflare-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Local/Node/Cloud opt-in BO3 locks loadouts, allows between-game flex, persists scores and rejects standard-history import; local intermission survives reload."
+    },
+    {
+      "id": "EXP04",
+      "priority": "P2",
+      "title": "特殊Boss",
+      "change": "公开关卡规则，与标准公平难度分开。",
+      "status": "not-run",
+      "targets": [
+        "src/game/",
+        "src/pages/"
+      ],
+      "dependencies": [
+        "VERIFY01"
+      ],
+      "acceptance": [
+        "Q70"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": false,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/experiments/boss.ts",
+        "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Public asymmetric boss fixture remains within 30-mind normal healing bound and uses ordinary subsequent engine commands."
+    },
+    {
+      "id": "EXP05",
+      "priority": "P2",
+      "title": "操作型成就",
+      "change": "统计真实事件，奖励外观，不公开彩蛋标题。",
+      "status": "not-run",
+      "targets": [
+        "src/game/",
+        "src/pages/"
+      ],
+      "dependencies": [
+        "VERIFY01"
+      ],
+      "acceptance": [
+        "Q22",
+        "Q70"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": false,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/game/experiments/achievements.ts",
+        "reports/upgrade-v2.2/developer-checks/experiments-runtime-tests.log",
+        "reports/upgrade-v2.2/backend-evidence.json"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Verified actual event transitions award cosmetic IDs only; no numeric buffs or private titles."
+    },
+    {
+      "id": "QA01",
+      "priority": "P0",
+      "title": "Agent角色与权限编排",
+      "change": "创建12角色独立会话、工具权限与48-run计划，保留真实工具记录。",
+      "status": "not-run",
+      "targets": [
+        "tests/agents/",
+        "scripts/"
+      ],
+      "dependencies": [
+        "BASE01"
+      ],
+      "acceptance": [
+        "Q71",
+        "Q72",
+        "Q73",
+        "Q74",
+        "Q75",
+        "Q78"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "scripts/agent-testing/runner.ts",
+        "scripts/agent-testing/gateway.ts",
+        "scripts/agent-testing/policy.ts",
+        "agents/README.md",
+        "reports/agent-runs/toolchain.json",
+        "reports/upgrade-v2.2/developer-checks/agent-gateway-tests.log"
+      ],
+      "developerStatus": "checks-passed",
+      "developerNote": "Real isolated CLI + role-specific MCP browser runner implemented; plan/run/verify, non-sample actual CLI smoke, authoritative gateway tests. Formal 48 sessions remain not-run until first published source commit. A09 native normal-speed observation remains explicitly blocked."
+    },
+    {
+      "id": "HOME03",
+      "priority": "P1",
+      "title": "道具热点与手机重布景",
+      "change": "同一语义按钮适配桌面热点和手机菜单托盘，标签与命中框稳定。",
+      "status": "not-run",
+      "targets": [
+        "src/scene/",
+        "src/styles/stage.css"
+      ],
+      "dependencies": [
+        "HOME01"
+      ],
+      "acceptance": [
+        "Q85",
+        "Q86",
+        "Q87",
+        "Q90"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "HOME04",
+      "priority": "P1",
+      "title": "可打断首页搭台",
+      "change": "首见1.6秒搭台，返回180ms内；不阻止开打、邀请或继续对局。",
+      "status": "not-run",
+      "targets": [
+        "src/scene/HomeStage.tsx",
+        "src/motion/"
+      ],
+      "dependencies": [
+        "HOME01",
+        "MOTION03"
+      ],
+      "acceptance": [
+        "Q82",
+        "Q83",
+        "Q84",
+        "Q87",
+        "Q88",
+        "Q89",
+        "Q92"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "HOME05",
+      "priority": "P1",
+      "title": "场景到页面的连续过渡",
+      "change": "卡册、制作、配队、好友和战斗共享道具与人物锚点，快速导航安全。",
+      "status": "not-run",
+      "targets": [
+        "src/scene/",
+        "src/pages/",
+        "src/motion/"
+      ],
+      "dependencies": [
+        "HOME03",
+        "MOTION03"
+      ],
+      "acceptance": [
+        "Q94",
+        "Q103",
+        "Q108"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "reports/upgrade-v2.2/frontend-evidence.json",
+        "reports/FRONTEND_2_2.md"
+      ],
+      "developerStatus": "implementation-reviewed-with-partial-checks",
+      "developerNote": "Runtime implementation present. Supporting developer checks are scoped; independent role acceptance remains separate."
+    },
+    {
+      "id": "MOTION03",
+      "priority": "P1",
+      "title": "统一MotionDirector",
+      "change": "五通道、40项动作、可取消导航与事件去重；旧消费者退出避免双播。",
+      "status": "not-run",
+      "targets": [
+        "src/motion/",
+        "src/components/BattleEffects.tsx"
+      ],
+      "dependencies": [
+        "MOTION01"
+      ],
+      "acceptance": [
+        "Q93",
+        "Q98",
+        "Q99",
+        "Q102",
+        "Q103",
+        "Q109"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/motion/MotionDirector.ts",
+        "tests/motion-director.test.ts",
+        "src/motion/useSceneBridge.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "五通道、取消、去重、生命周期单测通过；rapid navigation身份矩阵待独立验收。"
+      }
+    },
+    {
+      "id": "MOTION04",
+      "priority": "P1",
+      "title": "人物纸层与道具支点",
+      "change": "统一body/face/prop/shadow rig，文字保持水平，资产按支点输出。",
+      "status": "not-run",
+      "targets": [
+        "src/motion/paperRig.ts",
+        "assets/",
+        "public/assets/"
+      ],
+      "dependencies": [
+        "ART01",
+        "MOTION03"
+      ],
+      "acceptance": [
+        "Q91",
+        "Q93",
+        "Q94"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/motion/paperRig.ts",
+        "src/scene/PaperCharacter.tsx",
+        "public/art2.2-manifest.json",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json",
+        "reports/motion/clone-masks.json",
+        "assets/paper-source/HANDOFF.md",
+        "assets/paper-source/evidence/qa-report.json",
+        "assets/paper-source/evidence/rig-qa-report.json",
+        "assets/paper-source/evidence/typecheck.log",
+        "assets/paper-source/evidence/animals-support-512.png"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "互补mask支点接入；remapCloneIds后实际飞行/退场66样本本地defs唯一且无live ID冲突。尚非独立绘制隐藏表面，新增动物美术由ART项继续维护。 Six-animal support batch and all 23 masks are now delivered; production checks passed, independent acceptance remains not-run."
+      },
+      "developerChecks": {
+        "kind": "asset-production-and-component-compositing",
+        "checkedAt": "2026-09-26T19:33:15.544255+00:00",
+        "result": "passed",
+        "runtimeFiles": 199,
+        "rigCharacters": 23,
+        "maskRecombinationMaxChannelDelta": 0,
+        "nonEmptyRigLayers": true,
+        "alphaAndPivotChecks": "passed",
+        "typecheck": "passed",
+        "evidencePaths": [
+          "public/art2.2-manifest.json",
+          "assets/paper-source/HANDOFF.md",
+          "assets/paper-source/evidence/qa-report.json",
+          "assets/paper-source/evidence/rig-qa-report.json",
+          "assets/paper-source/evidence/typecheck.log",
+          "assets/paper-source/evidence/animals-support-512.png"
+        ],
+        "independentQA": "not-run",
+        "note": "All 23 characters have real complementary body/face/prop masks plus separate shadow and fixed foot pivot. Neutral composites are pixel-identical to originals; 2 representatives have hit/happy/thinking/blink face variants. Source layers are runtime cuts with no hidden surface repaint."
+      }
+    },
+    {
+      "id": "MOTION05",
+      "priority": "P1",
+      "title": "事件因果与长连锁追帧",
+      "change": "真实确认后演出；状态落后时追帧，局部输入锁，通知与反话不泄露。",
+      "status": "not-run",
+      "targets": [
+        "src/motion/eventAdapter.ts",
+        "src/components/board-presentation.ts",
+        "src/pages/Battle.tsx"
+      ],
+      "dependencies": [
+        "MOTION03",
+        "UI04"
+      ],
+      "acceptance": [
+        "Q95",
+        "Q96",
+        "Q97",
+        "Q99",
+        "Q100",
+        "Q101",
+        "Q104"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/motion/eventAdapter.ts",
+        "src/components/board-presentation.ts",
+        "src/components/BattleEffects.tsx",
+        "src/pages/Battle.tsx",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "真实确认事件、积压快进与局部版本重检已接入；正式期限未由展示修改，更多通知/反话因果局面待独立复核。"
+      }
+    },
+    {
+      "id": "MOTION06",
+      "priority": "P1",
+      "title": "动效分档与生命周期",
+      "change": "用户偏好优先，后台暂停，困难AI并发，连续对局资源回收。",
+      "status": "not-run",
+      "targets": [
+        "src/motion/",
+        "src/audio.ts",
+        "src/local-backend.ts"
+      ],
+      "dependencies": [
+        "MOTION03",
+        "AI05"
+      ],
+      "acceptance": [
+        "Q89",
+        "Q92",
+        "Q98",
+        "Q102",
+        "Q105",
+        "Q106",
+        "Q107"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "complete",
+      "evidencePaths": [
+        "src/motion/useMotionPreferences.ts",
+        "src/audio.ts",
+        "src/sound-effects.ts",
+        "tests/e2e/motion-v22.spec.ts",
+        "reports/FRONTEND_2_2.md",
+        "reports/MOTION_2_2.md",
+        "reports/motion/summary.json",
+        "src/motion/budgetGovernor.ts",
+        "tests/motion-budget.test.ts"
+      ],
+      "developmentReview": {
+        "kind": "implementer-source-review-and-targeted-regression",
+        "reviewedAt": "2026-09-27",
+        "independentAcceptance": "not-run",
+        "note": "接线审查发现自动分档调用缺失，已补可取消实测governor和设置中的环境动作开关。导航/挂起重置、两个稳定窗口后只降档一次；5项新governor+9项director单测及类型检查通过。此前正常局P95 16.8ms、整页强制重建P95 33.3ms为governor接入前测量，失败样本保留。新构建实机性能、10场完整长局及独立验收尚未执行。"
+      },
+      "developerChecks": {
+        "kind": "targeted-local-production-browser-and-unit-regression",
+        "result": "passed-with-retained-stress-failure",
+        "normalGameplayP95Ms": 16.8,
+        "forcedRemountStressP95Ms": 33.3,
+        "stressTargetP95Ms": 25,
+        "matchReplacementCount": 10,
+        "independentQA": "not-run",
+        "evidencePaths": [
+          "reports/motion/summary.json",
+          "reports/motion/frame-budget.json",
+          "reports/motion/frame-budget-remount-stress.json"
+        ],
+        "unverified": [
+          "Ten complete long matches with audio-node accounting",
+          "Physical-device background throttling",
+          "All motion and hard-AI concurrency paths under independent acceptance"
+        ],
+        "governorRegression": {
+          "passed": 14,
+          "failed": 0,
+          "newGovernorCases": 5,
+          "existingDirectorCases": 9,
+          "typecheck": "passed",
+          "browserMeasurementAfterGovernor": "not-run"
+        }
+      }
+    },
+    {
+      "id": "QA02",
+      "priority": "P1",
+      "title": "黑盒产品与双端Agent测试",
+      "change": "初见只看UI，回访与Offer录入，好友两端完整隔离。",
+      "status": "not-run",
+      "targets": [
+        "tests/agents/",
+        "reports/"
+      ],
+      "dependencies": [
+        "QA01",
+        "HOME03",
+        "HOME04",
+        "UI03",
+        "GEN01"
+      ],
+      "acceptance": [
+        "Q72",
+        "Q73",
+        "Q74",
+        "Q77",
+        "Q78",
+        "Q86"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "not-started",
+      "evidencePaths": []
+    },
+    {
+      "id": "QA03",
+      "priority": "P1",
+      "title": "独立视觉与动画Agent审稿",
+      "change": "匿名对比首屏与跨页实录；七维评分，正常速度录屏与动作索引。",
+      "status": "not-run",
+      "targets": [
+        "tests/agents/",
+        "reports/"
+      ],
+      "dependencies": [
+        "QA01",
+        "HOME05",
+        "ART02",
+        "MOTION02"
+      ],
+      "acceptance": [
+        "Q79",
+        "Q80",
+        "Q91",
+        "Q109",
+        "Q110"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "not-started",
+      "evidencePaths": []
+    },
+    {
+      "id": "QA04",
+      "priority": "P1",
+      "title": "性能与信息边界Agent测试",
+      "change": "trace、计时、重连、隐藏信息与减少动态联合验证。",
+      "status": "not-run",
+      "targets": [
+        "tests/agents/",
+        "tests/e2e/",
+        "reports/"
+      ],
+      "dependencies": [
+        "QA01",
+        "MOTION05",
+        "MOTION06"
+      ],
+      "acceptance": [
+        "Q75",
+        "Q77",
+        "Q78",
+        "Q97",
+        "Q100",
+        "Q102",
+        "Q105",
+        "Q106",
+        "Q107"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "not-started",
+      "evidencePaths": []
+    },
+    {
+      "id": "QA05",
+      "priority": "P1",
+      "title": "修复复核与保持测试",
+      "change": "缺陷指派开发修复，全新agent复核；保留失败尝试与最终独立测试。",
+      "status": "not-run",
+      "targets": [
+        "tests/agents/",
+        "scripts/",
+        "reports/"
+      ],
+      "dependencies": [
+        "QA02",
+        "QA03",
+        "QA04"
+      ],
+      "acceptance": [
+        "Q73",
+        "Q75",
+        "Q76",
+        "Q110"
+      ],
+      "evidenceRefs": [],
+      "defaultEnabled": true,
+      "implementationStatus": "not-started",
+      "evidencePaths": []
+    }
+  ],
+  "designVersion": "2.2",
+  "executionStatus": "planned"
+}

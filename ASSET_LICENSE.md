@@ -9,6 +9,7 @@ AI 辅助媒体随工程保留，是为了让项目可以完整运行、复核�
 | 资源 | 制作方式与范围 | 可复核记录 |
 | --- | --- | --- |
 | 职场人物、行动牌、背景原图 | 内置 imagegen；56 次独立图像生成，角色和背景按项目主题创作 | `assets/generation-prompts.json`、`assets/production_report.json`、`public/assets/originals/` |
+| 2.2 人物、六位动物助阵、道具、动作与表情 | 内置 imagegen 原创生成或同身份编辑，裁切导出；SVG 配饰与互补遮罩为项目代码 | `public/art2.2-manifest.json`、`assets/paper-source/`、`scripts/paper-assets-input.json`、`scripts/paper-assets-expressions-input.json` |
 | WebP 角色、头像与衍生图 | 上述原图的格式转换、裁切或复用，保留父子来源关系 | `assets/production_report.json`、`public/assets/manifest.json` |
 | UI、配饰、卡框与文字 | 项目代码、SVG、DOM/Canvas 绘制；文字与数值不烧录进卡牌图 | `public/assets/`、`src/`、`scripts/` |
 | 金色校友徽章技能影片 | Running Hub 中的 MiniMax H3 Max Turbo 生成；本地压缩并移除原音轨 | `assets/animation-originals/`、`public/assets/animations/manifest.json` |

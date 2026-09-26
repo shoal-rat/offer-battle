@@ -163,3 +163,56 @@ test('Cloudflare: 2.0 history imports unchanged, persisted collections and both 
   assert.deepEqual((await f.api(`/api/matches/${imported.body.match.id}`,a.token)).body.frames,importedReplay.frames);
  }finally{await f.close();}
 });
+
+test('Cloudflare: Offer retry, revision conflict, copy and recycle transactions preserve active friend snapshots',async()=>{
+ const f=await fixture();try{
+  const a=await f.register('draft_alice'),b=await f.register('draft_bravo');
+  const input={profile:exampleOffers[0].profile,benefitId:null,idempotencyKey:'cloud-create-once',draftRevision:1,characterSeed:'1234abcd',preferences:{tone:'witty',appearance:'formal',variation:1}};
+  const responses=await Promise.all([f.api('/api/offers',a.token,input),f.api('/api/offers',a.token,input)]);assert.deepEqual(responses.map(result=>result.status).sort(),[200,201]);
+  const offer=responses[0].body.offer;assert.equal((await f.api('/api/profile',a.token)).body.offers.length,1);
+  const loadout=defaultLoadout('p1','draft_alice',5);loadout.offers[0]=offer;
+  await f.api('/api/profile',a.token,{loadout,expectedRevision:(await f.api('/api/profile',a.token)).body.revision},'PATCH');const created=(await f.api('/api/rooms',a.token,{mode:'friend',loadout})).body;
+  await f.api('/api/rooms/join',b.token,{code:created.code});await f.api(`/api/rooms/${created.room.id}/ready`,a.token,{ready:true});await f.api(`/api/rooms/${created.room.id}/ready`,b.token,{ready:true});
+  const initial=(await f.api(`/api/rooms/${created.room.id}`,a.token)).body;assert.equal(initial.view.players[0].offerZone[0].definition.persona.seed,'1234abcd');
+  const revision={...input,idempotencyKey:'cloud-revise-once',draftRevision:2,expectedDefinitionRevision:1,profile:{...input.profile,monthly_fixed_cny:12000}};
+  const changed=await f.api(`/api/offers/${offer.id}`,a.token,revision,'PATCH');assert.equal(changed.status,200);assert.equal(changed.body.offer.definitionRevision,2);assert.equal(changed.body.offer.id,offer.id);
+  assert.equal((await f.api(`/api/offers/${offer.id}`,a.token,revision,'PATCH')).body.duplicate,true);
+  assert.equal((await f.api(`/api/offers/${offer.id}`,a.token,{...revision,idempotencyKey:'cloud-conflict-key'},'PATCH')).body.errorCode,'OFFER_REVISION_CONFLICT');
+  const active=(await f.api(`/api/rooms/${created.room.id}`,a.token)).body;assert.deepEqual(active.view,initial.view);
+  const copied=await f.api('/api/offers',a.token,{...input,idempotencyKey:'cloud-copy-once',intent:'copy',sourceOfferId:offer.id});assert.equal(copied.status,201);assert.notEqual(copied.body.offer.id,offer.id);
+  const deleted=await f.api(`/api/offers/${offer.id}`,a.token,undefined,'DELETE');assert.equal(deleted.body.affectedLoadout,true);assert.equal(deleted.body.deletedOffer.offer.definitionRevision,2);
+  assert.equal((await f.api(`/api/offers/${offer.id}`,a.token,undefined,'DELETE')).body.duplicate,true);
+  assert.equal((await f.api(`/api/offers/${offer.id}/restore`,a.token,{})).body.offer.definitionRevision,2);assert.equal((await f.api(`/api/offers/${offer.id}/restore`,a.token,{})).body.duplicate,true);
+  assert.equal((await f.api(`/api/rooms/${created.room.id}/replay`,a.token)).body.verified,true);
+  await f.restart();assert.equal((await f.api('/api/offers',a.token,input)).body.duplicate,true);assert.equal((await f.api('/api/profile',a.token)).body.offers.length,2);
+ }finally{await f.close();}
+});
+
+test('Cloudflare: profile version conflicts, migration mapping/retry and unauthenticated invite preview stay private',async()=>{
+ const f=await fixture();try{
+  const a=await f.register('migration_owner'),b=await f.register('migration_guest');assert.equal(a.profile.revision,0);
+  assert.equal((await f.api('/api/profile',a.token,{nickname:'缺版本'},'PATCH')).status,428);
+  const input={nickname:'邀请测试',expectedRevision:0,idempotencyKey:'cloud-profile-once'};const updates=await Promise.all([f.api('/api/profile',a.token,input,'PATCH'),f.api('/api/profile',a.token,{...input,nickname:'竞争更新',idempotencyKey:'cloud-profile-other'},'PATCH')]);assert.deepEqual(updates.map(r=>r.status).sort(),[200,409]);const winner=updates.find(r=>r.status===200)!.body;assert.equal(updates.find(r=>r.status===409)!.body.profile.nickname,winner.nickname);
+  const offer={...exampleOffers[0],id:'private_local',baseAttack:999,profile:{...exampleOffers[0].profile!,company_display_name:'NEVER PUBLIC COMPANY'}},loadout={...defaultLoadout('p1','私人昵称',5),offers:[offer,...exampleOffers.slice(1,3)]};
+  const migration={sourceId:'guest-installation',offers:[offer],loadout,includeLoadout:true,expectedRevision:winner.revision,idempotencyKey:'cloud-migration-once'};
+  assert.equal((await f.api('/api/migrations/preview',undefined,migration)).status,401);const plan=await f.api('/api/migrations/preview',a.token,migration);assert.equal(plan.body.items[0].status,'new');assert.equal((await f.api('/api/profile',a.token)).body.offers.length,0);
+  const imported=await f.api('/api/migrations/commit',a.token,migration);assert.equal(imported.status,200,JSON.stringify(imported.body));const cloudId=imported.body.idMap.private_local;assert.notEqual(cloudId,'private_local');assert.equal(imported.body.profile.loadout.offers[0].id,cloudId);assert.notEqual(imported.body.profile.offers[0].baseAttack,999);assert.equal((await f.api('/api/migrations/commit',a.token,migration)).body.duplicate,true);
+  const revised={...offer,profile:{...offer.profile,monthly_fixed_cny:12000}},next={...migration,offers:[revised],loadout:undefined,includeLoadout:false,expectedRevision:imported.body.profile.revision,idempotencyKey:'cloud-migration-changed'};assert.equal((await f.api('/api/migrations/preview',a.token,next)).body.items[0].status,'conflict');assert.equal((await f.api('/api/migrations/commit',a.token,next)).body.errorCode,'MIGRATION_CHOICE_REQUIRED');
+  const retained=await f.api('/api/migrations/commit',a.token,{...next,choices:{private_local:'keep-both'}});assert.equal(retained.body.profile.offers.length,2);
+  const room=(await f.api('/api/rooms',a.token,{mode:'friend',publishLineup:true})).body;const preview=await f.api('/api/invitations/'+room.code.toLowerCase());assert.equal(preview.status,200);assert.equal(preview.body.status,'waiting');assert.deepEqual(Object.keys(preview.body.offers[0]).sort(),['attack','cost','health','templateId']);assert.doesNotMatch(JSON.stringify(preview.body),/NEVER PUBLIC|session|token|account|profile|annualPackage|playerId/);
+  assert.equal((await f.api(`/api/rooms/${room.room.id}`,b.token)).status,403);await f.api('/api/rooms/join',b.token,{code:room.code});assert.equal((await f.api('/api/invitations/'+room.code)).body.status,'full');
+  await f.api(`/api/rooms/${room.room.id}/ready`,a.token,{ready:true});await f.api(`/api/rooms/${room.room.id}/ready`,b.token,{ready:true});const playing=(await f.api(`/api/rooms/${room.room.id}`,a.token)).body;assert.equal((await f.command(playing,a.token,{type:'CONCEDE'})).body.ok,true);assert.equal((await f.api('/api/invitations/'+room.code)).body.status,'ended');
+  const registry=await f.mf.unsafeGetDurableObjectStorage('offer-battle-test','AccountRegistry',{name:'registry'});await registry.exec('UPDATE codes SET expires=? WHERE code=?',0,room.code);assert.equal((await f.api('/api/invitations/'+room.code)).body.status,'expired');assert.equal((await f.api('/api/invitations/000000')).body.status,'not-found');
+  await f.restart();assert.equal((await f.api('/api/migrations/commit',a.token,{...next,choices:{private_local:'keep-both'}})).body.duplicate,true);assert.equal((await f.api('/api/profile',a.token)).body.offers.length,2);
+ }finally{await f.close()}
+});
+
+test('Cloudflare P2: standard rooms reject experiment fields; enabled series locks lineup, persists score and stays out of standard history',async()=>{
+ const disabled=await fixture();try{const a=await disabled.register('experiment_gate');assert.equal((await disabled.api('/api/rooms',a.token,{mode:'friend',experiment:{kind:'series',enabled:true}})).body.errorCode,'EXPERIMENT_DISABLED');assert.equal((await disabled.api('/api/rooms',a.token,{mode:'friend',variant:{firstPlayerStartingMindPenalty:1}})).body.errorCode,'EXPERIMENT_DISABLED');}finally{await disabled.close()}
+ const f=await fixture({ENABLE_BEST_OF_THREE:'true'});try{
+  const a=await f.register('series_alice'),b=await f.register('series_bravo');assert.equal((await f.api('/api/capabilities')).body.experimental.bestOfThree,true);let room=(await f.api('/api/rooms',a.token,{mode:'friend',experiment:{kind:'series',enabled:true}})).body;assert.equal(room.room.experiment.standard,false);await f.api('/api/rooms/join',b.token,{code:room.code});await f.api(`/api/rooms/${room.room.id}/ready`,a.token,{ready:true});room=(await f.api(`/api/rooms/${room.room.id}/ready`,b.token,{ready:true})).body;assert.equal(room.room.series.gameIndex,1);
+  room=(await f.command(room,a.token,{type:'CONCEDE'})).body;assert.equal(room.room.series.wins.p2,1);assert.equal((await f.api('/api/matches',a.token,{roomId:room.room.id})).body.errorCode,'EXPERIMENT_RECORD');await f.restart();assert.equal((await f.api(`/api/rooms/${room.room.id}`,a.token)).body.room.series.wins.p2,1);
+  await f.api(`/api/rooms/${room.room.id}/rematch`,b.token,{});const invalid=await f.api(`/api/rooms/${room.room.id}/ready`,a.token,{ready:true,loadout:{...defaultLoadout('p1','series_alice',5),primaryId:'H09'}});assert.equal(invalid.status,400);assert.match(invalid.body.error,/锁定/);
+  room=(await f.api(`/api/rooms/${room.room.id}/ready`,a.token,{ready:true,flexDeck:['F02','F03','F06']})).body;assert.equal(room.room.series.gameIndex,2);assert.doesNotMatch(JSON.stringify(room.room.series),/lockedLoadout|profile|baseDeck|annualPackage/);room=(await f.command(room,a.token,{type:'CONCEDE'})).body;assert.equal(room.room.series.status,'finished');assert.equal(room.room.series.winnerId,'p2');assert.equal((await f.api(`/api/rooms/${room.room.id}/rematch`,a.token,{})).status,409);assert.equal((await f.api(`/api/rooms/${room.room.id}/replay`,a.token)).body.verified,true);
+ }finally{await f.close()}
+});

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "2.2",
+  "roleCount": 12,
+  "status": "planning-only",
+  "roles": [
+    {
+      "id": "A01",
+      "name": "初见桌面玩家",
+      "visibility": "blackbox-vision",
+      "allowedTools": [
+        "screenshot",
+        "click",
+        "scroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A01.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A02",
+      "name": "初见手机玩家",
+      "visibility": "blackbox-vision",
+      "allowedTools": [
+        "screenshot",
+        "tap",
+        "touchScroll",
+        "keyboard",
+        "currentUrl"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A02.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A03",
+      "name": "回访与收藏玩家",
+      "visibility": "ui-own-state",
+      "allowedTools": [
+        "browser",
+        "accessibilityTree",
+        "ownSeededStorage"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A03.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A04",
+      "name": "Offer录入质检",
+      "visibility": "ui-fixtures",
+      "allowedTools": [
+        "browser",
+        "accessibilityTree",
+        "syntheticFixture",
+        "sandboxFaults"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A04.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A05",
+      "name": "好友房主",
+      "visibility": "ui-own-account",
+      "allowedTools": [
+        "browser",
+        "ownAccount",
+        "publicInviteOutbox"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A05.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A06",
+      "name": "受邀好友",
+      "visibility": "ui-own-account",
+      "allowedTools": [
+        "browser",
+        "ownAccount",
+        "publicInviteInbox"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A06.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A07",
+      "name": "战术与规则质检",
+      "visibility": "whitebox-rules",
+      "allowedTools": [
+        "browser",
+        "repoRead",
+        "engineFixtures",
+        "testRunner"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A07.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A08",
+      "name": "独立美术审稿",
+      "visibility": "vision-review",
+      "allowedTools": [
+        "screenshot",
+        "approvedReferences",
+        "blindedCaptures"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A08.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A09",
+      "name": "动画导演质检",
+      "visibility": "video-review",
+      "allowedTools": [
+        "browser",
+        "video",
+        "timelineFrames",
+        "eventTiming"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A09.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A10",
+      "name": "性能与资源质检",
+      "visibility": "instrumented",
+      "allowedTools": [
+        "browser",
+        "performanceTrace",
+        "networkTrace",
+        "testRunner"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A10.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A11",
+      "name": "可访问性与输入质检",
+      "visibility": "ui-accessibility",
+      "allowedTools": [
+        "browser",
+        "accessibilityTree",
+        "keyboard",
+        "touchEmulation",
+        "mediaEmulation"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A11.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    },
+    {
+      "id": "A12",
+      "name": "故障与信息边界质检",
+      "visibility": "sandbox-whitebox",
+      "allowedTools": [
+        "browser",
+        "sandboxFaults",
+        "repoRead",
+        "testRunner"
+      ],
+      "model": "configured-at-runtime",
+      "promptPath": "agents/prompts/A12.md",
+      "ownBrowserContext": true,
+      "ownModelContext": true,
+      "expectedRuns": 4,
+      "codeWriteAllowed": false,
+      "status": "planned"
+    }
+  ]
+}

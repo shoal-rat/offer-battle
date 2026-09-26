@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import {createDeploymentUrls} from '../src/deployment';
 import {heroArt,resolveAsset} from '../src/assets';
 
-test('local defaults keep existing API, media and manifest fallback paths', () => {
+test('local defaults preserve API and media routing with the current paper portrait', () => {
   const urls=createDeploymentUrls();
   assert.equal(urls.base,'/');
   assert.equal(urls.apiUrl('/api/rooms/room-1'),'/api/rooms/room-1');
   assert.equal(urls.publicUrl('/assets/manifest.json'),'/assets/manifest.json');
   assert.equal(urls.artUrl('/api/art/portrait.webp'),'/api/art/portrait.webp');
-  assert.equal(heroArt('H01'),'/assets/hero-H01.webp');
+  assert.equal(heroArt('H01'),'/assets/paper/characters/H01/portrait-256.webp');
   assert.equal(resolveAsset('missing','/assets/fallback.svg'),'/assets/fallback.svg');
   const socket=new URL(urls.webSocketUrl('r 1','a+b &c','http://127.0.0.1:5174'));
   assert.equal(socket.origin,'ws://127.0.0.1:5174');

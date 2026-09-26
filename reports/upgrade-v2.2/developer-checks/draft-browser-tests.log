@@ -1,0 +1,13 @@
+[WebServer] (node:89183) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:89199) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/static/offer-forge.spec.ts:11:1 › Q01–Q10: empty draft, replacement, explicit confirmation, idempotent collection, revision and copy (2.9s)
+  ✓  2 tests/static/offer-forge.spec.ts:25:1 › Q04/Q05: merge requires visible review, job classification changes invalidate the template, and reload preserves drafts (2.2s)
+  ✓  3 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 390px local creation uses real preferences, readable source rows and actionable incomplete values (2.2s)
+  ✓  4 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 320px local creation uses real preferences, readable source rows and actionable incomplete values (2.7s)
+
+  4 passed (11.4s)

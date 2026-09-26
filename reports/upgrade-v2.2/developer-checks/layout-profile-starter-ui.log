@@ -1,0 +1,31 @@
+[WebServer] (node:20041) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:20042) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 17 tests using 1 worker
+
+(node:20043) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 1440x900
+[2/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 1440x900
+[3/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 1280x720
+[4/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 1280x720
+[5/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 390x844
+[6/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 390x844
+[7/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 360x740
+[8/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 360x740
+[9/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 320x568
+[10/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 320x568
+[11/17] tests/e2e/layout-v22.spec.ts:26:2 › collection and loadout cards own non-overlapping rows 844x390
+[12/17] tests/e2e/layout-v22.spec.ts:32:2 › full board, eight cards and three offers stay separated 844x390
+[13/17] tests/e2e/profile-draft-v22.spec.ts:5:1 › a failed profile save preserves the draft and retries the same operation
+[14/17] tests/e2e/profile-draft-v22.spec.ts:6:1 › revision conflict requires an explicit decision before overwriting
+[15/17] tests/e2e/profile-draft-v22.spec.ts:7:1 › an empty local line-up draft survives reload and cannot start a match
+[16/17] tests/e2e/starter-decks-v22.spec.ts:3:1 › new visitors receive an editable starter, preview is harmless and applying changes the full loadout
+[17/17] tests/e2e/starter-decks-v22.spec.ts:7:1 › sixth starter stays absent until the school input unlocks it
+  17 passed (29.6s)

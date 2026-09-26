@@ -1,3 +1,4 @@
+import {preserveOfferPresentation} from './draft-persona';
 import {compileOffer,compileOfferForVersion,exampleOffers,exampleOffersForVersion,validateLoadout} from './offers';
 import {OFFER_COMPILER_VERSION,type OfferCompilerVersion} from './offerTuning';
 import type {Loadout,OfferDefinition} from './types';
@@ -18,7 +19,7 @@ function customOffer(source:OfferDefinition,version?:OfferCompilerVersion):Offer
   const compiled=version?compileOfferForVersion(source.profile,source.benefitId??null,source.id,version):compileOffer(source.profile,source.benefitId??null,source.id);
   // Art is cosmetic. Keep a saved custom appearance when only the rules change.
   if(typeof source.artId==='string'&&source.artId.length<=256)compiled.artId=source.artId;
-  return compiled;
+  return preserveOfferPresentation(source,compiled);
 }
 
 /** Every new match uses the current compiler, regardless of submitted version or stats. */

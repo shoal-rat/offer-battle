@@ -1,3 +1,7 @@
+import {patchProfile,profileRevision} from '../src/game/profile-sync';
+import {previewMigration,commitMigration} from '../src/game/migration';
+import {invitationCode} from '../src/game/invitation';
+import {saveOffer,deleteOffer,restoreOffer} from '../src/game/draft-save';
 import {upgradeOfferCollection} from '../src/game/offer-compat';
 import {DurableObject} from 'cloudflare:workers';
 import {DAY,Documents,Fault,body,compile,failure,hash,json,loadoutFor,nickname,random,replay,uid,validateLocalRecord,type Env,type Principal,type Profile,type RecordInput} from './shared';
@@ -34,7 +38,7 @@ export class AccountRegistry extends DurableObject<Env> {
   if(value&&value.hits>=limit)throw new Fault(429,'操作过于频繁，请稍后再试','RATE_LIMITED');
   this.sql.exec('INSERT INTO quotas VALUES (?,?,?) ON CONFLICT(key) DO UPDATE SET hits=hits+1',key,1,now+windowMs);
  }
- private profile(id:string){const p=this.docs.get<Profile>('profile:'+id);if(!p)throw new Fault(401,'请重新登录','AUTH_REQUIRED');if(upgradeOfferCollection(p))this.saveProfile(p);return p;}
+ private profile(id:string){const p=this.docs.get<Profile>('profile:'+id);if(!p)throw new Fault(401,'请重新登录','AUTH_REQUIRED');if(upgradeOfferCollection(p))this.saveProfile(p);p.revision=profileRevision(p);return p;}
  private saveProfile(profile:Profile){this.docs.put('profile:'+profile.id,profile);}
  private async issue(user:User,recoveryKey?:string){
   const token=random(),tokenHash=await hash(token),expires=Date.now()+30*DAY;
@@ -59,12 +63,12 @@ export class AccountRegistry extends DurableObject<Env> {
  }
  private roomRequest(roomId:string,path:string,principal:Principal,input?:any,upgrade=false){
   if(!/^cloud_[A-F0-9]{6}_[a-f0-9]{16}$/.test(roomId))throw new Fault(404,'找不到好友房间');
-  return this.env.ROOMS.getByName(roomId).fetch(new Request('https://room'+path,{method:upgrade||input===undefined?'GET':'POST',headers:{'X-Principal':JSON.stringify(principal),...(upgrade?{Upgrade:'websocket'}:{'Content-Type':'application/json'})},...(input===undefined?{}:{body:JSON.stringify(input)})}));
+  return this.env.ROOMS.getByName(roomId).fetch(new Request('https://room'+path,{method:upgrade||input===undefined?'GET':'POST',headers:{'X-Principal':JSON.stringify({...principal,profile:{id:principal.profile.id,nickname:principal.profile.nickname,offers:[]}}),...(upgrade?{Upgrade:'websocket'}:{'Content-Type':'application/json'})},...(input===undefined?{}:{body:JSON.stringify(input)})}));
  }
  async fetch(request:Request){try{return await this.handle(request);}catch(e){return failure(e);}}
  private async handle(request:Request):Promise<Response>{
   const url=new URL(request.url),path=url.pathname;
-  const input=['POST','PATCH'].includes(request.method)?await body(request,path==='/api/matches'?1500000:150000):{};
+  const input=['POST','PATCH'].includes(request.method)?await body(request,path==='/api/matches'?1500000:path.startsWith('/api/migrations/')?600000:150000):{};
   // Only the Worker and Room bindings can reach these internal endpoints.
   if(path==='/_validate')return json(this.principalFromHash(input.tokenHash));
   const ip=request.headers.get('CF-Connecting-IP')??'local';
@@ -99,24 +103,38 @@ export class AccountRegistry extends DurableObject<Env> {
    }
    throw new Fault(404,'接口不存在');
   }
+  const invitation=path.match(/^\/api\/invitations\/([^/]+)$/);
+  if(invitation&&request.method==='GET'){
+   this.rate('invite-preview:'+ip,60);const code=invitationCode(invitation[1]);if(!code)return json({status:'not-found'});
+   const row=[...this.sql.exec<{room_id:string;expires:number}>('SELECT room_id,expires FROM codes WHERE code=?',code)][0];if(!row)return json({status:'not-found'});if(row.expires<=Date.now())return json({status:'expired'});
+   return this.env.ROOMS.getByName(row.room_id).fetch(new Request('https://room/preview'));
+  }
   const principal=await this.authenticate(request,input),profile=principal.profile,id=principal.account.id;
   if(path==='/api/session'&&request.method==='POST')return json({token:request.headers.get('Authorization')?.replace(/^Bearer /i,'')??input.token,profile,account:principal.account});
   if(path==='/api/profile'){
-   if(request.method==='PATCH'){if(input.nickname)profile.nickname=nickname(input.nickname);if(input.loadout)profile.loadout=loadoutFor(profile,input.loadout,'p1');this.saveProfile(profile);}
+   if(request.method==='PATCH'){const next=patchProfile(profile,input,(value,loadout)=>loadoutFor(value,loadout,'p1'));this.ctx.storage.transactionSync(()=>this.saveProfile(next));return json(next);}
    if(['GET','PATCH'].includes(request.method))return json(profile);
   }
-  if(path==='/api/offers'&&request.method==='POST'){
-   this.rate('offer:'+id,30);if(profile.offers.length>=100)throw new Fault(409,'云端卡册最多保存 100 张自定义 Offer');const offer=compile(input.profile,uid('offer'),input.benefitId??input.selectedBenefitId??null);profile.offers.push(offer);this.saveProfile(profile);return json({offer},201);
+  if(path==='/api/migrations/preview'&&request.method==='POST'){this.rate('migration-preview:'+id,30);return json(previewMigration(profile,input));}
+  if(path==='/api/migrations/commit'&&request.method==='POST'){const result=commitMigration(profile,input,()=>uid('offer'),100);if(!result.duplicate)this.rate('migration:'+id,10);this.ctx.storage.transactionSync(()=>this.saveProfile(result.profile));return json(result);}
+  const reviseOffer=path.match(/^\/api\/offers\/([^/]+)$/);
+  if(path==='/api/offers'&&request.method==='POST'||reviseOffer&&request.method==='PATCH'){
+   const result=saveOffer(profile,input,{newId:()=>uid('offer'),targetId:request.method==='PATCH'?reviseOffer![1]:undefined,maxOffers:100});
+   if(!result.duplicate)this.rate('offer:'+id,30);
+   this.ctx.storage.transactionSync(()=>this.saveProfile(profile));
+   const offer=result.offer;return json({...result,profileRevision:profileRevision(profile),creative:{name:offer.name,description:offer.persona!.description,quote:offer.persona!.quote}},result.duplicate||request.method==='PATCH'?200:201);
   }
-  const offerMatch=path.match(/^\/api\/offers\/([^/]+)$/);
-  if(offerMatch&&request.method==='DELETE'){profile.offers=profile.offers.filter(o=>o.id!==offerMatch[1]);if(profile.loadout?.offers.some(o=>o.id===offerMatch[1]))delete profile.loadout;this.saveProfile(profile);return json({ok:true});}
+  const restoreMatch=path.match(/^\/api\/offers\/([^/]+)\/restore$/),offerMatch=path.match(/^\/api\/offers\/([^/]+)$/);
+  if(restoreMatch&&request.method==='POST'||offerMatch&&request.method==='DELETE'){
+   const result=restoreMatch?restoreOffer(profile,restoreMatch[1],Date.now(),100):deleteOffer(profile,offerMatch![1]);this.ctx.storage.transactionSync(()=>this.saveProfile(profile));return json({...result,profileRevision:profileRevision(profile)});
+  }
   if(path==='/api/rooms'&&request.method==='POST'){
-   this.rate('rooms:'+id,20);if(input.mode!=='friend'||input.lessonId||input.practiceScenario)throw new Fault(400,'单人练习和教程请在本机进行');
+   this.rate('rooms:'+id,20);if(input.tempo||input.variant||input.experimental||input.experiment&&(input.experiment.kind!=='series'||input.experiment.enabled!==true||this.env.ENABLE_BEST_OF_THREE!=='true'))throw new Fault(400,'当前好友服务未启用这项实验','EXPERIMENT_DISABLED');if(input.mode!=='friend'||input.lessonId||input.practiceScenario)throw new Fault(400,'单人练习和教程请在本机进行');
    const loadout=loadoutFor(profile,input.loadout,'p1');this.saveProfile(profile);
-   this.sql.exec('DELETE FROM codes WHERE expires<=?',Date.now());let code:string;
+   this.sql.exec('DELETE FROM codes WHERE expires<=?',Date.now()-7*DAY);let code:string;
    do{code=random(3).toUpperCase();}while([...this.sql.exec('SELECT code FROM codes WHERE code=?',code)].length);
    const roomId=`cloud_${code}_${random(8)}`;this.sql.exec('INSERT INTO codes VALUES (?,?,?)',code,roomId,Date.now()+Number(this.env.WAITING_RETENTION_MS??DAY));
-   return this.roomRequest(roomId,'/init',principal,{roomId,code,loadout});
+   return this.roomRequest(roomId,'/init',principal,{roomId,code,loadout,publishLineup:input.publishLineup===true,...(input.experiment?{experiment:input.experiment}:{})});
   }
   if(path==='/api/rooms/join'&&request.method==='POST'){
    this.rate('join:'+id,30);const code=String(input.code??'').trim().toUpperCase();const row=[...this.sql.exec<{room_id:string}>('SELECT room_id FROM codes WHERE code=? AND expires>?',code,Date.now())][0];if(!row)throw new Fault(404,'房间码无效或已过期');
@@ -133,7 +151,7 @@ export class AccountRegistry extends DurableObject<Env> {
    if(request.method==='GET')return json({matches:[...this.sql.exec<{metadata:string}>('SELECT metadata FROM matches WHERE owner=? ORDER BY created DESC',id)].map(r=>JSON.parse(r.metadata))});
    if(request.method==='POST'){
     this.rate('save:'+id,15);let record:RecordInput,source:'friend'|'local';
-    if(input.roomId){const response=await this.roomRequest(String(input.roomId),'/record',principal);if(!response.ok)return response;record=await response.json() as RecordInput;source='friend';}
+    if(input.roomId){const response=await this.roomRequest(String(input.roomId),'/record',principal);if(!response.ok)return response;record=await response.json() as RecordInput;if(record.experiment)throw new Fault(400,'实验系列赛请保留房间回放，不纳入标准云端战报','EXPERIMENT_RECORD');source='friend';}
     else{record=validateLocalRecord(input.record);source='local';}
     const selfId=record.selfId??record.initialState.players[0].id,verified=replay(record,selfId),matchId=verified.matchId;
     const existing=[...this.sql.exec<{id:string;metadata:string}>('SELECT id,metadata FROM matches WHERE owner=? AND match_id=?',id,matchId)][0];if(existing)return json({match:JSON.parse(existing.metadata),duplicate:true});

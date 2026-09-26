@@ -1,0 +1,163 @@
+{
+  "botVersion": "2.2.0",
+  "commit": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+  "workingTree": true,
+  "generatedAt": "2026-09-26T19:12:55.225727+00:00",
+  "environment": {
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "independentReleaseAcceptance": "not-run-by-this-developer-agent",
+  "legacy": {
+    "path": "src/game/ai/legacy.ts",
+    "sha256": "16ec105f62a54fc7c4242c18b70d1a38dee16aa9a9b579790c78bdab7bae63d7",
+    "note": "Frozen original chooseBotCommand scoring function; baseline benchmark uses original setup behavior."
+  },
+  "commands": [
+    "npm run test:bot",
+    "npx tsx --test tests/local-backend.test.ts tests/server.test.ts tests/tutorial.test.ts tests/rules.test.ts",
+    "npx playwright test --config playwright.static.config.ts tests/static/bot-worker.spec.ts",
+    "npm run build"
+  ],
+  "cases": [
+    {
+      "caseId": "Q41",
+      "status": "developer-check-passed",
+      "observed": "The seven defects reproduce in 21 legacy/style combinations; upgraded engine decisions pass.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q42",
+      "status": "developer-check-passed",
+      "observed": "Multi-command reinforcement lethal, two-card removal, guard clear, return after attack, board space and negotiation tests pass.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q43",
+      "status": "developer-check-passed",
+      "observed": "Avoidable immediate self-loss and fatal fatigue regressions pass in all four difficulties.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q44",
+      "status": "developer-check-passed",
+      "observed": "Full setup defaults independently of training; 20 flex sets and 7/11 mulligans verified; actual bot flex is journaled.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q45",
+      "status": "developer-check-passed",
+      "observed": "All 12 difficulty/style configurations persist across guest rematches and replay metadata.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q46",
+      "status": "developer-check-passed",
+      "observed": "Equivalent observations despite changed actual hand, retort, deck order and battle RNG produce identical seeded decisions.",
+      "evidencePaths": [
+        "reports/ai-unit.txt"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314"
+      }
+    },
+    {
+      "caseId": "Q47",
+      "status": "developer-check-passed",
+      "observed": "Mock-port cancellation/fallback and actual Chromium new-match termination preserve versions.",
+      "evidencePaths": [
+        "reports/ai-unit.txt",
+        "reports/ai-browser-worker.json"
+      ],
+      "hashes": {
+        "reports/ai-unit.txt": "e62dfd2f834231500af78b0e074348943847cc8d32aa3cb0206ed81ba20dc314",
+        "reports/ai-browser-worker.json": "4d19a198311238996032c253e441dd3c6b9b99d3869061b023f9222bdd402201"
+      }
+    },
+    {
+      "caseId": "Q49",
+      "status": "developer-check-passed",
+      "observed": "Guest, Node worker and all scripted tutorials pass existing runtime tests. Cloudflare friend path has no bot computation.",
+      "evidencePaths": [
+        "reports/ai-runtime-tests.txt"
+      ],
+      "hashes": {
+        "reports/ai-runtime-tests.txt": "1b30dceebeb5581e539f07b743a7b3428051b1000f5e84620aa0ccad527638bd"
+      }
+    },
+    {
+      "caseId": "Q66",
+      "status": "developer-check-passed",
+      "observed": "Desktop Chromium animation continued during 800ms expert worker search; device/mobile performance remains separate.",
+      "evidencePaths": [
+        "reports/ai-browser-worker.json"
+      ],
+      "hashes": {
+        "reports/ai-browser-worker.json": "4d19a198311238996032c253e441dd3c6b9b99d3869061b023f9222bdd402201"
+      }
+    }
+  ],
+  "benchmark": {
+    "caseId": "Q48",
+    "status": "developer-check-passed",
+    "path": "reports/ai-benchmark.json",
+    "validationPath": "reports/ai-benchmark-validation.json",
+    "command": "npx tsx scripts/merge-bot-benchmarks.ts reports/ai-benchmark-shard-0.json reports/ai-benchmark-shard-1.json reports/ai-benchmark-shard-2.json reports/ai-benchmark-shard-3.json && npx tsx scripts/check-bot-benchmark.ts",
+    "implementationHash": "1e31572df9a5a034383019d38b9beafe43d6271fe590e94e2846276b28cd6b30",
+    "completedGames": 1000,
+    "uniquePairs": 500,
+    "educationCombinationCoverage": 110,
+    "illegalCommands": 0,
+    "allReplaysMatch": true,
+    "targets": {
+      "hardVsLegacy": {
+        "minimum": 0.7,
+        "observed": 0.7775,
+        "met": true
+      },
+      "expertVsNormal": {
+        "minimum": 0.6,
+        "observed": 0.6175,
+        "met": true,
+        "pairedIntervalLowerExceedsHalf": true
+      }
+    },
+    "hashes": {
+      "reports/ai-benchmark.json": "30d9d8a141aed37195b7c6058e7546e2fb1d60e98a0ae047b58f96e930447f33",
+      "reports/ai-benchmark-validation.json": "0ac3c0ad0aeca0ba065310cd84100bb2ddbba51b358b779549970d30db571482"
+    },
+    "limitations": [
+      "The 110 education combinations are covered across the full pool. Each comparison covers 22 combinations and two preset indices, not all combinations.",
+      "Time guards were disabled for deterministic search; zero benchmark timeouts is not a production timeout-rate claim.",
+      "Public immediate-win probes are bounded to the benchmark action subset; no exhaustive multi-command lethal oracle is claimed.",
+      "Thought times came from four concurrent Node processes, not mobile devices or single-game browser latency."
+    ],
+    "note": "Independent release acceptance is not-run. Strength thresholds are met for these holdout pairs; they do not establish all-loadout or live-player win rates."
+  }
+}

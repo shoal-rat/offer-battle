@@ -1,0 +1,39 @@
+✔ Q01/Q07: a private draft has no invented salary and clearing a number is unknown rather than zero (1.998917ms)
+✔ Q02/Q03: replacement parsing never inherits a prior salary, bonus, template or benefit; annual totals do not imply monthly salary (1.974416ms)
+✔ Q04/Q06: explicit merge exposes differences and changing role invalidates the old template confirmation (0.206917ms)
+✔ confirmed fields compile only after deliberate zero-income, conditions, template and benefit choices (0.332333ms)
+✔ Q08/Q09: idempotency returns one entity; revisions keep IDs; copies allocate IDs; stale updates conflict (0.824625ms)
+✔ Q10: revised collection, generated persona and recycle bin do not mutate running matches or historical definitions (3.183583ms)
+✔ GEN02: identity and preferences persist, local persona varies by role and voice, speech is capped and deduplicated (0.353ms)
+✔ local guest L01: legal learner steps, mentor, duplicate protection and deterministic replay (93.798708ms)
+✔ local guest L02: legal learner steps, mentor, duplicate protection and deterministic replay (77.219125ms)
+✔ local guest L03: legal learner steps, mentor, duplicate protection and deterministic replay (53.87875ms)
+✔ local guest L04: legal learner steps, mentor, duplicate protection and deterministic replay (86.214167ms)
+✔ local guest L05: legal learner steps, mentor, duplicate protection and deterministic replay (134.584917ms)
+✔ local bot plays a complete match with engine-only decisions, replay and reconstructible cloud-save seed (654.474458ms)
+✔ local temporary resume keeps tutorial, receipts and current replay; expired cache is discarded (28.821375ms)
+✔ local timer advances setup and turn deadlines, rejects forged TIMEOUT, and keeps training untimed (11.498875ms)
+✔ local command envelope rejects stale state, altered reuse and previous-match IDs without changing state (17.158125ms)
+✔ custom offers persist locally and loadouts use the compiled collection instead of client-forged attributes (2.295166ms)
+✔ all practice setups use existing showcase engine and remain marked as practice for cloud-save restrictions (20.28525ms)
+✔ local socket emits open/state updates and closes cleanly, with no remote connection (22.474375ms)
+✔ local persisted 2.0 collection upgrades while a resumed match stays frozen until rematch (5.115583ms)
+✔ local Offer saves are durable and idempotent; revision and recycle operations preserve running definitions (3.14175ms)
+✔ local profile revisions detect a second tab and preserve the draft on storage failure; migration preserves its source (0.548ms)
+✔ profile: conditional writes reject stale or absent revisions, idempotent lost-response retries do not regress (0.604667ms)
+✔ migration: read-only preview, authoritative compile, semantic dedup and explicit ID remapping preserve originals (2.636334ms)
+✔ migration: conflicts never silently overwrite; cloud choice, keep both, revision guard and bounded payload (1.267875ms)
+✔ invitation preview has enumerated states and no seat credentials or private offer values (0.28825ms)
+✔ diagnostic allowlist drops every raw private string, stack, token, URL and metric claim (0.405792ms)
+✔ Node Offer transactions: concurrent retries, stable revision, frozen active match, copy, delete and restore (63.809667ms)
+✔ Node optional generation sends saved preferences and seed; late results cannot overwrite a revision (40.321959ms)
+✔ Node image failure keeps the playable card; retry persists the current job and returns real art (59.916166ms)
+✔ Node profile CAS, explicit migration and public invite projection share the service contract (19.487833ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1342.719083

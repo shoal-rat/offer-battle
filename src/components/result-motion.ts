@@ -1,6 +1,6 @@
 import type {BattleCue,MatchView} from '../game/types';
 
-export function resultMotionDuration(cue:BattleCue,reduced=false){return reduced?420:cue.effectId==='draw'?1400:2400}
+export function resultMotionDuration(cue:BattleCue,reduced=false){return reduced?100:650}
 interface Options{
  layer:HTMLElement;arena:HTMLElement;view:MatchView;cue:BattleCue;reduced:boolean;
  later:(fn:()=>void,ms:number)=>unknown;
@@ -15,7 +15,11 @@ const fragments=[
 ];
 
 /** A card-portrait fracture, not a second game resolver. Uses only the public result. */
-export function playResultMotion({layer,arena,view,cue,reduced,later,animate}:Options){
+export function playResultMotion({layer,arena,view,cue,reduced,later:schedule,animate:render}:Options){
+ const legacyDuration=reduced?420:cue.effectId==='draw'?1400:2400;
+ const scale=resultMotionDuration(cue,reduced)/legacyDuration;
+ const later=(fn:()=>void,ms:number)=>schedule(fn,ms*scale);
+ const animate=(node:HTMLElement,frames:Keyframe[],options:KeyframeAnimationOptions)=>render(node,frames,{...options,duration:Number(options.duration??legacyDuration)*scale});
  const winnerId=view.result?.winnerId??null;
  const loser=winnerId?view.players.find(p=>p.id!==winnerId):undefined;
  const outcome=winnerId?(winnerId===view.selfId?'win':'lose'):'draw';
@@ -38,7 +42,7 @@ export function playResultMotion({layer,arena,view,cue,reduced,later,animate}:Op
  function finish(){root.remove();defeated?.classList.remove('result-hero-hidden');defeated?.classList.add('result-hero-defeated');winner?.classList.add('result-hero-victor')}
  if(reduced||!loser){
   root.dataset.stage='farewell';
-  run(caption,[{opacity:0},{opacity:1,offset:.3},{opacity:1,offset:.8},{opacity:0}],{duration:resultMotionDuration(cue,reduced)-30,fill:'forwards'});
+  run(caption,[{opacity:0},{opacity:1,offset:.3},{opacity:1,offset:.8},{opacity:0}],{duration:legacyDuration-30,fill:'forwards'});
   if(defeated)run(defeated,[{opacity:1},{opacity:.22}],{duration:260,fill:'forwards'});
  }else{
   const rect=defeated?.getBoundingClientRect();
@@ -72,7 +76,7 @@ export function playResultMotion({layer,arena,view,cue,reduced,later,animate}:Op
    if(winner)run(winner,[{filter:'brightness(1)'},{filter:'brightness(1.7) drop-shadow(0 0 16px #f0d995)',offset:.5},{filter:'brightness(1)'}],{duration:1200});
   });
  }
- after(resultMotionDuration(cue,reduced)-20,finish);
+ after(legacyDuration-20,finish);
  return {
   reduce(){quiet=true;root.dataset.reduced='true';root.dataset.stage='farewell';for(const a of ownAnimations)a.cancel();root.querySelectorAll('.battle-defeat-shard,.battle-defeat-medallion').forEach(el=>el.remove());light.remove();caption.style.opacity='1';shade.style.opacity='1';},
   dispose(){disposed=true;for(const a of ownAnimations)a.cancel();root.remove();defeated?.classList.remove('result-hero-hidden','result-hero-defeated');winner?.classList.remove('result-hero-victor');},

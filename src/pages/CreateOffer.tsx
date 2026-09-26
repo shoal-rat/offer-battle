@@ -1,169 +1,144 @@
-import {useEffect,useState} from 'react';
+import {usePaperFeedback} from '../motion/usePaperFeedback';
+import SceneAnchor from '../scene/SceneAnchor';
+import {useEffect,useRef,useState} from 'react';
 import {rules,templateById,benefitById} from '../game/catalog';
-import {compileOffer} from '../game/offers';
+import {compileOffer,exampleOffers} from '../game/offers';
 import {CITY_COST_OPTIONS,WORK_NATURE_OPTIONS,WORK_SCHEDULE_OPTIONS,OFFER_COMPILER_VERSION} from '../game/offerTuning';
+import {emptyDraft,editDraft,draftFromOffer,exampleDraft,confirmDraftFields,confirmZeroIncome,useStandardConditions,draftProfile,missingDraftFields,recommendedTemplate,parseOfferText,mergeDiff,mergeParsedDraft,draftFromExtracted,inferRoleFamily,FIELD_LABELS,type OfferDraft} from '../game/draft';
+import {createPersona,localPersonaArt,type GenerationPreferences} from '../game/draft-persona';
 import type {OfferProfile,OfferDefinition} from '../game/types';
-import {OfferCard,Icon,Badge} from '../ui';
-import {api} from '../api';
-import {exportOffer} from '../share';
+import {OfferCard,Icon,Badge,Modal} from '../ui';
+import {api,ApiError} from '../api';
+import ShareDialog from '../components/ShareDialog';
 import '../styles/offer-forge.css';
 
-const initial:OfferProfile={
-  company_display_name:'我的心动公司',ownership:'private',industry:'internet',company_stage:'established',
-  role_family:'algorithm',role_title:'算法工程师',city:'',city_cost_level:'auto',work_nature:'standard',work_schedule:'standard',
-  monthly_fixed_cny:25000,guaranteed_months:16,annual_fixed_allowance_cny:0,annual_target_bonus_cny:80000,
-  annual_equity_cny:0,one_time_signing_cny:0,confirmed_benefits:[],
-};
+type SaveIntent='create'|'revise'|'copy';
+type SavedBinding={offer:OfferDefinition;revision:number};
+type SaveOperation={key:string;revision:number;intent:SaveIntent;targetId?:string};
+interface Props {onSaved:(offer:OfferDefinition)=>void;onBuild:()=>void;notify:(message:string)=>void;editingOffer?:OfferDefinition|null;initialIntent?:'revise'|'copy'}
 const money=(value:number)=>`${(value/10000).toLocaleString('zh-CN',{maximumFractionDigits:2})} 万`;
 const signed=(value:number)=>value>0?`+${value}`:value<0?`−${Math.abs(value)}`:'0';
-const salaryFields=[
-  ['monthly_fixed_cny','固定月薪','元 / 月'],['guaranteed_months','保证薪数','个月'],
-  ['annual_fixed_allowance_cny','年度固定津贴','元'],['annual_target_bonus_cny','年度目标奖金','元'],
-  ['annual_equity_cny','年度股权价值','元'],['one_time_signing_cny','一次性签字费','元 · 不计年包'],
-] as const;
-function readableError(error:unknown){
-  let message=error instanceof Error?error.message:'暂时无法生成预览，请检查填写内容。';
-  for(const [key,label] of salaryFields)message=message.replaceAll(key,label);
-  return message;
-}
+const salaryFields=[['monthly_fixed_cny','固定月薪','元 / 月'],['guaranteed_months','保证薪数','个月'],['annual_fixed_allowance_cny','年度固定津贴','元'],['annual_target_bonus_cny','年度目标奖金','元'],['annual_equity_cny','年度股权价值','元'],['one_time_signing_cny','一次性签字费','元 · 不计年包']] as const;
+function readableError(error:unknown){let message=error instanceof Error?error.message:'操作未完成，请重试。';for(const [key,label]of salaryFields)message=message.replaceAll(key,label);return message;}
 function shiftText(tilt:number){return tilt?`排面 ${signed(tilt)} / 底气 ${signed(-tilt)}`:'排面 / 底气不变'}
+function restore(key:string,offer?:OfferDefinition|null){try{const value=JSON.parse(localStorage.getItem(key)||'null');if(value?.draft?.revision&&Object.keys(emptyDraft().fields).every(field=>field in value.draft.fields))return value;}catch{}return {draft:offer?draftFromOffer(offer):emptyDraft(),target:offer??null,saved:null,job:null,operation:null,confirmedRevision:null};}
 
-export default function CreateOffer({onSaved,onBuild,notify}:{onSaved:(offer:OfferDefinition)=>void;onBuild:()=>void;notify:(message:string)=>void}){
-  const [form,setForm]=useState(initial),[benefit,setBenefit]=useState(''),[paste,setPaste]=useState('');
-  const [confirmed,setConfirmed]=useState(false),[busy,setBusy]=useState(false),[saved,setSaved]=useState<OfferDefinition|null>(null);
-  const [reference,setReference]=useState(''),[flavor,setFlavor]=useState(0);
-  const [capabilities,setCapabilities]=useState({imageProvider:false,textProvider:false}),[job,setJob]=useState<any>(null);
-  useEffect(()=>{api('/api/capabilities').then(setCapabilities).catch(()=>{})},[]);
-  useEffect(()=>()=>{if(reference)URL.revokeObjectURL(reference)},[reference]);
-  useEffect(()=>{
-    if(!job||!['queued','running'].includes(job.state))return;
-    let cancelled=false;
-    const timer=setInterval(()=>{
-      api(`/api/generation/jobs/${job.id}`).then(async data=>{
-        if(cancelled)return;
-        if(data.job.state==='ready'){
-          const profile=await api('/api/profile');
-          const offer=profile.offers.find((candidate:OfferDefinition)=>candidate.id===saved?.id);
-          if(!cancelled&&offer){setSaved(offer);onSaved(offer)}
-        }
-        if(!cancelled)setJob(data.job);
-      }).catch(error=>{if(!cancelled)notify(error.message)});
-    },1200);
-    return()=>{cancelled=true;clearInterval(timer)};
-  },[job?.id,job?.state,saved?.id]);
-
-  function invalidate(){setConfirmed(false);setSaved(null);setJob(null)}
-  function update(changes:Partial<OfferProfile>){setForm(current=>({...current,...changes}));invalidate()}
-  let preview:OfferDefinition|null=null,previewError='';
+export default function CreateOffer({onSaved,onBuild,notify,editingOffer,initialIntent}:Props){
+ const feedback=usePaperFeedback();
+ const storageKey=`offer-forge-draft-v2:${editingOffer?.id??'new'}:${initialIntent??'create'}`;
+ const initial=useRef(restore(storageKey,editingOffer));
+ const [draft,setDraft]=useState<OfferDraft>(initial.current.draft),[target,setTarget]=useState<OfferDefinition|null>(initial.current.target);
+ const [intent,setIntent]=useState<SaveIntent>(editingOffer?initialIntent??'revise':initial.current.target?'revise':'create');
+ const [saved,setSaved]=useState<SavedBinding|null>(initial.current.saved),[confirmedRevision,setConfirmedRevision]=useState<number|null>(initial.current.confirmedRevision);
+ const [conflict,setConflict]=useState<OfferDefinition|null>(null);
+ const [shareOffer,setShareOffer]=useState<OfferDefinition|null>(null);
+ const extractionSource=useRef(0);
+ const [paste,setPaste]=useState(''),[mergeCandidate,setMergeCandidate]=useState<OfferDraft|null>(null),[busy,setBusy]=useState(false),[extracting,setExtracting]=useState(false);
+ const [reference,setReference]=useState(''),[referenceData,setReferenceData]=useState<{mime:string;base64:string}|null>(null),[job,setJob]=useState<any>(initial.current.job);
+ const [capabilities,setCapabilities]=useState<any>({imageProvider:false,textProvider:false,extract:false});
+ const operation=useRef<SaveOperation|null>(initial.current.operation),saving=useRef(false),live=useRef({revision:draft.revision,targetId:target?.id});live.current={revision:draft.revision,targetId:target?.id};
+ const mounted=useRef(true);
+ useEffect(()=>{mounted.current=true;api('/api/capabilities').then(value=>{if(mounted.current)setCapabilities(value)}).catch(()=>{});return()=>{mounted.current=false}},[]);
+ useEffect(()=>()=>{if(reference)URL.revokeObjectURL(reference)},[reference]);
+ useEffect(()=>{try{localStorage.setItem(storageKey,JSON.stringify({draft,target,saved,job,operation:operation.current,confirmedRevision}))}catch{notify('草稿暂时无法写入设备；请保持此页并重试保存')}},[draft,target,saved,job,confirmedRevision]);
+ useEffect(()=>{
+  if(!target||!capabilities.imageProvider&&!capabilities.textProvider)return;
+  let active=true;api('/api/generation/jobs').then(data=>{if(!active)return;const latest=data.jobs?.filter((item:any)=>item.offerId===target.id).sort((a:any,b:any)=>b.updatedAt-a.updatedAt)[0];if(latest)setJob(latest)}).catch(()=>{});return()=>{active=false};
+ },[target?.id,capabilities.imageProvider,capabilities.textProvider]);
+ useEffect(()=>{
+  if(!job||!['queued','running'].includes(job.state))return;
+  let active=true;
+  const timer=setInterval(()=>{api(`/api/generation/jobs/${job.id}`).then(async data=>{
+   if(!active)return;setJob(data.job);
+   if(data.job.state==='ready'){
+    const profile=await api('/api/profile'),offer=profile.offers.find((value:OfferDefinition)=>value.id===data.job.offerId);
+    if(!active||!offer)return;onSaved(offer);
+    if(live.current.targetId===offer.id&&live.current.revision===data.job.draftRevision&&offer.definitionRevision===data.job.definitionRevision){setSaved({offer,revision:live.current.revision});setTarget(offer);feedback('generationReady','.forge-card-stage',`generation:${data.job.id}`);}
+   }
+  }).catch(error=>{if(active)notify(readableError(error))})},1000);
+  return()=>{active=false;clearInterval(timer)};
+ },[job?.id,job?.state]);
+ function change(next:OfferDraft){live.current.revision=next.revision;setDraft(next);setConfirmedRevision(null);operation.current=null;}
+ function update(changes:Partial<OfferProfile>){change(editDraft(draft,changes))}
+ function updateRole(value:string){change(editDraft(editDraft(draft,{role_title:value}),{role_family:inferRoleFamily(value)},'parsed',false))}
+ function changePreference(changes:Partial<GenerationPreferences>){change({...draft,revision:draft.revision+1,preferences:{...draft.preferences,...changes}})}
+ function chooseBenefit(value:string){change({...draft,revision:draft.revision+1,benefitId:value||null,benefitConfirmed:true})}
+ function replaceDraft(next:OfferDraft){change(next);setTarget(null);setIntent('create');setSaved(null);setJob(null)}
+ function parse(merge=false){const parsed=parseOfferText(paste,draft.revision+1);if(merge)setMergeCandidate(parsed);else{replaceDraft(parsed);notify('已替换为空白基础上的新草稿；未提取的字段仍待确认')}}
+ function fieldStatus(key:keyof OfferProfile){const field=draft.fields[key]!;return <small data-field-state={key}>{field.value===null?'未填写 · 未确认':`${field.source==='parsed'?'文本提取':field.source==='imported'?'已导入':field.source==='user'?'手动填写':'未填写'} · ${field.confirmed?'已确认':'待确认'}${field.value===0?' · 明确为零':''}`}</small>}
+ const form=Object.fromEntries(Object.entries(draft.fields).map(([key,value])=>[key,value.value??undefined])) as Partial<OfferProfile>;
+ const benefit=draft.benefitId??'',confirmed=confirmedRevision===draft.revision,savedCurrent=saved?.revision===draft.revision?saved.offer:null;
+ let preview:OfferDefinition|null=null,previewError='';
+ try{preview=compileOffer(draftProfile(draft),draft.benefitId,'preview');preview.persona=createPersona(preview,draft.preferences,target?.persona?.seed??draft.characterSeed);preview.artId=localPersonaArt(preview,draft.preferences);if(savedCurrent?.artId)preview.artId=savedCurrent.artId;if(savedCurrent?.persona)preview.persona=savedCurrent.persona;}catch(error){previewError=readableError(error)}
+ const tuning=preview?.tuning,template=preview?templateById[preview.templateId]:null,selectedBenefit=benefit?benefitById[benefit]:null;
+ const recommendation=recommendedTemplate(draft),missing=missingDraftFields(draft);
+ const natureDescription=WORK_NATURE_OPTIONS.find(value=>value.value===form.work_nature)?.description,scheduleDescription=WORK_SCHEDULE_OPTIONS.find(value=>value.value===form.work_schedule)?.description,cityDescription=CITY_COST_OPTIONS.find(value=>value.value===form.city_cost_level)?.description;
+ async function save(){
+  if(!confirmed||!preview||saving.current)return;saving.current=true;setBusy(true);
+  const revision=draft.revision,currentTarget=target,saveIntent=intent;
+  if(!operation.current||operation.current.revision!==revision||operation.current.intent!==saveIntent||operation.current.targetId!==currentTarget?.id)operation.current={key:crypto.randomUUID(),revision,intent:saveIntent,targetId:currentTarget?.id};
+  // Write the operation before sending, so a reload after a lost response reuses the same key.
+  try{localStorage.setItem(storageKey,JSON.stringify({draft,target,saved,job,operation:operation.current,confirmedRevision}))}catch{}
   try{
-    if(!form.company_display_name.trim())throw Error('请填写公司显示名，再生成你的角色卡。');
-    preview=compileOffer({...form,confirmed_benefits:benefit?[benefit]:[]},benefit||null,'preview');
-  }catch(error){previewError=readableError(error)}
-  const tuning=preview?.tuning,template=preview?templateById[preview.templateId]:null;
-  const selectedBenefit=benefit?benefitById[benefit]:null;
-  const natureDescription=WORK_NATURE_OPTIONS.find(option=>option.value===form.work_nature)?.description;
-  const scheduleDescription=WORK_SCHEDULE_OPTIONS.find(option=>option.value===form.work_schedule)?.description;
-  const cityDescription=CITY_COST_OPTIONS.find(option=>option.value===form.city_cost_level)?.description;
-
-  async function save(){
-    if(!confirmed||!preview||busy)return;
-    setBusy(true);
-    try{
-      const result=await api('/api/offers',{profile:{...form,confirmed_benefits:benefit?[benefit]:[]},benefitId:benefit||null,creative:{gender:'默认造型',flavor}});
-      setSaved(result.offer);onSaved(result.offer);notify('Offer 已收入收藏，可以拿去开打了');
-    }catch(error){notify(readableError(error))}finally{setBusy(false)}
-  }
-  function parse(){
-    const next={...form};
-    const monthly=paste.match(/(?:月薪|月固定|月工资)[：:\s]*(\d+(?:\.\d+)?)\s*(k|K|万|元)?/);
-    if(monthly)next.monthly_fixed_cny=Number(monthly[1])*(monthly[2]?.toLowerCase()==='k'?1000:monthly[2]==='万'?10000:1);
-    const months=paste.match(/(\d+)\s*薪/);if(months)next.guaranteed_months=Number(months[1]);
-    const company=paste.match(/(?:公司|单位)[：:\s]*([^\n，,]+)/);if(company)next.company_display_name=company[1].trim();
-    const role=paste.match(/(?:岗位|职位)[：:\s]*([^\n，,]+)/);if(role)next.role_title=role[1].trim();
-    update(next);notify('已提取明确的月薪、薪数、公司与岗位；请逐项确认其余字段');
-  }
-  function jumpTo(id:string){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
-
-  return <div className="page creator-page offer-forge">
-    <div className="page-heading forge-heading">
-      <div><span className="eyebrow">THE OFFER FORGE</span><h1>让你的 Offer，<em>站上牌桌。</em></h1><p>年包定费用，工作条件塑造打法。每一点属性，都有来处。</p></div>
-      <div className="forge-heading-note"><Icon name="cards" size={27}/><span>一份真实条件<br/><strong>一张专属底牌</strong></span><Badge>本地创作 · 无需密钥</Badge></div>
+   const result=await api(saveIntent==='revise'?`/api/offers/${currentTarget!.id}`:'/api/offers',{profile:draftProfile(draft),benefitId:draft.benefitId,draftRevision:revision,idempotencyKey:operation.current.key,intent:saveIntent,preferences:draft.preferences,characterSeed:draft.characterSeed,...(saveIntent==='revise'?{expectedDefinitionRevision:currentTarget?.definitionRevision??1}:{}),...(saveIntent==='copy'?{sourceOfferId:currentTarget?.id}:{})},saveIntent==='revise'?'PATCH':'POST');
+   onSaved(result.offer);
+   if(mounted.current&&live.current.revision===revision){setTarget(result.offer);setIntent('revise');setSaved({offer:result.offer,revision});feedback('saveReceipt','.success-label',`save:${result.offer.id}:${result.offer.definitionRevision}`);if(result.job)setJob(result.job);notify(`${result.offer.name}已收入收藏 · 定义第${result.offer.definitionRevision??1}版`)}else notify('此前提交的版本已保存；当前修改仍是待确认草稿');
+  }catch(error){feedback('errorNote','.forge-save-hint',`error:${Date.now()}`);if(error instanceof ApiError&&error.code==='OFFER_REVISION_CONFLICT'&&currentTarget){try{const profile=await api('/api/profile'),latest=profile.offers.find((offer:OfferDefinition)=>offer.id===currentTarget.id);if(mounted.current&&latest)setConflict(latest)}catch{}}notify(readableError(error))}finally{saving.current=false;if(mounted.current)setBusy(false)}
+ }
+ async function extract(){
+  const revision=draft.revision,sourceVersion=extractionSource.current;setExtracting(true);
+  try{const result=await api('/api/extractions',{text:paste,...referenceData,draftRevision:revision});if(!mounted.current)return;if(live.current.revision!==revision||extractionSource.current!==sourceVersion){notify('识别期间草稿已修改，旧识别结果已忽略');return}replaceDraft(draftFromExtracted(result.fields,revision+1));notify('识别结果待逐项确认，未填写的字段保持未知')}catch(error){notify(readableError(error))}finally{if(mounted.current)setExtracting(false)}
+ }
+ async function generate(stage:'image'|'text'){
+  if(!savedCurrent)return;
+  try{const data=await api(`/api/offers/${savedCurrent.id}/appearance`,{stage,expectedDefinitionRevision:savedCurrent.definitionRevision??1,draftRevision:draft.revision});if(mounted.current&&live.current.revision===draft.revision)setJob(data.job)}catch(error){notify(readableError(error))}
+ }
+ function jumpTo(id:string){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
+ return <div className="page creator-page offer-forge" data-draft-revision={draft.revision}>
+  <div className="page-heading forge-heading"><SceneAnchor kind="create"/><div><span className="eyebrow">YOUR OFFER, YOUR CHARACTER</span><h1>制作我的 Offer</h1><p>把工作资料确认清楚，再让角色带着自己的口吻上桌。</p></div><Badge>草稿第 {draft.revision} 版 · 规则 {OFFER_COMPILER_VERSION}</Badge></div>
+  <div className="forge-process" aria-label="造卡流程">{['确认工作','确认薪酬','角色表达'].map((step,index)=><span key={step}><b>0{index+1}</b>{step}</span>)}</div>
+  <section className={`forge-live-stats ${previewError?'has-error':''}`} aria-label="实时属性"><div className="forge-live-title"><span className="live-dot"/><div><span>当前草稿属性</span><strong>{preview?.name||'等待确认 Offer'}</strong></div></div><div className="forge-stat-values" aria-live="polite"><div className="forge-stat forge-stat-cost"><Icon name="clock"/><span><b data-testid="forge-cost">{preview?.originalTime??'—'}</b><small>费用 · 小时</small></span></div><div className="forge-stat forge-stat-attack"><Icon name="sword"/><span><b data-testid="forge-attack">{preview?.baseAttack??'—'}</b><small>排面 · 攻击</small></span></div><div className="forge-stat forge-stat-health"><Icon name="heart"/><span><b data-testid="forge-health">{preview?.baseHealth??'—'}</b><small>底气 · 血量</small></span></div></div><div className="forge-jump-links"><button type="button" onClick={()=>jumpTo('offer-fields')}>编辑信息</button><button type="button" onClick={()=>jumpTo('offer-explanation')}>查看依据 <Icon name="arrow"/></button></div></section>
+  {draft.isExample&&<p className="helper" role="status">当前使用示例资料，不代表你的真实 Offer。请修改并确认后再收藏。</p>}
+  {previewError&&<div className="forge-preview-error" role="alert"><Icon name="info"/><div><strong>尚未生成最终数值</strong><p>{previewError}</p></div></div>}
+  <div className="creator-layout forge-workspace"><form className="form-panel forge-form" id="offer-fields" noValidate onSubmit={event=>{event.preventDefault();void save()}}>
+   <fieldset>
+    <div className="section-heading"><span>01</span><h2>这份工作，叫什么</h2></div>
+    <div className="saved-actions"><button type="button" className="btn subtle" onClick={()=>{const next=exampleDraft({...exampleOffers[0].profile!,city_cost_level:'auto',work_nature:'standard',work_schedule:'standard',selected_template_id:exampleOffers[0].templateId},draft.revision+1);replaceDraft(next)}}>填入示例</button><button type="button" className="text-btn" onClick={()=>replaceDraft(emptyDraft(draft.revision+1))}>清空为新卡</button></div>
+    <details className="paste-panel"><summary>粘贴 Offer 文本 / 添加参考图 <Icon name="plus"/></summary><textarea aria-label="Offer 原文" value={paste} onChange={event=>{extractionSource.current++;setPaste(event.target.value)}} placeholder={'公司：方盒科技\n岗位：算法工程师\n月薪：25k，16薪'}/><button type="button" className="btn subtle" disabled={!paste.trim()} onClick={()=>parse()}>提取并替换草稿</button><button type="button" className="text-btn" disabled={!paste.trim()} onClick={()=>parse(true)}>合并当前草稿…</button>
+     <label className="field">参考图片（仅供查看）<input type="file" accept="image/png,image/jpeg,image/webp" onChange={event=>{const file=event.target.files?.[0];if(!file)return;if(!['image/png','image/jpeg','image/webp'].includes(file.type)){notify('请选择 PNG、JPEG 或 WebP 图片');return}if(file.size>5000000){notify('请选择 5 MB 内的参考图片');return}const sourceVersion=++extractionSource.current;setReference(URL.createObjectURL(file));setReferenceData(null);const reader=new FileReader();reader.onload=()=>{if(extractionSource.current===sourceVersion)setReferenceData({mime:file.type,base64:String(reader.result).split(',')[1]})};reader.readAsDataURL(file)}}/></label>{reference&&<img className="reference-preview" src={reference} alt="本地 Offer 参考图片" style={{maxWidth:'100%',maxHeight:200,objectFit:'contain'}}/>}
+     {capabilities.extract||capabilities.generation?.extract?.available?<button type="button" className="btn subtle" disabled={extracting||!paste.trim()&&!referenceData} onClick={()=>void extract()}>{extracting?'正在识别字段…':'自动识别（逐项确认）'}</button>:<p className="helper">参考图片只在你的设备显示，不会自动识别薪酬。粘贴提取在本机完成。</p>}
+    </details>
+    {draft.reportedAnnualPackage!==null&&<p role="status" className="helper">原文年包：{money(draft.reportedAnnualPackage)}。尚不据此推算月薪或薪数，请分别确认。</p>}
+    <div className="form-grid"><label className="field">公司显示名<input aria-label="公司显示名" maxLength={60} value={form.company_display_name??''} onChange={event=>update({company_display_name:event.target.value})}/>{fieldStatus('company_display_name')}</label><label className="field">具体岗位名称<input aria-label="具体岗位名称" maxLength={60} value={form.role_title??''} onChange={event=>updateRole(event.target.value)}/>{fieldStatus('role_title')}</label></div>
+    <label className="field">卡牌显示名（可选）<input maxLength={32} placeholder="例如：大厂算法岗、银行基层、投行做债" value={form.card_display_name??''} onChange={event=>update({card_display_name:event.target.value})}/><small>公司、原始岗位与卡名分别保存；改玩法类型不改岗位名称。</small></label>
+    <div className="form-grid"><label className="field">所在行业<select aria-label="所在行业" value={form.industry??''} onChange={event=>update({industry:event.target.value})}><option value="" disabled>请选择并确认</option>{[['internet','互联网'],['manufacturing','制造 / 硬件'],['finance','金融'],['consulting','咨询'],['gaming','游戏'],['public_service','公共服务'],['healthcare','医疗健康'],['education','教育'],['other','其他行业']].map(([value,label])=><option value={value} key={value}>{label}</option>)}</select>{fieldStatus('industry')}</label><label className="field">岗位类别<select aria-label="岗位类别" value={form.role_family??''} onChange={event=>update({role_family:event.target.value})}><option value="" disabled>请选择并确认</option>{[['algorithm','算法'],['development','软件开发'],['general_rd','研发 / 工程'],['sales','销售'],['hr','招聘 / 人事'],['testing','测试'],['management','管理'],['product','产品'],['finance','财务'],['administration','行政'],['general','综合业务']].map(([value,label])=><option value={value} key={value}>{label}</option>)}</select>{fieldStatus('role_family')}</label><label className="field">公司性质<select aria-label="公司性质" value={form.ownership??''} onChange={event=>update({ownership:event.target.value})}><option value="" disabled>请选择并确认</option><option value="private">民营企业</option><option value="foreign_owned">外资企业</option><option value="state_owned">国有企业</option><option value="central_state_owned">中央企业</option></select>{fieldStatus('ownership')}</label><label className="field">公司阶段<select aria-label="公司阶段" value={form.company_stage??''} onChange={event=>update({company_stage:event.target.value})}><option value="" disabled>请选择并确认</option><option value="established">成熟企业</option><option value="startup">初创企业</option></select>{fieldStatus('company_stage')}</label></div>
+    <button type="button" className="text-btn" onClick={()=>change(useStandardConditions(draft))}>未填写的工作条件采用常规设置</button>
+    <label className="field">玩法类型<select aria-label="玩法类型" value={form.selected_template_id??''} onChange={event=>update({selected_template_id:event.target.value||undefined})}><option value="">等待确认推荐类型</option>{rules.offer_templates.map(value=><option key={value.id} value={value.id}>{value.name} — {value.main_effect}</option>)}</select>{fieldStatus('selected_template_id')}</label>
+    {!draft.fields.selected_template_id.confirmed&&<div className="helper" role="status">{draft.previousTemplateId&&<p>岗位条件已变化，原类型「{templateById[draft.previousTemplateId]?.name}」需要重新确认。</p>}当前推荐：{templateById[recommendation]?.name}。<button type="button" className="text-btn" onClick={()=>update({selected_template_id:recommendation})}>确认推荐玩法</button></div>}
+    <div className="section-heading forge-section-divider"><span>02</span><h2>在哪工作，拿多少薪酬</h2></div>
+    <div className="form-grid"><label className="field">工作城市（可选）<input aria-label="工作城市（可选）" value={form.city??''} onChange={event=>update({city:event.target.value})}/>{fieldStatus('city')}</label><label className="field">城市生活成本<select aria-label="城市生活成本" value={form.city_cost_level??''} onChange={event=>update({city_cost_level:event.target.value as OfferProfile['city_cost_level']})}><option value="" disabled>请选择并确认</option>{CITY_COST_OPTIONS.map(value=><option key={value.value} value={value.value}>{value.label}</option>)}</select>{fieldStatus('city_cost_level')}</label></div>
+    <div className="forge-city-summary" data-testid="forge-city-summary"><p>{cityDescription}{tuning&&<strong>当前{tuning.citySource==='auto'?'自动匹配':'手动选择'}：{tuning.cityLevel==='high'?'高生活成本':tuning.cityLevel==='low'?'低生活成本':'生活成本适中'}。</strong>}</p></div>
+    <div className="form-grid"><label className="field">工作性质<select aria-label="工作性质" value={form.work_nature??''} onChange={event=>update({work_nature:event.target.value as OfferProfile['work_nature']})}><option value="" disabled>请选择并确认</option>{WORK_NATURE_OPTIONS.map(value=><option key={value.value} value={value.value}>{value.label}</option>)}</select><small>{natureDescription}</small>{fieldStatus('work_nature')}</label><label className="field">工作节奏<select aria-label="工作节奏" value={form.work_schedule??''} onChange={event=>update({work_schedule:event.target.value as OfferProfile['work_schedule']})}><option value="" disabled>请选择并确认</option>{WORK_SCHEDULE_OPTIONS.map(value=><option key={value.value} value={value.value}>{value.label}</option>)}</select><small>{scheduleDescription}</small>{fieldStatus('work_schedule')}</label></div>
+    <div className="form-grid">{salaryFields.slice(0,2).map(([key,label,unit])=><label className="field" key={key}>{label}<div className="input-unit"><input aria-label={label} type="number" min="1" value={form[key]??''} onChange={event=>update({[key]:event.target.value===''?undefined:Number(event.target.value)})}/><span>{unit}</span></div>{fieldStatus(key)}</label>)}</div>
+    <details className="paste-panel"><summary>其他收入（奖金、权益、补贴、签字费）</summary><div className="form-grid">{salaryFields.slice(2).map(([key,label,unit])=><label className="field" key={key}>{label}<div className="input-unit"><input aria-label={label} type="number" min="0" value={form[key]??''} onChange={event=>update({[key]:event.target.value===''?undefined:Number(event.target.value)})}/><span>{unit}</span></div>{fieldStatus(key)}</label>)}</div></details>
+    <button type="button" className="btn subtle" onClick={()=>change(confirmZeroIncome(draft))}>确认未填写的附加收入均为零</button><button type="button" className="text-btn" onClick={()=>change(confirmDraftFields(draft))}>确认已填写 / 提取的字段</button>
+    <p className="helper">{missing.length?`仍有 ${missing.length} 项待填写或确认。`:'薪酬与工作资料已确认。'}未知金额不会按零计算。</p>
+    <div className="forge-package"><span>本次计价年包<small>一次性签字费不计入</small></span><strong>{preview?money(preview.annualPackage):'待确认'}<small> / 年</small></strong></div>
+    <div className="section-heading forge-section-divider"><span>03</span><h2>让角色有自己的口吻</h2></div>
+    <label className="field">启用一项已确认条款<select aria-label="启用一项已确认条款" value={draft.benefitConfirmed?benefit:'__unset'} onChange={event=>chooseBenefit(event.target.value)}><option value="__unset" disabled>请选择并确认</option><option value="">明确不启用条款</option>{rules.benefits.map(value=><option key={value.id} value={value.id}>{value.name} — {value.text}</option>)}</select></label>
+    <div className="form-grid"><label className="field">角色口吻<select aria-label="角色口吻" value={draft.preferences.tone} onChange={event=>changePreference({tone:event.target.value as GenerationPreferences['tone']})}><option value="confident">自信直接</option><option value="calm">沉稳克制</option><option value="witty">轻松吐槽</option></select></label><label className="field">本地立绘<select aria-label="本地立绘" value={draft.preferences.appearance} onChange={event=>changePreference({appearance:event.target.value as GenerationPreferences['appearance']})}><option value="career">随职业的标准立绘</option><option value="formal">商务立绘</option><option value="casual">休闲立绘</option></select></label></div><p className="helper">本地口吻与立绘立即可用，收藏后带入对局。{capabilities.imageProvider?'你也可以在保存后申请个性插画，当前偏好会一起发送。':'当前未接通个性绘图服务，以上为随包立绘选择。'}</p>
+    <div className="forge-save-panel">{target&&<label className="field">保存方式<select aria-label="保存方式" value={intent} onChange={event=>{setIntent(event.target.value as SaveIntent);setConfirmedRevision(null);operation.current=null}}><option value="revise">修订这张卡 · 保留卡 ID</option><option value="copy">另存副本 · 新卡 ID</option></select><small>原卡：{target.name} · 定义第 {target.definitionRevision??1} 版。进行中的对局不受修订影响。</small></label>}
+     <label className="confirmation"><input type="checkbox" aria-label="确认本版资料和公开卡面" checked={confirmed} onChange={event=>setConfirmedRevision(event.target.checked?draft.revision:null)}/><span>我已核对本版资料与条款，愿意在对局中公开公司名和卡牌属性。</span></label>
+     <button type="submit" className="btn gold full" disabled={!confirmed||!preview||busy||!!savedCurrent&&intent!=='copy'}><Icon name="spark"/>{busy?'正在保存本版…':savedCurrent&&intent!=='copy'?'已收入收藏':intent==='revise'?'修订这张卡':intent==='copy'?'另存副本':'收入收藏'}</button>
+     <p className="forge-save-hint">{savedCurrent?`${savedCurrent.name} · 定义第 ${savedCurrent.definitionRevision??1} 版已保存`:'每次修改都会取消旧确认。网络失败重试会沿用同一次保存，不重复建卡。'}</p>
     </div>
-    <div className="forge-process" aria-label="造卡流程">
-      {['年包定档','模板定型','工作条件微调','条款结算'].map((step,index)=><span key={step}><b>0{index+1}</b>{step}{index<3&&<Icon name="arrow" size={13}/>}</span>)}
-    </div>
-
-    <section className={`forge-live-stats ${previewError?'has-error':''}`} aria-label="实时属性">
-      <div className="forge-live-title"><span className="live-dot"/><div><span>实时入场属性</span><strong>{preview?.name||'等待完善 Offer'}</strong></div></div>
-      <div className="forge-stat-values" aria-live="polite" aria-atomic="true">
-        <div className="forge-stat forge-stat-cost"><Icon name="clock" size={19}/><span><b data-testid="forge-cost">{preview?.originalTime??'—'}</b><small>费用 · 小时</small></span></div>
-        <div className="forge-stat forge-stat-attack"><Icon name="sword" size={19}/><span><b data-testid="forge-attack">{preview?.baseAttack??'—'}</b><small>排面 · 攻击</small></span></div>
-        <div className="forge-stat forge-stat-health"><Icon name="heart" size={19}/><span><b data-testid="forge-health">{preview?.baseHealth??'—'}</b><small>底气 · 血量</small></span></div>
-      </div>
-      <div className="forge-jump-links"><button type="button" onClick={()=>jumpTo('offer-fields')}>编辑信息</button><button type="button" onClick={()=>jumpTo('offer-explanation')}>查看依据 <Icon name="arrow" size={13}/></button></div>
-    </section>
-    {previewError&&<div className="forge-preview-error" role="alert"><Icon name="info"/><div><strong>预览暂不可用</strong><p>{previewError}</p><small>修正后会自动重新生成；当前不能保存。</small></div></div>}
-
-    <div className="creator-layout forge-workspace">
-      <form className="form-panel forge-form" id="offer-fields" noValidate onSubmit={event=>{event.preventDefault();void save()}}>
-        <fieldset disabled={busy}>
-          <div className="section-heading"><span>01</span><h2>这份工作，叫什么</h2><small>名称精准，才好比 Offer</small></div>
-          <details className="paste-panel"><summary>粘贴 Offer 文本 / 添加参考图 <Icon name="plus" size={15}/></summary>
-            <textarea aria-label="Offer 原文" value={paste} onChange={event=>setPaste(event.target.value)} placeholder={'公司：方盒科技\n岗位：算法工程师\n月薪：25k，16 薪'}/>
-            <button type="button" className="btn subtle" onClick={parse} disabled={!paste}>提取明确字段</button>
-            <label className="upload-btn">添加参考图片<input type="file" accept="image/*" onChange={event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>8*1024*1024){notify('参考图请小于 8MB');return}setReference(URL.createObjectURL(file));notify('参考图已展示；请在下方手动确认字段')}}/></label>
-            {reference&&<div className="reference-preview"><img src={reference} alt="Offer 参考图片"/><p>参考图仅在本页展示，不自动识别，不进入对局。</p><button type="button" className="text-btn" onClick={()=>setReference('')}>移除原图</button></div>}
-          </details>
-          <label className="field">卡牌名称<input maxLength={16} value={form.card_display_name||''} onChange={event=>update({card_display_name:event.target.value})} placeholder="例如：大厂算法岗、银行基层、投行做债"/><small>写清楚岗位。留空时按行业与岗位生成，公司名另列在卡面小字中。</small></label>
-          <div className="form-grid">
-            <label className="field">公司显示名<input maxLength={24} value={form.company_display_name} onChange={event=>update({company_display_name:event.target.value})}/></label>
-            <label className="field">岗位名称<input maxLength={24} value={form.role_title} onChange={event=>update({role_title:event.target.value})}/></label>
-            <label className="field">所在行业<select aria-label="所在行业" value={form.industry} onChange={event=>update({industry:event.target.value})}>{[['internet','互联网 / 游戏'],['manufacturing','制造 / 硬件'],['finance','金融'],['consulting','咨询'],['public_service','公共服务'],['healthcare','医疗健康'],['education','教育'],['other','其他']].map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label>
-            <label className="field">职业归类<select aria-label="职业归类" value={form.role_family} onChange={event=>update({role_family:event.target.value})}>{[['algorithm','算法 / 开发'],['administration','综合职能'],['product','产品 / 项目'],['hardware_rd','硬件研发'],['management','管理岗'],['sales','销售'],['testing','测试 / 质量'],['hr','人事 / 招聘'],['general_rd','研发'],['general','其他岗位']].map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label>
-            <label className="field">公司性质<select aria-label="公司性质" value={form.ownership} onChange={event=>update({ownership:event.target.value})}><option value="private">民营企业</option><option value="state_owned">国有企业</option><option value="foreign_owned">外资企业</option><option value="central_state_owned">中央企业</option></select></label>
-            <label className="field">公司阶段<select aria-label="公司阶段" value={form.company_stage} onChange={event=>update({company_stage:event.target.value})}><option value="established">成熟企业</option><option value="startup">初创企业</option></select></label>
-          </div>
-          <label className="field">玩法类型<select aria-label="玩法类型" value={form.selected_template_id||''} onChange={event=>update({selected_template_id:event.target.value||undefined})}><option value="">根据行业与岗位自动匹配</option>{rules.offer_templates.map(item=><option key={item.id} value={item.id}>{item.name} — {item.main_effect}</option>)}</select><small>类型决定基础身材与固定技能。新岗位也可沿用这些类型，再用实际工作条件生成属性；工作名称保持精准。</small></label>
-
-          <div className="section-heading forge-section-divider"><span>02</span><h2>在哪工作，怎样工作</h2></div>
-          <p className="forge-section-intro">城市、行业与工作条件共同塑造排面和底气，节奏也会影响入场费用。</p>
-          <div className="form-grid">
-            <label className="field">工作城市（可选）<input maxLength={30} value={form.city} onChange={event=>update({city:event.target.value})} placeholder="例如：上海、成都、苏州"/></label>
-            <label className="field">城市生活成本<select aria-label="城市生活成本" value={form.city_cost_level||'auto'} onChange={event=>update({city_cost_level:event.target.value as OfferProfile['city_cost_level']})}>{CITY_COST_OPTIONS.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
-          </div>
-          <div className="forge-field-note" data-testid="forge-city-summary"><Icon name="info" size={15}/><p>{cityDescription}{tuning&&<strong>当前{tuning.citySource==='auto'?'自动匹配':'手动选择'}：{tuning.cityLevel==='high'?'高生活成本':tuning.cityLevel==='low'?'低生活成本':'生活成本适中'}。</strong>}</p></div>
-          <div className="form-grid forge-work-conditions">
-            <label className="field">工作性质<select aria-label="工作性质" value={form.work_nature||'standard'} onChange={event=>update({work_nature:event.target.value as OfferProfile['work_nature']})}>{WORK_NATURE_OPTIONS.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}</select><small>{natureDescription}</small></label>
-            <label className="field">工作节奏<select aria-label="工作节奏" value={form.work_schedule||'standard'} onChange={event=>update({work_schedule:event.target.value as OfferProfile['work_schedule']})}>{WORK_SCHEDULE_OPTIONS.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}</select><small>{scheduleDescription}</small></label>
-          </div>
-
-          <div className="section-heading forge-section-divider"><span>03</span><h2>薪酬与福利</h2><small>人民币 · 税前</small></div>
-          <div className="form-grid">{salaryFields.map(([key,label,unit])=><label className="field" key={key}>{label}<div className="input-unit"><input type="number" min={key==='guaranteed_months'||key==='monthly_fixed_cny'?1:0} max={key==='guaranteed_months'?36:100000000} step={key==='guaranteed_months'?1:'any'} value={form[key]} onChange={event=>update({[key]:Number(event.target.value)})}/><span>{unit}</span></div></label>)}</div>
-          <div className="forge-package"><span>本次计价年包<small>一次性签字费不计入</small></span><strong>{preview?money(preview.annualPackage):'—'}<small> / 年</small></strong></div>
-          <label className="field">启用一项已确认条款<select aria-label="启用一项已确认条款" value={benefit} onChange={event=>{setBenefit(event.target.value);invalidate()}}><option value="">不启用条款</option>{rules.benefits.map(item=><option key={item.id} value={item.id}>{item.name} — {item.text}</option>)}</select></label>
-          <p className="helper">条款增加独立效果，同时减少 1 点底气；底气已为 1 时改为减少排面，属性最低为 1。</p>
-          <div className="forge-save-panel">
-            <label className="confirmation"><input type="checkbox" checked={confirmed} onChange={event=>setConfirmed(event.target.checked)}/><span>以上信息与所选条款已经由我确认，愿意在对局中公开公司名和卡牌属性。</span></label>
-            <button type="submit" className="btn gold full" disabled={!confirmed||!preview||busy||!!saved}><Icon name="spark"/>{busy?'正在编译与保存…':saved?'已收入收藏':'生成我的角色卡'}</button>
-            <p className={`forge-save-hint ${saved?'is-saved':''}`}>{saved?'这张卡已保存在你的收藏里，可以带去开打。':'修改任一造卡条件后，需要重新确认并保存。'}</p>
-          </div>
-        </fieldset>
-      </form>
-
-      <aside className="creation-preview">
-        <div className="forge-card-panel">
-          <div className="preview-label"><span className="live-dot"/>实时卡面预览<span className="forge-draft-tag">{saved?'已收藏':'草稿'}</span></div>
-          <div className="forge-card-stage">{preview?<OfferCard offer={saved||preview}/>:<div className="forge-empty-card"><Icon name="cards" size={48}/><strong>你的角色，即将登场</strong><p>完善左侧信息，<br/>卡面与属性会实时出现。</p></div>}</div>
-          <div className="flavor-quote">“{['年包先放这儿，剩下的你自己体会。','工资先亮，底牌后出。','你负责开场炸裂，我负责还在场上。'][flavor%3]}”</div>
-          <button type="button" className="text-btn" onClick={()=>setFlavor(current=>current+1)}><Icon name="replay" size={14}/>换句狠话</button>
-          {saved&&<div className="saved-actions">
-            <div className="success-label"><Icon name="check"/>已收入收藏 · 本地职业插画</div>
-            <button type="button" className="btn gold full" onClick={onBuild}>带去开打<Icon name="arrow"/></button>
-            <button type="button" className="btn subtle full" onClick={()=>exportOffer(saved).catch(()=>notify('分享图生成失败，请重试'))}><Icon name="download"/>保存晒卡图</button>
-            <button type="button" className="btn subtle full" disabled={!capabilities.imageProvider||['queued','running'].includes(job?.state)} onClick={async()=>{try{const data=await api(`/api/offers/${saved.id}/appearance`,{stage:'image'});setJob(data.job)}catch(error){notify(readableError(error))}}}><Icon name="spark"/>{['queued','running'].includes(job?.state)?'个性插画正在生成…':capabilities.imageProvider?'生成新外观':'个性插画 · 需配置图像服务'}</button>
-            {job?.state==='failed'&&<div className="generation-error"><p>{job.error||'生成失败，现有角色仍可开打。'}</p><button type="button" className="text-btn" onClick={async()=>{try{const data=await api(`/api/generation/jobs/${job.id}/retry`,{});setJob(data.job)}catch(error){notify(readableError(error))}}}>重试这一环节</button></div>}
-          </div>}
-        </div>
+   </fieldset>
+  </form><aside className="creation-preview"><div className="forge-card-panel"><div className="preview-label"><span className="live-dot"/>当前草稿预览<span className="forge-draft-tag">{savedCurrent?'已收藏':`草稿 ${draft.revision}`}</span></div><div className="forge-card-stage">{preview?<OfferCard offer={preview}/>:<div className="forge-empty-card"><Icon name="cards" size={48}/><strong>资料确认后，角色登场</strong><p>未知金额保持未知，<br/>不会填入示例年包。</p></div>}</div>
+   <div className="flavor-quote">“{preview?.persona?.quote||'确认资料后，这里会出现你的角色台词。'}”</div><button type="button" className="text-btn" disabled={!preview} onClick={()=>changePreference({variation:draft.preferences.variation+1})}><Icon name="replay"/>换一组角色台词</button>
+   {preview?.persona&&<details><summary>预览事件台词</summary><dl>{Object.entries(preview.persona.lines).map(([event,line])=><div key={event}><dt>{{summon:'出场',disrupt:'成功拆台',counterFail:'反制失败',return:'收回',victory:'获胜',defeat:'战败'}[event]}</dt><dd>{line}</dd></div>)}</dl><p className="helper">只有对应事件真实发生时才播放，台词不改变规则。</p></details>}
+   {savedCurrent&&<div className="saved-actions"><div className="success-label"><Icon name="check"/>已收入收藏 · 本地职业插画</div><button type="button" className="btn gold full" onClick={onBuild}>带它试一局 <Icon name="arrow"/></button><button type="button" className="btn subtle full" onClick={()=>setShareOffer(savedCurrent)}><Icon name="download"/>保存晒卡图</button>{capabilities.imageProvider&&<button type="button" className="btn subtle full" disabled={['queued','running'].includes(job?.state)} onClick={()=>void generate('image')}>生成个性插画</button>}{capabilities.textProvider&&<button type="button" className="btn subtle full" disabled={['queued','running'].includes(job?.state)} onClick={()=>void generate('text')}>创作新的角色文案</button>}</div>}
+   {job&&<div role="status" className="generation-error"><p>创作任务 · 定义第 {job.definitionRevision??1} 版 / 草稿 {job.draftRevision??1}：{job.state==='ready'?'保存完成':job.state==='stale'?'旧版本结果已废弃':job.state==='failed'?'生成失败':job.phase||'等待开始'}</p>{job.draftRevision!==draft.revision&&<p>此任务属于旧草稿，不会覆盖当前数值预览。</p>}{job.error&&<p>{job.error}</p>}{job.state==='failed'&&job.definitionRevision===target?.definitionRevision&&<button type="button" className="text-btn" onClick={async()=>{try{const result=await api(`/api/generation/jobs/${job.id}/retry`,{});setJob(result.job)}catch(error){notify(readableError(error))}}}>重试这个版本的任务</button>}</div>}
+  </div>
         <section className="compile-receipt forge-receipt" id="offer-explanation" aria-label="生成依据">
           <header><span className="eyebrow">EVERY POINT HAS A REASON</span><h2><Icon name="shield" size={19}/>生成依据<span>v{OFFER_COMPILER_VERSION}</span></h2><p>从真实条件，到最终三项属性。</p></header>
           {preview&&tuning&&template?<>
@@ -186,8 +161,9 @@ export default function CreateOffer({onSaved,onBuild,notify}:{onSaved:(offer:Off
             </div>
             <footer>同一组条件始终生成相同属性。改名或换图不提供加成。行业与城市档位采用固定游戏规则，你可以为新岗位选择合适的类型与实际条件。</footer>
           </>:<div className="forge-receipt-unavailable"><Icon name="info" size={24}/><p>{previewError||'完成表单后，这里会逐项展示生成依据。'}</p><button type="button" className="text-btn" onClick={()=>jumpTo('offer-fields')}>返回完善信息 <Icon name="arrow" size={14}/></button></div>}
-        </section>
-      </aside>
-    </div>
-  </div>;
+        </section>  </aside></div>
+  {shareOffer&&<ShareDialog source={{offer:shareOffer}} onClose={()=>setShareOffer(null)} notify={notify}/> }
+  {conflict&&<Modal title="这张卡有更新的版本" onClose={()=>setConflict(null)}><p>已保存「{conflict.name}」定义第 {conflict.definitionRevision??1} 版。你的草稿仍保留，没有覆盖别的页面的修改。</p><button type="button" className="btn gold" onClick={()=>{change(draftFromOffer(conflict,draft.revision+1));setTarget(conflict);setIntent('revise');setSaved(null);setConflict(null)}}>载入已保存的最新版本</button><button type="button" className="btn subtle" onClick={()=>{setTarget(conflict);setIntent('copy');change({...draft,revision:draft.revision+1});setConflict(null)}}>把我的修改另存副本</button></Modal>}
+  {mergeCandidate&&<Modal title="确认合并字段差异" onClose={()=>setMergeCandidate(null)}><p>只有下列已提取字段会覆盖当前值。其他字段保留；条款与玩法类型将重新确认。</p><div style={{maxHeight:'50vh',overflow:'auto'}}>{mergeDiff(draft,mergeCandidate).map(row=><p key={row.key}><strong>{row.label}</strong>：{String(row.before??'未填写')} → {String(row.after)}</p>)}</div><button type="button" className="btn gold" onClick={()=>{change(mergeParsedDraft(draft,mergeCandidate));setMergeCandidate(null)}}>确认合并这些字段</button><button type="button" className="btn subtle" onClick={()=>setMergeCandidate(null)}>取消合并</button></Modal>}
+ </div>;
 }

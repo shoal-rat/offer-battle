@@ -1,0 +1,1473 @@
+{
+  "schemaVersion": 1,
+  "kind": "starter-deck-paired-pilot",
+  "generatedAt": "2026-09-26T19:32:17.795Z",
+  "definitionHash": "2e0f3900d043a7070b67c142d6fff354b7a403727805e0df192b6e37eee2694e",
+  "botVersion": "2.2.0",
+  "battleRulesVersion": "2.0.0",
+  "offerCompilerVersion": "2.1.0",
+  "status": "completed",
+  "requestedGames": 60,
+  "completedGames": 60,
+  "seedBase": 27092751,
+  "seedsPerMatchup": 2,
+  "command": [
+    "npx",
+    "tsx",
+    "scripts/benchmark-starter-decks.ts",
+    "--seeds",
+    "2",
+    "--seed",
+    "27092751",
+    "--style",
+    "mixed"
+  ],
+  "styleOption": "mixed",
+  "environment": {
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "method": "All 15 pairings; same initialization seed twice while swapping whole preset loadouts between seats. Both use the same normal difficulty and selected style in each pair, with the production node budget, with wall-clock guard disabled for reproducibility. Full setup uses each preset default flex; normal AI chooses mulligan. Never changes firstPlayerId or any rule stat. 2000-resample seed/opponent pair-cluster bootstrap.",
+  "elapsedSeconds": 67.742954042,
+  "illegalCommands": 0,
+  "allReplaysMatch": true,
+  "decisions": {
+    "count": 4501,
+    "p95Ms": 43.02966600000218,
+    "p95Nodes": 278
+  },
+  "decks": [
+    {
+      "id": "starter-01",
+      "label": "预设1 · 稳步入职",
+      "games": 20,
+      "wins": 13,
+      "losses": 7,
+      "draws": 0,
+      "scoreRate": 0.65,
+      "styles": {
+        "control": {
+          "games": 8,
+          "wins": 4,
+          "losses": 4,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        "aggressive": {
+          "games": 6,
+          "wins": 5,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.8333333333333334
+        },
+        "growth": {
+          "games": 6,
+          "wins": 4,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.6666666666666666
+        }
+      },
+      "pairedBootstrap95": [
+        0.4,
+        0.85
+      ],
+      "first": {
+        "games": 10,
+        "wins": 8,
+        "losses": 2,
+        "draws": 0,
+        "scoreRate": 0.8
+      },
+      "second": {
+        "games": 10,
+        "wins": 5,
+        "losses": 5,
+        "draws": 0,
+        "scoreRate": 0.5
+      },
+      "opponents": [
+        {
+          "id": "starter-02",
+          "label": "预设2 · 先稳后进",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-03",
+          "label": "预设3 · 人脉接力",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-04",
+          "label": "预设4 · 争取这一轮",
+          "games": 4,
+          "wins": 4,
+          "losses": 0,
+          "draws": 0,
+          "scoreRate": 1
+        },
+        {
+          "id": "starter-05",
+          "label": "预设5 · 看清再出招",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-06",
+          "label": "预设6（需解锁）",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        }
+      ]
+    },
+    {
+      "id": "starter-02",
+      "label": "预设2 · 先稳后进",
+      "games": 20,
+      "wins": 11,
+      "losses": 9,
+      "draws": 0,
+      "scoreRate": 0.55,
+      "styles": {
+        "control": {
+          "games": 6,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        "aggressive": {
+          "games": 8,
+          "wins": 5,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.625
+        },
+        "growth": {
+          "games": 6,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.5
+        }
+      },
+      "pairedBootstrap95": [
+        0.4,
+        0.7
+      ],
+      "first": {
+        "games": 10,
+        "wins": 9,
+        "losses": 1,
+        "draws": 0,
+        "scoreRate": 0.9
+      },
+      "second": {
+        "games": 10,
+        "wins": 2,
+        "losses": 8,
+        "draws": 0,
+        "scoreRate": 0.2
+      },
+      "opponents": [
+        {
+          "id": "starter-01",
+          "label": "预设1 · 稳步入职",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-03",
+          "label": "预设3 · 人脉接力",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        },
+        {
+          "id": "starter-04",
+          "label": "预设4 · 争取这一轮",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        },
+        {
+          "id": "starter-05",
+          "label": "预设5 · 看清再出招",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-06",
+          "label": "预设6（需解锁）",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        }
+      ]
+    },
+    {
+      "id": "starter-03",
+      "label": "预设3 · 人脉接力",
+      "games": 20,
+      "wins": 12,
+      "losses": 8,
+      "draws": 0,
+      "scoreRate": 0.6,
+      "styles": {
+        "control": {
+          "games": 6,
+          "wins": 3,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        "aggressive": {
+          "games": 6,
+          "wins": 2,
+          "losses": 4,
+          "draws": 0,
+          "scoreRate": 0.3333333333333333
+        },
+        "growth": {
+          "games": 8,
+          "wins": 7,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.875
+        }
+      },
+      "pairedBootstrap95": [
+        0.35,
+        0.85
+      ],
+      "first": {
+        "games": 10,
+        "wins": 8,
+        "losses": 2,
+        "draws": 0,
+        "scoreRate": 0.8
+      },
+      "second": {
+        "games": 10,
+        "wins": 4,
+        "losses": 6,
+        "draws": 0,
+        "scoreRate": 0.4
+      },
+      "opponents": [
+        {
+          "id": "starter-01",
+          "label": "预设1 · 稳步入职",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-02",
+          "label": "预设2 · 先稳后进",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        },
+        {
+          "id": "starter-04",
+          "label": "预设4 · 争取这一轮",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-05",
+          "label": "预设5 · 看清再出招",
+          "games": 4,
+          "wins": 4,
+          "losses": 0,
+          "draws": 0,
+          "scoreRate": 1
+        },
+        {
+          "id": "starter-06",
+          "label": "预设6（需解锁）",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        }
+      ]
+    },
+    {
+      "id": "starter-04",
+      "label": "预设4 · 争取这一轮",
+      "games": 20,
+      "wins": 6,
+      "losses": 14,
+      "draws": 0,
+      "scoreRate": 0.3,
+      "styles": {
+        "control": {
+          "games": 8,
+          "wins": 2,
+          "losses": 6,
+          "draws": 0,
+          "scoreRate": 0.25
+        },
+        "aggressive": {
+          "games": 8,
+          "wins": 3,
+          "losses": 5,
+          "draws": 0,
+          "scoreRate": 0.375
+        },
+        "growth": {
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        }
+      },
+      "pairedBootstrap95": [
+        0.1,
+        0.5
+      ],
+      "first": {
+        "games": 10,
+        "wins": 4,
+        "losses": 6,
+        "draws": 0,
+        "scoreRate": 0.4
+      },
+      "second": {
+        "games": 10,
+        "wins": 2,
+        "losses": 8,
+        "draws": 0,
+        "scoreRate": 0.2
+      },
+      "opponents": [
+        {
+          "id": "starter-01",
+          "label": "预设1 · 稳步入职",
+          "games": 4,
+          "wins": 0,
+          "losses": 4,
+          "draws": 0,
+          "scoreRate": 0
+        },
+        {
+          "id": "starter-02",
+          "label": "预设2 · 先稳后进",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        },
+        {
+          "id": "starter-03",
+          "label": "预设3 · 人脉接力",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-05",
+          "label": "预设5 · 看清再出招",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-06",
+          "label": "预设6（需解锁）",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        }
+      ]
+    },
+    {
+      "id": "starter-05",
+      "label": "预设5 · 看清再出招",
+      "games": 20,
+      "wins": 6,
+      "losses": 14,
+      "draws": 0,
+      "scoreRate": 0.3,
+      "styles": {
+        "control": {
+          "games": 8,
+          "wins": 5,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.625
+        },
+        "aggressive": {
+          "games": 6,
+          "wins": 0,
+          "losses": 6,
+          "draws": 0,
+          "scoreRate": 0
+        },
+        "growth": {
+          "games": 6,
+          "wins": 1,
+          "losses": 5,
+          "draws": 0,
+          "scoreRate": 0.16666666666666666
+        }
+      },
+      "pairedBootstrap95": [
+        0.05,
+        0.55
+      ],
+      "first": {
+        "games": 10,
+        "wins": 4,
+        "losses": 6,
+        "draws": 0,
+        "scoreRate": 0.4
+      },
+      "second": {
+        "games": 10,
+        "wins": 2,
+        "losses": 8,
+        "draws": 0,
+        "scoreRate": 0.2
+      },
+      "opponents": [
+        {
+          "id": "starter-01",
+          "label": "预设1 · 稳步入职",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-02",
+          "label": "预设2 · 先稳后进",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-03",
+          "label": "预设3 · 人脉接力",
+          "games": 4,
+          "wins": 0,
+          "losses": 4,
+          "draws": 0,
+          "scoreRate": 0
+        },
+        {
+          "id": "starter-04",
+          "label": "预设4 · 争取这一轮",
+          "games": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "scoreRate": 0.5
+        },
+        {
+          "id": "starter-06",
+          "label": "预设6（需解锁）",
+          "games": 4,
+          "wins": 0,
+          "losses": 4,
+          "draws": 0,
+          "scoreRate": 0
+        }
+      ]
+    },
+    {
+      "id": "starter-06",
+      "label": "预设6（需解锁）",
+      "games": 20,
+      "wins": 12,
+      "losses": 8,
+      "draws": 0,
+      "scoreRate": 0.6,
+      "styles": {
+        "control": {
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        },
+        "aggressive": {
+          "games": 6,
+          "wins": 5,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.8333333333333334
+        },
+        "growth": {
+          "games": 10,
+          "wins": 4,
+          "losses": 6,
+          "draws": 0,
+          "scoreRate": 0.4
+        }
+      },
+      "pairedBootstrap95": [
+        0.35,
+        0.85
+      ],
+      "first": {
+        "games": 10,
+        "wins": 7,
+        "losses": 3,
+        "draws": 0,
+        "scoreRate": 0.7
+      },
+      "second": {
+        "games": 10,
+        "wins": 5,
+        "losses": 5,
+        "draws": 0,
+        "scoreRate": 0.5
+      },
+      "opponents": [
+        {
+          "id": "starter-01",
+          "label": "预设1 · 稳步入职",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        },
+        {
+          "id": "starter-02",
+          "label": "预设2 · 先稳后进",
+          "games": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "scoreRate": 0.25
+        },
+        {
+          "id": "starter-03",
+          "label": "预设3 · 人脉接力",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        },
+        {
+          "id": "starter-04",
+          "label": "预设4 · 争取这一轮",
+          "games": 4,
+          "wins": 3,
+          "losses": 1,
+          "draws": 0,
+          "scoreRate": 0.75
+        },
+        {
+          "id": "starter-05",
+          "label": "预设5 · 看清再出招",
+          "games": 4,
+          "wins": 4,
+          "losses": 0,
+          "draws": 0,
+          "scoreRate": 1
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "A small pilot among these six starting decks is not proof of global balance or that no stronger deck exists.",
+    "Both players use the same normal policy/style within each pair; style breakdown is reported. Human choices and improved builds can change rankings.",
+    "Confidence intervals treat both seats of the same seed/opponent as one cluster; sample size is still small.",
+    "Runtime timing is local Node computation, not browser/mobile performance.",
+    "The optional sixth preset is only identified by a neutral label in this public report."
+  ],
+  "records": [
+    {
+      "pair": 0,
+      "seed": 27197480,
+      "swap": 0,
+      "style": "control",
+      "left": 0,
+      "right": 1,
+      "first": 1,
+      "winner": 1,
+      "round": 11,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "5b621985"
+    },
+    {
+      "pair": 0,
+      "seed": 27197480,
+      "swap": 1,
+      "style": "control",
+      "left": 0,
+      "right": 1,
+      "first": 0,
+      "winner": 0,
+      "round": 8,
+      "commands": 54,
+      "replayVerified": true,
+      "stateHash": "ed9c0754"
+    },
+    {
+      "pair": 1,
+      "seed": 27302209,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 0,
+      "right": 1,
+      "first": 0,
+      "winner": 0,
+      "round": 12,
+      "commands": 95,
+      "replayVerified": true,
+      "stateHash": "ac754ce2"
+    },
+    {
+      "pair": 1,
+      "seed": 27302209,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 0,
+      "right": 1,
+      "first": 1,
+      "winner": 1,
+      "round": 8,
+      "commands": 53,
+      "replayVerified": true,
+      "stateHash": "bbeb2b18"
+    },
+    {
+      "pair": 2,
+      "seed": 27406938,
+      "swap": 0,
+      "style": "growth",
+      "left": 0,
+      "right": 2,
+      "first": 2,
+      "winner": 2,
+      "round": 9,
+      "commands": 67,
+      "replayVerified": true,
+      "stateHash": "30df52a3"
+    },
+    {
+      "pair": 2,
+      "seed": 27406938,
+      "swap": 1,
+      "style": "growth",
+      "left": 0,
+      "right": 2,
+      "first": 0,
+      "winner": 2,
+      "round": 12,
+      "commands": 76,
+      "replayVerified": true,
+      "stateHash": "322df078"
+    },
+    {
+      "pair": 3,
+      "seed": 27511667,
+      "swap": 0,
+      "style": "control",
+      "left": 0,
+      "right": 2,
+      "first": 0,
+      "winner": 0,
+      "round": 11,
+      "commands": 76,
+      "replayVerified": true,
+      "stateHash": "fc966797"
+    },
+    {
+      "pair": 3,
+      "seed": 27511667,
+      "swap": 1,
+      "style": "control",
+      "left": 0,
+      "right": 2,
+      "first": 2,
+      "winner": 0,
+      "round": 12,
+      "commands": 86,
+      "replayVerified": true,
+      "stateHash": "46ec5082"
+    },
+    {
+      "pair": 4,
+      "seed": 27616396,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 0,
+      "right": 3,
+      "first": 0,
+      "winner": 0,
+      "round": 10,
+      "commands": 75,
+      "replayVerified": true,
+      "stateHash": "a8821536"
+    },
+    {
+      "pair": 4,
+      "seed": 27616396,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 0,
+      "right": 3,
+      "first": 3,
+      "winner": 0,
+      "round": 12,
+      "commands": 87,
+      "replayVerified": true,
+      "stateHash": "1f85b42f"
+    },
+    {
+      "pair": 5,
+      "seed": 27721125,
+      "swap": 0,
+      "style": "growth",
+      "left": 0,
+      "right": 3,
+      "first": 0,
+      "winner": 0,
+      "round": 11,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "698df69c"
+    },
+    {
+      "pair": 5,
+      "seed": 27721125,
+      "swap": 1,
+      "style": "growth",
+      "left": 0,
+      "right": 3,
+      "first": 3,
+      "winner": 0,
+      "round": 12,
+      "commands": 87,
+      "replayVerified": true,
+      "stateHash": "21ad5353"
+    },
+    {
+      "pair": 6,
+      "seed": 27825854,
+      "swap": 0,
+      "style": "control",
+      "left": 0,
+      "right": 4,
+      "first": 0,
+      "winner": 4,
+      "round": 11,
+      "commands": 82,
+      "replayVerified": true,
+      "stateHash": "ebea47ea"
+    },
+    {
+      "pair": 6,
+      "seed": 27825854,
+      "swap": 1,
+      "style": "control",
+      "left": 0,
+      "right": 4,
+      "first": 4,
+      "winner": 4,
+      "round": 8,
+      "commands": 59,
+      "replayVerified": true,
+      "stateHash": "8a39b86e"
+    },
+    {
+      "pair": 7,
+      "seed": 27930583,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 0,
+      "right": 4,
+      "first": 4,
+      "winner": 0,
+      "round": 12,
+      "commands": 94,
+      "replayVerified": true,
+      "stateHash": "6d826fc7"
+    },
+    {
+      "pair": 7,
+      "seed": 27930583,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 0,
+      "right": 4,
+      "first": 0,
+      "winner": 0,
+      "round": 12,
+      "commands": 87,
+      "replayVerified": true,
+      "stateHash": "a8337e18"
+    },
+    {
+      "pair": 8,
+      "seed": 28035312,
+      "swap": 0,
+      "style": "growth",
+      "left": 0,
+      "right": 5,
+      "first": 0,
+      "winner": 0,
+      "round": 12,
+      "commands": 87,
+      "replayVerified": true,
+      "stateHash": "f3b3308e"
+    },
+    {
+      "pair": 8,
+      "seed": 28035312,
+      "swap": 1,
+      "style": "growth",
+      "left": 0,
+      "right": 5,
+      "first": 5,
+      "winner": 0,
+      "round": 12,
+      "commands": 79,
+      "replayVerified": true,
+      "stateHash": "5b81c33b"
+    },
+    {
+      "pair": 9,
+      "seed": 28140041,
+      "swap": 0,
+      "style": "control",
+      "left": 0,
+      "right": 5,
+      "first": 0,
+      "winner": 0,
+      "round": 12,
+      "commands": 89,
+      "replayVerified": true,
+      "stateHash": "d5682ac5"
+    },
+    {
+      "pair": 9,
+      "seed": 28140041,
+      "swap": 1,
+      "style": "control",
+      "left": 0,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 77,
+      "replayVerified": true,
+      "stateHash": "8c404c56"
+    },
+    {
+      "pair": 10,
+      "seed": 28244770,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 1,
+      "right": 2,
+      "first": 1,
+      "winner": 1,
+      "round": 11,
+      "commands": 75,
+      "replayVerified": true,
+      "stateHash": "4fe11780"
+    },
+    {
+      "pair": 10,
+      "seed": 28244770,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 1,
+      "right": 2,
+      "first": 2,
+      "winner": 2,
+      "round": 10,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "4f91a054"
+    },
+    {
+      "pair": 11,
+      "seed": 28349499,
+      "swap": 0,
+      "style": "growth",
+      "left": 1,
+      "right": 2,
+      "first": 1,
+      "winner": 2,
+      "round": 10,
+      "commands": 75,
+      "replayVerified": true,
+      "stateHash": "04715fd8"
+    },
+    {
+      "pair": 11,
+      "seed": 28349499,
+      "swap": 1,
+      "style": "growth",
+      "left": 1,
+      "right": 2,
+      "first": 2,
+      "winner": 2,
+      "round": 11,
+      "commands": 77,
+      "replayVerified": true,
+      "stateHash": "5f16cb6a"
+    },
+    {
+      "pair": 12,
+      "seed": 28454228,
+      "swap": 0,
+      "style": "control",
+      "left": 1,
+      "right": 3,
+      "first": 3,
+      "winner": 3,
+      "round": 7,
+      "commands": 54,
+      "replayVerified": true,
+      "stateHash": "c345dfcb"
+    },
+    {
+      "pair": 12,
+      "seed": 28454228,
+      "swap": 1,
+      "style": "control",
+      "left": 1,
+      "right": 3,
+      "first": 1,
+      "winner": 1,
+      "round": 8,
+      "commands": 57,
+      "replayVerified": true,
+      "stateHash": "fe97fc70"
+    },
+    {
+      "pair": 13,
+      "seed": 28558957,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 1,
+      "right": 3,
+      "first": 1,
+      "winner": 1,
+      "round": 12,
+      "commands": 85,
+      "replayVerified": true,
+      "stateHash": "1deb80db"
+    },
+    {
+      "pair": 13,
+      "seed": 28558957,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 1,
+      "right": 3,
+      "first": 3,
+      "winner": 1,
+      "round": 12,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "ea4210fa"
+    },
+    {
+      "pair": 14,
+      "seed": 28663686,
+      "swap": 0,
+      "style": "growth",
+      "left": 1,
+      "right": 4,
+      "first": 4,
+      "winner": 4,
+      "round": 10,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "90e7deea"
+    },
+    {
+      "pair": 14,
+      "seed": 28663686,
+      "swap": 1,
+      "style": "growth",
+      "left": 1,
+      "right": 4,
+      "first": 1,
+      "winner": 1,
+      "round": 12,
+      "commands": 86,
+      "replayVerified": true,
+      "stateHash": "fc454221"
+    },
+    {
+      "pair": 15,
+      "seed": 28768415,
+      "swap": 0,
+      "style": "control",
+      "left": 1,
+      "right": 4,
+      "first": 1,
+      "winner": 1,
+      "round": 10,
+      "commands": 79,
+      "replayVerified": true,
+      "stateHash": "9e78e369"
+    },
+    {
+      "pair": 15,
+      "seed": 28768415,
+      "swap": 1,
+      "style": "control",
+      "left": 1,
+      "right": 4,
+      "first": 4,
+      "winner": 4,
+      "round": 12,
+      "commands": 97,
+      "replayVerified": true,
+      "stateHash": "6de46aec"
+    },
+    {
+      "pair": 16,
+      "seed": 28873144,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 1,
+      "right": 5,
+      "first": 1,
+      "winner": 1,
+      "round": 9,
+      "commands": 64,
+      "replayVerified": true,
+      "stateHash": "158f71ff"
+    },
+    {
+      "pair": 16,
+      "seed": 28873144,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 1,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "d9acf7a0"
+    },
+    {
+      "pair": 17,
+      "seed": 28977873,
+      "swap": 0,
+      "style": "growth",
+      "left": 1,
+      "right": 5,
+      "first": 5,
+      "winner": 1,
+      "round": 10,
+      "commands": 71,
+      "replayVerified": true,
+      "stateHash": "22d03195"
+    },
+    {
+      "pair": 17,
+      "seed": 28977873,
+      "swap": 1,
+      "style": "growth",
+      "left": 1,
+      "right": 5,
+      "first": 1,
+      "winner": 1,
+      "round": 8,
+      "commands": 55,
+      "replayVerified": true,
+      "stateHash": "27431598"
+    },
+    {
+      "pair": 18,
+      "seed": 29082602,
+      "swap": 0,
+      "style": "control",
+      "left": 2,
+      "right": 3,
+      "first": 2,
+      "winner": 2,
+      "round": 9,
+      "commands": 70,
+      "replayVerified": true,
+      "stateHash": "3caa934c"
+    },
+    {
+      "pair": 18,
+      "seed": 29082602,
+      "swap": 1,
+      "style": "control",
+      "left": 2,
+      "right": 3,
+      "first": 3,
+      "winner": 3,
+      "round": 11,
+      "commands": 80,
+      "replayVerified": true,
+      "stateHash": "36d18afe"
+    },
+    {
+      "pair": 19,
+      "seed": 29187331,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 2,
+      "right": 3,
+      "first": 3,
+      "winner": 3,
+      "round": 12,
+      "commands": 87,
+      "replayVerified": true,
+      "stateHash": "48d662ce"
+    },
+    {
+      "pair": 19,
+      "seed": 29187331,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 2,
+      "right": 3,
+      "first": 2,
+      "winner": 2,
+      "round": 8,
+      "commands": 56,
+      "replayVerified": true,
+      "stateHash": "a4a569eb"
+    },
+    {
+      "pair": 20,
+      "seed": 29292060,
+      "swap": 0,
+      "style": "growth",
+      "left": 2,
+      "right": 4,
+      "first": 2,
+      "winner": 2,
+      "round": 12,
+      "commands": 83,
+      "replayVerified": true,
+      "stateHash": "5f944ab8"
+    },
+    {
+      "pair": 20,
+      "seed": 29292060,
+      "swap": 1,
+      "style": "growth",
+      "left": 2,
+      "right": 4,
+      "first": 4,
+      "winner": 2,
+      "round": 12,
+      "commands": 81,
+      "replayVerified": true,
+      "stateHash": "e623f4b6"
+    },
+    {
+      "pair": 21,
+      "seed": 29396789,
+      "swap": 0,
+      "style": "control",
+      "left": 2,
+      "right": 4,
+      "first": 2,
+      "winner": 2,
+      "round": 11,
+      "commands": 82,
+      "replayVerified": true,
+      "stateHash": "c8e3bfe6"
+    },
+    {
+      "pair": 21,
+      "seed": 29396789,
+      "swap": 1,
+      "style": "control",
+      "left": 2,
+      "right": 4,
+      "first": 4,
+      "winner": 2,
+      "round": 12,
+      "commands": 83,
+      "replayVerified": true,
+      "stateHash": "a54cb7de"
+    },
+    {
+      "pair": 22,
+      "seed": 29501518,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 2,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 75,
+      "replayVerified": true,
+      "stateHash": "9de5622d"
+    },
+    {
+      "pair": 22,
+      "seed": 29501518,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 2,
+      "right": 5,
+      "first": 2,
+      "winner": 5,
+      "round": 12,
+      "commands": 78,
+      "replayVerified": true,
+      "stateHash": "c6b5791e"
+    },
+    {
+      "pair": 23,
+      "seed": 29606247,
+      "swap": 0,
+      "style": "growth",
+      "left": 2,
+      "right": 5,
+      "first": 2,
+      "winner": 2,
+      "round": 12,
+      "commands": 81,
+      "replayVerified": true,
+      "stateHash": "7668d8e5"
+    },
+    {
+      "pair": 23,
+      "seed": 29606247,
+      "swap": 1,
+      "style": "growth",
+      "left": 2,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 76,
+      "replayVerified": true,
+      "stateHash": "d813a760"
+    },
+    {
+      "pair": 24,
+      "seed": 29710976,
+      "swap": 0,
+      "style": "control",
+      "left": 3,
+      "right": 4,
+      "first": 4,
+      "winner": 4,
+      "round": 11,
+      "commands": 82,
+      "replayVerified": true,
+      "stateHash": "7036f5fc"
+    },
+    {
+      "pair": 24,
+      "seed": 29710976,
+      "swap": 1,
+      "style": "control",
+      "left": 3,
+      "right": 4,
+      "first": 3,
+      "winner": 4,
+      "round": 9,
+      "commands": 69,
+      "replayVerified": true,
+      "stateHash": "f3bbc79b"
+    },
+    {
+      "pair": 25,
+      "seed": 29815705,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 3,
+      "right": 4,
+      "first": 3,
+      "winner": 3,
+      "round": 12,
+      "commands": 85,
+      "replayVerified": true,
+      "stateHash": "dd070f73"
+    },
+    {
+      "pair": 25,
+      "seed": 29815705,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 3,
+      "right": 4,
+      "first": 4,
+      "winner": 3,
+      "round": 9,
+      "commands": 73,
+      "replayVerified": true,
+      "stateHash": "a738d812"
+    },
+    {
+      "pair": 26,
+      "seed": 29920434,
+      "swap": 0,
+      "style": "growth",
+      "left": 3,
+      "right": 5,
+      "first": 3,
+      "winner": 5,
+      "round": 12,
+      "commands": 80,
+      "replayVerified": true,
+      "stateHash": "c365ef18"
+    },
+    {
+      "pair": 26,
+      "seed": 29920434,
+      "swap": 1,
+      "style": "growth",
+      "left": 3,
+      "right": 5,
+      "first": 5,
+      "winner": 3,
+      "round": 9,
+      "commands": 69,
+      "replayVerified": true,
+      "stateHash": "9a5aaa76"
+    },
+    {
+      "pair": 27,
+      "seed": 30025163,
+      "swap": 0,
+      "style": "control",
+      "left": 3,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 74,
+      "replayVerified": true,
+      "stateHash": "ab132564"
+    },
+    {
+      "pair": 27,
+      "seed": 30025163,
+      "swap": 1,
+      "style": "control",
+      "left": 3,
+      "right": 5,
+      "first": 3,
+      "winner": 5,
+      "round": 12,
+      "commands": 81,
+      "replayVerified": true,
+      "stateHash": "ffdd8733"
+    },
+    {
+      "pair": 28,
+      "seed": 30129892,
+      "swap": 0,
+      "style": "aggressive",
+      "left": 4,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 84,
+      "replayVerified": true,
+      "stateHash": "38ede5c4"
+    },
+    {
+      "pair": 28,
+      "seed": 30129892,
+      "swap": 1,
+      "style": "aggressive",
+      "left": 4,
+      "right": 5,
+      "first": 4,
+      "winner": 5,
+      "round": 12,
+      "commands": 77,
+      "replayVerified": true,
+      "stateHash": "f6a68534"
+    },
+    {
+      "pair": 29,
+      "seed": 30234621,
+      "swap": 0,
+      "style": "growth",
+      "left": 4,
+      "right": 5,
+      "first": 5,
+      "winner": 5,
+      "round": 12,
+      "commands": 91,
+      "replayVerified": true,
+      "stateHash": "eadfdbdb"
+    },
+    {
+      "pair": 29,
+      "seed": 30234621,
+      "swap": 1,
+      "style": "growth",
+      "left": 4,
+      "right": 5,
+      "first": 4,
+      "winner": 5,
+      "round": 12,
+      "commands": 80,
+      "replayVerified": true,
+      "stateHash": "0a2871c4"
+    }
+  ]
+}

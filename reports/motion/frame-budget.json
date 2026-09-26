@@ -1,0 +1,17 @@
+{
+  "actions": 39,
+  "sampleMs": 30365.5,
+  "frames": 1800,
+  "estimatedRefreshHz": 59.88023952095874,
+  "p95Ms": 16.799999999999272,
+  "over50Ratio": 0,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "hardwareConcurrency": 10,
+  "viewport": [
+    1440,
+    900
+  ],
+  "devicePixelRatio": 1,
+  "visibility": "visible",
+  "method": "Real-time Chromium requestAnimationFrame sampling with confirmed engine events; headless laboratory sample, not a physical mobile device."
+}

@@ -1,10 +1,12 @@
+import {experimentFlags,createSeries,recordSeriesResult,seriesNextLoadouts,seriesReady,seriesSummary,seriesDescriptor,type ExperimentDescriptor,type SeriesState} from '../src/game/experiments';
+import {invitationPreview} from '../src/game/invitation';
 import {currentLoadout} from '../src/game/offer-compat';
 import {DurableObject} from 'cloudflare:workers';
 import {applyCommand,createMatch,getView} from '../src/game/index';
 import type {Command,Loadout,MatchState} from '../src/game/types';
 import {DAY,Documents,Fault,body,failure,json,replay,stable,uid,type Env,type Journal,type Principal,type RecordInput} from './shared';
 interface Seat {id:string;accountId:string;name:string;ready:boolean;loadout:Loadout}
-interface Room {id:string;code:string;seats:Seat[];status:'waiting'|'playing'|'finished';matchId:string|null;deadline:number|null;createdAt:number;expires:number}
+interface Room {experiment?:ExperimentDescriptor;series?:SeriesState;publishLineup?:boolean;id:string;code:string;seats:Seat[];status:'waiting'|'playing'|'finished';matchId:string|null;deadline:number|null;createdAt:number;expires:number}
 interface Attachment {accountId:string;tokenHash:string;expires:number;window:number;messages:number}
 export class BattleRoom extends DurableObject<Env> {
  private sql:SqlStorage;private docs:Documents;private deleted=false;
@@ -19,11 +21,12 @@ export class BattleRoom extends DurableObject<Env> {
  private room(){const room=this.deleted?null:this.docs.get<Room>('room');if(!room)throw new Fault(404,'房间已过期，请重新创建');return room;}
  private state(room:Room){return room.matchId?this.docs.get<MatchState>('state:'+room.matchId):null;}
  private seat(room:Room,accountId:string){const seat=room.seats.find(s=>s.accountId===accountId);if(!seat)throw new Fault(403,'你没有这个房间的席位');return seat;}
- private snapshot(room:Room,seat:Seat){const state=this.state(room),view=state?getView(state,seat.id):null;return {roomId:room.id,code:room.code,playerId:seat.id,room:{id:room.id,roomId:room.id,code:room.code,mode:'friend',status:room.status,deadline:room.deadline,version:state?.version??0,players:room.seats.map(s=>({id:s.id,name:s.name,ready:s.ready,isBot:false,connected:this.ctx.getWebSockets().some(ws=>{const a=ws.deserializeAttachment() as Attachment;return a.accountId===s.accountId&&a.expires>Date.now();}),primaryId:s.loadout.primaryId,secondaryId:s.loadout.secondaryId}))},view:view?{...view,stateVersion:view.version,deadline:room.deadline}:null,events:view?.events??[]};}
+ private snapshot(room:Room,seat:Seat){const state=this.state(room),view=state?getView(state,seat.id):null;return {roomId:room.id,code:room.code,playerId:seat.id,room:{id:room.id,roomId:room.id,code:room.code,mode:'friend',status:room.status,...(room.experiment?{experimentId:room.experiment.id,experiment:room.experiment}:{}),...(room.series?{series:seriesSummary(room.series)}:{}),deadline:room.deadline,version:state?.version??0,players:room.seats.map(s=>({id:s.id,name:s.name,ready:s.ready,isBot:false,connected:this.ctx.getWebSockets().some(ws=>{const a=ws.deserializeAttachment() as Attachment;return a.accountId===s.accountId&&a.expires>Date.now();}),primaryId:s.loadout.primaryId,secondaryId:s.loadout.secondaryId}))},view:view?{...view,stateVersion:view.version,deadline:room.deadline}:null,events:view?.events??[]};}
  private persist(room:Room,state?:MatchState){this.docs.put('room',room);if(state)this.docs.put('state:'+state.matchId,state);}
  private async schedule(room:Room){await this.ctx.storage.setAlarm(room.deadline??room.expires);}
  private start(room:Room){
   try{for(const seat of room.seats)seat.loadout=currentLoadout(seat.loadout);}catch(error){throw new Fault(400,(error as Error).message);}
+  if(room.experiment?.kind==='series'){if(!room.series)room.series=createSeries(room.seats.map(s=>s.loadout) as [Loadout,Loadout],experimentFlags({series:true}));else{const next=seriesNextLoadouts(room.series);room.series=next.series;room.seats.forEach((seat,i)=>seat.loadout=next.loadouts[i]);}}
   const seed=crypto.getRandomValues(new Uint32Array(1))[0],state=createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],seed,{matchId:uid('cloudmatch')});
   room.matchId=state.matchId;room.status='playing';room.deadline=Date.now()+Number(this.env.SETUP_MS??20000);room.expires=Date.now()+Number(this.env.ROOM_RETENTION_MS??7*DAY);
   this.sql.exec('INSERT INTO games VALUES (?,?)',state.matchId,Date.now());this.docs.put('initial:'+state.matchId,state);this.persist(room,state);
@@ -34,7 +37,7 @@ export class BattleRoom extends DurableObject<Env> {
   const result=applyCommand(state,seatId,command);if(result.error)return {ok:false,rejection:result.error,state};
   const next=result.state;
   this.sql.exec('INSERT INTO journal VALUES (?,?,?)',state.matchId,next.version,JSON.stringify({actorId:seatId,command}));
-  if(next.phase==='finished'){room.status='finished';room.deadline=null;room.expires=Date.now()+Number(this.env.ROOM_RETENTION_MS??7*DAY);}
+  if(next.phase==='finished'){if(room.series)room.series=recordSeriesResult(room.series,next.matchId,next.result);room.status='finished';room.deadline=null;room.expires=Date.now()+Number(this.env.ROOM_RETENTION_MS??7*DAY);}
   else if(next.phase!==state.phase||next.activePlayerId!==state.activePlayerId||next.round!==state.round)room.deadline=Date.now()+Number(next.phase==='playing'?this.env.TURN_MS??30000:this.env.SETUP_MS??20000);
   this.persist(room,next);return {ok:true,state:next};
  }
@@ -47,7 +50,7 @@ export class BattleRoom extends DurableObject<Env> {
  }
  private record(room:Room,seat:Seat,matchId=room.matchId){
   if(!matchId)throw new Fault(409,'对局尚未开始');const initialState=this.docs.get<MatchState>('initial:'+matchId),state=this.docs.get<MatchState>('state:'+matchId);if(!initialState||!state)throw new Fault(404,'这场对局已不在临时房间记录中');
-  return {record:{initialState,journal:[...this.sql.exec<{entry:string}>('SELECT entry FROM journal WHERE match_id=? ORDER BY seq',matchId)].map(r=>JSON.parse(r.entry) as Journal),selfId:seat.id} satisfies RecordInput,state};
+  return {record:{...(room.experiment?{experiment:room.experiment}:{}),initialState,journal:[...this.sql.exec<{entry:string}>('SELECT entry FROM journal WHERE match_id=? ORDER BY seq',matchId)].map(r=>JSON.parse(r.entry) as Journal),selfId:seat.id} satisfies RecordInput,state};
  }
  private execute(room:Room,seat:Seat,input:any){
   const cmd=input.command??input,state=this.state(room);
@@ -76,12 +79,13 @@ export class BattleRoom extends DurableObject<Env> {
  }
  async fetch(request:Request){try{return await this.handle(request);}catch(e){return failure(e);}}
  private async handle(request:Request):Promise<Response>{
+  if(new URL(request.url).pathname==='/preview'&&request.method==='GET'){const room=this.deleted?null:this.docs.get<Room>('room');return json(room?invitationPreview(room):{status:'expired'});}
   if(this.deleted)throw new Fault(404,'房间已过期');
   const principal=JSON.parse(request.headers.get('X-Principal')??'null') as Principal|null;if(!principal)throw new Fault(401,'请先登录','AUTH_REQUIRED');
   const url=new URL(request.url),path=url.pathname,input=request.method==='POST'?await body(request,150000):{};
   if(path==='/init'){
-   if(this.docs.get('room'))throw new Fault(409,'房间已存在');
-   const room:Room={id:input.roomId,code:input.code,seats:[{id:'p1',accountId:principal.account.id,name:principal.profile.nickname,ready:false,loadout:{...input.loadout,playerId:'p1'}}],status:'waiting',matchId:null,deadline:null,createdAt:Date.now(),expires:Date.now()+Number(this.env.WAITING_RETENTION_MS??DAY)};
+   if(this.docs.get('room'))throw new Fault(409,'房间已存在');if(input.experiment&&(input.experiment.kind!=='series'||input.experiment.enabled!==true||this.env.ENABLE_BEST_OF_THREE!=='true'))throw new Fault(400,'服务器未启用实验系列赛','EXPERIMENT_DISABLED');
+   const room:Room={id:input.roomId,code:input.code,publishLineup:input.publishLineup===true,...(input.experiment?{experiment:seriesDescriptor()}:{}),seats:[{id:'p1',accountId:principal.account.id,name:principal.profile.nickname,ready:false,loadout:{...input.loadout,playerId:'p1'}}],status:'waiting',matchId:null,deadline:null,createdAt:Date.now(),expires:Date.now()+Number(this.env.WAITING_RETENTION_MS??DAY)};
    this.persist(room);await this.schedule(room);return json(this.snapshot(room,room.seats[0]),201);
   }
   const room=this.room();if(room.expires<=Date.now()&&room.status!=='playing')throw new Fault(404,'房间已过期，请重新创建');
@@ -98,15 +102,15 @@ export class BattleRoom extends DurableObject<Env> {
   }
   if(path==='/ready'){
    if(room.status!=='waiting')throw new Fault(409,'比赛已开始');
-   this.ctx.storage.transactionSync(()=>{if(input.loadout)seat.loadout={...input.loadout,playerId:seat.id};seat.ready=input.ready!==false;if(room.seats.length===2&&room.seats.every(s=>s.ready))this.start(room);else this.persist(room);});
+   this.ctx.storage.transactionSync(()=>{if(room.series){try{room.series=seriesReady(room.series,seat.id,input)}catch(error){throw new Fault(400,(error as Error).message)}}else if(input.loadout)seat.loadout={...input.loadout,playerId:seat.id};seat.ready=input.ready!==false;if(room.seats.length===2&&room.seats.every(s=>s.ready))this.start(room);else this.persist(room);});
   }else if(path==='/command'){const result=this.execute(room,seat,input);await this.schedule(room);await this.broadcast();return json(result);}
   else if(path==='/rematch'){
-   if(room.status!=='finished')throw new Fault(409,'结束对局后可以重赛');
+   if(room.status!=='finished')throw new Fault(409,'结束对局后可以重赛');if(room.series){if(room.series.status==='finished')throw new Fault(409,'本组系列赛已结束，请新建房间');try{room.series=seriesReady(room.series,seat.id,input)}catch(error){throw new Fault(400,(error as Error).message)}}
    room.status='waiting';room.matchId=null;room.deadline=null;room.expires=Date.now()+Number(this.env.WAITING_RETENTION_MS??DAY);room.seats.forEach(s=>s.ready=s.id===seat.id);this.persist(room);
   }else if(path==='/record'||path==='/replay'){
    const {record,state}=this.record(room,seat,url.searchParams.get('matchId')??undefined);
    if(path==='/record'){if(state.phase!=='finished')throw new Fault(409,'仅可保存已完成对局');return json(record);}
-   const verified=replay(record,seat.id,false);return json({...verified,verified:stable(state)===stable(record.journal.reduce((s,e)=>applyCommand(s,e.actorId,e.command).state,structuredClone(record.initialState)))});
+   const verified=replay(record,seat.id,false);return json({...verified,...(room.experiment?{experiment:room.experiment}:{}),verified:stable(state)===stable(record.journal.reduce((s,e)=>applyCommand(s,e.actorId,e.command).state,structuredClone(record.initialState)))});
   }else if(path!=='/snapshot')throw new Fault(404,'接口不存在');
   await this.schedule(room);await this.broadcast();return json(this.snapshot(this.room(),seat));
  }

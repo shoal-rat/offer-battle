@@ -1,0 +1,753 @@
+[
+  {
+    "assetId": "secondary-S00",
+    "category": "overlay",
+    "ruleIds": [
+      "S00"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S00-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 689,
+      "sha256": "f73752392178a2caa06fb57e70791a978bcf9712c7cb83783f8e5fc973a08d8b"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S00/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S00-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 689,
+        "sha256": "f73752392178a2caa06fb57e70791a978bcf9712c7cb83783f8e5fc973a08d8b"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S00/seal.svg",
+        "sourcePath": "assets/paper-source/education/S00-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 527,
+        "sha256": "f122c6d1dd0d7b8d9cba1de6441499b2663bd23021063ec2b669b65368f84eaf"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S01",
+    "category": "overlay",
+    "ruleIds": [
+      "S01"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S01-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 687,
+      "sha256": "c21a8bbd164b0f516f772882d6234af3182e4ba3e769d69b4a906a2b648467ba"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S01/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S01-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 687,
+        "sha256": "c21a8bbd164b0f516f772882d6234af3182e4ba3e769d69b4a906a2b648467ba"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S01/seal.svg",
+        "sourcePath": "assets/paper-source/education/S01-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 525,
+        "sha256": "6657479a9888e73f1c918fd015d2d055137aa4735dbc3c3439d746e4fec4f2a5"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S02",
+    "category": "overlay",
+    "ruleIds": [
+      "S02"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S02-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 667,
+      "sha256": "7bf891167aca2d0e09aabbacf4e6e7366d999791cf28d08000813d1fe98a54ba"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S02/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S02-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 667,
+        "sha256": "7bf891167aca2d0e09aabbacf4e6e7366d999791cf28d08000813d1fe98a54ba"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S02/seal.svg",
+        "sourcePath": "assets/paper-source/education/S02-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 505,
+        "sha256": "53c929bcce32daead9cb3e0a8ac745ea80b12c43bbbed10de4b82dfab89a1c97"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S03",
+    "category": "overlay",
+    "ruleIds": [
+      "S03"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S03-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 639,
+      "sha256": "56431c251f3dcb2cdcee54d9990b79415a32e0bf755ab2840950b7fae1ca01f3"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S03/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S03-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 639,
+        "sha256": "56431c251f3dcb2cdcee54d9990b79415a32e0bf755ab2840950b7fae1ca01f3"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S03/seal.svg",
+        "sourcePath": "assets/paper-source/education/S03-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 477,
+        "sha256": "f6030c4e4324d65e11edef7e651b781f2c24b2d19fca165df189ebee9912c2e8"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S04",
+    "category": "overlay",
+    "ruleIds": [
+      "S04"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S04-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 626,
+      "sha256": "26a762c77aa665fdd3576b158ce8620140ce3d57e9a6762c97c13c21d766c56f"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S04/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S04-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 626,
+        "sha256": "26a762c77aa665fdd3576b158ce8620140ce3d57e9a6762c97c13c21d766c56f"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S04/seal.svg",
+        "sourcePath": "assets/paper-source/education/S04-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 464,
+        "sha256": "4578d35c1196178ba2a9b071db6af8134bfc6924d6f9bc945f0149a1e5664147"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S05",
+    "category": "overlay",
+    "ruleIds": [
+      "S05"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S05-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 648,
+      "sha256": "ef0619a065a3b7509e6bbc73ae6387ecbdc99232037a58836d2ac960c6033ff5"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S05/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S05-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 648,
+        "sha256": "ef0619a065a3b7509e6bbc73ae6387ecbdc99232037a58836d2ac960c6033ff5"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S05/seal.svg",
+        "sourcePath": "assets/paper-source/education/S05-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 486,
+        "sha256": "f0ddd9c49be825b30b2dd4b678f681e3f798595128ab73683330da7c9bb778db"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S06",
+    "category": "overlay",
+    "ruleIds": [
+      "S06"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S06-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 665,
+      "sha256": "82db2d884a1cb0a9e649c433cdc454f81d643b5f59730b5a18dcee71052bd95b"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S06/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S06-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 665,
+        "sha256": "82db2d884a1cb0a9e649c433cdc454f81d643b5f59730b5a18dcee71052bd95b"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S06/seal.svg",
+        "sourcePath": "assets/paper-source/education/S06-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 503,
+        "sha256": "406db43af576c9645707db0c67fe0f7eb9605f347d60007fe77b90d715e4d04e"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S07",
+    "category": "overlay",
+    "ruleIds": [
+      "S07"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S07-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 698,
+      "sha256": "288c74cacb117bfbdc34df189c9f473989cd27cff621f62ed95c651e5a49d2de"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S07/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S07-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 698,
+        "sha256": "288c74cacb117bfbdc34df189c9f473989cd27cff621f62ed95c651e5a49d2de"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S07/seal.svg",
+        "sourcePath": "assets/paper-source/education/S07-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 536,
+        "sha256": "385b332450e1d46959640aa6a21cd26cde0c5211997fd9c89cea854edb9b7635"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S08",
+    "category": "overlay",
+    "ruleIds": [
+      "S08"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S08-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 730,
+      "sha256": "924f23b2446432398591ac27e0cf3ba061596f1f74e79be084ece7fdf073ebc5"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S08/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S08-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 730,
+        "sha256": "924f23b2446432398591ac27e0cf3ba061596f1f74e79be084ece7fdf073ebc5"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S08/seal.svg",
+        "sourcePath": "assets/paper-source/education/S08-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 568,
+        "sha256": "57cbdcb2d7bf9b77cd08ee4c5d8d2329691af6793c43d1a0613db0139a782a4a"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S09",
+    "category": "overlay",
+    "ruleIds": [
+      "S09"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S09-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 642,
+      "sha256": "bef448cf683a38384904c4cc4ef9a956f6fa0a03d60291c7334dfd686a426f0b"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S09/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S09-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 642,
+        "sha256": "bef448cf683a38384904c4cc4ef9a956f6fa0a03d60291c7334dfd686a426f0b"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S09/seal.svg",
+        "sourcePath": "assets/paper-source/education/S09-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 480,
+        "sha256": "f7a2549b10f46b52dfb6414cb80f9af966f18df6d6a86d422dd6fe9dbf8ef109"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "secondary-S10",
+    "category": "overlay",
+    "ruleIds": [
+      "S10"
+    ],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/S10-accessory-v1.svg",
+      "width": 256,
+      "height": 256,
+      "bytes": 658,
+      "sha256": "465eadbf90cb9dd510d4dd6ec65c22ee981239073e79ce6e5f66816465a4fb98"
+    },
+    "runtime": {
+      "accessory": {
+        "path": "/assets/paper/education/S10/accessory.svg",
+        "sourcePath": "assets/paper-source/education/S10-accessory-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 658,
+        "sha256": "465eadbf90cb9dd510d4dd6ec65c22ee981239073e79ce6e5f66816465a4fb98"
+      },
+      "seal": {
+        "path": "/assets/paper/education/S10/seal.svg",
+        "sourcePath": "assets/paper-source/education/S10-seal-v1.svg",
+        "width": 256,
+        "height": 256,
+        "bytes": 496,
+        "sha256": "796b1123bbe7de699067dd6c92a21716ce576601f7c2e89016d4dd3a463c24f5"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.82,
+      0.58
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "safeBounds": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "zOrder": 55,
+    "layer": "education-accessory",
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Flat paper education accessory and seal; extend existing geometric education symbols using the 2.2 cream/sage/coral palette, no metallic gradients or text."
+    },
+    "validation": {
+      "browserIntegration": "pending",
+      "thumbnailReview": "pending"
+    }
+  },
+  {
+    "assetId": "shadow",
+    "category": "ui",
+    "ruleIds": [],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/shadow-v1.svg",
+      "width": 240,
+      "height": 320,
+      "bytes": 140,
+      "sha256": "742c98ada98ea0ebc6ae6995eb16d85240f4d5aa379e975a01f4c3b124181e9b"
+    },
+    "runtime": {
+      "vector": {
+        "path": "/assets/paper/props/shadow/shadow.svg",
+        "width": 240,
+        "height": 320,
+        "bytes": 140,
+        "sha256": "742c98ada98ea0ebc6ae6995eb16d85240f4d5aa379e975a01f4c3b124181e9b"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.5,
+      0.94
+    ],
+    "pivot": [
+      0.5,
+      0.94
+    ],
+    "layer": "shadow",
+    "zOrder": 30,
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Independent minimal paper shadow layer, blank and without UI text."
+    }
+  },
+  {
+    "assetId": "title-sign",
+    "category": "ui",
+    "ruleIds": [],
+    "version": "2.2.0",
+    "status": "runtime-ready-vector",
+    "decision": "redraw",
+    "source": {
+      "path": "assets/paper-source/education/title-sign-v1.svg",
+      "width": 900,
+      "height": 180,
+      "bytes": 763,
+      "sha256": "b25d92521e6a71229f5bc4d2a90e077b82512f2a82de533ba5fd89aa4a4effcf"
+    },
+    "runtime": {
+      "vector": {
+        "path": "/assets/paper/props/title-sign/title-sign.svg",
+        "width": 900,
+        "height": 180,
+        "bytes": 763,
+        "sha256": "b25d92521e6a71229f5bc4d2a90e077b82512f2a82de533ba5fd89aa4a4effcf"
+      }
+    },
+    "transparentBackground": true,
+    "alphaVerified": true,
+    "anchor": [
+      0.5,
+      0.1
+    ],
+    "pivot": [
+      0.5,
+      0.1
+    ],
+    "layer": "title-sign",
+    "zOrder": 60,
+    "generation": {
+      "tool": "original-svg",
+      "prompt": "Independent minimal paper title-sign layer, blank and without UI text."
+    }
+  }
+]

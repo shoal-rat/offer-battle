@@ -1,0 +1,1586 @@
+[
+  {
+    "caseId": "Q01",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Empty private draft, no default salary; confirmed values required."
+      }
+    ]
+  },
+  {
+    "caseId": "Q02",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Replace parsing does not inherit old optional pay fields."
+      }
+    ]
+  },
+  {
+    "caseId": "Q03",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Annual-only text retains missing monthly/salary-month fields as unknown."
+      }
+    ]
+  },
+  {
+    "caseId": "Q04",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Original role retained; classification conflict invalidates template confirmation."
+      }
+    ]
+  },
+  {
+    "caseId": "Q05",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Draft revision and save target track replacement; browser developer check."
+      }
+    ]
+  },
+  {
+    "caseId": "Q06",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Edits invalidate old confirmation/preview; async job revision guards tested."
+      }
+    ]
+  },
+  {
+    "caseId": "Q07",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Clearing a field produces unknown, not confirmed zero."
+      }
+    ]
+  },
+  {
+    "caseId": "Q08",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Concurrent/repeated same operation saves one entity in local/Node/Cloud."
+      }
+    ]
+  },
+  {
+    "caseId": "Q09",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Revision retains ID; explicit copy creates new ID."
+      }
+    ]
+  },
+  {
+    "caseId": "Q10",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Active matches and legacy replay snapshots stay frozen after card revision."
+      }
+    ]
+  },
+  {
+    "caseId": "Q11",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "No-service local assembly and actionable capabilities tested; no real external AI service tested."
+      }
+    ]
+  },
+  {
+    "caseId": "Q12",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Controlled HTTP generation failure/retry/stale result/shutdown cancellation tested; browser draft restoration checked."
+      }
+    ]
+  },
+  {
+    "caseId": "Q13",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Backend CAS, two-tab stale write and storage failure preserve committed profile; full UI failure acceptance remains separate."
+      },
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q14",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Forge developer checks escape HTML and cover 390/320 width; not all global layout cases."
+      }
+    ]
+  },
+  {
+    "caseId": "Q15",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q16",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q17",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Soft deletion updates references and restores within deadline; UI confirmation acceptance remains separate."
+      },
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q18",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q19",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q20",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q21",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q22",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q23",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q24",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q25",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q26",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q27",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q28",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q29",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q30",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q31",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q32",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q33",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q34",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q35",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q36",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q37",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q38",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q39",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q40",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q41",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q42",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q43",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q44",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q45",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q46",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q47",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q48",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "ai-benchmark-merge",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "completed developer benchmark; independent acceptance remains not-run",
+        "evidencePaths": [
+          "reports/ai-evidence.json",
+          "reports/ai-benchmark-validation.json",
+          "reports/ai-benchmark.json"
+        ],
+        "observed": "500 paired seeds / 1000 games / 110 combined education combinations; same planner hash, zero illegal, every replay matches. Hard/legacy 77.75%, expert/normal 61.75%, targets and expert interval criterion met. Per-comparison coverage and disabled time-guard limits are explicit."
+      }
+    ]
+  },
+  {
+    "caseId": "Q49",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q50",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Only unauthenticated minimal invite preview backend covered here; login return UI is separate."
+      },
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q51",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Enumerated invite states and private room membership checked; offline UI handling separate."
+      }
+    ]
+  },
+  {
+    "caseId": "Q52",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Pure invitation parser accepts full URL and case normalization; clipboard UI separate."
+      }
+    ]
+  },
+  {
+    "caseId": "Q53",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Local workerd/Node authenticated seats, replay and persistence evidence; not a 2.2 public dual-client acceptance."
+      }
+    ]
+  },
+  {
+    "caseId": "Q54",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Explicit migration deduplicates, maps IDs, requires conflict choice, preserves original local collection."
+      }
+    ]
+  },
+  {
+    "caseId": "Q55",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q56",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q57",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q58",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Series/rematch IDs and locked loadouts verified; normal AI config evidence is in reports/ai-evidence.json."
+      },
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q59",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Diagnostic/error allowlist emits no raw PII or external telemetry; share UI scope is separate."
+      }
+    ]
+  },
+  {
+    "caseId": "Q60",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q61",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q62",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q63",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q64",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q65",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q66",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q67",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q68",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Deployment sequence and compatibility boundary reviewed, including old-client 428; public 2.2 rollout remains not-run."
+      },
+      {
+        "owner": "main-integration",
+        "status": "developer-check-passed",
+        "workingTree": true,
+        "scope": "Supporting scoped development regression, not independent acceptance or all-device claim",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/frontend-evidence.json"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "Q69",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q70",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "All five flags default false; experiments isolated; actual normal-engine solutions/replays and gated Cloud series verified."
+      }
+    ]
+  },
+  {
+    "caseId": "Q71",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q72",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q73",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q74",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q75",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q76",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q77",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q78",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q79",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q80",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q81",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q82",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q83",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q84",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q85",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q86",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q87",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q88",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q89",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q90",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q91",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q92",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q93",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q94",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q95",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q96",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q97",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q98",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q99",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q100",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q101",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q102",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q103",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q104",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q105",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q106",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q107",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q108",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null,
+    "developerChecks": [
+      {
+        "owner": "backend-draft-experiments",
+        "status": "developer-check-passed",
+        "sourceCheckpoint": "ddfb69ca8ccc323dcd030394b672667bf800fd7a",
+        "workingTree": true,
+        "scope": "partial supporting evidence; not independent acceptance",
+        "evidencePaths": [
+          "reports/upgrade-v2.2/backend-evidence.json"
+        ],
+        "observed": "Save/generation revision and stale-response guards tested; complete cross-page visual effect acceptance is separate."
+      }
+    ]
+  },
+  {
+    "caseId": "Q109",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  },
+  {
+    "caseId": "Q110",
+    "status": "not-run",
+    "commit": null,
+    "environment": null,
+    "command": null,
+    "evidencePaths": [],
+    "observed": null,
+    "remainingIssue": null
+  }
+]

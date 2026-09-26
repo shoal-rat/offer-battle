@@ -1,0 +1,38 @@
+/* Original, deterministic cut-paper silhouettes. Only decorative layers are clipped:
+   labels, hit boxes and keyboard outlines retain their complete rectangular area. */
+:root {
+ --paper-cut:polygon(0 5px,7px 2px,18% 3px,34% 1px,57% 3px,79% 0,calc(100% - 5px) 2px,100% 7px,calc(100% - 2px) 42%,100% 76%,calc(100% - 3px) calc(100% - 3px),75% calc(100% - 1px),51% calc(100% - 3px),24% 100%,3px calc(100% - 2px),1px 73%,3px 44%);
+ --paper-torn:polygon(0 3px,6% 1px,12% 3px,19% 0,27% 2px,35% 1px,43% 3px,52% 0,61% 2px,69% 0,78% 3px,87% 1px,95% 3px,100% 1px,calc(100% - 2px) 14%,100% 29%,calc(100% - 2px) 45%,100% 63%,calc(100% - 2px) 81%,100% calc(100% - 2px),95% 100%,90% calc(100% - 3px),84% calc(100% - 1px),76% calc(100% - 4px),68% 100%,59% calc(100% - 2px),50% 100%,42% calc(100% - 3px),33% calc(100% - 1px),24% calc(100% - 4px),17% 100%,9% calc(100% - 2px),1px 100%,3px 83%,0 67%,2px 50%,0 31%,2px 15%);
+}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck) {
+ --paper-fill:var(--ob-surface);--paper-line:#64716B;--paper-thickness:#C8BCA8;--paper-shape:var(--paper-cut);
+ position:relative;isolation:isolate;background:transparent!important;border-color:transparent!important;border-radius:4px;box-shadow:none!important;
+}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::before,
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::after {
+ content:'';position:absolute;pointer-events:none;z-index:-1;inset:-1px;clip-path:var(--paper-shape);
+}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::before {background:var(--paper-line);transform:translateY(3px)}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::after {
+ background:linear-gradient(0deg,#D6C9B533 0 2px,transparent 2px),var(--paper-fill);border:1px solid var(--paper-line);
+}
+.app .btn.gold,.app .hotspot-play .stage-hotspot-label {--paper-fill:var(--ob-primary);--paper-line:#785049}
+.app .benefit-pill {--paper-fill:var(--ob-self);--paper-shape:var(--paper-torn)}
+.app .detail-origin,.app .skill-button.secondary {--paper-fill:var(--ob-info);--paper-shape:var(--paper-torn)}
+.app .end-turn {--paper-fill:var(--ob-time)}
+.app .badge {--paper-line:#A79F8F;--paper-shape:var(--paper-torn);padding:5px 9px}
+.app .stage-hotspot-label {--paper-shape:var(--paper-torn)}
+.app .hotspot-friends.invited .stage-hotspot-label {--paper-fill:var(--ob-self)}
+.app .btn:active:not(:disabled)::before,.app .stage-hotspot:active .stage-hotspot-label::before {transform:translateY(1px)}
+.app .btn:hover:not(:disabled)::after,.app .replacement-choice:hover::after {filter:brightness(1.025)}
+.app .stage-title h1::before {clip-path:var(--paper-torn);inset:-2px -22px;box-shadow:none;background:#FFFDF7;border:0}
+/* The sheet itself remains an unclipped scroll container so focus and dialogs are safe. */
+.app .modal {border-radius:3px 7px 4px 2px;border-color:#A99C86;box-shadow:3px 5px 0 #D2C4AC,0 12px 32px #25313C24;background:var(--ob-surface);border-bottom:4px solid #D5C8B4}
+.app .modal header {position:relative;padding-bottom:14px;border-bottom:0}
+.app .modal header::after {content:'';position:absolute;bottom:0;left:0;right:0;height:5px;pointer-events:none;background:#D7CDBB;clip-path:var(--paper-torn)}
+.app .offer-card,.app .common-card {border-radius:5px 8px 4px 7px;border-color:#899186;box-shadow:2px 4px 0 #CFC2AC}
+.app .offer-card .card-art,.app .common-art {border-radius:4px 6px 3px 5px}
+.app .card-ribbon {position:relative;isolation:isolate}
+.app .card-ribbon::before {content:'';position:absolute;inset:0 -2px;z-index:-1;background:var(--ob-surface);clip-path:var(--paper-torn);pointer-events:none}
+@media(max-width:900px){.app .hotspot-history .stage-hotspot-label::before,.app .hotspot-history .stage-hotspot-label::after {display:none}.app .stage-title h1::before {inset:0 -10px}}
+@media(forced-colors:active){.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck){border:2px solid ButtonText!important;background:Canvas!important}.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::before,.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::after{display:none}}

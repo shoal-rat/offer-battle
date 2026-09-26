@@ -1,0 +1,28 @@
+
+> offer-battle@2.2.0-dev.1 test:e2e:static
+> playwright test --config playwright.static.config.ts
+
+[WebServer] (node:23199) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 15 tests using 1 worker
+
+(node:23201) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/static/account.spec.ts:26:1 › guest bot and tutorial stay local; friend action requires account (1.7s)
+  ✓   2 tests/static/account.spec.ts:30:1 › invite survives registration and recovery code confirmation, mobile account fits (1.4s)
+  ✓   3 tests/static/account.spec.ts:39:1 › login errors are readable and recovery rotates credentials (699ms)
+  ✓   4 tests/static/account.spec.ts:43:1 › finished local match survives registration and saves its real journal; history replay delete and logout (2.8s)
+  ✓   5 tests/static/account.spec.ts:50:1 › guest JSON report requires login and cancelling keeps finished match (1.3s)
+  ✓   6 tests/static/account.spec.ts:54:1 › expired cloud room can authenticate in recovery without losing its seat (1.2s)
+  ✓   7 tests/static/account.spec.ts:62:1 › late unauthorized history response cannot clear a newer account login (1.3s)
+  ✓   8 tests/static/bot-worker.spec.ts:5:1 › expert guest search runs in a real worker while animation frames continue; new match cancels old work (918ms)
+  ✓   9 tests/static/guest.spec.ts:13:31 › static guest 1440px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup (3.4s)
+  ✓  10 tests/static/guest.spec.ts:13:31 › static guest 390px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup (4.0s)
+  ✓  11 tests/static/guest.spec.ts:54:1 › expired or missing guest temporary room returns home without a network recovery request (300ms)
+  ✓  12 tests/static/offer-forge.spec.ts:11:1 › Q01–Q10: empty draft, replacement, explicit confirmation, idempotent collection, revision and copy (1.7s)
+  ✓  13 tests/static/offer-forge.spec.ts:25:1 › Q04/Q05: merge requires visible review, job classification changes invalidate the template, and reload preserves drafts (1.6s)
+  ✓  14 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 390px local creation uses real preferences, readable source rows and actionable incomplete values (2.5s)
+  ✓  15 tests/static/offer-forge.spec.ts:35:30 › Q11/Q14: 320px local creation uses real preferences, readable source rows and actionable incomplete values (2.5s)
+
+  15 passed (28.3s)

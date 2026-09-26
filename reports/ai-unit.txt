@@ -1,0 +1,46 @@
+
+> offer-battle@2.1.0 test:bot
+> tsx --test tests/bot-*.test.ts
+
+✔ P01 legacy drops T07 target; upgraded policy resolves actual enter damage (10.478667ms)
+✔ P02 legacy drops T05 target; upgraded policy reinforces an existing unit (3.190167ms)
+✔ P03 legacy chooses one S08 target; upgraded policy evaluates both selected units (3.397ms)
+✔ P04 985 skill then 5+2 attack is a real lethal combo (3.150959ms)
+✔ P05 N15, P06 S03 and frontline attacks never choose avoidable immediate self defeat (35.560209ms)
+✔ P07 N04, T09, B05 and draw actions account for fatal empty-deck fatigue (22.019833ms)
+✔ T08 freezes the real threatening enemy target (1.932292ms)
+✔ T03 and N06 can skip a harmful friendly return (2.611208ms)
+✔ two damage cards remove a blocking unit before lethal face damage (7.042292ms)
+✔ Offer death loses 2 mind and can complete a winning trade (2.84825ms)
+✔ covered retorts prevent false unconditional lethal claims (8.087ms)
+✔ round twelve uses real end-turn mind adjudication (0.957542ms)
+✔ attack first, then return a noticed Offer instead of losing its available attack (2.780917ms)
+✔ clear friendly space before deploying an enter-damage winning Offer (5.364458ms)
+✔ negotiation can save time for a necessary defensive second card even when full price is affordable (15.43875ms)
+✔ topic changes evaluate both sides instead of always preferring future (2.493167ms)
+✔ tax choice targets an affordable lethal card instead of blindly selecting the highest cost (2.107958ms)
+✔ consult choice takes a cheap answer that immediately removes a fatal Offer (1.964167ms)
+✔ management cancels the pending frontline retirement at the actual turn boundary (1.98975ms)
+✔ all seven supplied legacy defects reproduce across all three original styles (21 probes) (36.920625ms)
+✔ all twelve difficulty/style combinations persist through rematch and replay metadata (141.557458ms)
+✔ full setup is the default independently of training and selected bot setup is journaled (23.45875ms)
+✔ pre-difficulty guest saves migrate to normal while preserving the current rule state (10.392334ms)
+✔ setup enumerates 20 flex sets and 7/11 complete mulligan choices (19.123042ms)
+✔ fixed legal observations, node budgets and bot seed yield identical root decisions (196.001416ms)
+✔ all simulations including responses and beliefs share one fixed node budget (92.22125ms)
+✔ simulation stops at unknown draws and newly revealed hand choices (17.044958ms)
+✔ full simulation key distinguishes notifications, attack use, deck order and choices (0.989083ms)
+✔ knowledge uses only legitimately visible hand and conservatively invalidates sorted cards (1.526459ms)
+✔ belief reconstruction is detached from input and contains no battle RNG or true deck order (0.808583ms)
+✔ safe initial action wins ties against an immediate loss even when every future line loses (1.388292ms)
+✔ worker cancellation terminates CPU and drops the abandoned request (7.621541ms)
+✔ bad worker versions and exceptions fall back with explicit diagnostics (1.24ms)
+✔ Node worker executes the same strategy contract off the main thread (122.823584ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 502.229708

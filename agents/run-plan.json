@@ -1,0 +1,827 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "2.2",
+  "status": "not-run",
+  "roleCount": 12,
+  "runCount": 48,
+  "runsPerRole": 4,
+  "resultsProvenance": "Plan only; no game-agent sessions executed in this deliverable.",
+  "runs": [
+    {
+      "runId": "A01-R01",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R02",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R03",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A01-R04",
+      "roleId": "A01",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "webkit",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R01",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R02",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R03",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A02-R04",
+      "roleId": "A02",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R01",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R02",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R03",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A03-R04",
+      "roleId": "A03",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R01",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R02",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R03",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A04-R04",
+      "roleId": "A04",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R01",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-01",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R02",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-02",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R03",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-03",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A05-R04",
+      "roleId": "A05",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-04",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R01",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-01",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R02",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": "DUEL-02",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R03",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-03",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A06-R04",
+      "roleId": "A06",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": "DUEL-04",
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R01",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R02",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R03",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A07-R04",
+      "roleId": "A07",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R01",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R02",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R03",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A08-R04",
+      "roleId": "A08",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R01",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R02",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R03",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A09-R04",
+      "roleId": "A09",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R01",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R02",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R03",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A10-R04",
+      "roleId": "A10",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R01",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R02",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R03",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A11-R04",
+      "roleId": "A11",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R01",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R02",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browserProject": "chromium",
+      "deviceMode": "desktop",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R03",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browserProject": "chromium",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    },
+    {
+      "runId": "A12-R04",
+      "roleId": "A12",
+      "status": "not-run",
+      "agentSessionId": null,
+      "browserContextId": null,
+      "commit": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "browserProject": "webkit",
+      "deviceMode": "emulated-touch",
+      "pairedSessionId": null,
+      "attempts": [],
+      "evidencePaths": []
+    }
+  ]
+}

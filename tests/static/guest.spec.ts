@@ -17,13 +17,15 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   page.on('request',request=>{if(/\/api\//.test(new URL(request.url()).pathname))apiRequests.push(request.url())});
   await page.route('**/api/**',route=>route.abort());
   await page.goto('./');
-  await expect(page.getByRole('button',{name:'先玩一局',exact:true})).toBeVisible();
+  await expect(page.locator('.hotspot-play')).toBeVisible();
   await expect(page.getByRole('button',{name:'游客 · 登录 / 注册',exact:true})).toBeVisible();
-  await page.getByRole('button',{name:/跟着前辈，打会第一局/}).click();
+  await page.locator('.hotspot-tutorial').click();
   await page.getByRole('button',{name:'开始第一课',exact:true}).click();
   await expect(page.locator('.tutorial-coach')).toBeVisible();
   const first=await temporaryRoom(page);expect(first.room.id).toMatch(/^local_/);
+  if(width<1024)await page.getByRole('button',{name:/^我的 Offer/}).click();
   await page.locator('[data-offer-id="E02"] button.offer-card').click();
+  await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(1);
   await page.reload();await expect(page.locator('.tutorial-coach')).toBeVisible();
   expect((await temporaryRoom(page)).room.id).toBe(first.room.id);
@@ -31,9 +33,9 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await settled(page);await page.locator('[data-tutorial="endTurn"]').click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(2);
   await settled(page);await page.locator('.friendly .unit-main').filter({hasText:'国企综合岗'}).click();
-  await page.locator('.hero-avatar[data-battle-id="p2"]').click();
+  await page.locator('.hero-avatar[data-battle-id="p2"]').click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(3);
-  await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();
+  await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
   await expect(page.locator('.lesson-complete-overlay')).toBeVisible();
   const completion=await page.locator('.lesson-complete').boundingBox();expect(completion).not.toBeNull();expect(completion!.x).toBeGreaterThanOrEqual(0);expect(completion!.x+completion!.width).toBeLessThanOrEqual(width);expect(completion!.y).toBeGreaterThanOrEqual(0);expect(completion!.y+completion!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
   expect(await page.evaluate(()=>sessionStorage.getItem('offer-local-active-v1'))).toBeNull();
@@ -42,7 +44,7 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await page.getByRole('button',{name:'返回课程',exact:true}).click();
   await expect(page.locator('.lesson-card.complete')).toHaveCount(1);
   await page.getByRole('button',{name:'返回首页',exact:true}).click();
-  await page.getByRole('button',{name:'和朋友约一场',exact:true}).click();
+  await page.locator('.hotspot-friends').click();await page.getByRole('button',{name:'创建好友房',exact:true}).click();
   await expect(page.getByRole('dialog',{name:'欢迎回来，底牌还在。'})).toBeVisible();
   await expect(page.getByRole('button',{name:'登录并继续',exact:true})).toBeVisible();
   expect(apiRequests).toEqual([]);expect(errors).toEqual([]);
@@ -53,6 +55,6 @@ test('expired or missing guest temporary room returns home without a network rec
   const apiRequests:string[]=[];page.on('request',request=>{if(/\/api\//.test(new URL(request.url()).pathname))apiRequests.push(request.url())});
   await page.route('**/api/**',route=>route.abort());
   await page.addInitScript(()=>localStorage.setItem('offer-active-room','local_finished-or-expired'));
-  await page.goto('./');await expect(page.getByRole('button',{name:'先玩一局',exact:true})).toBeVisible();
+  await page.goto('./');await expect(page.locator('.hotspot-play')).toBeVisible();
   expect(await page.evaluate(()=>localStorage.getItem('offer-active-room'))).toBeNull();expect(apiRequests).toEqual([]);
 });

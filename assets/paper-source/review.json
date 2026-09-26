@@ -1,0 +1,244 @@
+{
+  "reviewedAt": "2026-09-26T19:31:08.566759+00:00",
+  "evidence": [
+    "assets/paper-source/evidence/characters-thumbnails.png",
+    "assets/paper-source/evidence/professions-512.png",
+    "assets/paper-source/evidence/education-512.png",
+    "assets/paper-source/evidence/props-actions-overlays.png",
+    "assets/paper-source/evidence/expressions-algorithm.png",
+    "assets/paper-source/evidence/expressions-research.png",
+    "assets/paper-source/evidence/rig-layers-0.png",
+    "assets/paper-source/evidence/rig-layers-4.png",
+    "assets/paper-source/evidence/rig-layers-8.png",
+    "assets/paper-source/evidence/rig-layers-12.png",
+    "assets/paper-source/evidence/rig-layers-16.png",
+    "assets/paper-source/evidence/animals-support-512.png",
+    "assets/paper-source/evidence/rig-layers-20.png"
+  ],
+  "assets": {
+    "algorithm": {
+      "sourceSha256": "10544099b961a3553db3a7aae749b56d9e186b0af942b3139d4d585deb96ed29",
+      "status": "passed-browser-contact-review"
+    },
+    "research": {
+      "sourceSha256": "1cae77bb74b2ad24a7b7380d717286b6d0041311f4bbb32196a568a3a77befeb",
+      "status": "passed-browser-contact-review"
+    },
+    "support": {
+      "sourceSha256": "c608e5aceb11fed901a65d8c442a5753fb76894ebaad1c2ec30abee5a2cb68e8",
+      "status": "passed-browser-contact-review"
+    },
+    "N07": {
+      "sourceSha256": "8b8bcb6dafc34639ba0bf1526b5e6c20c99bfa5e1f9df49256ee91d3c308341e",
+      "status": "passed-browser-contact-review"
+    },
+    "N08": {
+      "sourceSha256": "54b1735221a0029b4b2755f91fafd3a049072c6d6500be998afb94259a634cb8",
+      "status": "passed-browser-contact-review"
+    },
+    "N09": {
+      "sourceSha256": "a5db45524e2f57f6d77f4ca7f5a6d624d95175b1b955d01cec94281a2cf58522",
+      "status": "passed-browser-contact-review"
+    },
+    "F04": {
+      "sourceSha256": "2b823438f1fbddfb1ee65c962227b267a6fcd230e1f135d14e8384934669a3ee",
+      "status": "passed-browser-contact-review"
+    },
+    "chair": {
+      "sourceSha256": "73d17f5e5bc0ba517e16044b909b163406eccd6a7e3a680d3d9b241b214b4212",
+      "status": "passed-browser-contact-review"
+    },
+    "printer": {
+      "sourceSha256": "57402eb4c5d8866654b83c927ec87993a66f715c1c3db2db29d210bd85225373",
+      "status": "passed-browser-contact-review"
+    },
+    "folder": {
+      "sourceSha256": "e32948ea8667b3463e18b0fb61c0495cc3a4816a330d2db032f82bf3e5feb88f",
+      "status": "passed-browser-contact-review"
+    },
+    "table": {
+      "sourceSha256": "d6034f21cb80145b610b36d1244c1bbb68f360f4ff36ec5c7c3f9978354092da",
+      "status": "passed-browser-contact-review"
+    },
+    "badge-rack": {
+      "sourceSha256": "e4697dcff787eb953c7fc02ffb0d0cab2723bdfdacedd38cce5fda6b9940e0f3",
+      "status": "passed-browser-contact-review"
+    },
+    "booth": {
+      "sourceSha256": "bf78771508cb6e8e243ec4eaa6092380ecc4139b2f719bcf3bd07437da64347f",
+      "status": "passed-browser-contact-review"
+    },
+    "paper-book": {
+      "sourceSha256": "e7e45bc90275b19bc176f12ef1f66d8535094faf4647aa058bc95d250f8a8f62",
+      "status": "passed-browser-contact-review"
+    },
+    "public": {
+      "sourceSha256": "c886db5390201c48dc852ac555da5ae1503cfbae0b336fcca6e62916cd44d130",
+      "status": "passed-browser-contact-review"
+    },
+    "sales": {
+      "sourceSha256": "9ec582627f2248dd821b06e74d70dfebc0cc01a5039847bbb538ea4a48143308",
+      "status": "passed-browser-contact-review"
+    },
+    "product": {
+      "sourceSha256": "1cf22576f281b8f250fedc6045f86aca28626448a9ef9d0638fbb929ce1d1b0a",
+      "status": "passed-browser-contact-review"
+    },
+    "finance": {
+      "sourceSha256": "a9686793f9440bd5acd0eac4ef70780322686fa1b60e12c16d6e715728be3f2a",
+      "status": "passed-browser-contact-review"
+    },
+    "far": {
+      "sourceSha256": "2cde7d9da2f29d6b53046e2348d8f29f4e2c18726bd6a05d5d77b7f9bd4918ce",
+      "status": "passed-browser-contact-review"
+    },
+    "H01": {
+      "sourceSha256": "891618eea6c557b56fee5ffef9e6e35951633aebc5763565201f7f2955a507b3",
+      "status": "passed-browser-contact-review"
+    },
+    "H02": {
+      "sourceSha256": "6648bd302a02f9f7d1860d44e1b0bc1a384c93036a9a273c1a2c6b1ea878b613",
+      "status": "passed-browser-contact-review"
+    },
+    "H03": {
+      "sourceSha256": "284dad7a222d987d2a20db6f7aea0b7b13019504bdb28f3de62f82b92c727e03",
+      "status": "passed-browser-contact-review"
+    },
+    "H04": {
+      "sourceSha256": "ef7e50ea4b3cab79882b8e3d34e1105f99afb3ed786311a62568f48c89ed01b1",
+      "status": "passed-browser-contact-review"
+    },
+    "H05": {
+      "sourceSha256": "d0b341815d9d77cf7fca26f3d5c314d9cfd94f0c58271f24bb1ddfd9d1a8cc0e",
+      "status": "passed-browser-contact-review"
+    },
+    "H06": {
+      "sourceSha256": "c1cdd076672a0418016fd46c421f55fcafd07e9f11bb1bd11afa54f37b41401d",
+      "status": "passed-browser-contact-review"
+    },
+    "H07": {
+      "sourceSha256": "379670105b728fbdb4045865d6f051ad8afd57e36c8d9b6c1c89ee11734cd8ce",
+      "status": "passed-browser-contact-review"
+    },
+    "H08": {
+      "sourceSha256": "9d5b12661927edd4197cee1a0e91a83169366b842e014ff59c4e188da91435f9",
+      "status": "passed-browser-contact-review"
+    },
+    "H09": {
+      "sourceSha256": "8de00a95d845b5c96645ae81b2301a0542aa2183fce13824f9f530d44a630e01",
+      "status": "passed-browser-contact-review"
+    },
+    "H10": {
+      "sourceSha256": "dbb198dfe9c3fa585672854ad2728f11cbe05847a39c9b25b9867cbebb4cb88a",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S00": {
+      "sourceSha256": "f73752392178a2caa06fb57e70791a978bcf9712c7cb83783f8e5fc973a08d8b",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S01": {
+      "sourceSha256": "c21a8bbd164b0f516f772882d6234af3182e4ba3e769d69b4a906a2b648467ba",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S02": {
+      "sourceSha256": "7bf891167aca2d0e09aabbacf4e6e7366d999791cf28d08000813d1fe98a54ba",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S03": {
+      "sourceSha256": "56431c251f3dcb2cdcee54d9990b79415a32e0bf755ab2840950b7fae1ca01f3",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S04": {
+      "sourceSha256": "26a762c77aa665fdd3576b158ce8620140ce3d57e9a6762c97c13c21d766c56f",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S05": {
+      "sourceSha256": "ef0619a065a3b7509e6bbc73ae6387ecbdc99232037a58836d2ac960c6033ff5",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S06": {
+      "sourceSha256": "82db2d884a1cb0a9e649c433cdc454f81d643b5f59730b5a18dcee71052bd95b",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S07": {
+      "sourceSha256": "288c74cacb117bfbdc34df189c9f473989cd27cff621f62ed95c651e5a49d2de",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S08": {
+      "sourceSha256": "924f23b2446432398591ac27e0cf3ba061596f1f74e79be084ece7fdf073ebc5",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S09": {
+      "sourceSha256": "bef448cf683a38384904c4cc4ef9a956f6fa0a03d60291c7334dfd686a426f0b",
+      "status": "passed-browser-contact-review"
+    },
+    "secondary-S10": {
+      "sourceSha256": "465eadbf90cb9dd510d4dd6ec65c22ee981239073e79ce6e5f66816465a4fb98",
+      "status": "passed-browser-contact-review"
+    },
+    "shadow": {
+      "sourceSha256": "742c98ada98ea0ebc6ae6995eb16d85240f4d5aa379e975a01f4c3b124181e9b",
+      "status": "passed-browser-contact-review"
+    },
+    "title-sign": {
+      "sourceSha256": "b25d92521e6a71229f5bc4d2a90e077b82512f2a82de533ba5fd89aa4a4effcf",
+      "status": "passed-browser-contact-review"
+    },
+    "algorithm-hit": {
+      "sourceSha256": "6cbf863ff7b0e9b6740792c8af8a296dc919de3e6a4dfb4e42169197508f7af8",
+      "status": "passed-browser-contact-review"
+    },
+    "algorithm-happy": {
+      "sourceSha256": "76729649929b3de762844894fe9ff0991e3ec5bea78908069a5e615c8d5c7fb9",
+      "status": "passed-browser-contact-review"
+    },
+    "algorithm-thinking": {
+      "sourceSha256": "7c52776b58e8caf7823fe62c760c7aba01e278cc02b7337f01e2fd6a458cc089",
+      "status": "passed-browser-contact-review"
+    },
+    "algorithm-blink": {
+      "sourceSha256": "0360c6b1de63909cb013529b624ce7c5fb40e00c52bbe75746162e84d5f27064",
+      "status": "passed-browser-contact-review"
+    },
+    "research-hit": {
+      "sourceSha256": "398cbe6f3a73dd4144ecbe40fdaef02826e2a79d7ae8db7653d89c709ad9efe6",
+      "status": "passed-browser-contact-review"
+    },
+    "research-happy": {
+      "sourceSha256": "cba0aa7e23931f94719ec92fe5c4a8b01a169526e60968da9f1727d8171296c0",
+      "status": "passed-browser-contact-review"
+    },
+    "research-thinking": {
+      "sourceSha256": "5eebe912a672b836b0c87f5124573c357943d0eb61f1e4e2c9832040e4be9a6d",
+      "status": "passed-browser-contact-review"
+    },
+    "research-blink": {
+      "sourceSha256": "6141b225f943cf5bb534103fabf68b5c5aeb6ac08e2e00560578b2c70a3e3f3b",
+      "status": "passed-browser-contact-review"
+    },
+    "campus-rat": {
+      "sourceSha256": "55f576802cd1e01cb8ff8ffdbef274bc59e15114e9388e563a3fedda0e50cb45",
+      "status": "passed-browser-contact-review"
+    },
+    "intern-beagle": {
+      "sourceSha256": "cafe7331ca62c709a6da92ba3f4d9d0603578a220d4e460d6f425676b645250e",
+      "status": "passed-browser-contact-review"
+    },
+    "interview-owl": {
+      "sourceSha256": "d404c6f9a0ddfa4f62fff4399beff6e749d82e3a71870074e842bc822f598f9c",
+      "status": "passed-browser-contact-review"
+    },
+    "mentor-capybara": {
+      "sourceSha256": "540eb2630b34e6e55c36244e68fa330b6b998338fe48f4b914d941cbe1524105",
+      "status": "passed-browser-contact-review"
+    },
+    "veteran-tortoise": {
+      "sourceSha256": "71fe835a5ac512a6670a4d8c52543a266494430e803e85e0e74bee6b1e8b27ea",
+      "status": "passed-browser-contact-review"
+    },
+    "headhunter-fox": {
+      "sourceSha256": "0c41226237e44a409ffeb911b1ed5b1d0a335becbbd6929ff2a43015b006f974",
+      "status": "passed-browser-contact-review"
+    }
+  }
+}

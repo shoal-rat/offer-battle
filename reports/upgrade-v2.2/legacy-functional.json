@@ -1,0 +1,46 @@
+{
+  "scope": "Local Node production developer regression, not independent QA or a deployment claim",
+  "date": "2026-09-27",
+  "testFile": "tests/e2e/game.spec.ts",
+  "executedFunctionalCases": [
+    {
+      "case": "Offer creation, confirmation, collection, both education slots and 30-card editor",
+      "status": "passed",
+      "durationSeconds": 7.2
+    },
+    {
+      "case": "Full bot setup, staged education skill, readable unavailable skill, complete match, verified replay and share preview/download",
+      "status": "passed",
+      "durationSeconds": 25.3
+    },
+    {
+      "case": "Two isolated contexts, invite, full setup, private hand, reconnection, same deadline, eight units, UI attack, full match and replay",
+      "status": "passed",
+      "durationSeconds": 22.8
+    }
+  ],
+  "batchNote": "Cases were rerun in targeted batches as UI changed; do not describe as one three-case batch on a frozen release commit.",
+  "shareTypes": [
+    "lineup",
+    "invitation",
+    "battle"
+  ],
+  "shareAssertions": [
+    "default sensitive options unchecked",
+    "preview ready before export",
+    "actual PNG signature checked"
+  ],
+  "visualBaseline": {
+    "status": "expected-difference-not-accepted",
+    "case": "1440x900 homepage",
+    "oldBaselinesUpdated": false,
+    "note": "Retained old-versus-new screenshot diff locally; final visual review remains separate."
+  },
+  "observedIssues": [
+    {
+      "status": "reported-to-owner",
+      "issue": "Clicking join immediately after typing, before invitation preview settled, produced no join request in one trace. Updated flow waits for visible preview; runtime race was reported separately."
+    }
+  ],
+  "independentQA": "not-run"
+}
