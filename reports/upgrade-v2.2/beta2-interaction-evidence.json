@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "version": "2.2.0-beta.2",
+  "date": "2026-09-27",
+  "kind": "developer-validation-not-independent-acceptance",
+  "sourceCheckpoint": "300b772347fcaa07b0524fc52486a492706b6067",
+  "workingTree": true,
+  "independentAcceptance": "not-run",
+  "environment": {
+    "platform": "macOS arm64",
+    "browser": "Headless Chromium via Playwright",
+    "server": "isolated Node authoritative server on loopback",
+    "build": "Vite production bundle in work/css-layout-dist",
+    "externalNetworkAcceptance": false
+  },
+  "batches": [
+    {
+      "suite": "fullscreen.spec.ts + audio.spec.ts",
+      "passed": 10,
+      "failed": 0,
+      "durationSeconds": 12.0,
+      "scope": "five desktop table cases including 1366/1024 tutorial, expanded hint stability, native fullscreen API user-gesture mock and rejection, optional fullscreen, 390px natural scrolling, 22 audio decoders, video decoder, gesture playback and persistent mute"
+    },
+    {
+      "suite": "motion.spec.ts",
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 11.7,
+      "scope": "real tutorial commands via Node HTTP/WebSocket, direct targeting, attack and departure frames, skill video and reduced motion, rematch"
+    }
+  ],
+  "observed": {
+    "attackFrames": 71,
+    "attackObservedMs": 1167.4,
+    "allAttackFramesSourceHidden": true,
+    "allAttackFramesHaveName": true,
+    "departureFrames": 28,
+    "departureFollowerXRangePx": 0.0,
+    "departureFollowerLimitPx": 1.5,
+    "skillVideoFrames": 33,
+    "typecheck": "passed",
+    "diffCheck": "passed"
+  },
+  "priorFailedAttempt": {
+    "preserved": true,
+    "passed": 4,
+    "failed": 2,
+    "actualIssues": [
+      "1440x900 opponent skills overlap enemy unit by 2.75 px",
+      "1366x768 tutorial page bottom at 824.28125 px, clipped by fixed viewport"
+    ],
+    "artifact": "reports/upgrade-v2.2/developer-checks/beta2-layout-before-fix.log",
+    "resolution": "subsequent CSS patch and separate 10-test batch; original failure unchanged"
+  },
+  "limitations": [
+    "Not the 48 independent agent sessions",
+    "No new 30-second performance measurement in these two batches",
+    "No claim of every cancellation, keyboard, multi-target or 200 percent zoom case",
+    "Fullscreen system calls mocked; gesture, preference and rejection contract tested",
+    "No public HTTPS/WSS or real-device claim",
+    "1830 ms result budget and 3000/5000 queue limits are current design contracts; not measured by these 13 checks"
+  ],
+  "commands": [
+    "npx vite build --outDir work/css-layout-dist",
+    "npx playwright test --config work/playwright-deployment-compat.config.ts tests/e2e/fullscreen.spec.ts tests/e2e/audio.spec.ts",
+    "npx tsc --noEmit",
+    "npx playwright test --config work/playwright-deployment-compat.config.ts tests/e2e/motion.spec.ts"
+  ],
+  "reproduction": "Use E2E_PRODUCTION=1 npx playwright test tests/e2e/fullscreen.spec.ts tests/e2e/audio.spec.ts tests/e2e/motion.spec.ts after npm run build; private config only isolates port/staticDir/dataDir.",
+  "evidence": [
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-layout-audio.log",
+      "sha256": "bdecb26456574a8bc1db59010db4c51fd4ac92ab3fbc621740602304483bee63"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-motion.log",
+      "sha256": "89c928304a6a03eb17759a093295c7d8caa7d7041aef5880bd2465de9f22dee2"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-layout-before-fix.log",
+      "sha256": "77631f71df23f64532e3aba7c009875fc52342fe6b39183f9df8c97192a54040"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-attack-frames.json",
+      "sha256": "8c4a11bda35fa1d0d2c6408f9c75921ee766458a34f878e54093f635aa31d62d"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-skill-frames.json",
+      "sha256": "5ba03efd1f7bd4299eae4af094b0997555623670b79f771fae96112c7c356dce"
+    }
+  ],
+  "testedRevisionScope": "Early beta.2 working-tree production build before subsequent full-playtest patches: ATTACK bypassing paper plane, preferredFlex compatibility, and narrow-screen drawer synchronization require their own later checks."
+}

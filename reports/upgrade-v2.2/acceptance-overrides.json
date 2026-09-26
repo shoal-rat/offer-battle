@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "version": "2.2.0-beta.2",
+  "date": "2026-09-27",
+  "authority": "later explicit user interaction and pacing requirements",
+  "supersedesOnly": "conflicting interaction sequence and motion timing in the original v2.2 package",
+  "independentAcceptance": "not-run",
+  "reference": "docs/QA_BETA_2.md",
+  "overrides": [
+    {
+      "taskIds": [
+        "UI04",
+        "UI05"
+      ],
+      "caseIds": [
+        "Q27",
+        "Q28",
+        "Q29",
+        "Q30",
+        "Q33"
+      ],
+      "expected": "Default click/drag commits non-targeted cards; only targeted PLAY_CARD/DEPLOY_OFFER use aim, 650 ms flight and 350 ms reveal before submit. Board ATTACK targets commit directly into the 1180 ms entity attack, with no extra plane. Optional reading does not commit. Cancel before submit spends nothing; special confirmations remain scoped."
+    },
+    {
+      "taskIds": [
+        "MOTION03",
+        "MOTION04",
+        "MOTION05"
+      ],
+      "caseIds": [
+        "Q93",
+        "Q95",
+        "Q96",
+        "Q104"
+      ],
+      "expected": "Attack 1180 ms/contact 640 ms, source hidden with slot retained, labeled flight; retirement 460 ms before slot reflow. Pre-submit plane never changes authoritative values, reveals hidden cards or bypasses stale-state rejection."
+    },
+    {
+      "taskIds": [
+        "MOTION03",
+        "MOTION05"
+      ],
+      "caseIds": [
+        "Q37",
+        "Q38",
+        "Q99"
+      ],
+      "expected": "Compress backlog above 3000 ms, catch up above 5000 ms; preserve final 1180 ms attack plus 650 ms result transition within 2000 ms design deadline."
+    }
+  ],
+  "unchanged": [
+    "hidden-information boundary",
+    "deterministic rules and replay",
+    "server turn deadlines",
+    "reduced-motion and hidden-page cleanup",
+    "independent evidence and failure retention"
+  ]
+}

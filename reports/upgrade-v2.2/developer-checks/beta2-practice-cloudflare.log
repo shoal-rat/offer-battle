@@ -1,0 +1,47 @@
+
+> offer-battle@2.2.0-beta.2 test:cloudflare
+> npm run typecheck:cloudflare && npm run build:cloudflare && tsx --test tests/cloudflare/*.test.ts
+
+
+> offer-battle@2.2.0-beta.2 typecheck:cloudflare
+> tsc -p tsconfig.cloudflare.json
+
+
+> offer-battle@2.2.0-beta.2 build:cloudflare
+> wrangler deploy --dry-run --outdir work/cloudflare-bundle
+
+
+ ⛅️ wrangler 4.141.0
+────────────────────
+Total Upload: 222.47 KiB / gzip: 51.11 KiB
+Your Worker has access to the following bindings:
+Binding                                                                    Resource                  
+env.ACCOUNTS (AccountRegistry)                                             Durable Object            
+env.ROOMS (BattleRoom)                                                     Durable Object            
+env.ALLOWED_ORIGINS ("https://weikezhang.cn,https://shoal-r...")           Environment Variable      
+env.TURN_MS ("30000")                                                      Environment Variable      
+env.SETUP_MS ("20000")                                                     Environment Variable      
+env.ROOM_RETENTION_MS ("604800000")                                        Environment Variable      
+env.WAITING_RETENTION_MS ("86400000")                                      Environment Variable      
+env.MAX_SAVED_MATCHES ("30")                                               Environment Variable      
+
+--dry-run: exiting now.
+✔ Cloudflare: account auth, recovery rotation, hashed credentials, CORS and guest rejection (3459.353375ms)
+✔ Cloudflare: two registered friends play to completion, private views, idempotence, saved replay and rematch (11687.88925ms)
+✔ Cloudflare: hibernating sockets preserve seats, hidden views and reject revoked sessions (1530.963459ms)
+✔ Cloudflare: alarm advances idle turns and waiting rooms expire without polling (3072.451708ms)
+✔ Cloudflare: local records validate the full initial state and commands; custom Offers recompile (597.888916ms)
+✔ Cloudflare: concurrent readiness starts exactly one match and keeps its deadline (1106.527375ms)
+✔ Cloudflare: 2.0 history imports unchanged, persisted collections and both rematch seats upgrade to 2.1 (3849.1565ms)
+✔ Cloudflare: Offer retry, revision conflict, copy and recycle transactions preserve active friend snapshots (1240.497833ms)
+✔ Cloudflare: profile version conflicts, migration mapping/retry and unauthenticated invite preview stay private (1340.209875ms)
+✔ Cloudflare P2: standard rooms reject experiment fields; enabled series locks lineup, persists score and stays out of standard history (1142.583333ms)
+✔ Cloudflare friend deadlines stay authoritative even when a client requests training; bot practice remains local (2390.242084ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33499.189958

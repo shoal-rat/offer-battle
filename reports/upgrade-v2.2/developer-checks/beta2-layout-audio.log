@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 tests/e2e/audio.spec.ts:2:1 › six new music tracks, sixteen sound effects, and the generated video decode in the browser (496ms)
+  ✓   2 tests/e2e/audio.spec.ts:25:1 › music starts after a gesture, changes for the academy, and mute persists after reload (608ms)
+  ✓   3 tests/e2e/fullscreen.spec.ts:29:131 › fullscreen 1440x900: user gesture and whole table stays in one viewport (1.1s)
+  ✓   4 tests/e2e/fullscreen.spec.ts:29:131 › fullscreen 1366x768: user gesture and whole table stays in one viewport (1.1s)
+  ✓   5 tests/e2e/fullscreen.spec.ts:29:131 › fullscreen 1024x768: user gesture and whole table stays in one viewport (1.9s)
+  ✓   6 tests/e2e/fullscreen.spec.ts:29:131 › fullscreen 1366x768 tutorial: user gesture and whole table stays in one viewport (1.5s)
+  ✓   7 tests/e2e/fullscreen.spec.ts:29:131 › fullscreen 1024x768 tutorial: user gesture and whole table stays in one viewport (1.5s)
+  ✓   8 tests/e2e/fullscreen.spec.ts:33:1 › fullscreen rejection gracefully keeps a complete immersive table and no uncaught error (1.0s)
+  ✓   9 tests/e2e/fullscreen.spec.ts:35:1 › default start keeps fullscreen optional and the explicit button uses a real user gesture (701ms)
+  ✓  10 tests/e2e/fullscreen.spec.ts:37:1 › portrait tutorial keeps natural vertical scrolling and an independent readable hand tray (1.2s)
+
+  10 passed (12.0s)

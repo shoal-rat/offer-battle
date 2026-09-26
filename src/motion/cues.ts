@@ -1,6 +1,6 @@
 /** Runtime budgets, not an assertion that every planned scene has been filmed. */
 export type MotionChannel='feedback'|'ambient'|'navigation'|'battle'|'attention';
-export const MOTION_LIMITS={ambientConcurrent:2,attentionConcurrent:1,compressAfterMs:1200,catchUpAfterMs:2000,resultDeadlineMs:900} as const;
+export const MOTION_LIMITS={ambientConcurrent:2,attentionConcurrent:1,compressAfterMs:3000,catchUpAfterMs:5000,resultDeadlineMs:2000} as const;
 export const MOTION_CUES=[
   {
     "id": "M01",
@@ -282,7 +282,7 @@ export const MOTION_CUES=[
     "id": "M24",
     "key": "attack",
     "channel": "battle",
-    "durationMs": 460,
+    "durationMs": 1180,
     "trigger": "开怼正式确认",
     "cancelPolicy": "cancel-or-fast-forward-to-current-state",
     "confirmationRequired": true,

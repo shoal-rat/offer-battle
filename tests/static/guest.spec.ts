@@ -25,7 +25,6 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   const first=await temporaryRoom(page);expect(first.room.id).toMatch(/^local_/);
   if(width<1024)await page.getByRole('button',{name:/^我的 Offer/}).click();
   await page.locator('[data-offer-id="E02"] button.offer-card').click();
-  await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(1);
   await page.reload();await expect(page.locator('.tutorial-coach')).toBeVisible();
   expect((await temporaryRoom(page)).room.id).toBe(first.room.id);
@@ -33,9 +32,9 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await settled(page);await page.locator('[data-tutorial="endTurn"]').click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(2);
   await settled(page);await page.locator('.friendly .unit-main').filter({hasText:'国企综合岗'}).click();
-  await page.locator('.hero-avatar[data-battle-id="p2"]').click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
+  await page.locator('.hero-avatar[data-battle-id="p2"]').click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(3);
-  await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();
+  await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();
   await expect(page.locator('.lesson-complete-overlay')).toBeVisible();
   const completion=await page.locator('.lesson-complete').boundingBox();expect(completion).not.toBeNull();expect(completion!.x).toBeGreaterThanOrEqual(0);expect(completion!.x+completion!.width).toBeLessThanOrEqual(width);expect(completion!.y).toBeGreaterThanOrEqual(0);expect(completion!.y+completion!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
   expect(await page.evaluate(()=>sessionStorage.getItem('offer-local-active-v1'))).toBeNull();

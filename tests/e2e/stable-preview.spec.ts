@@ -3,10 +3,10 @@ import {writeFile,unlink} from 'node:fs/promises';
 
 test('writing a test report never reloads a live match or inserts the home page',async({page})=>{
  const generated=`work/preview-reload-regression-${Date.now()}.html`;
- await page.goto('/');await page.getByRole('button',{name:/跟着前辈，打会第一局/}).click();await page.getByRole('button',{name:'开始第一课',exact:true}).click();await expect(page.locator('.tutorial-coach')).toBeVisible();
+ await page.goto('/');await page.locator('.hotspot-tutorial').click();await page.getByRole('button',{name:'开始第一课',exact:true}).click();await expect(page.locator('.tutorial-coach')).toBeVisible();
  const roomId=await page.evaluate(()=>localStorage.getItem('offer-active-room'));
  let navigations=0;page.on('framenavigated',frame=>{if(frame===page.mainFrame())navigations++});
- await page.evaluate(()=>{(window as any).__homeWasInserted=false;const observer=new MutationObserver(()=>{if(document.querySelector('.home'))(window as any).__homeWasInserted=true});observer.observe(document.body,{subtree:true,childList:true});});
+ await page.evaluate(()=>{(window as any).__homeWasInserted=false;const observer=new MutationObserver(()=>{if(document.querySelector('.paper-stage'))(window as any).__homeWasInserted=true});observer.observe(document.body,{subtree:true,childList:true});});
  try{
   await writeFile(generated,'<!doctype html><title>Generated report</title><p>First report</p>');
   await page.waitForTimeout(600);

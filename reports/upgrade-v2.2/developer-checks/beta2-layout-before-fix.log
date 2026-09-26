@@ -1,0 +1,78 @@
+
+Running 6 tests using 1 worker
+
+  ✘  1 tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1440x900: user gesture and whole table stays in one viewport (993ms)
+  ✓  2 tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1366x768: user gesture and whole table stays in one viewport (1.1s)
+  ✓  3 tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1024x768: user gesture and whole table stays in one viewport (1.8s)
+  ✘  4 tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1366x768 tutorial: user gesture and whole table stays in one viewport (1.4s)
+  ✓  5 tests/e2e/fullscreen.spec.ts:33:1 › fullscreen rejection gracefully keeps a complete immersive table and no uncaught error (1.0s)
+  ✓  6 tests/e2e/fullscreen.spec.ts:35:1 › default start keeps fullscreen optional and the explicit button uses a real user gesture (700ms)
+
+
+  1) tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1440x900: user gesture and whole table stays in one viewport 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 260.640625
+    Received:    261.390625
+
+      28 |
+      29 | for(const [width,height,tutorial]of [[1440,900,false],[1366,768,false],[1024,768,false],[1366,768,true]] as const)test(`fullscreen ${width}x${height}${tutorial?' tutorial':''}: user gesture and whole table stays in one viewport`,async({page})=>{
+    > 30 |  await page.setViewportSize({width,height});await fullscreenMock(page);await wire(page,tutorial);await expect(page.getByRole('button',{name:'退出全屏',exact:true})).toBeVisible();expect(await page.evaluate(()=>(window as any).__fullscreenCalls[0].active)).toBe(true);await withinScreen(page);const skillBottom=await page.locator('.opponent-skills').evaluate(el=>el.getBoundingClientRect().bottom),enemyTop=await page.locator('.enemy-row').evaluate(el=>Math.min(...[...el.children].map(n=>n.getBoundingClientRect().top)));expect(skillBottom).toBeLessThanOrEqual(enemyTop+2);if(!tutorial){if(!await page.locator('.offer-hand').count())await page.getByRole('button',{name:/我的 Offer/}).click();await expect(page.locator('.battle-unit')).toHaveCount(8);await expect(page.locator('.offer-hand .offer-card')).toHaveCount(3);await expect(page.locator('.hand-card-wrapper')).toHaveCount(8);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      31 |  await mkdir('evidence/screenshots/fullscreen',{recursive:true});await page.screenshot({path:`evidence/screenshots/fullscreen/table-${width}-${height}${tutorial?'-tutorial':''}.png`});await page.keyboard.press('Escape');await expect(page.getByRole('button',{name:'进入全屏',exact:true})).toBeVisible();await withinScreen(page);await page.getByRole('button',{name:'进入全屏',exact:true}).click();await expect(page.getByRole('button',{name:'退出全屏',exact:true})).toBeVisible();
+      32 | });
+      33 | test('fullscreen rejection gracefully keeps a complete immersive table and no uncaught error',async({page})=>{const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewportSize({width:1366,height:768});await fullscreenMock(page,true);await wire(page);await expect(page.getByRole('button',{name:'进入全屏',exact:true})).toBeVisible();expect(await page.evaluate(()=>(window as any).__fullscreenCalls)).toEqual([{active:true,at:expect.any(Number)}]);await withinScreen(page);await page.getByRole('button',{name:'进入全屏',exact:true}).click();expect(await page.evaluate(()=>(window as any).__fullscreenCalls.length)).toBe(2);await withinScreen(page);expect(errors).toEqual([]);});
+        at tests/e2e/fullscreen.spec.ts:30:538
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    work/deployment-compat-results/fullscreen-fullscreen-1440-ebfea-table-stays-in-one-viewport/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: work/deployment-compat-results/fullscreen-fullscreen-1440-ebfea-table-stays-in-one-viewport/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    work/deployment-compat-results/fullscreen-fullscreen-1440-ebfea-table-stays-in-one-viewport/trace.zip
+    Usage:
+
+        npx playwright show-trace work/deployment-compat-results/fullscreen-fullscreen-1440-ebfea-table-stays-in-one-viewport/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1366x768 tutorial: user gesture and whole table stays in one viewport 
+
+    Error: .battle-page[0] bottom
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 770
+    Received:    824.28125
+
+      19 |  const report=await page.evaluate(()=>{const selectors=['.battle-page','.arena','.hand-dock','.hand-cards','.battle-unit','.hero-avatar','.offer-hand .offer-card','.education-controls','.end-turn','.tutorial-coach','.opponent-skills','.opponent-skill','.opponent-skill-effect'];const boxes=selectors.flatMap(selector=>[...document.querySelectorAll<HTMLElement>(selector)].map((el,index)=>{const r=el.getBoundingClientRect();return {selector,index,x:r.left,y:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}}));return {width:innerWidth,height:innerHeight,scrollHeight:document.documentElement.scrollHeight,scrollWidth:document.documentElement.scrollWidth,boxes}});
+      20 |  expect(report.scrollHeight,JSON.stringify(report)).toBeLessThanOrEqual(report.height+2);expect(report.scrollWidth).toBeLessThanOrEqual(report.width+2);
+    > 21 |  for(const b of report.boxes){expect(b.y,`${b.selector}[${b.index}] top`).toBeGreaterThanOrEqual(-2);expect(b.x,`${b.selector}[${b.index}] left`).toBeGreaterThanOrEqual(-2);expect(b.right,`${b.selector}[${b.index}] right`).toBeLessThanOrEqual(report.width+2);expect(b.bottom,`${b.selector}[${b.index}] bottom`).toBeLessThanOrEqual(report.height+2);}
+         |                                                                                                                                                                                                                                                                                                                        ^
+      22 |  for(const card of await page.locator('.hand-card-wrapper .common-card').all()){
+      23 |   await card.scrollIntoViewIfNeeded();const box=await card.boundingBox();expect(box).not.toBeNull();expect(box!.x).toBeGreaterThanOrEqual(-2);expect(box!.x+box!.width).toBeLessThanOrEqual(report.width+2);expect(box!.y).toBeGreaterThanOrEqual(-2);expect(box!.y+box!.height).toBeLessThanOrEqual(report.height+2);
+      24 |   const text=await card.evaluate(el=>({title:parseFloat(getComputedStyle(el.querySelector('.card-ribbon')!).fontSize),summary:parseFloat(getComputedStyle(el.querySelector(':scope > p')!).fontSize),scrollX,scrollY}));expect(text.title).toBeGreaterThanOrEqual(13);expect(text.summary).toBeGreaterThanOrEqual(12);expect(text.scrollX).toBe(0);expect(text.scrollY).toBe(0);
+        at withinScreen (tests/e2e/fullscreen.spec.ts:21:312)
+        at tests/e2e/fullscreen.spec.ts:30:264
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    work/deployment-compat-results/fullscreen-fullscreen-1366-a6546-table-stays-in-one-viewport/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: work/deployment-compat-results/fullscreen-fullscreen-1366-a6546-table-stays-in-one-viewport/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    work/deployment-compat-results/fullscreen-fullscreen-1366-a6546-table-stays-in-one-viewport/trace.zip
+    Usage:
+
+        npx playwright show-trace work/deployment-compat-results/fullscreen-fullscreen-1366-a6546-table-stays-in-one-viewport/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1440x900: user gesture and whole table stays in one viewport 
+    tests/e2e/fullscreen.spec.ts:29:115 › fullscreen 1366x768 tutorial: user gesture and whole table stays in one viewport 
+  4 passed (8.8s)

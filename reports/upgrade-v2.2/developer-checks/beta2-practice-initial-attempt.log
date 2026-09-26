@@ -1,0 +1,60 @@
+✔ local guest L01: legal learner steps, mentor, duplicate protection and deterministic replay (386.728209ms)
+✔ local guest L02: legal learner steps, mentor, duplicate protection and deterministic replay (311.940125ms)
+✔ local guest L03: legal learner steps, mentor, duplicate protection and deterministic replay (219.539166ms)
+✔ local guest L04: legal learner steps, mentor, duplicate protection and deterministic replay (319.053458ms)
+✔ local guest L05: legal learner steps, mentor, duplicate protection and deterministic replay (438.778834ms)
+✔ local bot plays a complete match with engine-only decisions, replay and reconstructible cloud-save seed (4942.470833ms)
+✔ local temporary resume keeps tutorial, receipts and current replay; expired cache is discarded (155.391084ms)
+✔ local timer advances setup and turn deadlines, rejects forged TIMEOUT, and keeps training untimed (30.316208ms)
+✔ local command envelope rejects stale state, altered reuse and previous-match IDs without changing state (109.721542ms)
+✔ custom offers persist locally and loadouts use the compiled collection instead of client-forged attributes (22.036875ms)
+✔ all practice setups use existing showcase engine and remain marked as practice for cloud-save restrictions (81.7895ms)
+✔ local socket emits open/state updates and closes cleanly, with no remote connection (114.874875ms)
+✔ local persisted 2.0 collection upgrades while a resumed match stays frozen until rematch (35.263709ms)
+✔ local Offer saves are durable and idempotent; revision and recycle operations preserve running definitions (13.011833ms)
+✔ local profile revisions detect a second tab and preserve the draft on storage failure; migration preserves its source (2.42175ms)
+✔ P2 local runtime: explicit challenge fixtures solve through commands, cosmetics persist, and replay is marked experimental (280.300291ms)
+✔ P2 local best of three: intermission survives reload, locks cards, accepts flex changes and stops after two wins (34.407833ms)
+✔ slow local practice keeps both setup stages untimed, repairs old saves, and rematches untimed (126.849667ms)
+✔ default local bot pacing leaves 1280 ms between setup decisions while explicit fast fixtures remain supported (47.671ms)
+✔ friend HTTP: readiness, hidden setup, authenticated seats, stale versions, idempotence and replay (299.118834ms)
+✔ WebSocket: independent sessions receive private views, reconnect retains seat and deadline (235.724125ms)
+✔ zero-key Offer compilation and profile persistence, failed generation remains retryable (186.4685ms)
+✔ server restart restores snapshot, room membership and filtered replay (212.765916ms)
+✔ server deadlines default hidden choices and two inactive turns lose (314.160458ms)
+✔ all three bot strategies finish a real zero-key HTTP match and replay verifies (37988.45125ms)
+✔ atomic storage recovers backup without silently resetting corrupt saves (19.127666ms)
+✔ static hosting blocks private data, environment and server sources (38.570125ms)
+✔ network trust boundary rejects cross-origin WebSockets and ignores forged Offer numbers (87.380833ms)
+✔ explicit practice fixtures are isolated from friend matches and replay through normal commands (112.747583ms)
+✔ custom job names and validated rule archetype overrides preserve future Offer support (68.142166ms)
+✔ Node restart upgrades 2.0 collections and both rematch seats while preserving archived replay (1201.108792ms)
+✖ slow Node practice never expires setup, restores old setup timers safely, and rematches untimed (843.718125ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 31
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42086.399291
+
+✖ failing tests:
+
+test at tests/server.test.ts:128:1
+✖ slow Node practice never expires setup, restores old setup timers safely, and rematches untimed (843.718125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'p2' !== 'p1'
+  
+      at TestContext.<anonymous> (tests/server.test.ts:144:170)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'p2',
+    expected: 'p1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

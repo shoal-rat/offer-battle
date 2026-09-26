@@ -1,14 +1,15 @@
 import type {BattleCue} from '../game/types';
 import {resultMotionDuration} from './result-motion';
 
+export const ATTACK_TIMING={duration:1180,contact:640,departure:460} as const;
 export interface MotionGroup {id:string;cues:BattleCue[];duration:number}
 const leaders=new Set(['attack','primary_skill','secondary_skill','card','deploy','retort','result']);
 export function cueOffset(group:MotionGroup,index:number){
  if(index===0)return 0;
  const lead=group.cues[0],cue=group.cues[index];
  // Lethal counter-damage folds the attacker at contact, without a living return pose.
- if(lead.kind==='attack'&&lead.sourceId&&cue.kind==='retire'&&(cue.targetId??cue.sourceId)===lead.sourceId)return 220;
- return lead.kind==='attack'?220:['primary_skill','secondary_skill','card'].includes(lead.kind)?160:80;
+ if(lead.kind==='attack'&&lead.sourceId&&cue.kind==='retire'&&(cue.targetId??cue.sourceId)===lead.sourceId)return ATTACK_TIMING.contact;
+ return lead.kind==='attack'?ATTACK_TIMING.contact:['primary_skill','secondary_skill','card'].includes(lead.kind)?160:80;
 }
 export function groupBattleCues(cues:BattleCue[],reduced=false):MotionGroup[]{
  const groups:MotionGroup[]=[];
@@ -17,12 +18,12 @@ export function groupBattleCues(cues:BattleCue[],reduced=false):MotionGroup[]{
   const last=groups.at(-1);
   // A single resolver's aftermath belongs to its attack/cast, not a long serial queue.
   if(!last||leaders.has(cue.kind)){
-   groups.push({id:cue.id,cues:[cue],duration:cue.kind==='result'?resultMotionDuration(cue,reduced):reduced?100:cue.kind==='secondary_skill'?550:cue.kind==='primary_skill'?460:cue.kind==='attack'?460:cue.kind==='deploy'?340:320});
+   groups.push({id:cue.id,cues:[cue],duration:cue.kind==='result'?resultMotionDuration(cue,reduced):reduced?100:cue.kind==='secondary_skill'?550:cue.kind==='primary_skill'?460:cue.kind==='attack'?ATTACK_TIMING.duration:cue.kind==='deploy'?340:320});
   }else last.cues.push(cue);
  }
  // Never unlock/compact a board while an aftermath ghost is still on screen.
  for(const group of groups)if(!reduced&&group.cues.some(c=>c.kind==='retire'||c.kind==='bounce')){
-  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+320]:[]);
+  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+ATTACK_TIMING.departure]:[]);
   group.duration=Math.max(group.duration,...exits);
  }
  return groups;

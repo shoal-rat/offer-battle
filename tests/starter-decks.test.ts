@@ -27,6 +27,25 @@ test('editing returned arrays and definitions cannot mutate another starter or t
  const before=getStarterDecks(true),edited=getStarterDecks(true);edited[0].loadout.offers[0].baseAttack=999;edited[0].loadout.baseDeck.pop();edited[0].strengths.push('changed');
  assert.deepEqual(getStarterDecks(true),before);assert.ok(exampleOffers.every(o=>o.baseAttack<999));
 });
+test('every starter can refill an empty board without drawing ally-dependent upgrades',()=>{
+ const allyDependent=new Set(['N13','N15','N16','F03']);
+ for(const deck of getStarterDecks(true)){
+  const supports=deck.loadout.baseDeck.filter(id=>cardById[id].type==='support');
+  assert.ok(supports.length>=8,`${deck.id} needs at least eight independent bodies among twelve base cards`);
+  assert.ok(supports.filter(id=>cardById[id].time_cost<=2).length>=5,`${deck.id} needs affordable replacement bodies`);
+  assert.equal([...deck.loadout.baseDeck,...deck.loadout.flexDeck].filter(id=>allyDependent.has(id)).length,0,`${deck.id} leaves upgrades to its education skills`);
+  for(const definitionId of new Set(supports)){
+   const a={...structuredClone(deck.loadout),playerId:'a'},b={...structuredClone(deck.loadout),playerId:'b'};
+   const state=createMatch([a,b],702,{skipSetup:true});state.round=6;state.activePlayerId='a';
+   for(const player of state.players){player.board=[];player.hand=[]}
+   state.players[0].timeRemaining=8;
+   state.players[0].hand=[{id:'replacement',definitionId,kind:'card',taxes:[],knownTo:[]}];
+   const next=applyCommand(state,'a',{type:'PLAY_CARD',cardId:'replacement'});
+   assert.equal(next.error,undefined,`${deck.id}/${definitionId} must be playable without an existing ally`);
+   assert.equal(next.state.players[0].board.length,1);
+  }
+ }
+});
 test('all six starters can finish legal ordinary games and replay exactly without extra rules',()=>{
  const decks=getStarterDecks(true);
  for(let n=0;n<decks.length;n++){

@@ -568,7 +568,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q28",
@@ -578,7 +579,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q29",
@@ -588,7 +590,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q30",
@@ -609,7 +612,8 @@
           "reports/upgrade-v2.2/frontend-evidence.json"
         ]
       }
-    ]
+    ],
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q31",
@@ -639,7 +643,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q34",
@@ -679,7 +684,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q38",
@@ -689,7 +695,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q39",
@@ -1398,7 +1405,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q94",
@@ -1418,7 +1426,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q96",
@@ -1428,7 +1437,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q97",
@@ -1458,7 +1468,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q100",
@@ -1508,7 +1519,8 @@
     "command": null,
     "evidencePaths": [],
     "observed": null,
-    "remainingIssue": null
+    "remainingIssue": null,
+    "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
   },
   {
     "caseId": "Q105",

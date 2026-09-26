@@ -824,7 +824,7 @@
       "evidencePaths": []
     }
   ],
-  "createdAt": "2026-09-26T19:44:45.138Z",
+  "createdAt": "2026-09-26T20:39:37.445Z",
   "scope": "execution plan only; no agent sessions launched",
   "target": "http://127.0.0.1:5344/offer-battle/",
   "configuredModel": "gpt-6-astra",
@@ -1550,8 +1550,8 @@
     {
       "runId": "A08-R01",
       "role": "A08",
-      "status": "blocked",
-      "canLaunch": false,
+      "status": "ready",
+      "canLaunch": true,
       "tools": [
         "screenshot",
         "approvedReferences",
@@ -1566,16 +1566,14 @@
         "arbitraryShell": false,
         "nativeVideoObservation": false
       },
-      "blockedReasons": [
-        "Approved reference and two anonymous real captures are required."
-      ],
+      "blockedReasons": [],
       "partialCoverage": []
     },
     {
       "runId": "A08-R02",
       "role": "A08",
-      "status": "blocked",
-      "canLaunch": false,
+      "status": "ready",
+      "canLaunch": true,
       "tools": [
         "screenshot",
         "approvedReferences",
@@ -1590,16 +1588,14 @@
         "arbitraryShell": false,
         "nativeVideoObservation": false
       },
-      "blockedReasons": [
-        "Approved reference and two anonymous real captures are required."
-      ],
+      "blockedReasons": [],
       "partialCoverage": []
     },
     {
       "runId": "A08-R03",
       "role": "A08",
-      "status": "blocked",
-      "canLaunch": false,
+      "status": "ready",
+      "canLaunch": true,
       "tools": [
         "screenshot",
         "approvedReferences",
@@ -1614,16 +1610,14 @@
         "arbitraryShell": false,
         "nativeVideoObservation": false
       },
-      "blockedReasons": [
-        "Approved reference and two anonymous real captures are required."
-      ],
+      "blockedReasons": [],
       "partialCoverage": []
     },
     {
       "runId": "A08-R04",
       "role": "A08",
-      "status": "blocked",
-      "canLaunch": false,
+      "status": "ready",
+      "canLaunch": true,
       "tools": [
         "screenshot",
         "approvedReferences",
@@ -1638,9 +1632,7 @@
         "arbitraryShell": false,
         "nativeVideoObservation": false
       },
-      "blockedReasons": [
-        "Approved reference and two anonymous real captures are required."
-      ],
+      "blockedReasons": [],
       "partialCoverage": []
     },
     {

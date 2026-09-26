@@ -2,7 +2,7 @@ import {useEffect,useLayoutEffect,useRef,useState,type RefObject} from 'react';
 import {createPortal} from 'react-dom';
 import {publicUrl} from '../deployment';
 import type {BattleAnchor,BattleChange,BattleCue,MatchView} from '../game/types';
-import {cueOffset,type MotionGroup,type Point} from './battle-motion';
+import {cueOffset,ATTACK_TIMING,type MotionGroup,type Point} from './battle-motion';
 import {motionDirector,type MotionContext,type MotionEndReason} from '../motion/MotionDirector';
 import {BattleEventAdapter,commandUsesUnstableTarget,groupActors,motionKey,type BattleMotionControl} from '../motion/eventAdapter';
 import {clonePaperRig,paperRig} from '../motion/paperRig';
@@ -89,30 +89,39 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onDepartureCom
    target.classList.add('paper-hit-outline');ctx.addCleanup(()=>target.classList.remove('paper-hit-outline'));
    if(!ctx.reduced){const from=locate(cue.sourceId,cue.source).point,sign=from.x>anchor.point.x?-1:1;animate(rig.body,healing?[{transform:'scaleY(.98)'},{transform:'scaleY(1)'}]:[{transform:'rotate(0)'},{transform:`rotate(${sign*6}deg) skewX(${sign*2}deg)`,offset:.25},{transform:'rotate(0) skewX(0)'}],180)}
   },delay)}
-  function flight(cue:BattleCue,fast=false){
-   const from=locate(cue.sourceId,cue.source),to=locate(cue.targetId,cue.target),duration=fast?190:460,contact=fast?95:220;
+  const fallenFlights=new Map<string,Anchor>();
+  function flight(cue:BattleCue){
+   const from=locate(cue.sourceId,cue.source),to=locate(cue.targetId,cue.target),duration=ATTACK_TIMING.duration,contact=ATTACK_TIMING.contact;
    if(ctx.reduced){numbers(cue.changes,cue);hit(cue);return}
    const wrapper=pointNode('battle-fx-flight battle-fit',from.point);wrapper.dataset.kind='attack';Object.assign(wrapper.style,{left:from.rect.left+'px',top:from.rect.top+'px',width:from.rect.width+'px',height:from.rect.height+'px'});
    const clone=from.clone?clonePaperRig(from.clone):document.createElement('div');
    if(!from.clone)clone.className='battle-fx-card-back';
-   clone.querySelectorAll('.unit-name,.unit-attack,.unit-health,.unit-age,.unit-info,.unit-status,.notice-stamp').forEach(node=>node.remove());wrapper.append(clone);
+   clone.querySelectorAll('.unit-info,.unit-status,.notice-stamp').forEach(node=>node.remove());wrapper.append(clone);
    const dx=to.point.x-from.point.x,dy=to.point.y-from.point.y;
    const died=cue.source?.kind==='unit'&&!current.current.players.some(player=>player.board.some(unit=>unit.id===cue.sourceId));
-   const frames:Keyframe[]=[{transform:'translate(0,0)'},{transform:`translate(${-dx*.06}px,${-dy*.06}px)`,offset:.17},{transform:`translate(${dx}px,${dy}px)`,offset:.48},{transform:`translate(${dx*.97}px,${dy*.97}px)`,offset:.56},{transform:died?`translate(${dx}px,${dy+15}px)`:'translate(0,0)',opacity:died?0:1}];
-   animate(wrapper,frames,duration);animate(paperRig(clone).body,[{transform:'rotate(0)'},{transform:`rotate(${dx>0?5:-5}deg)`,offset:.45},{transform:'rotate(0)'}],duration);
-   const original=find(cue.sourceId);if(original){const art=paperRig(original).body;animate(art,[{opacity:.25},{opacity:.25},{opacity:1}],duration)}
+   const frames:Keyframe[]=[{transform:'translate(0,0)'},{transform:`translate(${-dx*.04}px,${-dy*.04}px)`,offset:.16},{transform:`translate(${dx}px,${dy}px)`,offset:contact/duration},{transform:`translate(${dx}px,${dy}px)`,offset:.68},{transform:died?`translate(${dx}px,${dy}px)`:'translate(0,0)'}];
+   animate(wrapper,frames,duration,{easing:'linear'});animate(paperRig(clone).body,[{transform:'rotate(0)'},{transform:`rotate(${dx>0?5:-5}deg)`,offset:.5},{transform:'rotate(0)'}],duration);
+   const original=find(cue.sourceId);
+   if(original){const previous=original.style.visibility;original.style.visibility='hidden';original.dataset.inFlight='true';ctx.addCleanup(()=>{original.style.visibility=previous;delete original.dataset.inFlight})}
+   if(died&&cue.sourceId){fallenFlights.set(cue.sourceId,{point:to.point,rect:{...from.rect,left:from.rect.left+dx,top:from.rect.top+dy},clone:from.clone});later(()=>wrapper.remove(),contact)}
+   const actorName=cue.source?.name||clone.querySelector('.unit-name')?.textContent||'角色';
+   const targetName=cue.target?.name||find(cue.targetId)?.querySelector('.unit-name')?.textContent||current.current.players.find(p=>p.id===cue.targetId)?.name||'目标';
+   const caption=pointNode('battle-attack-caption',{x:innerWidth/2,y:Math.min(from.point.y,to.point.y)-65});caption.textContent=`${actorName}  →  ${targetName}`;
+   animate(caption,[{opacity:0},{opacity:1,offset:.1},{opacity:1,offset:.85},{opacity:0}],duration);
+   const target=find(cue.targetId);target?.classList.add('paper-attack-target');ctx.addCleanup(()=>target?.classList.remove('paper-attack-target'));
    later(()=>wrapper.remove(),duration);hit(cue,contact);numbers(cue.changes,cue,contact);
+
   }
   function departure(cue:BattleCue,delay:number){later(()=>{
-   const id=cue.kind==='bounce'?cue.sourceId:cue.targetId??cue.sourceId;const anchor=locate(id,cue.kind==='bounce'?cue.source:cue.target??cue.source);
+   const id=cue.kind==='bounce'?cue.sourceId:cue.targetId??cue.sourceId;const anchor=fallenFlights.get(id??'')??locate(id,cue.kind==='bounce'?cue.source:cue.target??cue.source);
    const original=find(id);if(original?.dataset.departing==='true'){original.style.visibility='hidden';ctx.addCleanup(()=>{original.style.visibility=''})}
    if(anchor.clone){const ghost=pointNode('battle-fx-ghost battle-fit',anchor.point);ghost.dataset.departureId=id;Object.assign(ghost.style,{left:anchor.rect.left+'px',top:anchor.rect.top+'px',width:anchor.rect.width+'px',height:anchor.rect.height+'px'});const clone=clonePaperRig(anchor.clone);ghost.append(clone);
     const owner=cue.source?.playerId??cue.target?.playerId??cue.playerId;const destination=locate(`${owner}:hand`,{kind:'hand',id:`${owner}:hand`,playerId:owner??current.current.selfId});
-    animate(ghost,ctx.reduced?[{opacity:1},{opacity:0}]:[{opacity:1,transform:'translate(0,0)'},{opacity:0,transform:cue.kind==='bounce'?`translate(${destination.point.x-anchor.point.x}px,${destination.point.y-anchor.point.y}px)`:'translate(0,22px)'}],320);
-    if(!ctx.reduced)animate(paperRig(clone).body,[{transform:'rotate(0) scaleY(1)'},{transform:cue.kind==='bounce'?'rotateY(65deg) scale(.45)':'rotate(13deg) scaleY(.14)'}],320);
-    later(()=>ghost.remove(),320);
+    animate(ghost,ctx.reduced?[{opacity:1},{opacity:0}]:[{opacity:1,transform:'translate(0,0)'},{opacity:0,transform:cue.kind==='bounce'?`translate(${destination.point.x-anchor.point.x}px,${destination.point.y-anchor.point.y}px)`:'translate(0,22px)'}],ATTACK_TIMING.departure);
+    if(!ctx.reduced)animate(paperRig(clone).body,[{transform:'rotate(0) scaleY(1)'},{transform:cue.kind==='bounce'?'rotateY(65deg) scale(.45)':'rotate(13deg) scaleY(.14)'}],ATTACK_TIMING.departure);
+    later(()=>ghost.remove(),ATTACK_TIMING.departure);
    }
-   later(()=>{if(id)callbacks.current.onDepartureComplete?.(id)},320);
+   later(()=>{if(id)callbacks.current.onDepartureComplete?.(id)},ATTACK_TIMING.departure);
   },delay);numbers(cue.changes,cue,delay+100)}
   function video(point:Point){
    if(ctx.reduced||ctx.quality==='compact')return;
@@ -146,16 +155,16 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onDepartureCom
   }
   if(options.final){
    const result=group.cues.find(cue=>cue.kind==='result')!;const attack=[...group.cues].reverse().find(cue=>cue.kind==='attack');
-   if(attack&&!ctx.reduced)flight(attack,true);
+   if(attack&&!ctx.reduced)flight(attack);
    const start=()=>{if(!layerRef.current||!arenaRef.current)return;const motion=playResultMotion({layer:layerRef.current,arena:arenaRef.current,view:current.current,cue:result,reduced:ctx.reduced,later:(fn,ms)=>ctx.later(fn,ms),animate:(node,frames,options)=>ctx.animate(node,frames,options)!});ctx.addCleanup(()=>motion.dispose())};
-   if(attack&&!ctx.reduced)ctx.later(start,190);else start();return;
+   if(attack&&!ctx.reduced)ctx.later(start,ATTACK_TIMING.duration);else start();return;
   }
   group.cues.forEach(cue);
  }
  function enqueue(group:MotionGroup,final=false){
   const actors=new Set(groupActors(group));for(const cue of group.cues)if(cue.kind==='retire'||cue.kind==='bounce')if(cue.target?.playerId||cue.source?.playerId)actors.add(cue.target?.playerId??cue.source!.playerId);
   pending.current.set(group.id,{group,actors});announce();
-  motionDirector.play({cue:final?'resultCurtain':motionKey(group.cues[0]),channel:final?'attention':'battle',id:group.id,scope,confirmed:true,durationMs:final?850:group.duration,actorIds:[...actors],run:ctx=>{if(alive.current)setKind(final?'result':group.cues[0].kind);present(group,ctx,{final})},onSettled:(reason:MotionEndReason)=>{
+  motionDirector.play({cue:final?'resultCurtain':motionKey(group.cues[0]),channel:final?'attention':'battle',id:group.id,scope,confirmed:true,durationMs:group.duration,actorIds:[...actors],run:ctx=>{if(alive.current)setKind(final?'result':group.cues[0].kind);present(group,ctx,{final})},onSettled:(reason:MotionEndReason)=>{
    pending.current.delete(group.id);completeDepartures(group);if(final){terminal.current=false;callbacks.current.onResultPending?.(false)}
    if(reason==='catch-up'&&alive.current)setCatchUps(value=>value+1);announce();
   }});
@@ -168,7 +177,7 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onDepartureCom
   if(finished){
    motionDirector.catchUp(`board:${view.matchId}`);
    const result=batch.fresh.find(cue=>cue.kind==='result');
-   if(result){catchUp('result');terminal.current=true;callbacks.current.onResultPending?.(true);enqueue({id:result.id,cues:batch.fresh,duration:850},true)}
+   if(result){catchUp('result');terminal.current=true;callbacks.current.onResultPending?.(true);enqueue({id:result.id,cues:batch.fresh,duration:(batch.fresh.some(c=>c.kind==='attack')?ATTACK_TIMING.duration:0)+650},true)}
    else callbacks.current.onResultPending?.(false);
    return;
   }

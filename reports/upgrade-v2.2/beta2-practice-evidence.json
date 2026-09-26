@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "version": "2.2.0-beta.2",
+  "kind": "developer-validation-not-independent-acceptance",
+  "date": "2026-09-27",
+  "sourceCheckpoint": "300b772347fcaa07b0524fc52486a492706b6067",
+  "workingTree": true,
+  "independentAcceptance": "not-run",
+  "batches": [
+    {
+      "command": "npx tsx --test tests/local-backend.test.ts tests/server.test.ts",
+      "passed": 32,
+      "failed": 0,
+      "durationMs": 33234.000666
+    },
+    {
+      "command": "npx tsx --test --test-name-pattern='default Node bot' tests/server.test.ts",
+      "passed": 1,
+      "failed": 0,
+      "durationMs": 2016.829417
+    },
+    {
+      "command": "npm run test:cloudflare",
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 33499.189958
+    }
+  ],
+  "scope": [
+    "All slow-practice phases and rematch have no deadline",
+    "Local and Node restore old expired practice setup deadlines before timeout execution",
+    "Local virtual clock and real Node timing enforce 1280 ms default bot interval; explicit test overrides remain valid",
+    "Existing ordinary timed local/Node friend expiry regressions remain passing",
+    "Actual workerd rejects cloud bot practice; training flag cannot disable Cloudflare friend setup/turn deadlines"
+  ],
+  "typecheck": "passed",
+  "cloudflareTypecheckAndDryRun": "passed",
+  "priorAttempt": {
+    "preserved": true,
+    "reason": "New Node test incorrectly assumed p1 always starts. Corrected test inspects deadline and authoritative TIMEOUT journal independent of legitimate randomized first player; no runtime rule change for this assertion."
+  },
+  "limitations": [
+    "Not a public deployment or browser-user acceptance",
+    "Does not verify latest Battle UI, own flex selection compatibility or narrow drawer changes",
+    "No new Cloudflare bot implementation; production Worker stays friend-only",
+    "The three test batches are separate and not a new full npm-test count"
+  ],
+  "evidence": [
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-practice-node-local.log",
+      "sha256": "cef9dae3a8364fb14de67d20c44c59d737bc7b0360da8d3d14d71cadf7224f70"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-practice-node-pacing.log",
+      "sha256": "ba66dbb0ff12785ed795029b6ef7bd1490640102ea7a7557ced8b9ac77ac40ab"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-practice-cloudflare.log",
+      "sha256": "5c878e8b44b7237863e6757efa3976bfe47eecb072e2679816df465bb90b384f"
+    },
+    {
+      "path": "reports/upgrade-v2.2/developer-checks/beta2-practice-initial-attempt.log",
+      "sha256": "e8e7743c2e5ccb0817aa5760930a824051a84d0dcf23ee8bb8cb33b238c646ed"
+    }
+  ]
+}

@@ -113,6 +113,12 @@ Cloudflare 免费服务有额度上限，不是无限服务器。SQLite Durable 
 
 删除 Worker 或 Durable Object 数据会影响账号和已存对局。正常更新使用 `wrangler deploy`，不要删除既有 migration 或用全新绑定替代原数据库；数据格式升级应提供明确迁移方案。当前版本尚未经过独立安全审计或公网容量压力测试。
 
+## 2.2 后端实际发布（2026-09-27）
+
+Cloudflare 正式 Worker 已发布为 `b34a8571-5982-41b6-8698-e9fd608cbc3c`。部署前的 Cloudflare 类型检查和 dry-run 通过；部署后的 `/healthz` 与 `/api/capabilities` 均为 200，匿名资料请求为 401，合法来源预检为 204，未知来源为 403。生产三局两胜仍关闭，没有重置 Durable Objects 或修改 secrets。完整记录见 [后端发布证据](reports/upgrade-v2.2/cloudflare-v22-deployment.json)。
+
+这份记录只证明正式后端已发布及上述 HTTP 边界通过，不代表 48 轮独立 Agent 验收已完成。静态页面部署与完整联机、造卡、保存回放路径的验收单独记录。旧 2.1 标签页编辑资料时应刷新，加载携带 `expectedRevision` 的新版页面。
+
 ## 历史基础版本线上验收（2026-09-26，不代表 2.2）
 
 后端版本：`c96f68f9-b3a6-4e77-a514-3bfaba954f6d`。使用 Workers Free 和 SQLite Durable Objects，无付费资源升级。首次部署的域名证书在短暂传播后正常生效；实际 HTTPS 健康检查返回 200，游客访问账号战报返回 401 `AUTH_REQUIRED`。

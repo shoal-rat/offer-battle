@@ -15,3 +15,8 @@
 
 /* Compact keeps semantic movement/numbers, while removing costly decorative filter layers. */
 html[data-motion-quality=compact] .battle-fx-flight,html[data-motion-quality=compact] .battle-fx-ghost{filter:none}
+
+/* One moving actor: its table slot stays reserved while the whole original is hidden. */
+.battle-fx-flight .unit-name{display:block!important;bottom:24px;font-size:13px;line-height:1.3;text-shadow:0 1px #fff}
+.battle-attack-caption{position:absolute;z-index:10;transform:translate(-50%,-50%);max-width:min(90vw,600px);padding:8px 18px;border:2px solid #b39b71;border-radius:5px 11px 5px 9px;background:#fff8e6;color:#593a2c;box-shadow:0 5px 0 #604f382b;font-size:clamp(13px,1.1vw,17px);font-weight:750;text-align:center}
+.paper-attack-target{outline:3px dashed #c64c40!important;outline-offset:5px}

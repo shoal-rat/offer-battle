@@ -1,0 +1,24 @@
+{
+  "kind": "paired-single-card-preset-comparison",
+  "oldDefinitionHash": "e5e70178b363fd35cb59675e265572252261d69542e2966158fd62338c764e6b",
+  "newDefinitionHash": "51350691e712f60b98774607a589686d1eef57ea83e7b583bfbf52187f3e7cb2",
+  "change": "Only starter-05: one N05 replaced by N06. All education, Offer, action, flex choices and all other five presets unchanged.",
+  "exactMatchedGames": 360,
+  "seedSeatStyleAllMatch": true,
+  "unaffectedGames": 240,
+  "unaffectedStateHashesMatch": true,
+  "affectedGames": 120,
+  "oldStarter05Score": 0.8083333333333333,
+  "newStarter05Score": 0.5583333333333333,
+  "scoreDifference": -0.25,
+  "pairedDifferenceBootstrap95": [
+    -0.3458333333333333,
+    -0.1625
+  ],
+  "causalLimits": [
+    "This fixed-policy matched comparison estimates the whole-card substitution within these six presets and these seeds.",
+    "The replaced cards differ in cost, stats, guard and optional entry ability; this does not isolate any single mechanic.",
+    "Education combinations remain part of each deck. Their independent contribution cannot be separated by this comparison.",
+    "Normal bots with equal styles are not human players or all possible opponent builds."
+  ]
+}

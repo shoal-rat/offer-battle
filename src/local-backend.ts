@@ -60,6 +60,8 @@ export class LocalBackend {
       const saved=JSON.parse(options.transientStorage.getItem(activeKey)||'null');
       if(saved?.expiresAt>this.now()&&saved.room?.id?.startsWith('local_')&&saved.room.state?.rulesVersion==='2.0.0'&&(saved.room.status==='playing'||saved.room.status==='finished'&&saved.room.series?.status==='between')&&Array.isArray(saved.room.journal)) {
         saved.room.difficulty=normalizeDifficulty(saved.room.difficulty);saved.room.setupMode=normalizeSetupMode(saved.room.setupMode,saved.room.skipSetup);saved.room.botVersion??=BOT_VERSION;saved.room.botSeed??=seed();
+        // Older slow-practice saves accidentally retained a setup countdown.
+        if(saved.room.training&&saved.room.deadline!==null){saved.room.deadline=null;try{options.transientStorage.setItem(activeKey,JSON.stringify(saved))}catch{}}
         this.rooms.set(saved.room.id,saved.room);this.activeRoomId=saved.room.id;
       } else options.transientStorage.removeItem(activeKey);
     }catch{try{options.transientStorage.removeItem(activeKey)}catch{}}
@@ -96,7 +98,7 @@ export class LocalBackend {
     room.challengeSolved=false;room.earnedAchievements=[];
     if(room.experiment&&room.experiment.kind!=='series'){const fixture=room.experiment.kind==='challenge'?createChallenge(room.experiment.id,experimentFlags({challenges:true}),id('match')):createBoss(room.experiment.id,experimentFlags({boss:true}),id('match'));room.state=fixture.state;room.seed=fixture.seed;room.experiment=fixture.descriptor;room.seats.forEach((seat,index)=>seat.loadout=fixture.loadouts[index]);room.deadline=null;}
     else if(room.tutorial){const lesson=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:this.profile.nickname});room.seats.forEach((seat,i)=>seat.loadout=lesson.loadouts[i]);room.state=lesson.state;room.tutorial=lesson.progress;room.deadline=null}
-    else {room.state=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.deadline=room.training&&room.state.phase==='playing'?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000))}
+    else {room.state=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.deadline=room.training?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000))}
     room.initialState=clone(room.state);room.status='playing';room.journal=[];room.receipts={};room.lastBotAt=0;
   }
   private snapshot(room:LocalRoom):RoomResponse {
@@ -110,7 +112,7 @@ export class LocalBackend {
     if(this.pendingBot?.roomId===room.id)this.cancelBot();
     room.state=result.state;if(room.trackAchievements){const earned=deriveAchievements(before,result.state,actorId,command,experimentFlags({achievements:true}),'p1');if(earned.length){room.earnedAchievements=mergeAchievements(room.earnedAchievements??[],earned);const next=clone(this.profile);next.achievements=mergeAchievements(next.achievements??[],earned);try{this.commitProfile(next)}catch{/* A valid game action must still complete if only cosmetic storage is unavailable. */}}}if(room.experiment?.kind==='challenge'&&!room.challengeSolved)room.challengeSolved=challengeGoal(createChallenge(room.experiment.id,experimentFlags({challenges:true}),room.state.matchId),room.state);room.journal.push({actorId,command:clone(command)});
     if(room.state.phase==='finished'){room.status='finished';room.deadline=null;if(room.series)room.series=recordSeriesResult(room.series,room.state.matchId,room.state.result)}
-    else if(room.state.phase!==before.phase||room.state.activePlayerId!==before.activePlayerId||room.state.round!==before.round)room.deadline=room.training&&room.state.phase==='playing'?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000));
+    else if(room.state.phase!==before.phase||room.state.activePlayerId!==before.activePlayerId||room.state.round!==before.round)room.deadline=room.training?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000));
     return {ok:true};
   }
   private expire(room:LocalRoom){
@@ -129,7 +131,7 @@ export class LocalBackend {
     for(const room of this.rooms.values()){
       if(room.status!=='playing'||room.tutorial)continue;
       let changed=this.expire(room);
-      if(room.state.phase!=='finished'&&this.now()-room.lastBotAt>=(this.options.botDelayMs??650)){
+      if(room.state.phase!=='finished'&&this.now()-room.lastBotAt>=(this.options.botDelayMs??1280)){
         const bot=room.state.players.find(p=>p.id==='p2')!;
         const shouldAct=(room.state.phase==='flex'&&!bot.flexReady)||(room.state.phase==='mulligan'&&!bot.mulliganReady)||(room.state.phase==='playing'&&(room.state.pendingChoice?.ownerId??room.state.activePlayerId)==='p2');
         if(shouldAct&&room.id===this.activeRoomId&&!this.pendingBot){

@@ -19,6 +19,7 @@ import {
 } from "./card-drag-model";
 import "../styles/card-drag.css";
 import {motionDirector,type MotionHandle} from "../motion/MotionDirector";
+import {remapCloneIds} from '../motion/paperRig';
 import {getMotionPreferences} from "../motion/useMotionPreferences";
 
 interface Options {
@@ -206,9 +207,9 @@ export function useCardDrag(options: Options) {
       document.documentElement.classList.add("card-drag-in-progress");
       const clone = active.element.cloneNode(true) as HTMLElement;
       clone.classList.remove("card-dragging-source");
+      remapCloneIds(clone);
       for (const el of [clone, ...clone.querySelectorAll<HTMLElement>("*")]) {
         for (const attribute of [
-          "id",
           "data-battle-id",
           "data-card-drag-source",
           "data-hand-id",
@@ -269,6 +270,7 @@ export function useCardDrag(options: Options) {
       label = active.source.label;
     if(!commands.length&&!getMotionPreferences().reduced&&active.clone){
       const original=active.element.getBoundingClientRect(),at=position.current,copy=active.clone.cloneNode(true) as HTMLElement;
+      remapCloneIds(copy);copy.classList.add('card-drag-return','battle-fit');
       motionDirector.play({cue:'snapReturn',id:`return:${dragSerial.current}`,scope:motionScope,run:ctx=>{Object.assign(copy.style,{position:'fixed',left:(at.x-active.width/2)+'px',top:(at.y-active.height/2)+'px',width:active.width+'px',height:active.height+'px',pointerEvents:'none',zIndex:'86'});copy.setAttribute('aria-hidden','true');document.body.append(copy);ctx.addCleanup(()=>copy.remove());ctx.animate(copy,[{opacity:.8,transform:'translate(0,0)'},{opacity:0,transform:`translate(${original.left-at.x+active.width/2}px,${original.top-at.y+active.height/2}px)`}])}});
     }
     clear();

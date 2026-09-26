@@ -1,6 +1,7 @@
 import {publicUrl} from './deployment';
 import type { BattleCue } from "./game/types";
-import { cueOffset, groupBattleCues } from "./components/battle-motion";
+import { ATTACK_TIMING, cueOffset, groupBattleCues } from "./components/battle-motion";
+import { resultMotionDuration } from "./components/result-motion";
 
 export type SoundFile =
   | "attack"
@@ -30,7 +31,7 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
     case "attack":
       return [
         { file: "attack", delay: 40, duck: 0.55, protectMs: 380 },
-        { file: "damage", delay: 220, duck: 0.4 },
+        { file: "damage", delay: ATTACK_TIMING.contact, duck: 0.4 },
       ];
     case "retire":
       return [{ file: "optimization", delay: 0, duck: 0.6 }];
@@ -110,7 +111,7 @@ export function soundsForBatch(
         if (index > 0 && sound.file === "damage")
           delay =
             lead.kind === "attack"
-              ? 220
+              ? ATTACK_TIMING.contact
               : ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
                 ? 160
                 : lead.kind === "retort"
@@ -155,10 +156,12 @@ export function soundsForBatch(
   const result=cues.find(c=>c.kind==='result');
   if(result){
     const attack=[...cues].reverse().find(c=>c.kind==='attack');
-    const sounds:CueSound[]=[];
-    if(attack&&!reduced)sounds.push({file:'attack',delay:0,duck:.55},{file:'damage',delay:95,duck:.4});
-    sounds.push(...soundsForCue(result,selfId).map(sound=>({...sound,delay:reduced?0:(attack?350:160)})));
-    return [{id:result.id,sounds,duration:reduced?100:850}];
+    // Preserve the final resolver's impact and shared exit layer before the ending.
+    const finalAttack=attack?groups.find(group=>group.id===attack.id):undefined;
+    const attackDuration=attack&&!reduced?(finalAttack?.duration??ATTACK_TIMING.duration):0;
+    const sounds:CueSound[]=reduced?[]:[...(finalAttack?.sounds??[])];
+    sounds.push(...soundsForCue(result,selfId).map(sound=>({...sound,delay:reduced?0:attackDuration+sound.delay})));
+    return [{id:result.id,sounds,duration:attackDuration+resultMotionDuration(result,reduced)}];
   }
   return groups;
 }

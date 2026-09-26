@@ -19,8 +19,15 @@ async function pngDownload(page:Page,button:string,name:string){
  await file.saveAs(`${evidence}/${name}.png`);expect((await readFile(`${evidence}/${name}.png`)).subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))).toBe(true);
  await dialog.getByRole('button',{name:'关闭',exact:true}).click();
 }
-async function confirmTarget(page:Page){await page.locator('.target-options button').first().click();await page.getByRole('button',{name:'确认行动',exact:true}).click();}
-async function usePrimary(page:Page){await page.locator('.skill-button:not(.secondary)').click();await page.getByRole('button',{name:'选择发动主技能',exact:true}).click();await confirmTarget(page);}
+async function chooseBattleTarget(page:Page,targetId:string){
+ const id=JSON.stringify(targetId);
+ await page.locator(`[data-battle-id=${id}]:not([data-departing]) .unit-main,button.hero-avatar[data-battle-id=${id}]`).click();
+}
+async function usePrimary(page:Page,action:Command){
+ await page.locator('.skill-button:not(.secondary)').click();await page.getByRole('button',{name:'选择发动主技能',exact:true}).click();
+ // An untargeted skill commits immediately; a targeted skill uses the actual board target.
+ if(action.targetId)await chooseBattleTarget(page,action.targetId);
+}
 async function endTurn(page:Page){await page.getByRole('button',{name:'结束回合',exact:true}).click();const confirm=page.getByRole('button',{name:'确认结束回合',exact:true});if(await confirm.isVisible())await confirm.click();}
 async function finishBotSetup(page:Page){await page.getByRole('button',{name:'确认应对牌 3/3',exact:true}).click();await page.getByRole('button',{name:'保留起手，开始对局',exact:true}).click();await expect.poll(async()=>(await roomState(page)).view.phase).toBe('playing');}
 
@@ -50,10 +57,10 @@ test('bot game: UI actions, staged education skill, full result and verified rep
    const view:MatchView=state.view,me=view.players.find(p=>p.id==='p1')!;
    if(view.phase==='finished')break;
    if(view.activePlayerId!=='p1'){await page.waitForTimeout(100);state=await roomState(page);continue;}
-   if(me.education.jluSignins<2&&view.round>=2){const gather=view.legalActions.find(c=>c.type==='USE_PRIMARY');if(gather){await usePrimary(page);await expect.poll(async()=>(await roomState(page)).view.version).toBeGreaterThan(view.version);state=await roomState(page);continue;}}
+   if(me.education.jluSignins<2&&view.round>=2){const gather=view.legalActions.find(c=>c.type==='USE_PRIMARY');if(gather){await usePrimary(page,gather);await expect.poll(async()=>(await roomState(page)).view.version).toBeGreaterThan(view.version);state=await roomState(page);continue;}}
    if(me.education.jluSignins===2&&!me.education.usedThisOwnTurn){const deploy=view.legalActions.find(c=>c.type==='NEGOTIATE'&&me.offerZone.find(o=>o.id===c.offerId)?.definition.id==='E02')??view.legalActions.find(c=>c.type==='DEPLOY_OFFER'&&(me.offerZone.find(o=>o.id===c.offerId)?.cost??Infinity)<=me.timeRemaining-2);
     if(!me.board.some(u=>u.kind==='offer')&&deploy){state=await command(page,state,deploy);continue;}
-    const ultimate=view.legalActions.find(c=>c.type==='USE_PRIMARY'&&c.targetId);if(ultimate){await usePrimary(page);await expect.poll(async()=>(await roomState(page)).view.players[0].education.jluUltimateUsed).toBe(true);await screenshot(page,'jlu-ultimate');state=await roomState(page);usedUltimate=true;break;}
+    const ultimate=view.legalActions.find(c=>c.type==='USE_PRIMARY'&&c.targetId);if(ultimate){await usePrimary(page,ultimate);await expect.poll(async()=>(await roomState(page)).view.players[0].education.jluUltimateUsed).toBe(true);await screenshot(page,'jlu-ultimate');state=await roomState(page);usedUltimate=true;break;}
    }
    if(view.pendingChoice){const choice=view.legalActions.find(c=>c.type==='RESOLVE_CHOICE');if(choice){state=await command(page,state,choice);continue;}}
    if(await page.getByRole('button',{name:'结束回合',exact:true}).isEnabled())await endTurn(page);else await command(page,state,{type:'END_TURN'});await page.waitForTimeout(100);state=await roomState(page);
@@ -84,7 +91,11 @@ test('friends in two isolated browser contexts: ready, flex, mulligan, private h
   state=await command(active,own,fill);
  }
  expect(state.view.players.every((p:any)=>p.board.length===4)).toBe(true);await screenshot(a,'battle-full-desktop');await screenshot(b,'battle-full-390');await b.setViewportSize({width:360,height:780});await screenshot(b,'battle-full-360');await b.setViewportSize({width:768,height:1024});await screenshot(b,'battle-full-768');
- const attackPage=state.view.activePlayerId==='p1'?a:b;await attackPage.locator('.friendly.ready .unit-main').first().click();await confirmTarget(attackPage);await expect.poll(async()=>(await roomState(attackPage)).view.version).toBeGreaterThan(state.view.version);state=await roomState(attackPage);
+ const attackPage=state.view.activePlayerId==='p1'?a:b;const attackState=await roomState(attackPage),attack:Command|undefined=attackState.view.legalActions.find((c:Command)=>c.type==='ATTACK'&&c.targetId);
+ expect(attack?.cardId).toBeTruthy();expect(attack?.targetId).toBeTruthy();
+ await attackPage.locator(`.friendly.ready[data-battle-id=${JSON.stringify(attack!.cardId)}] .unit-main`).click();
+ await expect(attackPage.locator(`[data-battle-id=${JSON.stringify(attack!.targetId)}]`).locator('xpath=ancestor-or-self::*[contains(concat(" ", normalize-space(@class), " "), " targetable ")][1]')).toBeVisible();await chooseBattleTarget(attackPage,attack!.targetId!);
+ await expect.poll(async()=>(await roomState(attackPage)).view.version).toBeGreaterThan(attackState.view.version);state=await roomState(attackPage);
  for(let step=0;step<350&&state.view.phase!=='finished';step++){const active=state.view.activePlayerId==='p1'?a:b;const own=await roomState(active);const cmd=chooseBotCommand(own.view,'aggressive');expect(cmd).toBeTruthy();state=await command(active,own,cmd!);}
  expect(state.view.phase).toBe('finished');await expect(a.locator('.result-banner')).toBeVisible();await expect(b.locator('.result-banner')).toBeVisible();const replay=await api(a,`/api/rooms/${state.room.id}/replay`);expect(replay.verified).toBe(true);
  }finally{await first.close();await second.close();}

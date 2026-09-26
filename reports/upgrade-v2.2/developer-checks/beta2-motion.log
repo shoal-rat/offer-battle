@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/e2e/motion.spec.ts:9:1 › attack flies to its actual target and a lethal defender retains a retirement ghost (4.9s)
+  ✓  2 tests/e2e/motion.spec.ts:39:1 › secondary skill plays the generated video and the in-game reduced-motion switch suppresses later flight (3.6s)
+  ✓  3 tests/e2e/motion.spec.ts:52:1 › a normal finished match can rematch with version reset while retaining the room (2.5s)
+
+  3 passed (11.7s)

@@ -102,6 +102,7 @@ test("Offer mouse drag preserves the compact card, highlights the board and subm
       .locator(".card-drag-ghost .card-ribbon")
       .evaluate((el) => getComputedStyle(el).fontSize),
   ).toBe(original.font);
+  expect(await page.locator('.card-drag-ghost').evaluate(root=>[...root.querySelectorAll('[mask]')].every(el=>{const id=el.getAttribute('mask')?.match(/url\(#([^)]*)\)/)?.[1];return !id||root.querySelectorAll(`[id="${CSS.escape(id)}"]`).length===1&&document.querySelectorAll(`[id="${CSS.escape(id)}"]`).length===1}))).toBe(true);
   await mkdir("evidence/screenshots/drag", { recursive: true });
   await page.screenshot({ path: "evidence/screenshots/drag/offer-ghost.png" });
   await page.mouse.up();
@@ -168,12 +169,13 @@ test("targeted hand card can stage on the board, or drop directly on its legal t
       .locator(".card-drag-ghost .common-art")
       .evaluate((el) => getComputedStyle(el).height),
   ).toBe(original);
+  expect(await page.locator('.card-drag-ghost').evaluate(root=>[...root.querySelectorAll('[mask]')].every(el=>{const id=el.getAttribute('mask')?.match(/url\(#([^)]*)\)/)?.[1];return !id||root.querySelectorAll(`[id="${CSS.escape(id)}"]`).length===1&&document.querySelectorAll(`[id="${CSS.escape(id)}"]`).length===1}))).toBe(true);
   await mkdir("evidence/screenshots/drag", { recursive: true });
   await page.screenshot({ path: "evidence/screenshots/drag/hand-ghost.png" });
   await page.mouse.up();
-  await expect(page.locator(".target-prompt")).toBeVisible();
+  await expect(page.getByRole("button", {name:"取消瞄准",exact:true})).toBeVisible();
   expect(saved.commands()).toBe(0);
-  await page.getByRole("button", { name: "取消选牌", exact: true }).click();
+  await page.getByRole("button", { name: "取消瞄准", exact: true }).click();
   await moveCard(page, source, target);
   await expect(page.locator(".card-drag-hint")).toHaveText("松开出牌");
   await expect(target).toHaveClass(/card-drag-hover/);
@@ -184,21 +186,12 @@ test("targeted hand card can stage on the board, or drop directly on its legal t
   expect(saved.commands()).toBe(1);
 });
 
-test("movement below the drag threshold remains a normal single click", async ({
-  page,
-  request,
-}) => {
-  const saved = await lesson(page, request),
-    from = await center(page.locator('[data-offer-id="E02"]'));
-  await page.mouse.move(from.x, from.y);
-  await page.mouse.down();
-  await page.mouse.move(from.x + 3, from.y + 2);
-  await expect(page.locator(".card-drag-overlay")).toHaveCount(0);
-  await page.mouse.up();
-  await expect
-    .poll(async () => (await saved.state()).room.tutorial.stepIndex)
-    .toBe(1);
-  expect(saved.commands()).toBe(1);
+test("movement below the drag threshold plays the card once as a single click", async ({page,request}) => {
+  const saved=await lesson(page,request),from=await center(page.locator('[data-offer-id="E02"]'));
+  await page.mouse.move(from.x,from.y);await page.mouse.down();await page.mouse.move(from.x+3,from.y+2);
+  await expect(page.locator('.card-drag-overlay')).toHaveCount(0);await page.mouse.up();
+  await expect.poll(async()=>(await saved.state()).room.tutorial.stepIndex).toBe(1);
+  expect(saved.commands()).toBe(1);await expect(page.locator('.action-confirm-tray')).toHaveCount(0);
 });
 
 test("a pending command disables a second drag until its accepted snapshot arrives", async ({page,request}) => {

@@ -178,3 +178,30 @@ test('P2 local best of three: intermission survives reload, locks cards, accepts
   room=command(backend,room,{type:'CONCEDE'});assert.equal(room.room.series?.wins.p2,1);backend.dispose();backend=f.make();const resumed=backend.request(`/api/rooms/${room.room.id}`);assert.deepEqual(resumed.room.series,room.room.series);assert.equal(backend.request(`/api/rooms/${room.room.id}/replay`).verified,true);room=backend.request(`/api/rooms/${room.room.id}/rematch`,{flexDeck:['F02','F03','F06']},'POST');assert.equal(room.room.series?.gameIndex,2);assert.deepEqual(room.view!.players[0].offerZone.map(o=>o.definition.id),original);assert.deepEqual(backend.getReplay(room.room.id).loadouts[0].flexDeck,['F02','F03','F06']);room=command(backend,room,{type:'CONCEDE'});assert.equal(room.room.series?.status,'finished');assert.equal(room.room.series?.winnerId,'p2');assert.equal(f.transientStorage.getItem('offer-local-active-v1'),null);assert.throws(()=>backend.request(`/api/rooms/${room.room.id}/rematch`,{},'POST'),/不能开始/);
  }finally{backend.dispose()}
 });
+
+test('slow local practice keeps both setup stages untimed, repairs old saves, and rematches untimed',()=>{
+ const f=fixture();let backend=f.make();try{
+  let data=backend.request<RoomResponse>('/api/rooms',{mode:'bot',training:true,setupMode:'full'},'POST');const path=`/api/rooms/${data.room.id}`;
+  for(const phase of ['flex','mulligan'] as const){
+   assert.equal(data.view!.phase,phase);assert.equal(data.room.deadline,null);
+   f.advance(30_000);backend.tick();data=backend.request(path);assert.equal(data.view!.phase,phase);assert.equal(data.room.deadline,null);
+   const own=data.view!.players.find(p=>p.id==='p1')!;assert.equal(phase==='flex'?own.flexReady:own.mulliganReady,false);
+   // Simulate a pre-fix persisted setup deadline already in the past, then refresh.
+   const saved=JSON.parse(f.transientStorage.getItem('offer-local-active-v1')!);saved.room.deadline=1;f.transientStorage.setItem('offer-local-active-v1',JSON.stringify(saved));backend.dispose();backend=f.make();
+   data=backend.request(path);backend.tick();data=backend.request(path);assert.equal(data.view!.phase,phase);assert.equal(data.room.deadline,null);assert.equal(JSON.parse(f.transientStorage.getItem('offer-local-active-v1')!).room.deadline,null);
+   data=command(backend,data,phase==='flex'?{type:'SELECT_FLEX',flexIds:['F01','F04','F05']}:{type:'MULLIGAN',cardIds:[]});assert.equal(data.ok,true);
+  }
+  assert.equal(data.view!.phase,'playing');assert.equal(data.room.deadline,null);f.advance(30_000);backend.tick();data=backend.request(path);assert.equal(data.room.deadline,null);assert.equal(backend.getReplay(data.room.id).journal.some(e=>e.command.type==='TIMEOUT'),false);
+  data=command(backend,data,{type:'CONCEDE'});data=backend.request(path+'/rematch',{},'POST');assert.equal(data.view!.phase,'flex');assert.equal(data.room.deadline,null);
+ }finally{backend.dispose()}
+});
+
+test('default local bot pacing leaves 1280 ms between setup decisions while explicit fast fixtures remain supported',()=>{
+ const persistentStorage=new MemoryStorage(),transientStorage=new MemoryStorage();let now=100_000;
+ const backend=new LocalBackend({persistentStorage,transientStorage,now:()=>now,autoTick:false});try{
+  let data=backend.request<RoomResponse>('/api/rooms',{mode:'bot',training:true},'POST');const path=`/api/rooms/${data.room.id}`;backend.tick();data=backend.request(path);assert.equal(data.view!.players[1].flexReady,true);
+  data=command(backend,data,{type:'SELECT_FLEX',flexIds:['F01','F04','F05']});assert.equal(data.view!.phase,'mulligan');
+  now+=700;backend.tick();data=backend.request(path);assert.equal(data.view!.players[1].mulliganReady,false);
+  now+=580;backend.tick();data=backend.request(path);assert.equal(data.view!.players[1].mulliganReady,true);
+ }finally{backend.dispose()}
+});

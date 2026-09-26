@@ -216,3 +216,15 @@ test('Cloudflare P2: standard rooms reject experiment fields; enabled series loc
   room=(await f.api(`/api/rooms/${room.room.id}/ready`,a.token,{ready:true,flexDeck:['F02','F03','F06']})).body;assert.equal(room.room.series.gameIndex,2);assert.doesNotMatch(JSON.stringify(room.room.series),/lockedLoadout|profile|baseDeck|annualPackage/);room=(await f.command(room,a.token,{type:'CONCEDE'})).body;assert.equal(room.room.series.status,'finished');assert.equal(room.room.series.winnerId,'p2');assert.equal((await f.api(`/api/rooms/${room.room.id}/rematch`,a.token,{})).status,409);assert.equal((await f.api(`/api/rooms/${room.room.id}/replay`,a.token)).body.verified,true);
  }finally{await f.close()}
 });
+
+test('Cloudflare friend deadlines stay authoritative even when a client requests training; bot practice remains local',async()=>{
+ const f=await fixture({SETUP_MS:'600',TURN_MS:'600'});try{
+  const a=await f.register('slow_boundary_a'),b=await f.register('slow_boundary_b');
+  const bot=await f.api('/api/rooms',a.token,{mode:'bot',training:true,setupMode:'full'});assert.equal(bot.status,400);assert.match(bot.body.error,/本机/);
+  let room=(await f.api('/api/rooms',a.token,{mode:'friend',training:true})).body;const path=`/api/rooms/${room.room.id}`;await f.api('/api/rooms/join',b.token,{code:room.code});await f.api(path+'/ready',a.token,{ready:true});room=(await f.api(path+'/ready',b.token,{ready:true})).body;
+  assert.equal(room.view.phase,'flex');assert.ok(room.room.deadline>Date.now());
+  const waitPhase=async(phase:string)=>{for(let i=0;i<160;i++){room=(await f.api(path,a.token)).body;if(room.view.phase===phase)return;await pause(15);}assert.fail(`Expected timed friend phase ${phase}; got ${room.view.phase}`);};
+  await waitPhase('mulligan');assert.ok(room.room.deadline>Date.now());await waitPhase('playing');const initialVersion=room.view.version;assert.ok(room.room.deadline>Date.now());
+  for(let i=0;i<100&&room.view.version===initialVersion;i++){await pause(15);room=(await f.api(path,a.token)).body;}assert.ok(room.view.version>initialVersion,'friend turn expires even with a training flag');
+ }finally{await f.close();}
+});

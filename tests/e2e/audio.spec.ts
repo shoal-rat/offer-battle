@@ -30,7 +30,7 @@ test('music starts after a gesture, changes for the academy, and mute persists a
  });
  await page.goto('/');await page.getByRole('button',{name:'设置',exact:true}).click();
  await expect.poll(()=>page.evaluate(()=>(window as any).__gameAudio.some((a:HTMLAudioElement)=>new URL(a.src).pathname.endsWith('/music/lobby.mp3')&&!a.paused&&a.currentTime>0))).toBe(true);
- await page.getByRole('button',{name:'关闭',exact:true}).click();await page.getByRole('button',{name:/跟着前辈，打会第一局/}).click();
+ await page.getByRole('button',{name:'关闭',exact:true}).click();await page.getByRole('button',{name:/练一招/}).click();
  await expect.poll(()=>page.evaluate(()=>(window as any).__gameAudio.some((a:HTMLAudioElement)=>new URL(a.src).pathname.endsWith('/music/tutorial.mp3')&&!a.paused&&a.currentTime>0))).toBe(true);
  await page.getByRole('button',{name:'设置',exact:true}).click();await page.getByRole('button',{name:'切换音效',exact:true}).click();
  await expect.poll(()=>page.evaluate(()=>(window as any).__gameAudio.every((a:HTMLAudioElement)=>a.paused))).toBe(true);

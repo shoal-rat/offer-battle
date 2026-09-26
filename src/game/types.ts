@@ -313,6 +313,8 @@ export interface PlayerView {
   fatigue: number;
   negotiationUsed: boolean;
   education: EducationState;
+  /** Own saved or confirmed response cards; omitted for opponents and older servers. */
+  flexSelection?: string[];
   flexReady: boolean;
   mulliganReady: boolean;
   knownHand: HandCardView[];

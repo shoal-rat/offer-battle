@@ -247,6 +247,7 @@ export function getView(s: MatchState, playerId: string, includeLegalActions = t
       fatigue: p.fatigue,
       negotiationUsed: p.negotiationUsed,
       education: structuredClone(p.education),
+      ...(p.id === playerId ? { flexSelection: [...p.flexDeck] } : {}),
       flexReady: p.flexReady,
       mulliganReady: p.mulliganReady,
       knownHand:

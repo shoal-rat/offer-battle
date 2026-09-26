@@ -1,0 +1,134 @@
+{
+  "assetId": "paper-plane",
+  "version": "1.0.0",
+  "status": "runtime-ready-static",
+  "category": "projectile",
+  "generatedAt": "2026-09-26T20:07:18.743Z",
+  "source": {
+    "path": "assets/paper-source/prop/paper-plane-v1.png",
+    "width": 1254,
+    "height": 1254,
+    "channels": "srgba 4.0",
+    "bytes": 1298500,
+    "sha256": "a05bc36811c6822d43b7ebb53146fb71efdf576c6bf4c753adb1c8d5a13e13b7",
+    "alpha": {
+      "fullyTransparentPixels": 942297,
+      "fullyOpaquePixels": 186,
+      "semiTransparentPixels": 630033,
+      "edgeNonzeroPixels": 29,
+      "nontransparentBounds": {
+        "left": 0,
+        "top": 20,
+        "right": 1252,
+        "bottom": 1205
+      }
+    }
+  },
+  "runtime": {
+    "path": "public/art/paper-plane.webp",
+    "width": 512,
+    "height": 512,
+    "channels": "srgba 4.0",
+    "bytes": 26064,
+    "sha256": "702ab313f45b526626f7cfd8344ca62711f5268d5ad9bfe35954232a84f8c931",
+    "alpha": {
+      "fullyTransparentPixels": 184885,
+      "fullyOpaquePixels": 16,
+      "semiTransparentPixels": 77243,
+      "edgeNonzeroPixels": 0,
+      "nontransparentBounds": {
+        "left": 36,
+        "top": 48,
+        "right": 474,
+        "bottom": 458
+      }
+    }
+  },
+  "runtimeUrl": "/art/paper-plane.webp",
+  "generation": {
+    "tool": "built-in-imagegen",
+    "originalOutput": "/Users/zwk/.codex/generated_images/01a0dedf-40ce-7e60-af26-c05db7345785/exec-10408569-5b63-4fdb-9067-eb37e78617cd.png",
+    "prompt": "Use case: stylized-concept\nAsset type: one transparent game projectile sprite for an original papercraft card game.\nPrimary request: A single original folded paper airplane, made from thick creamy ivory paper with visible subtle torn/cut paper fibers along the edges and clear folded wings and center keel. Small friendly handmade storybook paper-cut illustration, restrained warm-gold thin ink outline, broad clean color planes, no metallic look. The folded underside / slot between the wings must be visually clear so a runtime card can later be placed underneath it, but draw ONLY the airplane itself.\nComposition/framing: square canvas, whole airplane isolated and centered with generous clear transparent margin; nose points straight UP toward 12 o'clock, tail toward bottom, wide two swept triangular wings. Slight elevated three-quarter view sufficient to show folds and shallow thickness while keeping the directional arrow-like silhouette very clear. The plane occupies about 80% of the square, no clipping. Its geometric center is the intended rotation pivot.\nMaterials/textures: cream-white fibrous paper, pale warm gray crease shading, soft butter-gold edge strokes, restrained paper grain, matte dry finish. Crisp silhouette readable at 180 pixels.\nScene/backdrop: genuinely transparent alpha background; fully empty outside silhouette, not a checkerboard.\nConstraints: exactly one paper airplane. No card, no character, no hands, no clip, no text, no numbers, no symbols, no lettering, no red lines, no crosshair, no targeting reticle, no flight path, no speed lines, no sparks, no glow, no ground or backdrop, no cast shadow. Preserve all edge transparency. This is a final game asset, not a mockup."
+  },
+  "direction": {
+    "nose": "up",
+    "degreesClockwiseFromUp": 0
+  },
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alphaVerified": true,
+  "recipe": {
+    "operation": "format conversion, proportional resize and transparent padding only",
+    "contentSizeLimit": [
+      440,
+      440
+    ],
+    "canvas": [
+      512,
+      512
+    ],
+    "webpQuality": 90,
+    "webpAlphaQuality": 100
+  },
+  "evidence": [
+    {
+      "path": "assets/paper-source/evidence/paper-plane/72.png",
+      "width": 72,
+      "height": 72,
+      "channels": "srgba 4.0",
+      "bytes": 6253,
+      "sha256": "d71ab2fb18d824cb6a47b9936c12b9a0f2a07007447f2092eb15e6818ee52336",
+      "alpha": {
+        "fullyTransparentPixels": 3543,
+        "fullyOpaquePixels": 108,
+        "semiTransparentPixels": 1533,
+        "edgeNonzeroPixels": 0,
+        "nontransparentBounds": {
+          "left": 5,
+          "top": 6,
+          "right": 66,
+          "bottom": 64
+        }
+      }
+    },
+    {
+      "path": "assets/paper-source/evidence/paper-plane/180.png",
+      "width": 180,
+      "height": 180,
+      "channels": "srgba 4.0",
+      "bytes": 24139,
+      "sha256": "21b97c423dfd120a76f77d586f237c719033cd252dc5bf3d86e45f6a76c5d61a",
+      "alpha": {
+        "fullyTransparentPixels": 22783,
+        "fullyOpaquePixels": 97,
+        "semiTransparentPixels": 9520,
+        "edgeNonzeroPixels": 0,
+        "nontransparentBounds": {
+          "left": 14,
+          "top": 16,
+          "right": 165,
+          "bottom": 160
+        }
+      }
+    }
+  ],
+  "constraints": {
+    "containsCard": false,
+    "containsText": false,
+    "containsReticle": false,
+    "containsAttackPath": false,
+    "shadowBaked": false
+  },
+  "usage": "Nose is up; rotate from up around canvas center. Runtime card attachment, targeting lines and shadows are composed by consuming code.",
+  "validation": {
+    "alpha": "passed",
+    "transparentOuterBorder": "passed",
+    "thumbnail180": "passed visual inspection in Chromium on cream, dark and checkerboard backgrounds",
+    "integration": "not performed by asset producer",
+    "thumbnail72": "rendered as inspection artifact; 180px was the acceptance size",
+    "browserEvidence": "assets/paper-source/evidence/paper-plane/alpha-review.png",
+    "scope": "Asset production checks only; not independent QA or battle integration acceptance"
+  }
+}

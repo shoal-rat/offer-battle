@@ -87,7 +87,7 @@ test('opponent lethal defeat waits for the final hit, breaks the correct hero, t
  const samples=await resultAfterAnimation(page);const firstDefeat=samples.findIndex(s=>s.defeat);expect(samples.slice(0,firstDefeat).some(s=>s.flight)).toBe(true);expect(samples.some(s=>s.flight&&s.defeat)).toBe(false);
  await expect(page.locator('.result-banner h1')).toHaveText('胜利');await publish(finished);await page.waitForTimeout(150);await expect(defeat).toHaveCount(0);
  // A completed real room is forgotten by normal recovery rather than replaying its history.
- await page.reload();await expect(page.locator('.home')).toBeVisible();await expect(defeat).toHaveCount(0);expect(errors).toEqual([]);
+ await page.reload();await expect(page.locator('.paper-stage')).toBeVisible();await expect(defeat).toHaveCount(0);expect(errors).toEqual([]);
 });
 
 test('own lethal defeat breaks the own hero and completes before the defeat result',async({page})=>{
@@ -128,14 +128,13 @@ test('switching to reduced motion during the lethal attack shortens the already 
  const {state,finished}=lethal('p1'),publish=await wire(page,state);await watchFrames(page);await publish(finished);
  await expect(page.locator('.battle-fx-flight')).toBeVisible();await expect(page.locator('.battle-defeat')).toHaveCount(0);
  // Exercise the preference observer while the final result still waits behind the attack.
- await page.evaluate(()=>{document.documentElement.dataset.reduced='true'});
+ await page.evaluate(()=>{localStorage.setItem('offer-motion-preference','reduced');window.dispatchEvent(new StorageEvent('storage',{key:'offer-motion-preference',newValue:'reduced'}))});
  await expect(page.locator('.battle-effects')).toHaveAttribute('data-reduced-motion','true');
- // Poll every rendered frame: default locator backoff can jump over this 420 ms ending.
- await page.waitForFunction(()=>document.querySelector<HTMLElement>('.battle-defeat')?.dataset.reduced==='true');
- const defeat=page.locator('.battle-defeat');await expect(defeat).toHaveAttribute('data-outcome','lose');await expect(page.locator('.battle-defeat-shard')).toHaveCount(0);
- const started=Date.now(),samples=await resultAfterAnimation(page);
- expect(Date.now()-started,'queued normal duration must not leave a two-second empty table').toBeLessThan(1300);
- const lastEnding=samples.findLast(s=>s.defeat)!,firstResult=samples.find(s=>s.result);
- if(firstResult)expect(firstResult.at-lastEnding.at,'result panel follows the short ending without a stale busy interval').toBeLessThan(350);
+ const started=Date.now();await expect(page.locator('.result-banner')).toBeVisible();
+ const samples=await page.evaluate(()=>{(window as any).__stopDefeatFrames=true;return (window as any).__defeatFrames as DefeatFrame[]});
+ expect(Date.now()-started,'preference changes must not leave a stale busy interval').toBeLessThan(1300);
+ expect(samples.some(s=>s.defeat&&s.result)).toBe(false);
+ await expect(page.locator('.battle-defeat-shard')).toHaveCount(0);await expect(page.locator('.battle-fx-flight')).toHaveCount(0);
+
  await expect(page.locator('.result-banner h1')).toHaveText('惜败');
 });

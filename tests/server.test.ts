@@ -124,3 +124,37 @@ test('Node restart upgrades 2.0 collections and both rematch seats while preserv
   const archived=await api(`/api/rooms/${roomId}/replay?matchId=${legacyRecord.initialState.matchId}`,a.token);assert.equal(archived.verified,true);assert.deepEqual(archived.frames,replay.frames);
  }finally{if(restarted)await restarted.close();else await f.app.close();await rm(f.dataDir,{recursive:true,force:true});}
 });
+
+test('slow Node practice never expires setup, restores old setup timers safely, and rematches untimed',async()=>{
+ const f=await fixture({setupMs:35,turnMs:45});let second:Awaited<ReturnType<typeof startServer>>|undefined,firstClosed=false;
+ try{
+  const a=await f.session('慢练习计时检查');let room=(await f.api('/api/rooms',a.token,'POST',{mode:'bot',training:true,setupMode:'full'})).body;const path=`/api/rooms/${room.room.id}`;
+  const read=async()=>(await f.api(path,a.token)).body;
+  const send=async(command:Command)=>{room=await read();const result=await f.api(path+'/command',a.token,'POST',{...command,matchId:room.view.matchId,expectedStateVersion:room.view.version,commandId:crypto.randomUUID()});assert.equal(result.body.ok,true,JSON.stringify(result.body));return result.body;};
+  assert.equal(room.view.phase,'flex');assert.equal(room.room.deadline,null);await pause(160);room=await read();assert.equal(room.view.phase,'flex');assert.equal(room.view.players[0].flexReady,false);assert.equal(room.room.deadline,null);
+  // Ensure the worker finished its own hidden choice before the learner proceeds.
+  for(let i=0;i<100&&!room.view.players[1].flexReady;i++){await pause(10);room=await read();}assert.equal(room.view.players[1].flexReady,true);
+  room=await send({type:'SELECT_FLEX',flexIds:['F01','F04','F05']});assert.equal(room.view.phase,'mulligan');await pause(160);room=await read();assert.equal(room.view.phase,'mulligan');assert.equal(room.view.players[0].mulliganReady,false);assert.equal(room.room.deadline,null);
+  await f.app.close();firstClosed=true;const db=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8'));db.rooms[room.room.id].deadline=Date.now()-1000;await writeFile(join(f.dataDir,'server.json'),JSON.stringify(db));
+  second=await startServer({port:0,host:'127.0.0.1',dataDir:f.dataDir,setupMs:35,turnMs:45,botDelayMs:2,tickMs:10});
+  const api=async(suffix='',body?:unknown)=>{const response=await fetch(second!.url+path+suffix,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',Authorization:`Bearer ${a.token}`},...(body?{body:JSON.stringify(body)}:{})});return response.json() as Promise<any>;};
+  await pause(160);room=await api();assert.equal(room.view.phase,'mulligan');assert.equal(room.room.deadline,null);assert.equal(room.view.players[0].mulliganReady,false);
+  for(let i=0;i<100&&!room.view.players[1].mulliganReady;i++){await pause(10);room=await api();}assert.equal(room.view.players[1].mulliganReady,true);
+  const submit=async(command:Command)=>{room=await api();return api('/command',{...command,matchId:room.view.matchId,expectedStateVersion:room.view.version,commandId:crypto.randomUUID()});};
+  room=await submit({type:'MULLIGAN',cardIds:[]});assert.equal(room.view.phase,'playing');assert.equal(room.room.deadline,null);await pause(160);room=await api();assert.equal(room.room.deadline,null);const beforeRematch=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8'));assert.equal(beforeRematch.rooms[room.room.id].journal.some((entry:any)=>entry.command.type==='TIMEOUT'),false);
+  room=await submit({type:'CONCEDE'});room=await api('/rematch',{});assert.equal(room.view.phase,'flex');assert.equal(room.room.deadline,null);
+  const saved=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8'));assert.equal(saved.rooms[room.room.id].journal.some((entry:any)=>entry.command.type==='TIMEOUT'),false);
+ }finally{if(second)await second.close();if(!firstClosed)await f.app.close();await rm(f.dataDir,{recursive:true,force:true});}
+});
+
+test('default Node bot leaves the full attack beat between consecutive setup decisions',async()=>{
+ const f=await fixture({botDelayMs:undefined,setupMs:10000});try{
+  const a=await f.session('默认行动间隔');let room=(await f.api('/api/rooms',a.token,'POST',{mode:'bot',training:true})).body;const path=`/api/rooms/${room.room.id}`;
+  for(let i=0;i<200&&!room.view.players[1].flexReady;i++){await pause(10);room=(await f.api(path,a.token)).body;}assert.equal(room.view.players[1].flexReady,true);
+  const firstAt=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8')).rooms[room.room.id].lastBotAt;
+  const selected=await f.api(path+'/command',a.token,'POST',{type:'SELECT_FLEX',flexIds:['F01','F04','F05'],matchId:room.view.matchId,expectedStateVersion:room.view.version,commandId:crypto.randomUUID()});assert.equal(selected.body.ok,true);
+  await pause(Math.max(0,firstAt+700-Date.now()));room=(await f.api(path,a.token)).body;assert.equal(room.view.players[1].mulliganReady,false,'no second bot action at the old 650 ms interval');
+  for(let i=0;i<200&&!room.view.players[1].mulliganReady;i++){await pause(10);room=(await f.api(path,a.token)).body;}assert.equal(room.view.players[1].mulliganReady,true);
+  const nextAt=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8')).rooms[room.room.id].lastBotAt;assert.ok(nextAt-firstAt>=1280,`actual spacing ${nextAt-firstAt} ms`);
+ }finally{await f.close();}
+});

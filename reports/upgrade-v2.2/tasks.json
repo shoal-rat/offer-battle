@@ -554,8 +554,8 @@
     {
       "id": "UI04",
       "priority": "P0",
-      "title": "点击与提交分离",
-      "change": "触屏点选再使用，保留拖拽替代，取消明确。",
+      "title": "直接出牌与可选读牌",
+      "change": "默认点击/拖牌即用；定向纸飞机选择合法目标后提交，提交前取消无消耗，读牌模式可选。",
       "status": "not-run",
       "targets": [
         "src/pages/Battle.tsx",
@@ -579,14 +579,20 @@
         "src/pages/Battle.tsx",
         "src/components/useCardDrag.tsx",
         "src/components/card-drag-model.ts",
-        "reports/FRONTEND_2_2.md"
+        "reports/FRONTEND_2_2.md",
+        "reports/upgrade-v2.2/beta2-interaction-evidence.json"
       ],
       "developmentReview": {
         "kind": "implementer-source-review-and-targeted-regression",
         "reviewedAt": "2026-09-27",
         "independentAcceptance": "not-run",
-        "note": "读牌、目标选择、确认及取消已分离；拖拽保留版本检查。多输入完整交互矩阵待独立执行。"
-      }
+        "note": "后续明确需求覆盖原点击与提交分离链；直接目标操作、退场占位与媒体开发专项通过，完整多输入矩阵仍待独立执行。"
+      },
+      "originalPackageRequirement": {
+        "title": "点击与提交分离",
+        "change": "触屏点选再使用，保留拖拽替代，取消明确。"
+      },
+      "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
     },
     {
       "id": "UI05",
@@ -616,14 +622,16 @@
       "evidencePaths": [
         "src/game/actionPreview.ts",
         "tests/ui-models.test.ts",
-        "reports/FRONTEND_2_2.md"
+        "reports/FRONTEND_2_2.md",
+        "reports/upgrade-v2.2/beta2-interaction-evidence.json"
       ],
       "developmentReview": {
         "kind": "implementer-source-review-and-targeted-regression",
         "reviewedAt": "2026-09-27",
         "independentAcceptance": "not-run",
         "note": "6项 UI 模型检查含实际引擎预览、过期拒绝及隐藏信息等价；非全卡穷举。"
-      }
+      },
+      "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
     },
     {
       "id": "UI06",
@@ -1711,14 +1719,16 @@
         "src/motion/useSceneBridge.ts",
         "reports/FRONTEND_2_2.md",
         "reports/MOTION_2_2.md",
-        "reports/motion/summary.json"
+        "reports/motion/summary.json",
+        "reports/upgrade-v2.2/beta2-interaction-evidence.json"
       ],
       "developmentReview": {
         "kind": "implementer-source-review-and-targeted-regression",
         "reviewedAt": "2026-09-27",
         "independentAcceptance": "not-run",
         "note": "五通道、取消、去重、生命周期单测通过；rapid navigation身份矩阵待独立验收。"
-      }
+      },
+      "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
     },
     {
       "id": "MOTION04",
@@ -1755,7 +1765,8 @@
         "assets/paper-source/evidence/qa-report.json",
         "assets/paper-source/evidence/rig-qa-report.json",
         "assets/paper-source/evidence/typecheck.log",
-        "assets/paper-source/evidence/animals-support-512.png"
+        "assets/paper-source/evidence/animals-support-512.png",
+        "reports/upgrade-v2.2/beta2-interaction-evidence.json"
       ],
       "developmentReview": {
         "kind": "implementer-source-review-and-targeted-regression",
@@ -1783,7 +1794,8 @@
         ],
         "independentQA": "not-run",
         "note": "All 23 characters have real complementary body/face/prop masks plus separate shadow and fixed foot pivot. Neutral composites are pixel-identical to originals; 2 representatives have hit/happy/thinking/blink face variants. Source layers are runtime cuts with no hidden surface repaint."
-      }
+      },
+      "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
     },
     {
       "id": "MOTION05",
@@ -1819,14 +1831,16 @@
         "src/pages/Battle.tsx",
         "reports/FRONTEND_2_2.md",
         "reports/MOTION_2_2.md",
-        "reports/motion/summary.json"
+        "reports/motion/summary.json",
+        "reports/upgrade-v2.2/beta2-interaction-evidence.json"
       ],
       "developmentReview": {
         "kind": "implementer-source-review-and-targeted-regression",
         "reviewedAt": "2026-09-27",
         "independentAcceptance": "not-run",
         "note": "真实确认事件、积压快进与局部版本重检已接入；正式期限未由展示修改，更多通知/反话因果局面待独立复核。"
-      }
+      },
+      "currentExpectationRef": "reports/upgrade-v2.2/acceptance-overrides.json"
     },
     {
       "id": "MOTION06",
@@ -2019,5 +2033,6 @@
     }
   ],
   "designVersion": "2.2",
-  "executionStatus": "planned"
+  "executionStatus": "planned",
+  "currentAcceptanceOverrides": "reports/upgrade-v2.2/acceptance-overrides.json"
 }

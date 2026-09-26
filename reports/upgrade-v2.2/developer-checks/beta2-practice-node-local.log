@@ -1,0 +1,40 @@
+✔ local guest L01: legal learner steps, mentor, duplicate protection and deterministic replay (308.687625ms)
+✔ local guest L02: legal learner steps, mentor, duplicate protection and deterministic replay (327.169ms)
+✔ local guest L03: legal learner steps, mentor, duplicate protection and deterministic replay (218.285709ms)
+✔ local guest L04: legal learner steps, mentor, duplicate protection and deterministic replay (288.705417ms)
+✔ local guest L05: legal learner steps, mentor, duplicate protection and deterministic replay (341.983417ms)
+✔ local bot plays a complete match with engine-only decisions, replay and reconstructible cloud-save seed (4543.707375ms)
+✔ local temporary resume keeps tutorial, receipts and current replay; expired cache is discarded (117.580375ms)
+✔ local timer advances setup and turn deadlines, rejects forged TIMEOUT, and keeps training untimed (34.383ms)
+✔ local command envelope rejects stale state, altered reuse and previous-match IDs without changing state (70.604625ms)
+✔ custom offers persist locally and loadouts use the compiled collection instead of client-forged attributes (10.01125ms)
+✔ all practice setups use existing showcase engine and remain marked as practice for cloud-save restrictions (96.86725ms)
+✔ local socket emits open/state updates and closes cleanly, with no remote connection (109.212833ms)
+✔ local persisted 2.0 collection upgrades while a resumed match stays frozen until rematch (19.275208ms)
+✔ local Offer saves are durable and idempotent; revision and recycle operations preserve running definitions (33.095ms)
+✔ local profile revisions detect a second tab and preserve the draft on storage failure; migration preserves its source (3.0695ms)
+✔ P2 local runtime: explicit challenge fixtures solve through commands, cosmetics persist, and replay is marked experimental (230.147125ms)
+✔ P2 local best of three: intermission survives reload, locks cards, accepts flex changes and stops after two wins (20.517542ms)
+✔ slow local practice keeps both setup stages untimed, repairs old saves, and rematches untimed (57.556042ms)
+✔ default local bot pacing leaves 1280 ms between setup decisions while explicit fast fixtures remain supported (34.538042ms)
+✔ friend HTTP: readiness, hidden setup, authenticated seats, stale versions, idempotence and replay (265.98975ms)
+✔ WebSocket: independent sessions receive private views, reconnect retains seat and deadline (212.919959ms)
+✔ zero-key Offer compilation and profile persistence, failed generation remains retryable (168.079667ms)
+✔ server restart restores snapshot, room membership and filtered replay (183.276708ms)
+✔ server deadlines default hidden choices and two inactive turns lose (331.767333ms)
+✔ all three bot strategies finish a real zero-key HTTP match and replay verifies (29975.266167ms)
+✔ atomic storage recovers backup without silently resetting corrupt saves (6.288292ms)
+✔ static hosting blocks private data, environment and server sources (11.536083ms)
+✔ network trust boundary rejects cross-origin WebSockets and ignores forged Offer numbers (24.933208ms)
+✔ explicit practice fixtures are isolated from friend matches and replay through normal commands (49.821ms)
+✔ custom job names and validated rule archetype overrides preserve future Offer support (19.93525ms)
+✔ Node restart upgrades 2.0 collections and both rematch seats while preserving archived replay (681.9955ms)
+✔ slow Node practice never expires setup, restores old setup timers safely, and rematches untimed (748.170709ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33234.000666
