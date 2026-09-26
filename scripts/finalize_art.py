@@ -83,4 +83,3 @@ for group,prefixes in [('heroes',['hero_']),('offers',['offer_','example_']),('s
   canvas.paste(im,(x,y),im);draw.text(((i%cols)*cellw+10,(i//cols)*cellh+cellh-24),r['id'],fill='#f1dfae')
  canvas.save(out/f'contact-{group}.jpg',quality=90)
 print(json.dumps(summary))
-

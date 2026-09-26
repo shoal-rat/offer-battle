@@ -28,12 +28,16 @@
       "durationMs": 150623.419
     },
     "staticBrowser": {
-      "command": "npm run test:e2e:static",
+      "command": "STATIC_TEST_URL=http://127.0.0.1:5197/offer-battle/ npm run test:e2e:static",
       "passed": 10,
       "failed": 0,
       "skipped": 0,
       "flaky": 0,
-      "durationMs": 17692.576
+      "durationMs": 14600,
+      "artifact": "dist-pages production bundle, previewed without modification",
+      "basePath": "/offer-battle/",
+      "sourceMaps": false,
+      "coverageNote": "Production build, including four-sided tutorial completion bounds at 390px and 1440px."
     },
     "cloudflare": {
       "command": "npm run test:cloudflare",
@@ -61,6 +65,23 @@
       "command": "python3 spec/validate_bundle.py",
       "referenceTestsPassed": 41,
       "status": "passed"
+    },
+    "cloudflareLive": {
+      "status": "passed",
+      "transport": "public HTTPS and WSS",
+      "registeredAccounts": 2,
+      "acceptedCommands": 50,
+      "webSocketSnapshotsPerPlayer": [
+        109,
+        109
+      ],
+      "friendMatchSaved": true,
+      "localMatchImported": true,
+      "rematch": true,
+      "newLogin": true,
+      "accountRecovery": true,
+      "elapsedMs": 55595,
+      "details": "DEPLOYMENT.md"
     }
   },
   "boundaries": {
@@ -68,7 +89,7 @@
     "accountUI": "Uses deterministic engine positions and controlled transport fixtures. Backend behavior is independently verified by the Cloudflare suite.",
     "nodeBrowser": "Uses real HTTP/WebSocket for service paths, with deterministic engine fixtures for timing-sensitive presentation cases.",
     "fullscreen": "Checks gesture request and rejection fallback with browser fixtures; not a claim of physical-device native fullscreen coverage.",
-    "publicNetwork": "See DEPLOYMENT.md; local suites are not public-network load tests."
+    "publicNetwork": "A real two-account HTTPS/WSS end-to-end match was completed, including save/import, rematch, login and account recovery. This is functional acceptance, not a long-duration load test. See DEPLOYMENT.md."
   },
   "historicalEvidence": {
     "simulation": "evidence/simulation.json",

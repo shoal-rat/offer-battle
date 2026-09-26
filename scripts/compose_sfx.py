@@ -241,4 +241,3 @@ def main():
         "peakDbFSRange":[min(r["peakDbFS"] for r in results),max(r["peakDbFS"] for r in results)],
         "durationSecondsRange":[min(r["durationSeconds"] for r in results),max(r["durationSeconds"] for r in results)]}))
 if __name__=="__main__":main()
-

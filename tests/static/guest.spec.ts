@@ -35,6 +35,7 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(3);
   await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();
   await expect(page.locator('.lesson-complete-overlay')).toBeVisible();
+  const completion=await page.locator('.lesson-complete').boundingBox();expect(completion).not.toBeNull();expect(completion!.x).toBeGreaterThanOrEqual(0);expect(completion!.x+completion!.width).toBeLessThanOrEqual(width);expect(completion!.y).toBeGreaterThanOrEqual(0);expect(completion!.y+completion!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
   expect(await page.evaluate(()=>sessionStorage.getItem('offer-local-active-v1'))).toBeNull();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
   await page.screenshot({path:testInfo.outputPath(`guest-tutorial-${width}.png`)});

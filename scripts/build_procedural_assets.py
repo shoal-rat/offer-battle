@@ -125,4 +125,3 @@ for a in SPEC:
     for c in range(2):mixat(s[:,c],hit,t)
   savewave(a['preferred_path'],s,2)
 print('Procedural outputs created: UI 48, accessories 11, VFX 12, audio 18, share layouts 3.')
-

@@ -25,3 +25,9 @@ evidence/*
 !evidence/audio/
 evidence/audio/*
 !evidence/audio/music-v2-quality.json
+
+# Python reference checks produce machine-specific bytecode.
+__pycache__/
+*.py[cod]
+
+!evidence/online-validation.json

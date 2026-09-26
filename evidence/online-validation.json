@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-26",
+  "frontend": "https://weikezhang.cn/offer-battle/",
+  "api": "https://offer-battle-api.offer-battle.workers.dev",
+  "workerVersion": "c96f68f9-b3a6-4e77-a514-3bfaba954f6d",
+  "websiteCommit": "1d945c9f5574dd834ad8f70fa99ccdf2d6ffbae1",
+  "realCloudService": true,
+  "mockedCloudApi": false,
+  "protocol": {
+    "registeredAccounts": 2,
+    "commands": 50,
+    "webSocketSnapshots": [
+      109,
+      109
+    ],
+    "friendAndLocalSave": true,
+    "rematch": true,
+    "secondLogin": true,
+    "recoveryRotation": true
+  },
+  "browser": {
+    "steps": [
+      {
+        "name": "Log in two isolated production browser contexts",
+        "passed": true
+      },
+      {
+        "name": "Create and join a real friend room through its invitation",
+        "passed": true
+      },
+      {
+        "name": "Both players prepare, select flex cards and keep opening hands in the UI",
+        "passed": true
+      },
+      {
+        "name": "Each player deploys an Offer and ends turns through actual controls",
+        "passed": true
+      },
+      {
+        "name": "Reconnect and refresh preserve the second player seat and match",
+        "passed": true
+      },
+      {
+        "name": "Finish the match using legal commands from each private player view",
+        "passed": true
+      },
+      {
+        "name": "Save each player history and verify server reconstructed replays",
+        "passed": true
+      },
+      {
+        "name": "Open the saved replay from the real history UI and retain login on refresh",
+        "passed": true
+      },
+      {
+        "name": "Guest completes the real static first lesson with every API route blocked",
+        "passed": true
+      },
+      {
+        "name": "Check browser errors and loaded images",
+        "passed": true
+      }
+    ],
+    "checks": {
+      "twoIndependentLogins": true,
+      "invitationJoin": true,
+      "setupAndHiddenHands": true,
+      "realUiActions": {
+        "players": 2,
+        "offerDeployments": 2,
+        "totalCommands": 7
+      },
+      "reconnectPreservedSeat": true,
+      "reconnectKeptDeadline": true,
+      "finishedMatch": {
+        "legalApiCommands": 43,
+        "round": 8,
+        "bothResultPanels": true
+      },
+      "realWebsocketUpdates": {
+        "first": 141,
+        "second": 136
+      },
+      "savedBothPlayersWithVerifiedReplay": true,
+      "crossAccountRecordReadDenied": true,
+      "savedHistoryUiReplay": true,
+      "accountSurvivesRefresh": true,
+      "guestLocalTutorial": {
+        "completedPlayerSteps": 4,
+        "apiRequests": 0,
+        "refreshResumed": true,
+        "temporaryFinishedDataRemoved": true,
+        "mobileWidth": 390
+      },
+      "noBrowserErrors": true,
+      "images": [
+        {
+          "brokenImages": 0
+        },
+        {
+          "brokenImages": 0
+        },
+        {
+          "brokenImages": 0
+        }
+      ]
+    }
+  },
+  "assets": {
+    "httpFilesChecked": 305,
+    "missing": 0
+  },
+  "mobileTutorialFix": {
+    "viewportWidth": 390,
+    "fourSidedBoundsChecked": true,
+    "productionStaticSuitePassed": 10,
+    "actualPublicUrlRetestPassed": true,
+    "publicRetestDurationMs": 8700
+  },
+  "scope": "Functional acceptance with two test accounts; not a load test or independent security audit."
+}
