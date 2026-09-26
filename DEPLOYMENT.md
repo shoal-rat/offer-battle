@@ -2,6 +2,16 @@
 
 网页位于 **https://weikezhang.cn/offer-battle/**，源代码位于 **https://github.com/shoal-rat/offer-battle**。已上线基础版本使用 GitHub Pages 与 Cloudflare Workers Free；后端地址为 **https://offer-battle-api.offer-battle.workers.dev**，健康检查地址为 `/healthz`。历史线上验收见本页末尾。2.2 的本地开发证据不能替代该版本的发布后验收；本轮独立验收仍为待执行。
 
+## 2.2.0-beta.2 已发布
+
+2026-09-27 已更新 [正式网页](https://weikezhang.cn/offer-battle/)。发布源码为 `79733e220f9ec625cd66e1737841ec9c2f446d78`，网站提交为 `7e7c72c9562833a98713a6f5059600e61d186d90`，[Pages 部署](https://github.com/shoal-rat/shoal-rat.github.io/actions/runs/36270794684) 成功。兼容 Worker 版本为 `59390c39-6047-4269-ad43-a5b747c5cfb8`，保留账号、房间存储和现有权限。
+
+本轮包含单击/拖拽出牌、定向卡牌纸飞机、放慢且不留分身的攻击、手机教程遮挡修复、准备阶段慢练习修复，以及每套 8 张助阵的预设。已有自定义配队保留；使用新版配方需主动点击“应用这套预设”。主开发代理已在发布前完整打完一局并检查结算、回放和返回首页，修复后另开局复查。
+
+正式网页版本和 23 项关键资源哈希核对通过；1440/390px 游客教程均真实完成且没有 API 请求。两个既有账号完成好友房创建、加入、准备、回合操作、WSS 接收和刷新恢复，零页面错误；这是轻量检查，不是完整公网对局。
+
+本地 289 项单测、22 项关键生产浏览器检查、15 项静态套件和 11 项 Cloudflare 集成检查通过；边界及公网复核见 [本轮发布记录](reports/upgrade-v2.2/beta2-release.json)。按用户要求优先上线，48 次独立验收仍未执行。
+
 ## 三条运行路径
 
 | 路径 | 游客可用功能 | 账号与房间 | 数据位置 |

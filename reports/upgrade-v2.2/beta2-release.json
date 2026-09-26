@@ -1,0 +1,75 @@
+{
+  "version": "2.2.0-beta.2",
+  "sourceCommit": "79733e220f9ec625cd66e1737841ec9c2f446d78",
+  "siteCommit": "7e7c72c9562833a98713a6f5059600e61d186d90",
+  "site": "https://weikezhang.cn/offer-battle/",
+  "workerVersion": "59390c39-6047-4269-ad43-a5b747c5cfb8",
+  "workerHealth": "passed",
+  "pagesRun": "https://github.com/shoal-rat/shoal-rat.github.io/actions/runs/36270794684",
+  "sourceCI": "https://github.com/shoal-rat/offer-battle/actions/runs/36270714774",
+  "localChecks": {
+    "unit": {
+      "passed": 289,
+      "failed": 0
+    },
+    "keyProductionBrowser": {
+      "passed": 22,
+      "failed": 0
+    },
+    "staticSuite": {
+      "passed": 15,
+      "failed": 0
+    },
+    "cloudflareIntegration": {
+      "passed": 11,
+      "failed": 0
+    },
+    "starterSimulation": {
+      "games": 360,
+      "illegal": 0,
+      "replayMismatches": 0
+    }
+  },
+  "rootHandsOn": "completed-full-nine-round-match-result-replay-login-gate-return-home; fixes rechecked",
+  "independent48": "not-run; deferred at user request to prioritize release",
+  "pagesStatus": "success",
+  "liveVerification": {
+    "release": "ordinary and cache-busted release match",
+    "keyAssetHashes": {
+      "passed": 23,
+      "failed": 0
+    },
+    "friendSmoke": {
+      "realAccounts": 2,
+      "setup": "passed",
+      "turnAction": "END_TURN accepted",
+      "webSocketSnapshots": [
+        29,
+        23
+      ],
+      "refresh": "same seat, match and deadline",
+      "flexPrivacy": "own selection length 3; omitted from opponent",
+      "pageErrors": 0,
+      "scope": "light check, not a complete beta.2 online match"
+    },
+    "guestTutorial": {
+      "viewports": [
+        1440,
+        390
+      ],
+      "stepsPerRun": 4,
+      "passed": 2,
+      "apiRequests": 0,
+      "pageErrors": 0,
+      "temporaryCacheRemoved": true
+    },
+    "releaseContentHash": "67ba41faafcaa4fd51660d4393d1b51dc9f8ec3bc5a43c0b06164224696cfe13"
+  },
+  "sourceCIStatusAtLastCheck": {
+    "rulesNode24": "success",
+    "rulesNode26": "success",
+    "cloudflare": "success",
+    "staticBrowser": "success",
+    "browser": "in_progress"
+  }
+}
