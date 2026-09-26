@@ -67,13 +67,17 @@ test('WebSocket shares the HTTP origin policy and still authenticates the seat',
  }finally{await f.close();}
 });
 
-test('entry quotas reject bursts, ignore untrusted forwarded IPs and recover after their window',async()=>{
+test('entry quotas reject bursts, ignore untrusted forwarded IPs and recover after their window',async(t)=>{
+ // File writes and HTTP scheduling may exceed this short window on a busy CI runner.
+ // Keep real HTTP requests, but advance the admission clock only at the boundary under test.
+ let now=Date.now();t.mock.method(Date,'now',()=>now);
  const f=await fixture({sessionRateLimit:2,roomRateLimit:1,rateWindowMs:120});try{
   const {token}=await f.session();assert.equal((await f.post('/api/session',{},undefined,{'X-Forwarded-For':'192.0.2.1'})).status,200);
   const denied=await f.post('/api/session',{},undefined,{'X-Forwarded-For':'192.0.2.2'});assert.equal(denied.status,429);assert.equal(denied.headers.get('retry-after'),'1');
   const room=await f.room(token);assert.ok(room.roomId);assert.equal((await f.post('/api/rooms',{mode:'friend'},token)).status,429);
   const ready=await f.post(`/api/rooms/${room.roomId}/ready`,{ready:true},token);assert.equal(ready.status,200,'normal play remains available after creation quota');
-  await pause(130);assert.equal((await f.post('/api/session')).status,200);
+  now+=119;assert.equal((await f.post('/api/session')).status,429,'quota remains closed before its expiry');
+  now+=1;assert.equal((await f.post('/api/session')).status,200,'quota opens at its exact expiry');
  }finally{await f.close();}
 });
 
