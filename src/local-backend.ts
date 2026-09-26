@@ -1,3 +1,4 @@
+import {currentLoadout as compileCurrentLoadout,upgradeOfferCollection} from './game/offer-compat';
 import {applyCommand,chooseBotCommand,compileOffer,createMatch,createShowcase,defaultLoadout,exampleOffers,getView,showcaseCatalog} from './game/index';
 import {createTutorial,getTutorialView,isLessonId,sameTutorialCommand,tutorialCoachCommands,type TutorialProgress} from './game/tutorial';
 import type {Command,Loadout,MatchState,OfferDefinition,OfferProfile} from './game/types';
@@ -25,6 +26,7 @@ interface LocalRoom {
   scenario?:{id:string;title:string;instructions:string[]};
 }
 export class LocalBackendError extends Error {constructor(message:string,public status=400,public code?:string){super(message)}}
+function currentLoadout(value:Loadout){try{return compileCurrentLoadout(value)}catch(error){throw new LocalBackendError((error as Error).message)}}
 const profileKey='offer-local-profile-v1',activeKey='offer-local-active-v1',ttl=12*60*60*1000;
 const id=(prefix:string)=>`${prefix}_${crypto.randomUUID()}`;
 const seed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
@@ -45,7 +47,7 @@ export class LocalBackend {
     let stored:Profile|undefined;
     try {const value=JSON.parse(options.persistentStorage.getItem(profileKey)||'null');if(value?.id&&Array.isArray(value.offers))stored=value}catch{}
     this.profile=stored??{id:id('guest'),nickname:'秋招挑战者',offers:[]};
-    this.saveProfile();
+    upgradeOfferCollection(this.profile);this.saveProfile();
     try {
       const saved=JSON.parse(options.transientStorage.getItem(activeKey)||'null');
       if(saved?.expiresAt>this.now()&&saved.room?.id?.startsWith('local_')&&saved.room.state?.rulesVersion==='2.0.0'&&saved.room.status==='playing'&&Array.isArray(saved.room.journal)) {
@@ -65,7 +67,7 @@ export class LocalBackend {
   private roomFor(roomId:string){const room=this.rooms.get(roomId);if(!room)throw new LocalBackendError('本地牌桌已结束或当前标签页的临时记录已清除',404,'ROOM_NOT_FOUND');return room}
   private loadoutFor(input:any,playerId='p1'):Loadout {
     const fallback=defaultLoadout(playerId,this.profile.nickname,Number(input?.presetIndex??5));
-    if(!input)return this.profile.loadout?{...clone(this.profile.loadout),playerId,name:this.profile.nickname}:fallback;
+    if(!input)return this.profile.loadout?currentLoadout({...this.profile.loadout,playerId,name:this.profile.nickname}):fallback;
     const available=new Map([...exampleOffers,...this.profile.offers].map(o=>[o.id,o]));
     const requested=input.offerIds??input.offers?.map((o:any)=>typeof o==='string'?o:o.id);
     const offers=requested?requested.map((offerId:string)=>available.get(offerId)):fallback.offers;
@@ -74,10 +76,11 @@ export class LocalBackend {
     if(!/^H(0[1-9]|10)$/.test(value.primaryId)||!/^S(0[0-9]|10)$/.test(value.secondaryId))throw new LocalBackendError('学历选择无效');
     if(!Array.isArray(value.baseDeck)||value.baseDeck.length!==12||value.baseDeck.some(c=>!/^N(0[1-9]|1[0-9]|2[0-4])$/.test(c))||value.baseDeck.some(c=>value.baseDeck.filter(x=>x===c).length>2))throw new LocalBackendError('基础牌需要 12 张，同名最多 2 张');
     if(!Array.isArray(value.flexDeck)||value.flexDeck.length!==3||new Set(value.flexDeck).size!==3||value.flexDeck.some(c=>!/^F0[1-6]$/.test(c)))throw new LocalBackendError('请选择三张不同的应对牌');
-    return value;
+    return currentLoadout(value);
   }
   private start(room:LocalRoom,skipSetup=false){
     room.skipSetup=skipSetup;
+    if(!room.tutorial&&!room.scenario)for(const seat of room.seats)seat.loadout=currentLoadout(seat.loadout);
     if(room.tutorial){const lesson=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:this.profile.nickname});room.seats.forEach((seat,i)=>seat.loadout=lesson.loadouts[i]);room.state=lesson.state;room.tutorial=lesson.progress;room.deadline=null}
     else {room.state=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.deadline=room.training&&room.state.phase==='playing'?null:this.now()+(room.state.phase==='playing'?(this.options.turnMs??30000):(this.options.setupMs??20000))}
     room.initialState=clone(room.state);room.status='playing';room.journal=[];room.receipts={};room.lastBotAt=0;

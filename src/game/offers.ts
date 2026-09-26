@@ -1,4 +1,6 @@
 import type { OfferDefinition, OfferProfile, Loadout } from "./types";
+import legacyExamples from "./content/example_offers.2.0.json" with { type: "json" };
+import { OFFER_COMPILER_VERSION, tuneOffer, type OfferCompilerVersion } from './offerTuning';
 import {
   templateById,
   benefitById,
@@ -113,6 +115,16 @@ export function compileOffer(
   benefitId: string | null = null,
   id?: string,
 ): OfferDefinition {
+  return compileOfferForVersion(profile,benefitId,id,OFFER_COMPILER_VERSION);
+}
+/** Historical versions are only selected by trusted replay reconstruction. */
+export function compileOfferForVersion(
+  profile: OfferProfile,
+  benefitId: string | null,
+  id: string | undefined,
+  version: OfferCompilerVersion,
+): OfferDefinition {
+  if(version!=='2.0.0'&&version!==OFFER_COMPILER_VERSION)throw Error('不支持的 Offer 规则版本');
   for (const key of [
     "monthly_fixed_cny",
     "guaranteed_months",
@@ -127,9 +139,13 @@ export function compileOffer(
       profile[key] < 0
     )
       throw Error("请确认完整薪酬字段：" + key);
+    if(version===OFFER_COMPILER_VERSION&&profile[key]>1e10)
+      throw Error("薪酬字段超出有效范围："+key);
   }
   if (profile.guaranteed_months <= 0 || profile.monthly_fixed_cny <= 0)
     throw Error("月薪与保证月数必须大于0");
+  if(version===OFFER_COMPILER_VERSION&&(profile.guaranteed_months<1||profile.guaranteed_months>36))
+    throw Error("保证薪数必须在 1—36 个月之间");
   if (
     benefitId &&
     (!Object.hasOwn(benefitById, benefitId) ||
@@ -142,7 +158,7 @@ export function compileOffer(
   const annualPackage =
     annualFixed + profile.annual_target_bonus_cny + profile.annual_equity_cny;
   if (!Number.isFinite(annualPackage)) throw Error("计价年包超出有效范围");
-  const originalTime =
+  let originalTime =
     annualPackage < 150000
       ? 2
       : annualPackage < 250000
@@ -169,6 +185,8 @@ export function compileOffer(
     if (baseHealth > 1) baseHealth--;
     else baseAttack = Math.max(1, baseAttack - 1);
   }
+  const tuned=version===OFFER_COMPILER_VERSION?tuneOffer(profile,originalTime,t,!!benefitId):null;
+  if(tuned){originalTime=tuned.originalTime;baseAttack=tuned.baseAttack;baseHealth=tuned.baseHealth;}
   const def = {
     templateId,
     benefitId,
@@ -179,7 +197,8 @@ export function compileOffer(
     annualFixed,
     signingBonus: profile.one_time_signing_cny,
     tags: [...t.career_tags],
-    rulesVersion: "2.0.0",
+    rulesVersion: version,
+    ...(tuned?{tuning:tuned.tuning}:{}),
   };
   const definitionHash = stableHash(def);
   return {
@@ -202,14 +221,20 @@ export function compileOffer(
     artId: templateId,
   };
 }
-export const exampleOffers: OfferDefinition[] = examples.map((e) =>
-  compileOffer(e.profile, e.selected_benefit_id, e.id),
-);
+export function exampleOffersForVersion(version:OfferCompilerVersion):OfferDefinition[] {
+  const catalog=version==='2.0.0'?legacyExamples:examples;
+  return catalog.map(e=>compileOfferForVersion(e.profile,e.selected_benefit_id,e.id,version));
+}
+export const exampleOffers = exampleOffersForVersion(OFFER_COMPILER_VERSION);
 export function defaultLoadout(
   playerId: string,
   name: string,
   presetIndex = 0,
 ): Loadout {
+  return defaultLoadoutForVersion(playerId,name,presetIndex,OFFER_COMPILER_VERSION);
+}
+export function defaultLoadoutForVersion(playerId:string,name:string,presetIndex:number,version:OfferCompilerVersion):Loadout {
+  const offers=version===OFFER_COMPILER_VERSION?exampleOffers:exampleOffersForVersion(version);
   const p =
     presets[((presetIndex % presets.length) + presets.length) % presets.length];
   return {
@@ -218,7 +243,7 @@ export function defaultLoadout(
     primaryId: p.primary_id,
     secondaryId: p.secondary_id,
     offers: p.offer_ids.map((id) =>
-      structuredClone(exampleOffers.find((o) => o.id === id)!),
+      structuredClone(offers.find((o) => o.id === id)!),
     ),
     baseDeck: [...p.base_deck],
     flexDeck: [...p.default_flex],

@@ -5,6 +5,7 @@ import {applyCommand,chooseBotCommand,createMatch,defaultLoadout,exampleOffers,g
 import {tutorialCatalog} from '../src/game/tutorial';
 import type {Command,Loadout,OfferDefinition} from '../src/game/types';
 import type {RoomResponse} from '../src/api';
+import legacyRecord from './fixtures/legacy-offer-record.json';
 class MemoryStorage implements LocalStorage {
   data=new Map<string,string>();getItem(key:string){return this.data.get(key)??null}setItem(key:string,value:string){this.data.set(key,value)}removeItem(key:string){this.data.delete(key)}
 }
@@ -107,5 +108,28 @@ test('local socket emits open/state updates and closes cleanly, with no remote c
     command(backend,data,data.view!.legalActions[0]);await new Promise<void>(resolve=>queueMicrotask(resolve));assert.equal(messages.at(-1).view.version,1);
     socket.close();await new Promise<void>(resolve=>queueMicrotask(resolve));assert.equal(closed,true);assert.equal(socket.readyState,3);
     assert.throws(()=>backend.request('/api/rooms',{mode:'friend'},'POST'),(e:unknown)=>e instanceof LocalBackendError&&e.code==='AUTH_REQUIRED');
+  }finally{backend.dispose()}
+});
+
+test('local persisted 2.0 collection upgrades while a resumed match stays frozen until rematch',()=>{
+  const f=fixture();let backend=f.make();
+  try{
+    const started=backend.request('/api/rooms',{mode:'bot',training:true,skipSetup:true},'POST');backend.dispose();
+    const saved=JSON.parse(f.transientStorage.getItem('offer-local-active-v1')!);
+    saved.room.seats.forEach((seat:any,index:number)=>{seat.loadout=legacyRecord.loadouts[index]});
+    saved.room.state=legacyRecord.initialState;saved.room.initialState=legacyRecord.initialState;saved.room.seed=legacyRecord.seed;saved.room.journal=[];saved.room.receipts={};
+    f.transientStorage.setItem('offer-local-active-v1',JSON.stringify(saved));
+    const profile=JSON.parse(f.persistentStorage.getItem('offer-local-profile-v1')!);
+    profile.offers=[legacyRecord.loadouts[0].offers[0]];profile.loadout=legacyRecord.loadouts[0];
+    f.persistentStorage.setItem('offer-local-profile-v1',JSON.stringify(profile));backend=f.make();
+    const upgraded=backend.request('/api/profile');assert.equal(upgraded.offers[0].rulesVersion,'2.1.0');assert.equal(upgraded.loadout.offers.every((o:any)=>o.rulesVersion==='2.1.0'),true);
+    const path=`/api/rooms/${started.room.id}`,resumed=backend.request(path);
+    assert.equal(resumed.view.players[0].offerZone[0].definition.baseAttack,7);assert.equal(resumed.view.players[0].offerZone[0].definition.rulesVersion,'2.0.0');
+    assert.deepEqual(backend.getReplay(started.room.id).initialState,legacyRecord.initialState);
+    command(backend,resumed,{type:'CONCEDE'});assert.equal(backend.request(path+'/replay').verified,true);
+    const rematch=backend.request(path+'/rematch',{},'POST');
+    for(const player of rematch.view.players)assert.equal(player.offerZone.every((o:any)=>o.definition.rulesVersion==='2.1.0'),true);
+    const fresh=backend.request('/api/rooms',{mode:'bot',training:true,skipSetup:true},'POST');
+    assert.equal(fresh.view.players[0].offerZone[0].definition.rulesVersion,'2.1.0');
   }finally{backend.dispose()}
 });

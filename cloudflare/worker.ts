@@ -1,3 +1,4 @@
+import {OFFER_COMPILER_VERSION} from '../src/game/offerTuning';
 import {Fault,failure,json,type Env} from './shared';
 export {AccountRegistry} from './accounts';
 export {BattleRoom} from './room';
@@ -15,7 +16,7 @@ export default {
     return new Response(null,{status:204,headers:{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'GET, POST, PATCH, DELETE','Access-Control-Allow-Headers':'Authorization, Content-Type','Access-Control-Max-Age':'600','Vary':'Origin'}});
    }
    let response:Response;
-   if(url.pathname==='/healthz')response=json({ok:true,rulesVersion:'2.0.0',mode:'cloudflare',storage:'sqlite-durable-objects'});
+   if(url.pathname==='/healthz')response=json({ok:true,rulesVersion:'2.0.0',offerCompilerVersion:OFFER_COMPILER_VERSION,mode:'cloudflare',storage:'sqlite-durable-objects'});
    else if(url.pathname==='/api/capabilities')response=json({localArt:true,localText:true,extract:false,textProvider:false,imageProvider:false,voiceProvider:false,accounts:true,friendRequiresAccount:true,guestMode:'local'});
    else if(url.pathname.startsWith('/api/')||url.pathname==='/ws')response=await env.ACCOUNTS.getByName('registry').fetch(request);
    else throw new Fault(404,'接口不存在');

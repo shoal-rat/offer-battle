@@ -1,3 +1,4 @@
+import {upgradeOfferCollection} from '../src/game/offer-compat';
 import {DurableObject} from 'cloudflare:workers';
 import {DAY,Documents,Fault,body,compile,failure,hash,json,loadoutFor,nickname,random,replay,uid,validateLocalRecord,type Env,type Principal,type Profile,type RecordInput} from './shared';
 type User={id:string;username:string;salt:string;password_hash:string;recovery_hash:string};
@@ -33,7 +34,7 @@ export class AccountRegistry extends DurableObject<Env> {
   if(value&&value.hits>=limit)throw new Fault(429,'操作过于频繁，请稍后再试','RATE_LIMITED');
   this.sql.exec('INSERT INTO quotas VALUES (?,?,?) ON CONFLICT(key) DO UPDATE SET hits=hits+1',key,1,now+windowMs);
  }
- private profile(id:string){const p=this.docs.get<Profile>('profile:'+id);if(!p)throw new Fault(401,'请重新登录','AUTH_REQUIRED');return p;}
+ private profile(id:string){const p=this.docs.get<Profile>('profile:'+id);if(!p)throw new Fault(401,'请重新登录','AUTH_REQUIRED');if(upgradeOfferCollection(p))this.saveProfile(p);return p;}
  private saveProfile(profile:Profile){this.docs.put('profile:'+profile.id,profile);}
  private async issue(user:User,recoveryKey?:string){
   const token=random(),tokenHash=await hash(token),expires=Date.now()+30*DAY;

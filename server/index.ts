@@ -1,3 +1,5 @@
+import {OFFER_COMPILER_VERSION} from '../src/game/offerTuning.js';
+import {currentLoadout as compileCurrentLoadout,upgradeOfferCollection} from '../src/game/offer-compat.js';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { randomBytes, randomUUID, createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
@@ -31,6 +33,7 @@ const canonical=(value:unknown):string=>{const sort=(item:any):any=>Array.isArra
 const nickname=(value:unknown)=>typeof value==='string'&&value.trim()?value.trim().slice(0,24):'秋招新同学';
 const fresh=():Database=>({schemaVersion:1,sessions:{},profiles:{},rooms:{},jobs:{},uploads:{}});
 class HttpError extends Error { constructor(public status:number,message:string){super(message);} }
+function currentLoadout(value:Loadout){try{return compileCurrentLoadout(value)}catch(error){throw new HttpError(400,(error as Error).message)}}
 function json(res:ServerResponse,status:number,value:unknown){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(value));}
 async function body(req:IncomingMessage):Promise<Record<string,any>>{let data='';for await(const chunk of req){data+=String(chunk);if(Buffer.byteLength(data)>10_000_000)throw new HttpError(413,'请求过大');}try{const value=data?JSON.parse(data):{};if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('object required');return value;}catch{throw new HttpError(400,'请求需要有效 JSON 对象');}}
 function isImage(bytes:Buffer,mime:string){return mime==='image/png'?bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])):mime==='image/jpeg'?bytes[0]===255&&bytes[1]===216:mime==='image/webp'?bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP':false;}
@@ -41,6 +44,7 @@ export async function startServer(options:ServerOptions={}){
   const dataDir=resolve(options.dataDir??process.env.DATA_DIR??join(ROOT,'data'));
   const store=new AtomicStore<Database>(dataDir,fresh);
   let db=await store.read();
+  for(const profile of Object.values(db.profiles))upgradeOfferCollection(profile);
   const turnMs=options.turnMs??Number(process.env.TURN_MS??30000),setupMs=options.setupMs??20000,botDelayMs=options.botDelayMs??650;
   const sockets=new Map<WebSocket,{session:Session;roomId:string;ip:string;alive:boolean}>();
   let chain:Promise<unknown>=Promise.resolve();
@@ -54,7 +58,7 @@ export async function startServer(options:ServerOptions={}){
   function broadcast(room:Room){for(const [socket,entry]of sockets){if(entry.roomId!==room.id||socket.readyState!==WebSocket.OPEN)continue;const seat=room.seats.find(s=>s.sessionId===entry.session.id);if(seat)socket.send(JSON.stringify({type:'state',...snapshot(room,seat)}));}}
   function loadoutFor(profile:Profile,input:any,playerId:string):Loadout{
     const fallback=defaultLoadout(playerId,profile.nickname,Number(input?.presetIndex??5));
-    if(!input)return profile.loadout?{...structuredClone(profile.loadout),playerId,name:profile.nickname}:fallback;
+    if(!input)return profile.loadout?currentLoadout({...profile.loadout,playerId,name:profile.nickname}):fallback;
     const available=new Map([...exampleOffers,...profile.offers].map(o=>[o.id,o]));
     const requested=input.offerIds??input.offers?.map((o:any)=>typeof o==='string'?o:o.id);
     const offers=requested?requested.map((offerId:string)=>available.get(offerId)):fallback.offers;
@@ -63,9 +67,9 @@ export async function startServer(options:ServerOptions={}){
     if(!/^H(0[1-9]|10)$/.test(value.primaryId)||!/^S(0[0-9]|10)$/.test(value.secondaryId))throw new HttpError(400,'学历选择无效');
     if(!Array.isArray(value.baseDeck)||value.baseDeck.length!==12||value.baseDeck.some(c=>!/^N(0[1-9]|1[0-9]|2[0-4])$/.test(c))||value.baseDeck.some(c=>value.baseDeck.filter(x=>x===c).length>2))throw new HttpError(400,'基础牌需要 12 张，同名最多 2 张');
     if(!Array.isArray(value.flexDeck)||value.flexDeck.length!==3||new Set(value.flexDeck).size!==3||value.flexDeck.some(c=>!/^F0[1-6]$/.test(c)))throw new HttpError(400,'请选择三张不同的应对牌');
-    return value;
+    return currentLoadout(value);
   }
-  function startRoom(room:Room,skipSetup=false){if(room.tutorial){const tutorial=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:room.seats[0].name});room.seats.forEach((seat,i)=>{seat.loadout=tutorial.loadouts[i];});room.state=tutorial.state;room.initialState=structuredClone(tutorial.state);room.tutorial=tutorial.progress;room.status='playing';room.deadline=null;return;}const state:MatchState=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.state=state;room.initialState=structuredClone(state);room.status='playing';room.deadline=room.training&&state.phase==='playing'?null:Date.now()+(state.phase==='playing'?turnMs:setupMs);}
+  function startRoom(room:Room,skipSetup=false){if(!room.tutorial&&!room.scenario)for(const seat of room.seats)seat.loadout=currentLoadout(seat.loadout);if(room.tutorial){const tutorial=createTutorial(room.tutorial.lessonId,{matchId:id('match'),name:room.seats[0].name});room.seats.forEach((seat,i)=>{seat.loadout=tutorial.loadouts[i];});room.state=tutorial.state;room.initialState=structuredClone(tutorial.state);room.tutorial=tutorial.progress;room.status='playing';room.deadline=null;return;}const state:MatchState=room.scenario?createShowcase(room.scenario.id as Parameters<typeof createShowcase>[0],'p1','p2',{matchId:id('match'),seed:room.seed}).state:createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],room.seed,{skipSetup,matchId:id('match')});room.state=state;room.initialState=structuredClone(state);room.status='playing';room.deadline=room.training&&state.phase==='playing'?null:Date.now()+(state.phase==='playing'?turnMs:setupMs);}
   function updateDeadline(room:Room,before:MatchState){if(!room.state)return;if(room.state.phase==='finished'){room.status='finished';room.deadline=null;}else if(room.state.phase!==before.phase||room.state.activePlayerId!==before.activePlayerId||room.state.round!==before.round){room.deadline=room.training&&room.state.phase==='playing'?null:Date.now()+(room.state.phase==='playing'?turnMs:setupMs);}}
   function apply(room:Room,actorId:string,command:Command){if(!room.state)throw new HttpError(409,'双方准备后才能开始');const before=room.state;const result=applyCommand(before,actorId,command);if(result.error)return {ok:false,rejection:result.error};room.state=result.state;room.journal.push({actorId,command:structuredClone(command),version:result.state.version,at:Date.now()});updateDeadline(room,before);return {ok:true};}
   function expireRoom(room:Room){
@@ -110,7 +114,7 @@ export async function startServer(options:ServerOptions={}){
     try{
       const url=new URL(req.url??'/',`http://${req.headers.host??'localhost'}`),path=url.pathname;
       if(network.cors(req,res))return;
-      if(path==='/healthz')return json(res,200,{ok:true,rulesVersion:'2.0.0',mode:options.development?'development':'production'});
+      if(path==='/healthz')return json(res,200,{ok:true,rulesVersion:'2.0.0',offerCompilerVersion:OFFER_COMPILER_VERSION,mode:options.development?'development':'production'});
       if(path.startsWith('/api/')){
         network.admitHttp(req,path);
         const requestBody=['POST','PATCH','PUT'].includes(req.method??'')?await body(req):{};

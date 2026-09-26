@@ -10,6 +10,9 @@ export interface OfferProfile {
   role_family: string;
   role_title: string;
   city: string;
+  city_cost_level?: "auto" | "high" | "medium" | "low";
+  work_nature?: "standard" | "permanent" | "contract" | "dispatch" | "internship";
+  work_schedule?: "standard" | "intensive" | "flexible" | "field";
   monthly_fixed_cny: number;
   guaranteed_months: number;
   annual_fixed_allowance_cny: number;
@@ -36,6 +39,19 @@ export interface OfferDefinition {
   definitionHash?: string;
   profile?: OfferProfile;
   artId?: string;
+  tuning?: OfferTuning;
+}
+export interface OfferTuning {
+  version: "2.1.0";
+  salaryCost: number;
+  costAdjustment: number;
+  requestedTilt: number;
+  appliedTilt: number;
+  cityLevel: "high" | "medium" | "low";
+  citySource: "auto" | "manual";
+  contributions: { key: string; label: string; detail: string; cost: number; tilt: number }[];
+  beforeBenefit: { attack: number; health: number };
+  benefitPenalty: { attack: number; health: number };
 }
 export interface Loadout {
   playerId: string;

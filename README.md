@@ -16,7 +16,7 @@
 
 **你拿出来的是一份具体的工作。** 卡名显示“大厂算法岗”“投行做债”“央企总部”，公司、岗位和年包有各自的位置。11 种玩法类型负责技能，精确岗位名负责表达你的 Offer。以后加一个没见过的新职业，也不必重做整套规则。
 
-**工资决定起点，出牌决定输赢。** 高年包换来更高的上桌费用；谈薪、挡话、隐藏反话、年龄成长、优化通知和转管理，把“比数字”变成取舍。游戏里的职业强弱只描述卡牌机制，不给现实工作或学校排高低。
+**工资决定起点，工作条件决定打法。** 年包决定基础费用，工作性质与节奏调整上桌时机；城市、行业和公司情况决定排面与底气的有限转换。谈薪、挡话、隐藏反话、年龄成长、优化通知和转管理，再把这些差异变成出牌时的取舍。游戏里的职业强弱只描述卡牌机制，不给现实工作或学校排高低。
 
 **双学历有配合，也有节制。** 10 个主技能 × 11 种进修，合计 110 个有序组合。主技能管节奏，进修从第 4 轮解锁、每局一次，两项共用每个己方回合的一次学历行动。对手两项技能的效果、费用和状态始终可见。
 
@@ -38,13 +38,20 @@
 
 ## 带上自己的 Offer
 
-录入公司、准确岗位、薪酬组成与一项可选条款，确认字段后生成卡牌。未知岗位可以先自动匹配，再手动确认一种现有玩法类型。
+![造卡工作台：费用、排面与底气随工作条件实时生成](docs/images/forge.png)
 
-年包的计价、费用和初始属性由规则引擎按固定公式计算；好友联机时服务器会重新编译并校验，文案和插画不能偷偷给自己加攻。卡名、台词或外观的变化不改变规则强度，已经开始的对局还会冻结本局的 Offer 定义。
+录入公司、准确岗位、薪酬组成、城市、行业、公司性质与阶段、工作性质和工作节奏，再选择至多一项已确认条款。未知岗位可以先自动匹配，也能手动确认一种现有玩法类型。
+
+**Offer 编译器 2.1** 把年包先映射为 2–7 小时的基础费用，再计入工作条件：实习 −1，高强度或驻场轮班出差 +1，弹性工时 −1，最终仍在 2–7 小时内。模板按最终费用生成基础身材；城市、行业、公司性质和阶段、工作性质、节奏的倾向合计，最多在排面与底气之间转换 2 点，两项最低为 1，随后再支付条款代价。
+
+因此，同样年包也能做成偏进攻或偏稳健的卡，低费也有降低基础身材的代价。城市成本可自动匹配或手动确认；这套映射是固定游戏规则，不是现实成本指数或职业排名。
+
+游客与好友房使用同一套确定性公式，联机时由服务器重新编译并校验。外观不决定属性，新局会把旧收藏更新到当前编译版本；已开始的牌局和旧战报保留原定义。战斗规则版本仍为 2.0.0，与 Offer 编译版本分别维护。
 
 | 你想改什么 | 怎么实现 |
 | --- | --- |
 | 新公司、新岗位、新薪酬 | 在游戏里录入并确认，无需修改代码 |
+| 同年包、不同城市或工作条件 | 确认成本档位、公司与工作字段，按统一公式计算费用和属性倾向 |
 | “银行基层”使用更稳的打法 | 生成前确认已有玩法类型，使用统一数值表 |
 | 新卡名、台词或角色外观 | 修改创作层，不修改战斗规则 |
 | 全新的机制或技能 | 扩展规则目录、引擎和测试，并升级规则版本 |
@@ -102,7 +109,7 @@ server/              保留的 Node 自托管对局、会话与持久化
 public/assets/       运行时插画、UI、音乐、音效和技能影片
 assets/              生成原件、创作要求、来源与制作记录
 scripts/             资源检查、内容种子、模拟、音频制作等工具
-spec/                原始玩法与工程规格
+spec/                保留的 2.0 原始玩法与工程规格
 tests/               规则、服务端、浏览器与视觉回归测试
 evidence/            精选验收记录、资源校验与对局模拟证据
 docs/                本地使用、预览图与补充文档
@@ -124,7 +131,7 @@ npm run test:e2e:static
 npm run test:cloudflare
 ```
 
-本次验收通过 **159 项单测、197 项运行资源检查、42 项 Node 生产版浏览器回归、10 项静态游客与账号界面测试**，并独立验证 Cloudflare 运行时。仓库另保留此前 220 局固定种子模拟。部分界面测试使用真实引擎局面与可控传输夹具，工程检查不等同于真人竞技平衡或公网压力测试。执行批次与边界见 [测试报告](TEST_REPORT.md)、[机器人对局观测](BALANCE_REPORT.md)；线上结果见 [部署文档](DEPLOYMENT.md)。
+自动化检查覆盖 Offer 确定性编译、服务端裁定、197 项运行资源、本地与联机界面、静态游客、账号保存和 Cloudflare 运行时；220 局固定种子模拟另记录编译器与战斗版本。部分界面测试使用真实引擎局面与可控传输夹具，工程检查不等同于真人竞技平衡或公网压力测试。最新执行批次与结果见 [测试报告](TEST_REPORT.md)、[机器人对局观测](BALANCE_REPORT.md)；线上结果见 [部署文档](DEPLOYMENT.md)。
 
 ## 继续把它做得好玩
 
@@ -135,7 +142,7 @@ npm run test:cloudflare
 <details>
 <summary>English overview</summary>
 
-**Offer Battle** is a Chinese-language, turn-based card game about comparing job offers. Bring a specific role, build a dual-education loadout, manage time and morale, and challenge a bot or a friend. The repository includes an authoritative Node/WebSocket server, deterministic rules and replay, five playable tutorials, custom offer compilation, drag-and-drop interaction, animation, music, assets, and automated tests.
+**Offer Battle** is a Chinese-language, turn-based card game about comparing job offers. Bring a specific role, build a dual-education loadout, manage time and morale, and challenge a bot or a friend. The repository includes an authoritative Node/WebSocket server, deterministic rules and replay, five playable tutorials, versioned offer compilation using salary and work conditions, drag-and-drop interaction, animation, music, assets, and automated tests.
 
 Requires Node.js 24+. Run `npm ci`, `npm run build`, and `npm start`. GitHub Pages hosts the frontend. Guests can play bots and tutorials locally; registered accounts use a Cloudflare backend for friend matches and persistent match history. See [DEPLOYMENT.md](DEPLOYMENT.md) for the actual deployment status. Code is MIT-licensed; generated media has separate provenance and licensing notes in [ASSET_LICENSE.md](ASSET_LICENSE.md).
 

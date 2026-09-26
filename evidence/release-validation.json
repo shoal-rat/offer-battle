@@ -1,15 +1,15 @@
 {
-  "schemaVersion": 1,
-  "verificationDate": "2026-09-26",
+  "schemaVersion": 2,
+  "verificationDate": "2026-09-27",
   "rulesVersion": "2.0.0",
   "scope": "Code and local-runtime release validation. Public deployment acceptance is documented separately in DEPLOYMENT.md.",
   "checks": {
     "unit": {
       "command": "npm test",
-      "passed": 159,
+      "passed": 173,
       "failed": 0,
       "skipped": 0,
-      "durationMs": 2673.17075
+      "durationMs": 5541.681291
     },
     "assets": {
       "command": "npm run assets:check",
@@ -20,28 +20,30 @@
       "missing": 0
     },
     "nodeBrowser": {
-      "command": "npm run build && E2E_PRODUCTION=1 npm run test:e2e",
+      "command": "E2E_PRODUCTION=1 npm run test:e2e -- --grep-invert 'visual layout'; E2E_PRODUCTION=1 npx playwright test --grep 'visual layout'",
       "passed": 42,
       "failed": 0,
       "skipped": 0,
       "flaky": 0,
-      "durationMs": 150623.419
+      "functionalPassed": 38,
+      "visualPassed": 4,
+      "note": "Functional and visual checks executed separately. Updated creator baselines were visually inspected, then checked again without update mode."
     },
     "staticBrowser": {
       "command": "STATIC_TEST_URL=http://127.0.0.1:5197/offer-battle/ npm run test:e2e:static",
-      "passed": 10,
+      "passed": 13,
       "failed": 0,
       "skipped": 0,
       "flaky": 0,
-      "durationMs": 14600,
+      "durationMs": 18800,
       "artifact": "dist-pages production bundle, previewed without modification",
       "basePath": "/offer-battle/",
       "sourceMaps": false,
-      "coverageNote": "Production build, including four-sided tutorial completion bounds at 390px and 1440px."
+      "coverageNote": "Production bundle: guest/account regression plus real local offer compiler, save/preview equality, invalid input, duplicate-save prevention and mobile forge."
     },
     "cloudflare": {
       "command": "npm run test:cloudflare",
-      "passed": 6,
+      "passed": 7,
       "failed": 0,
       "runtime": "workerd / Miniflare with SQLite Durable Objects",
       "coverage": [
@@ -51,7 +53,8 @@
         "WebSocket hibernation and logout rejection",
         "real alarm timeout without client polling",
         "local record reconstruction and custom-offer recompilation",
-        "concurrent ready and idempotent command submission"
+        "concurrent ready and idempotent command submission",
+        "frozen 2.0 golden replay, saved collections upgraded, both rematch seats use 2.1, old records remain unchanged"
       ]
     },
     "typescript": {
@@ -66,7 +69,40 @@
       "referenceTestsPassed": 41,
       "status": "passed"
     },
-    "cloudflareLive": {
+    "simulation": {
+      "offerCompilerVersion": "2.1.0",
+      "battleRulesVersion": "2.0.0",
+      "games": 220,
+      "comboCoverage": 110,
+      "wins": 117,
+      "losses": 102,
+      "draws": 1,
+      "firstWins": 153,
+      "meanRound": 8.881818181818181,
+      "meanCommands": 62.195454545454545,
+      "elapsedSeconds": 36.659438667,
+      "allReplaysMatch": true
+    },
+    "offerTuning": {
+      "budgetCombinations": 396,
+      "costBounds": [
+        2,
+        7
+      ],
+      "maxTilt": 2,
+      "minimumAttribute": 1,
+      "legacyGoldenCommands": 48
+    }
+  },
+  "boundaries": {
+    "staticGuest": "1440px and 390px UI walkthrough blocks all API requests, verifies zero API requests, resumes after refresh, and removes finished temporary state.",
+    "accountUI": "Uses deterministic engine positions and controlled transport fixtures. Backend behavior is independently verified by the Cloudflare suite.",
+    "nodeBrowser": "Uses real HTTP/WebSocket for service paths, with deterministic engine fixtures for timing-sensitive presentation cases.",
+    "fullscreen": "Checks gesture request and rejection fallback with browser fixtures; not a claim of physical-device native fullscreen coverage.",
+    "publicNetwork": "A real two-account HTTPS/WSS end-to-end match was completed, including save/import, rematch, login and account recovery. This is functional acceptance, not a long-duration load test. See DEPLOYMENT.md."
+  },
+  "historicalEvidence": {
+    "firstReleaseCloudflareLive": {
       "status": "passed",
       "transport": "public HTTPS and WSS",
       "registeredAccounts": 2,
@@ -81,21 +117,10 @@
       "newLogin": true,
       "accountRecovery": true,
       "elapsedMs": 55595,
-      "details": "DEPLOYMENT.md"
+      "details": "DEPLOYMENT.md",
+      "projectVersion": "2.0.0"
     }
   },
-  "boundaries": {
-    "staticGuest": "1440px and 390px UI walkthrough blocks all API requests, verifies zero API requests, resumes after refresh, and removes finished temporary state.",
-    "accountUI": "Uses deterministic engine positions and controlled transport fixtures. Backend behavior is independently verified by the Cloudflare suite.",
-    "nodeBrowser": "Uses real HTTP/WebSocket for service paths, with deterministic engine fixtures for timing-sensitive presentation cases.",
-    "fullscreen": "Checks gesture request and rejection fallback with browser fixtures; not a claim of physical-device native fullscreen coverage.",
-    "publicNetwork": "A real two-account HTTPS/WSS end-to-end match was completed, including save/import, rematch, login and account recovery. This is functional acceptance, not a long-duration load test. See DEPLOYMENT.md."
-  },
-  "historicalEvidence": {
-    "simulation": "evidence/simulation.json",
-    "games": 220,
-    "combinations": 110,
-    "replayConsistent": true,
-    "rerunInThisReleasePass": false
-  }
+  "offerCompilerVersion": "2.1.0",
+  "projectVersion": "2.1.0"
 }

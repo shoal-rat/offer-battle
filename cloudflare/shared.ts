@@ -1,3 +1,4 @@
+import {currentLoadout,historicalLoadout} from '../src/game/offer-compat';
 import {compileOffer,defaultLoadout,exampleOffers,applyCommand,getView,createMatch} from '../src/game/index';
 import type {Loadout,OfferDefinition,OfferProfile,MatchState,Command} from '../src/game/types';
 export interface Env {ACCOUNTS:DurableObjectNamespace;ROOMS:DurableObjectNamespace;ALLOWED_ORIGINS:string;TURN_MS?:string;SETUP_MS?:string;ROOM_RETENTION_MS?:string;WAITING_RETENTION_MS?:string;MAX_SAVED_MATCHES?:string}
@@ -33,7 +34,7 @@ export function compile(input:any,id:string,benefitId:string|null=null):OfferDef
 }
 export function loadoutFor(profile:Profile,input:any,playerId:string):Loadout {
  const fallback=defaultLoadout(playerId,profile.nickname,Number(input?.presetIndex??5));
- if(!input)return profile.loadout?{...structuredClone(profile.loadout),playerId,name:profile.nickname}:fallback;
+ if(!input){try{return profile.loadout?currentLoadout({...profile.loadout,playerId,name:profile.nickname}):fallback;}catch(e){throw new Fault(400,(e as Error).message);}}
  if(Array.isArray(input.offers))for(const candidate of input.offers){
   if(typeof candidate==='string'||!candidate?.id||exampleOffers.some(o=>o.id===candidate.id))continue;
   if(!/^[a-zA-Z0-9_-]{1,100}$/.test(candidate.id)||/^E\d+$/.test(candidate.id))throw new Fault(400,'自定义 Offer 标识无效');
@@ -47,7 +48,7 @@ export function loadoutFor(profile:Profile,input:any,playerId:string):Loadout {
  if(!/^H(0[1-9]|10)$/.test(value.primaryId)||!/^S(0[0-9]|10)$/.test(value.secondaryId))throw new Fault(400,'学历选择无效');
  if(!Array.isArray(value.baseDeck)||value.baseDeck.length!==12||value.baseDeck.some((c:string)=>!/^N(0[1-9]|1[0-9]|2[0-4])$/.test(c))||value.baseDeck.some((c:string)=>value.baseDeck.filter((x:string)=>x===c).length>2))throw new Fault(400,'基础牌需要 12 张，同名最多 2 张');
  if(!Array.isArray(value.flexDeck)||value.flexDeck.length!==3||new Set(value.flexDeck).size!==3||value.flexDeck.some((c:string)=>!/^F0[1-6]$/.test(c)))throw new Fault(400,'请选择三张不同的应对牌');
- return value;
+ try{return currentLoadout(value);}catch(e){throw new Fault(400,(e as Error).message);}
 }
 export function replay(record:RecordInput,selfId:string,requireFinished=true){
  if(!record?.initialState||!Array.isArray(record.journal)||record.journal.length>600)throw new Fault(400,'战报格式或长度无效');
@@ -61,7 +62,9 @@ export function replay(record:RecordInput,selfId:string,requireFinished=true){
 }
 export function validateLocalRecord(record:RecordInput):RecordInput {
  if(!record?.initialState||record.initialState.version!==0||record.initialState.result||!Array.isArray(record.loadouts)||record.loadouts.length!==2||!Number.isSafeInteger(record.seed))throw new Fault(400,'本地战报需要完整初始阵容、种子和指令日志');
- const loadouts=record.loadouts.map((l,i)=>loadoutFor({id:'local',nickname:nickname(l.name),offers:[]},l,l.playerId)) as [Loadout,Loadout];
+ if(record.initialState.rulesVersion!=='2.0.0')throw new Fault(400,'不支持的战斗规则版本');
+ let loadouts:[Loadout,Loadout];
+ try{loadouts=record.loadouts.map(historicalLoadout) as [Loadout,Loadout];}catch(e){throw new Fault(400,(e as Error).message);}
  const initial=createMatch(loadouts,record.seed,{skipSetup:record.skipSetup===true,matchId:record.initialState.matchId});
  if(stable(initial)!==stable(record.initialState))throw new Fault(400,'本地战报初始状态校验失败');
  const selfId=record.selfId??loadouts[0].playerId;

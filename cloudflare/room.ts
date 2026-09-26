@@ -1,3 +1,4 @@
+import {currentLoadout} from '../src/game/offer-compat';
 import {DurableObject} from 'cloudflare:workers';
 import {applyCommand,createMatch,getView} from '../src/game/index';
 import type {Command,Loadout,MatchState} from '../src/game/types';
@@ -22,6 +23,7 @@ export class BattleRoom extends DurableObject<Env> {
  private persist(room:Room,state?:MatchState){this.docs.put('room',room);if(state)this.docs.put('state:'+state.matchId,state);}
  private async schedule(room:Room){await this.ctx.storage.setAlarm(room.deadline??room.expires);}
  private start(room:Room){
+  try{for(const seat of room.seats)seat.loadout=currentLoadout(seat.loadout);}catch(error){throw new Fault(400,(error as Error).message);}
   const seed=crypto.getRandomValues(new Uint32Array(1))[0],state=createMatch(room.seats.map(s=>s.loadout) as [Loadout,Loadout],seed,{matchId:uid('cloudmatch')});
   room.matchId=state.matchId;room.status='playing';room.deadline=Date.now()+Number(this.env.SETUP_MS??20000);room.expires=Date.now()+Number(this.env.ROOM_RETENTION_MS??7*DAY);
   this.sql.exec('INSERT INTO games VALUES (?,?)',state.matchId,Date.now());this.docs.put('initial:'+state.matchId,state);this.persist(room,state);

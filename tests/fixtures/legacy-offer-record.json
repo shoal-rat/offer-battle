@@ -1,0 +1,1493 @@
+{
+  "initialState": {
+    "rulesVersion": "2.0.0",
+    "matchId": "legacy_2_0_golden",
+    "version": 0,
+    "round": 1,
+    "activePlayerId": "p1",
+    "firstPlayerId": "p1",
+    "phase": "playing",
+    "players": [
+      {
+        "id": "p1",
+        "name": "历史玩家",
+        "mind": 30,
+        "timeRemaining": 1,
+        "ownTurn": 1,
+        "hand": [
+          {
+            "id": "card-13",
+            "definitionId": "F01",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-1",
+            "definitionId": "N01",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-7",
+            "definitionId": "N07",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-11",
+            "definitionId": "N22",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          }
+        ],
+        "deck": [
+          {
+            "id": "card-14",
+            "definitionId": "F03",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-10",
+            "definitionId": "N15",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-6",
+            "definitionId": "N03",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-5",
+            "definitionId": "N03",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-2",
+            "definitionId": "N01",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-8",
+            "definitionId": "N07",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-9",
+            "definitionId": "N15",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-12",
+            "definitionId": "N22",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-15",
+            "definitionId": "F04",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-3",
+            "definitionId": "N02",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-4",
+            "definitionId": "N02",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          }
+        ],
+        "discard": [],
+        "offerZone": [
+          {
+            "id": "legacy_custom",
+            "definition": {
+              "templateId": "T01",
+              "benefitId": null,
+              "originalTime": 5,
+              "baseAttack": 7,
+              "baseHealth": 4,
+              "annualPackage": 480000,
+              "annualFixed": 400000,
+              "signingBonus": 0,
+              "tags": [
+                "frontline"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "legacy_custom",
+              "name": "大厂算法岗",
+              "company": "历史示例公司",
+              "role": "算法工程师",
+              "definitionHash": "59535cef",
+              "profile": {
+                "company_display_name": "历史示例公司",
+                "ownership": "private",
+                "industry": "internet",
+                "company_stage": "established",
+                "role_family": "algorithm",
+                "role_title": "算法工程师",
+                "city": "深圳",
+                "monthly_fixed_cny": 25000,
+                "guaranteed_months": 16,
+                "annual_fixed_allowance_cny": 0,
+                "annual_target_bonus_cny": 80000,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [],
+                "card_display_name": "大厂算法岗"
+              },
+              "artId": "T01"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          },
+          {
+            "id": "E02",
+            "definition": {
+              "templateId": "T02",
+              "benefitId": "B01",
+              "originalTime": 3,
+              "baseAttack": 2,
+              "baseHealth": 4,
+              "annualPackage": 220000,
+              "annualFixed": 220000,
+              "signingBonus": 0,
+              "tags": [
+                "long_term"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "E02",
+              "name": "国企综合岗",
+              "company": "城建服务中心",
+              "role": "综合职能岗",
+              "definitionHash": "5ffebde9",
+              "profile": {
+                "company_display_name": "城建服务中心",
+                "ownership": "state_owned",
+                "industry": "other",
+                "company_stage": "established",
+                "role_family": "administration",
+                "role_title": "综合职能岗",
+                "city": "示例城市",
+                "monthly_fixed_cny": 12500,
+                "guaranteed_months": 16,
+                "annual_fixed_allowance_cny": 20000,
+                "annual_target_bonus_cny": 0,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [
+                  "B01"
+                ],
+                "card_display_name": "国企综合岗"
+              },
+              "artId": "T02"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          },
+          {
+            "id": "E06",
+            "definition": {
+              "templateId": "T06",
+              "benefitId": "B03",
+              "originalTime": 5,
+              "baseAttack": 6,
+              "baseHealth": 3,
+              "annualPackage": 520000,
+              "annualFixed": 360000,
+              "signingBonus": 0,
+              "tags": [
+                "commercial"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "E06",
+              "name": "金融机构销售",
+              "company": "电话金融",
+              "role": "机构销售",
+              "definitionHash": "121f71bf",
+              "profile": {
+                "company_display_name": "电话金融",
+                "ownership": "private",
+                "industry": "finance",
+                "company_stage": "established",
+                "role_family": "sales",
+                "role_title": "机构销售",
+                "city": "示例城市",
+                "monthly_fixed_cny": 30000,
+                "guaranteed_months": 12,
+                "annual_fixed_allowance_cny": 0,
+                "annual_target_bonus_cny": 160000,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [
+                  "B03"
+                ],
+                "card_display_name": "金融机构销售"
+              },
+              "artId": "T06"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          }
+        ],
+        "board": [],
+        "retort": null,
+        "fatigue": 0,
+        "negotiationUsed": false,
+        "education": {
+          "primaryId": "H03",
+          "secondaryId": "S05",
+          "usedThisOwnTurn": false,
+          "secondaryUsed": false,
+          "referralDiscount": 0,
+          "returnTicket": null,
+          "jluSignins": 0,
+          "jluUltimateUsed": false
+        },
+        "baseDeck": [
+          "N01",
+          "N01",
+          "N02",
+          "N02",
+          "N03",
+          "N03",
+          "N07",
+          "N07",
+          "N15",
+          "N15",
+          "N22",
+          "N22"
+        ],
+        "flexDeck": [
+          "F01",
+          "F03",
+          "F04"
+        ],
+        "flexReady": true,
+        "mulliganReady": true,
+        "inactiveTurns": 0,
+        "actedThisTurn": false
+      },
+      {
+        "id": "p2",
+        "name": "历史对手",
+        "mind": 30,
+        "timeRemaining": 0,
+        "ownTurn": 0,
+        "hand": [
+          {
+            "id": "card-30",
+            "definitionId": "F05",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-17",
+            "definitionId": "N03",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-23",
+            "definitionId": "N11",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-22",
+            "definitionId": "N10",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          }
+        ],
+        "deck": [
+          {
+            "id": "card-20",
+            "definitionId": "N06",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-19",
+            "definitionId": "N04",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-21",
+            "definitionId": "N07",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-16",
+            "definitionId": "N03",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-25",
+            "definitionId": "N13",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-24",
+            "definitionId": "N12",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-29",
+            "definitionId": "F02",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-18",
+            "definitionId": "N04",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-26",
+            "definitionId": "N14",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-27",
+            "definitionId": "N18",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          },
+          {
+            "id": "card-28",
+            "definitionId": "F01",
+            "kind": "card",
+            "taxes": [],
+            "knownTo": []
+          }
+        ],
+        "discard": [],
+        "offerZone": [
+          {
+            "id": "E01",
+            "definition": {
+              "templateId": "T01",
+              "benefitId": null,
+              "originalTime": 5,
+              "baseAttack": 7,
+              "baseHealth": 4,
+              "annualPackage": 480000,
+              "annualFixed": 400000,
+              "signingBonus": 0,
+              "tags": [
+                "frontline"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "E01",
+              "name": "大厂算法岗",
+              "company": "方盒科技",
+              "role": "算法工程师",
+              "definitionHash": "59535cef",
+              "profile": {
+                "company_display_name": "方盒科技",
+                "ownership": "private",
+                "industry": "internet",
+                "company_stage": "established",
+                "role_family": "algorithm",
+                "role_title": "算法工程师",
+                "city": "示例城市",
+                "monthly_fixed_cny": 25000,
+                "guaranteed_months": 16,
+                "annual_fixed_allowance_cny": 0,
+                "annual_target_bonus_cny": 80000,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [],
+                "card_display_name": "大厂算法岗"
+              },
+              "artId": "T01"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          },
+          {
+            "id": "E03",
+            "definition": {
+              "templateId": "T03",
+              "benefitId": "B02",
+              "originalTime": 4,
+              "baseAttack": 3,
+              "baseHealth": 3,
+              "annualPackage": 360000,
+              "annualFixed": 360000,
+              "signingBonus": 0,
+              "tags": [
+                "coordination"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "E03",
+              "name": "外企产品经理",
+              "company": "蓝帆产品部",
+              "role": "产品经理",
+              "definitionHash": "1384f6c0",
+              "profile": {
+                "company_display_name": "蓝帆产品部",
+                "ownership": "foreign_owned",
+                "industry": "other",
+                "company_stage": "established",
+                "role_family": "product",
+                "role_title": "产品经理",
+                "city": "示例城市",
+                "monthly_fixed_cny": 22500,
+                "guaranteed_months": 16,
+                "annual_fixed_allowance_cny": 0,
+                "annual_target_bonus_cny": 0,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [
+                  "B02"
+                ],
+                "card_display_name": "外企产品经理"
+              },
+              "artId": "T03"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          },
+          {
+            "id": "E04",
+            "definition": {
+              "templateId": "T04",
+              "benefitId": null,
+              "originalTime": 4,
+              "baseAttack": 3,
+              "baseHealth": 5,
+              "annualPackage": 280000,
+              "annualFixed": 280000,
+              "signingBonus": 0,
+              "tags": [
+                "long_term"
+              ],
+              "rulesVersion": "2.0.0",
+              "id": "E04",
+              "name": "制造业研发",
+              "company": "小锤制造",
+              "role": "研发工程师",
+              "definitionHash": "e1aca34c",
+              "profile": {
+                "company_display_name": "小锤制造",
+                "ownership": "private",
+                "industry": "manufacturing",
+                "company_stage": "established",
+                "role_family": "hardware_rd",
+                "role_title": "研发工程师",
+                "city": "示例城市",
+                "monthly_fixed_cny": 20000,
+                "guaranteed_months": 14,
+                "annual_fixed_allowance_cny": 0,
+                "annual_target_bonus_cny": 0,
+                "annual_equity_cny": 0,
+                "one_time_signing_cny": 0,
+                "confirmed_benefits": [],
+                "card_display_name": "制造业研发"
+              },
+              "artId": "T04"
+            },
+            "ageStage": 0,
+            "everDeployed": false,
+            "status": "available"
+          }
+        ],
+        "board": [],
+        "retort": null,
+        "fatigue": 0,
+        "negotiationUsed": false,
+        "education": {
+          "primaryId": "H01",
+          "secondaryId": "S09",
+          "usedThisOwnTurn": false,
+          "secondaryUsed": false,
+          "referralDiscount": 0,
+          "returnTicket": null,
+          "jluSignins": 0,
+          "jluUltimateUsed": false
+        },
+        "baseDeck": [
+          "N03",
+          "N03",
+          "N04",
+          "N04",
+          "N06",
+          "N07",
+          "N10",
+          "N11",
+          "N12",
+          "N13",
+          "N14",
+          "N18"
+        ],
+        "flexDeck": [
+          "F01",
+          "F02",
+          "F05"
+        ],
+        "flexReady": true,
+        "mulliganReady": true,
+        "inactiveTurns": 0,
+        "actedThisTurn": false
+      }
+    ],
+    "topic": "salary",
+    "rngState": 2360265228,
+    "nextId": 31,
+    "pendingChoice": null,
+    "events": [
+      {
+        "sequence": 1,
+        "type": "match_start",
+        "text": "工资先亮，底牌后出。"
+      },
+      {
+        "sequence": 2,
+        "type": "draw",
+        "text": "历史玩家抽取一张牌",
+        "actorId": "p1",
+        "visual": {
+          "kind": "draw",
+          "label": "历史玩家抽取一张牌",
+          "playerId": "p1",
+          "sourceId": "p1:deck",
+          "targetId": "p1:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p1:deck",
+            "playerId": "p1"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p1:hand",
+            "playerId": "p1"
+          }
+        }
+      },
+      {
+        "sequence": 3,
+        "type": "draw",
+        "text": "历史玩家抽取一张牌",
+        "actorId": "p1",
+        "visual": {
+          "kind": "draw",
+          "label": "历史玩家抽取一张牌",
+          "playerId": "p1",
+          "sourceId": "p1:deck",
+          "targetId": "p1:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p1:deck",
+            "playerId": "p1"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p1:hand",
+            "playerId": "p1"
+          }
+        }
+      },
+      {
+        "sequence": 4,
+        "type": "draw",
+        "text": "历史玩家抽取一张牌",
+        "actorId": "p1",
+        "visual": {
+          "kind": "draw",
+          "label": "历史玩家抽取一张牌",
+          "playerId": "p1",
+          "sourceId": "p1:deck",
+          "targetId": "p1:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p1:deck",
+            "playerId": "p1"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p1:hand",
+            "playerId": "p1"
+          }
+        }
+      },
+      {
+        "sequence": 5,
+        "type": "draw",
+        "text": "历史对手抽取一张牌",
+        "actorId": "p2",
+        "visual": {
+          "kind": "draw",
+          "label": "历史对手抽取一张牌",
+          "playerId": "p2",
+          "sourceId": "p2:deck",
+          "targetId": "p2:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p2:deck",
+            "playerId": "p2"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p2:hand",
+            "playerId": "p2"
+          }
+        }
+      },
+      {
+        "sequence": 6,
+        "type": "draw",
+        "text": "历史对手抽取一张牌",
+        "actorId": "p2",
+        "visual": {
+          "kind": "draw",
+          "label": "历史对手抽取一张牌",
+          "playerId": "p2",
+          "sourceId": "p2:deck",
+          "targetId": "p2:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p2:deck",
+            "playerId": "p2"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p2:hand",
+            "playerId": "p2"
+          }
+        }
+      },
+      {
+        "sequence": 7,
+        "type": "draw",
+        "text": "历史对手抽取一张牌",
+        "actorId": "p2",
+        "visual": {
+          "kind": "draw",
+          "label": "历史对手抽取一张牌",
+          "playerId": "p2",
+          "sourceId": "p2:deck",
+          "targetId": "p2:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p2:deck",
+            "playerId": "p2"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p2:hand",
+            "playerId": "p2"
+          }
+        }
+      },
+      {
+        "sequence": 8,
+        "type": "draw",
+        "text": "历史对手抽取一张牌",
+        "actorId": "p2",
+        "visual": {
+          "kind": "draw",
+          "label": "历史对手抽取一张牌",
+          "playerId": "p2",
+          "sourceId": "p2:deck",
+          "targetId": "p2:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p2:deck",
+            "playerId": "p2"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p2:hand",
+            "playerId": "p2"
+          }
+        }
+      },
+      {
+        "sequence": 9,
+        "type": "turn_start",
+        "text": "历史玩家的第1轮 · 1小时",
+        "actorId": "p1",
+        "visual": {
+          "label": "历史玩家的第1轮 · 1小时",
+          "source": {
+            "kind": "hero",
+            "id": "p1",
+            "playerId": "p1",
+            "name": "历史玩家"
+          },
+          "sourceId": "p1",
+          "playerId": "p1",
+          "kind": "turn",
+          "targetId": "p1",
+          "target": {
+            "kind": "hero",
+            "id": "p1",
+            "playerId": "p1",
+            "name": "历史玩家"
+          }
+        }
+      },
+      {
+        "sequence": 10,
+        "type": "draw",
+        "text": "历史玩家抽取一张牌",
+        "actorId": "p1",
+        "visual": {
+          "kind": "draw",
+          "label": "历史玩家抽取一张牌",
+          "playerId": "p1",
+          "sourceId": "p1:deck",
+          "targetId": "p1:hand",
+          "source": {
+            "kind": "deck",
+            "id": "p1:deck",
+            "playerId": "p1"
+          },
+          "target": {
+            "kind": "hand",
+            "id": "p1:hand",
+            "playerId": "p1"
+          }
+        }
+      }
+    ],
+    "eventSequence": 10,
+    "result": null,
+    "processedCommandIds": []
+  },
+  "journal": [
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-1",
+        "commandId": "legacy-0"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-1"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-2"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "USE_PRIMARY",
+        "targetId": "unit-31",
+        "commandId": "legacy-3"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-4"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "NEGOTIATE",
+        "offerId": "E02",
+        "sacrificeId": "E06",
+        "commandId": "legacy-5"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-6"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-17",
+        "commandId": "legacy-7"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-8"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-7",
+        "targetId": "unit-33",
+        "commandId": "legacy-9"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-10",
+        "targetId": "unit-32",
+        "commandId": "legacy-10"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-32",
+        "targetId": "p2",
+        "commandId": "legacy-11"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "USE_PRIMARY",
+        "targetId": "unit-31",
+        "commandId": "legacy-12"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-13"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-14"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "NEGOTIATE",
+        "offerId": "E01",
+        "sacrificeId": "E03",
+        "commandId": "legacy-15"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-16"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-6",
+        "commandId": "legacy-17"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "USE_PRIMARY",
+        "targetId": "unit-31",
+        "commandId": "legacy-18"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-19"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-32",
+        "targetId": "p2",
+        "commandId": "legacy-20"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-21"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-34",
+        "targetId": "unit-32",
+        "commandId": "legacy-22"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "DEPLOY_OFFER",
+        "offerId": "E04",
+        "commandId": "legacy-23"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-24"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "DEPLOY_OFFER",
+        "offerId": "legacy_custom",
+        "commandId": "legacy-25"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-35",
+        "targetId": "unit-34",
+        "commandId": "legacy-26"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-27"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-28"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-22",
+        "targetId": "unit-37",
+        "commandId": "legacy-29"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-20",
+        "commandId": "legacy-30"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-36",
+        "targetId": "p1",
+        "commandId": "legacy-31"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-32"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-5",
+        "commandId": "legacy-33"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-2",
+        "commandId": "legacy-34"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "USE_PRIMARY",
+        "targetId": "unit-31",
+        "commandId": "legacy-35"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-36"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-11",
+        "commandId": "legacy-37"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-38"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-19",
+        "commandId": "legacy-39"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-23",
+        "targetId": "unit-39",
+        "commandId": "legacy-40"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "PLAY_CARD",
+        "cardId": "card-21",
+        "targetId": "unit-39",
+        "commandId": "legacy-41"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-36",
+        "targetId": "p1",
+        "commandId": "legacy-42"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-38",
+        "targetId": "p1",
+        "commandId": "legacy-43"
+      }
+    },
+    {
+      "actorId": "p2",
+      "command": {
+        "type": "END_TURN",
+        "commandId": "legacy-44"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "USE_PRIMARY",
+        "targetId": "unit-31",
+        "commandId": "legacy-45"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-31",
+        "targetId": "p2",
+        "commandId": "legacy-46"
+      }
+    },
+    {
+      "actorId": "p1",
+      "command": {
+        "type": "ATTACK",
+        "cardId": "unit-40",
+        "targetId": "p2",
+        "commandId": "legacy-47"
+      }
+    }
+  ],
+  "seed": 143,
+  "loadouts": [
+    {
+      "playerId": "p1",
+      "name": "历史玩家",
+      "primaryId": "H03",
+      "secondaryId": "S05",
+      "offers": [
+        {
+          "templateId": "T01",
+          "benefitId": null,
+          "originalTime": 5,
+          "baseAttack": 7,
+          "baseHealth": 4,
+          "annualPackage": 480000,
+          "annualFixed": 400000,
+          "signingBonus": 0,
+          "tags": [
+            "frontline"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "legacy_custom",
+          "name": "大厂算法岗",
+          "company": "历史示例公司",
+          "role": "算法工程师",
+          "definitionHash": "59535cef",
+          "profile": {
+            "company_display_name": "历史示例公司",
+            "ownership": "private",
+            "industry": "internet",
+            "company_stage": "established",
+            "role_family": "algorithm",
+            "role_title": "算法工程师",
+            "city": "深圳",
+            "monthly_fixed_cny": 25000,
+            "guaranteed_months": 16,
+            "annual_fixed_allowance_cny": 0,
+            "annual_target_bonus_cny": 80000,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [],
+            "card_display_name": "大厂算法岗"
+          },
+          "artId": "T01"
+        },
+        {
+          "templateId": "T02",
+          "benefitId": "B01",
+          "originalTime": 3,
+          "baseAttack": 2,
+          "baseHealth": 4,
+          "annualPackage": 220000,
+          "annualFixed": 220000,
+          "signingBonus": 0,
+          "tags": [
+            "long_term"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "E02",
+          "name": "国企综合岗",
+          "company": "城建服务中心",
+          "role": "综合职能岗",
+          "definitionHash": "5ffebde9",
+          "profile": {
+            "company_display_name": "城建服务中心",
+            "ownership": "state_owned",
+            "industry": "other",
+            "company_stage": "established",
+            "role_family": "administration",
+            "role_title": "综合职能岗",
+            "city": "示例城市",
+            "monthly_fixed_cny": 12500,
+            "guaranteed_months": 16,
+            "annual_fixed_allowance_cny": 20000,
+            "annual_target_bonus_cny": 0,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [
+              "B01"
+            ],
+            "card_display_name": "国企综合岗"
+          },
+          "artId": "T02"
+        },
+        {
+          "templateId": "T06",
+          "benefitId": "B03",
+          "originalTime": 5,
+          "baseAttack": 6,
+          "baseHealth": 3,
+          "annualPackage": 520000,
+          "annualFixed": 360000,
+          "signingBonus": 0,
+          "tags": [
+            "commercial"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "E06",
+          "name": "金融机构销售",
+          "company": "电话金融",
+          "role": "机构销售",
+          "definitionHash": "121f71bf",
+          "profile": {
+            "company_display_name": "电话金融",
+            "ownership": "private",
+            "industry": "finance",
+            "company_stage": "established",
+            "role_family": "sales",
+            "role_title": "机构销售",
+            "city": "示例城市",
+            "monthly_fixed_cny": 30000,
+            "guaranteed_months": 12,
+            "annual_fixed_allowance_cny": 0,
+            "annual_target_bonus_cny": 160000,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [
+              "B03"
+            ],
+            "card_display_name": "金融机构销售"
+          },
+          "artId": "T06"
+        }
+      ],
+      "baseDeck": [
+        "N01",
+        "N01",
+        "N02",
+        "N02",
+        "N03",
+        "N03",
+        "N07",
+        "N07",
+        "N15",
+        "N15",
+        "N22",
+        "N22"
+      ],
+      "flexDeck": [
+        "F01",
+        "F03",
+        "F04"
+      ]
+    },
+    {
+      "playerId": "p2",
+      "name": "历史对手",
+      "primaryId": "H01",
+      "secondaryId": "S09",
+      "offers": [
+        {
+          "templateId": "T01",
+          "benefitId": null,
+          "originalTime": 5,
+          "baseAttack": 7,
+          "baseHealth": 4,
+          "annualPackage": 480000,
+          "annualFixed": 400000,
+          "signingBonus": 0,
+          "tags": [
+            "frontline"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "E01",
+          "name": "大厂算法岗",
+          "company": "方盒科技",
+          "role": "算法工程师",
+          "definitionHash": "59535cef",
+          "profile": {
+            "company_display_name": "方盒科技",
+            "ownership": "private",
+            "industry": "internet",
+            "company_stage": "established",
+            "role_family": "algorithm",
+            "role_title": "算法工程师",
+            "city": "示例城市",
+            "monthly_fixed_cny": 25000,
+            "guaranteed_months": 16,
+            "annual_fixed_allowance_cny": 0,
+            "annual_target_bonus_cny": 80000,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [],
+            "card_display_name": "大厂算法岗"
+          },
+          "artId": "T01"
+        },
+        {
+          "templateId": "T03",
+          "benefitId": "B02",
+          "originalTime": 4,
+          "baseAttack": 3,
+          "baseHealth": 3,
+          "annualPackage": 360000,
+          "annualFixed": 360000,
+          "signingBonus": 0,
+          "tags": [
+            "coordination"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "E03",
+          "name": "外企产品经理",
+          "company": "蓝帆产品部",
+          "role": "产品经理",
+          "definitionHash": "1384f6c0",
+          "profile": {
+            "company_display_name": "蓝帆产品部",
+            "ownership": "foreign_owned",
+            "industry": "other",
+            "company_stage": "established",
+            "role_family": "product",
+            "role_title": "产品经理",
+            "city": "示例城市",
+            "monthly_fixed_cny": 22500,
+            "guaranteed_months": 16,
+            "annual_fixed_allowance_cny": 0,
+            "annual_target_bonus_cny": 0,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [
+              "B02"
+            ],
+            "card_display_name": "外企产品经理"
+          },
+          "artId": "T03"
+        },
+        {
+          "templateId": "T04",
+          "benefitId": null,
+          "originalTime": 4,
+          "baseAttack": 3,
+          "baseHealth": 5,
+          "annualPackage": 280000,
+          "annualFixed": 280000,
+          "signingBonus": 0,
+          "tags": [
+            "long_term"
+          ],
+          "rulesVersion": "2.0.0",
+          "id": "E04",
+          "name": "制造业研发",
+          "company": "小锤制造",
+          "role": "研发工程师",
+          "definitionHash": "e1aca34c",
+          "profile": {
+            "company_display_name": "小锤制造",
+            "ownership": "private",
+            "industry": "manufacturing",
+            "company_stage": "established",
+            "role_family": "hardware_rd",
+            "role_title": "研发工程师",
+            "city": "示例城市",
+            "monthly_fixed_cny": 20000,
+            "guaranteed_months": 14,
+            "annual_fixed_allowance_cny": 0,
+            "annual_target_bonus_cny": 0,
+            "annual_equity_cny": 0,
+            "one_time_signing_cny": 0,
+            "confirmed_benefits": [],
+            "card_display_name": "制造业研发"
+          },
+          "artId": "T04"
+        }
+      ],
+      "baseDeck": [
+        "N03",
+        "N03",
+        "N04",
+        "N04",
+        "N06",
+        "N07",
+        "N10",
+        "N11",
+        "N12",
+        "N13",
+        "N14",
+        "N18"
+      ],
+      "flexDeck": [
+        "F01",
+        "F02",
+        "F05"
+      ]
+    }
+  ],
+  "skipSetup": true
+}

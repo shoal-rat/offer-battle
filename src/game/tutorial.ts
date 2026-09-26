@@ -20,7 +20,7 @@ const steps:Record<LessonId,Step[]>={
  ],
  L02:[
   {objective:'用打听工时削弱挡话的老员工',coachLine:'老员工有「挡话」，你不能绕过它去开怼主角。先用一张行动牌处理它。',hint:'点击手牌「打听工时」，然后选择敌方老员工。它会失去 3 点底气。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'N10'),targetId:unit(s,1,'N05').id})},
-  {objective:'用制造业研发击退老员工',coachLine:'它只剩 3 点底气了。角色交锋时，双方会同时用排面伤害对方。',hint:'选择己方制造业研发，再点击敌方老员工；你的角色也会受伤。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E04').id,targetId:unit(s,1,'N05').id})},
+  {objective:'用制造业研发击退老员工',coachLine:'它的底气已经降到制造业研发的排面以内。角色交锋时，双方会同时用排面伤害对方。',hint:'选择己方制造业研发，再点击敌方老员工；你的角色也会受伤。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E04').id,targetId:unit(s,1,'N05').id})},
   {objective:'挡话退场后，开怼导师主角',coachLine:'路让出来了。另一个还没行动的角色，现在可以直接冲主角。',hint:'选择己方国企综合岗，再选择导师主角。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E02').id,targetId:enemy(s).id})},
  ],
  L03:[
@@ -68,7 +68,7 @@ export function createTutorial(lessonId:LessonId,options:{matchId?:string;name?:
  function deploy(side:0|1,id:string){setup(side,{type:'DEPLOY_OFFER',offerId:id});const u=unit(state,side,id);u.deployedTurn=state.players[side].ownTurn-1;return u;}
  function support(side:0|1,id:string){setup(side,{type:'PLAY_CARD',cardId:addCard(side,id)});const u=unit(state,side,id);u.deployedTurn=state.players[side].ownTurn-1;return u;}
  if(lessonId==='L01')addCard(0,'N01');
- if(lessonId==='L02'){deploy(0,'E04');deploy(0,'E02');support(1,'N05');support(1,'N01');addCard(0,'N10');}
+ if(lessonId==='L02'){deploy(0,'E04');deploy(0,'E02');const defender=support(1,'N05');defender.damage=Math.max(0,defender.baseHealth-3-unit(state,0,'E04').baseAttack);support(1,'N01');addCard(0,'N10');}
  if(lessonId==='L03')support(1,'N01');
  if(lessonId==='L04'){deploy(0,'E02').damage=2;}
  if(lessonId==='L05'){const u=deploy(0,'E01');u.ageStage=2;own(state).offerZone.find(o=>o.id==='E01')!.ageStage=2;addCard(0,'F03');addCard(1,'F01');}

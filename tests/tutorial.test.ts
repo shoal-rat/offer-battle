@@ -18,7 +18,7 @@ for(const lesson of tutorialCatalog)test(`interactive tutorial ${lesson.id}: com
   const submitted=command(room,t.allowedCommands[0]);const next=(await f.api(apiPath+'/command',submitted)).body;assert.equal(next.ok,true,next.rejection);assert.equal(next.room.tutorial.stepIndex,step+1);assert.ok(next.view.version>before);room=next;
   const duplicate=(await f.api(apiPath+'/command',submitted)).body;assert.equal(duplicate.duplicate,true);assert.equal(duplicate.room.tutorial.stepIndex,step+1);assert.equal(duplicate.view.version,room.view.version);
   if(lesson.id==='L01'&&step===0){assert.equal(room.view.players[0].timeRemaining,0);assert.equal(room.view.players[0].board[0].canAttack,false);}
-  if(lesson.id==='L02'&&step===0)assert.equal(room.view.players[1].board.find((u:any)=>u.definitionId==='N05').health,3);
+  if(lesson.id==='L02'&&step===0)assert.equal(room.view.players[1].board.find((u:any)=>u.definitionId==='N05').health,2);
   if(lesson.id==='L02'&&step===1)assert.equal(room.view.players[1].board.some((u:any)=>u.definitionId==='N05'),false);
   if(lesson.id==='L03'&&step===0){assert.equal(room.view.players[0].negotiationUsed,true);assert.equal(room.view.players[0].timeRemaining,1);assert.equal(room.view.players[0].offerZone.find((o:any)=>o.id==='E03').status,'negotiated');}
   if(lesson.id==='L04'&&step===0){assert.equal(room.view.players[0].education.usedThisOwnTurn,true);assert.equal(room.view.players[0].education.secondaryUsed,false);}

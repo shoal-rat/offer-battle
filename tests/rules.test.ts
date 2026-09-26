@@ -197,18 +197,18 @@ test("模板优先级和条款付费", () => {
   assert.equal(compileOffer({ ...p, role_family: "hr" }).templateId, "T08");
   assert.throws(() => compileOffer(profile, "B01"));
 });
-test("全部六个示例数值匹配原规格", () => {
+test("六个公共示例使用最新造卡规则", () => {
   assert.deepEqual(
     exampleOffers
       .slice(0, 6)
       .map((o) => [o.originalTime, o.baseAttack, o.baseHealth]),
     [
-      [5, 7, 4],
-      [3, 2, 4],
-      [4, 3, 3],
-      [4, 3, 5],
-      [6, 6, 5],
-      [5, 6, 3],
+      [5, 8, 3],
+      [3, 1, 5],
+      [4, 2, 4],
+      [4, 2, 6],
+      [6, 8, 3],
+      [5, 7, 2],
     ],
   );
 });
@@ -983,8 +983,8 @@ test("九张公共体验卡使用具体岗位；新增三张是明确虚构薪�
       ]),
     [
       ["E07", "T02", 3, 2, 4],
-      ["E08", "T00", 5, 5, 6],
-      ["E09", "T02", 4, 3, 5],
+      ["E08", "T00", 5, 6, 5],
+      ["E09", "T02", 4, 2, 6],
     ],
   );
   assert.ok(exampleOffers.slice(6).every((o) => o.company.includes("虚构")));

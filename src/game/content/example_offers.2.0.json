@@ -20,18 +20,18 @@
     },
     "selected_benefit_id": null,
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 400000,
       "annual_package_cny": 480000,
       "template_id": "T01",
       "benefit_id": null,
       "original_time": 5,
-      "base_attack": 8,
-      "base_max_health": 3,
+      "base_attack": 7,
+      "base_max_health": 4,
       "career_tags": [
         "frontline"
       ],
-      "definition_hash": "d61812f4"
+      "definition_hash": "b77c800e0a16369074350a395f723bd2bce86e70cf342ebd4c76f0dc00899705"
     }
   },
   {
@@ -57,18 +57,18 @@
     },
     "selected_benefit_id": "B01",
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 220000,
       "annual_package_cny": 220000,
       "template_id": "T02",
       "benefit_id": "B01",
       "original_time": 3,
-      "base_attack": 1,
-      "base_max_health": 5,
+      "base_attack": 2,
+      "base_max_health": 4,
       "career_tags": [
         "long_term"
       ],
-      "definition_hash": "fd262f2e"
+      "definition_hash": "2c83ae00780652b06ad4962e152a5c822396ef10cfb503c1335e4d64aa32b11a"
     }
   },
   {
@@ -94,18 +94,18 @@
     },
     "selected_benefit_id": "B02",
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 360000,
       "annual_package_cny": 360000,
       "template_id": "T03",
       "benefit_id": "B02",
       "original_time": 4,
-      "base_attack": 2,
-      "base_max_health": 4,
+      "base_attack": 3,
+      "base_max_health": 3,
       "career_tags": [
         "coordination"
       ],
-      "definition_hash": "2eb7b386"
+      "definition_hash": "7659430c92a8018450895ccc823ee0cb7df2ec4d4a1bb226147795632476c5fc"
     }
   },
   {
@@ -129,18 +129,18 @@
     },
     "selected_benefit_id": null,
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 280000,
       "annual_package_cny": 280000,
       "template_id": "T04",
       "benefit_id": null,
       "original_time": 4,
-      "base_attack": 2,
-      "base_max_health": 6,
+      "base_attack": 3,
+      "base_max_health": 5,
       "career_tags": [
         "long_term"
       ],
-      "definition_hash": "5275f62a"
+      "definition_hash": "2036403e54a9763f77beb4f19a541c1e07e9e69040851fae73a01763d423290c"
     }
   },
   {
@@ -166,18 +166,18 @@
     },
     "selected_benefit_id": "B04",
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 300000,
       "annual_package_cny": 650000,
       "template_id": "T10",
       "benefit_id": "B04",
       "original_time": 6,
-      "base_attack": 8,
-      "base_max_health": 3,
+      "base_attack": 6,
+      "base_max_health": 5,
       "career_tags": [
         "long_term"
       ],
-      "definition_hash": "04bcd6a3"
+      "definition_hash": "07836bcf303d8d9e4f9954fdfbda3ca04368b3437a4782f6b75ecf41b6e0dc82"
     }
   },
   {
@@ -203,18 +203,18 @@
     },
     "selected_benefit_id": "B03",
     "definition": {
-      "rules_version": "2.1.0",
+      "rules_version": "2.0.0",
       "annual_fixed_cny": 360000,
       "annual_package_cny": 520000,
       "template_id": "T06",
       "benefit_id": "B03",
       "original_time": 5,
-      "base_attack": 7,
-      "base_max_health": 2,
+      "base_attack": 6,
+      "base_max_health": 3,
       "career_tags": [
         "commercial"
       ],
-      "definition_hash": "e67f7195"
+      "definition_hash": "df5b3d097e4a22433bc2c1060e449b5f4beb7c0f0259d9864b84558ea8b0b892"
     }
   },
   {
@@ -240,21 +240,7 @@
         "B01"
       ]
     },
-    "selected_benefit_id": "B01",
-    "definition": {
-      "rules_version": "2.1.0",
-      "annual_fixed_cny": 168000,
-      "annual_package_cny": 168000,
-      "template_id": "T02",
-      "benefit_id": "B01",
-      "original_time": 3,
-      "base_attack": 2,
-      "base_max_health": 4,
-      "career_tags": [
-        "long_term"
-      ],
-      "definition_hash": "819ebf13"
-    }
+    "selected_benefit_id": "B01"
   },
   {
     "id": "E08",
@@ -277,21 +263,7 @@
       "guaranteed_months": 14,
       "confirmed_benefits": []
     },
-    "selected_benefit_id": null,
-    "definition": {
-      "rules_version": "2.1.0",
-      "annual_fixed_cny": 308000,
-      "annual_package_cny": 428000,
-      "template_id": "T00",
-      "benefit_id": null,
-      "original_time": 5,
-      "base_attack": 6,
-      "base_max_health": 5,
-      "career_tags": [
-        "general"
-      ],
-      "definition_hash": "6cd38aac"
-    }
+    "selected_benefit_id": null
   },
   {
     "id": "E09",
@@ -316,20 +288,6 @@
         "B01"
       ]
     },
-    "selected_benefit_id": "B01",
-    "definition": {
-      "rules_version": "2.1.0",
-      "annual_fixed_cny": 312000,
-      "annual_package_cny": 312000,
-      "template_id": "T02",
-      "benefit_id": "B01",
-      "original_time": 4,
-      "base_attack": 2,
-      "base_max_health": 6,
-      "career_tags": [
-        "long_term"
-      ],
-      "definition_hash": "1d282f16"
-    }
+    "selected_benefit_id": "B01"
   }
 ]

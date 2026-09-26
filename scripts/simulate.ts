@@ -61,6 +61,8 @@ const wins = records.filter((r) => r.winner === "a").length,
   draws = records.filter((r) => r.winner === null).length,
   firstWins = records.filter((r) => r.winner === r.first).length;
 const summary = {
+  offerCompilerVersion: "2.1.0",
+  battleRulesVersion: "2.0.0",
   games,
   comboCoverage: new Set(records.map((r) => r.primary + r.secondary)).size,
   wins,
@@ -79,6 +81,6 @@ writeFileSync(
 );
 writeFileSync(
   "BALANCE_REPORT.md",
-  `# 机器人对局观测\n\n真实运行 \`npm run simulate -- --games ${games}\`。使用固定种子 104729 × (局号 + 1)，覆盖 ${summary.comboCoverage} 种有序双学历组合。每局用完全相同命令重放，${games} 局全部哈希一致。\n\n机器人仅接收玩家视图；策略依次为 aggressive、control、growth。它使用合法动作枚举，优先斩杀、部署、收益交换、学历和解通知。三种策略共享同一启发式，不代表高水平竞技强度。\n\n- 组合方胜 ${wins}，负 ${summary.losses}，平 ${draws}。\n- 先手胜 ${firstWins}/${games}，平均结束轮次 ${summary.meanRound.toFixed(2)}。\n- 平均 ${summary.meanCommands.toFixed(1)} 条命令，全部在 600 条命令上限内完成。\n- 用时 ${summary.elapsedSeconds.toFixed(1)} 秒。\n\n这些结果只说明所有组合可以运行和重放，不能证明竞技平衡。未调整原规格数值。逐局种子、组合、结果与哈希见 \`evidence/simulation.json\`。\n`,
+  `# 机器人对局观测\n\n真实运行 \`npm run simulate -- --games ${games}\`。使用固定种子 104729 × (局号 + 1)，覆盖 ${summary.comboCoverage} 种有序双学历组合。每局用完全相同命令重放，${games} 局全部哈希一致。\n\n机器人仅接收玩家视图；策略依次为 aggressive、control、growth。它使用合法动作枚举，优先斩杀、部署、收益交换、学历和解通知。三种策略共享同一启发式，不代表高水平竞技强度。\n\n- 组合方胜 ${wins}，负 ${summary.losses}，平 ${draws}。\n- 先手胜 ${firstWins}/${games}，平均结束轮次 ${summary.meanRound.toFixed(2)}。\n- 平均 ${summary.meanCommands.toFixed(1)} 条命令，全部在 600 条命令上限内完成。\n- 用时 ${summary.elapsedSeconds.toFixed(1)} 秒。\n\n这些结果只说明所有组合可以运行和重放，不能证明竞技平衡。本轮使用 Offer 编译器 2.1.0，战斗规则 2.0.0；城市与工作特征参与造卡。逐局种子、组合、结果与哈希见 \`evidence/simulation.json\`。\n`,
 );
 console.log(JSON.stringify(summary, null, 2));

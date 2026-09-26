@@ -1,5 +1,5 @@
 
-> offer-battle@2.0.0 assets:check
+> offer-battle@2.1.0 assets:check
 > tsx scripts/check-assets.ts
 
 {

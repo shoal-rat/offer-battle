@@ -1,0 +1,218 @@
+/* The forge keeps its live totals visible while the player edits a long offer. */
+.offer-forge { --forge-ink:#e5e7da; --forge-soft:#a5b8ad; --forge-line:#b6a5742e; }
+.offer-forge .forge-heading { align-items:center; gap:28px; margin-bottom:25px; }
+.offer-forge .forge-heading h1 { margin-top:9px; }
+.offer-forge .forge-heading p { line-height:1.9; }
+.offer-forge .forge-heading-note { display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:14px; row-gap:12px; flex-shrink:0; color:#c9ba94; }
+.offer-forge .forge-heading-note>svg { color:#d1b880; }
+.offer-forge .forge-heading-note>span { font-size:10px; line-height:1.9; letter-spacing:1px; }
+.offer-forge .forge-heading-note strong { color:#eee1bf; font:500 16px var(--serif); letter-spacing:2px; }
+.offer-forge .forge-heading-note .badge { grid-column:1/-1; justify-self:end; margin:0; font-size:9px; }
+.offer-forge .forge-process { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; margin-bottom:19px; color:#a0b4a7; }
+.offer-forge .forge-process>span { display:inline-flex; align-items:center; gap:11px; font-size:10px; letter-spacing:.5px; }
+.offer-forge .forge-process b { font:italic 13px var(--serif); color:#c3ab75; }
+.offer-forge .forge-process svg { color:#6d8a7d; margin-left:4px; }
+.offer-forge .forge-live-stats { position:sticky; top:10px; z-index:6; display:grid; grid-template-columns:minmax(150px,1fr) minmax(340px,1.45fr) auto; align-items:center; gap:22px; min-height:96px; padding:15px 22px; margin-bottom:23px; border:1px solid #bbaa785c; border-radius:10px; background:linear-gradient(110deg,#2b4547ed,#14282bf5 58%,#213638f5); box-shadow:0 9px 25px #05101455,inset 0 1px 0 #e1cb9610; backdrop-filter:blur(20px); }
+.offer-forge .forge-live-title { display:flex; align-items:center; gap:10px; min-width:0; }
+.offer-forge .forge-live-title>.live-dot { flex-shrink:0; }
+.offer-forge .forge-live-title>div { min-width:0; }
+.offer-forge .forge-live-title span:not(.live-dot) { display:block; font-size:9px; color:#9bb8a7; letter-spacing:1.6px; }
+.offer-forge .forge-live-title strong { display:block; margin-top:6px; color:#e9dfc7; font:500 15px var(--serif); line-height:1.6; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.offer-forge .forge-stat-values { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.offer-forge .forge-stat { display:flex; align-items:center; justify-content:center; gap:12px; border-left:1px solid #a9b69b25; }
+.offer-forge .forge-stat b { display:block; font:500 35px/1 var(--serif); font-variant-numeric:tabular-nums; }
+.offer-forge .forge-stat small { display:block; margin-top:6px; font-size:9px; letter-spacing:.6px; color:#a5b6aa; white-space:nowrap; }
+.offer-forge .forge-stat-cost { color:#a8d9e3; }
+.offer-forge .forge-stat-attack { color:#e5c178; }
+.offer-forge .forge-stat-health { color:#dea39f; }
+.offer-forge .forge-jump-links { display:flex; flex-direction:column; gap:3px; }
+.offer-forge .forge-jump-links button { display:flex; align-items:center; justify-content:flex-end; gap:6px; background:transparent; color:#d3c297; min-height:27px; padding:3px 0; font-size:10px; }
+.offer-forge .forge-jump-links button:first-child { color:#99ada0; }
+.offer-forge .forge-jump-links button:hover { color:#f3e3b9; }
+.offer-forge .forge-preview-error { display:flex; align-items:flex-start; gap:12px; padding:17px 20px; margin:0 0 23px; border:1px solid #c4826e70; border-radius:8px; background:#4b292651; color:#efbeaa; }
+.offer-forge .forge-preview-error>svg { flex-shrink:0; margin-top:1px; }
+.offer-forge .forge-preview-error strong { font-size:12px; font-weight:500; }
+.offer-forge .forge-preview-error p { font-size:12px; line-height:1.8; margin:7px 0; }
+.offer-forge .forge-preview-error small { font-size:10px; color:#c59e8f; }
+.offer-forge .forge-workspace { display:grid; grid-template-columns:minmax(0,1fr) 370px; grid-template-rows:auto 1fr; grid-template-areas:'form card' 'form receipt'; gap:22px 28px; align-items:start; }
+.offer-forge .creation-preview { display:contents; }
+.offer-forge .forge-form { grid-area:form; min-width:0; padding:25px 28px 22px; border-color:var(--forge-line); background:linear-gradient(135deg,#29413e60,#21353750); scroll-margin-top:125px; }
+.offer-forge .forge-form fieldset { margin:0; padding:0; border:0; min-width:0; }
+.offer-forge .forge-form fieldset:disabled { opacity:.7; }
+.offer-forge .forge-form .field { font-size:11px; color:#bdc8b9; }
+.offer-forge .forge-form .field small { color:#91a69a; font-size:10px; line-height:1.8; letter-spacing:0; }
+.offer-forge .forge-form .field input,.offer-forge .forge-form .field select { width:100%; min-width:0; }
+.offer-forge .forge-form input:focus,.offer-forge .forge-form select:focus,.offer-forge .forge-form textarea:focus { outline:2px solid #b8cb915e; outline-offset:2px; border-color:#baa773; }
+.offer-forge .forge-form .form-grid { column-gap:18px; }
+.offer-forge .forge-form .section-heading { margin-top:4px; margin-bottom:20px; }
+.offer-forge .forge-form .section-heading h2 { margin:10px 0; font-size:17px; }
+.offer-forge .forge-form .section-heading small { color:#8d9f8f; font-size:9px; }
+.offer-forge .forge-form .forge-section-divider { margin-top:25px; border-top:1px solid var(--forge-line); padding-top:20px; margin-bottom:12px; }
+.offer-forge .forge-section-intro { color:#94ad9c; font-size:11px; line-height:1.8; margin:0 0 20px; }
+.offer-forge .forge-field-note { display:flex; align-items:flex-start; gap:8px; margin:-4px 0 21px; padding:11px 12px; background:#9bad7b0c; border:1px solid #9bad7b20; border-radius:5px; color:#95ac98; }
+.offer-forge .forge-field-note>svg { flex-shrink:0; margin-top:2px; color:#bbbd8e; }
+.offer-forge .forge-field-note p { font-size:10px; line-height:1.9; margin:0; }
+.offer-forge .forge-field-note strong { display:block; font-weight:500; color:#c6cfb2; }
+.offer-forge .forge-work-conditions { align-items:start; }
+.offer-forge .forge-package { display:flex; justify-content:space-between; align-items:center; gap:12px; border-top:1px solid #c3b17332; border-bottom:1px solid #c3b17332; margin:4px 0 22px; padding:15px 2px; }
+.offer-forge .forge-package>span { color:#c2c6aa; font-size:11px; }
+.offer-forge .forge-package>span small { display:block; font-size:9px; margin-top:5px; color:#8a9f8e; }
+.offer-forge .forge-package>strong { color:#e1c999; font:500 24px var(--serif); }
+.offer-forge .forge-package>strong small { font:400 9px sans-serif; color:#9eaf95; }
+.offer-forge .forge-form .helper { line-height:1.9; color:#9aac96; font-size:10px; }
+.offer-forge .forge-save-panel { margin-top:25px; padding-top:2px; }
+.offer-forge .forge-save-panel .confirmation { align-items:flex-start; font-size:11px; color:#b0bfa9; }
+.offer-forge .forge-save-panel .confirmation input { flex-shrink:0; margin-top:3px; }
+.offer-forge .forge-save-hint { font-size:9px; line-height:1.8; color:#819b8a; text-align:center; margin:12px 0 0; }
+.offer-forge .forge-save-hint.is-saved { color:#b2d9ad; }
+.offer-forge .forge-card-panel { grid-area:card; position:relative; min-width:0; overflow:hidden; text-align:center; border:1px solid var(--forge-line); border-radius:10px; background:radial-gradient(ellipse at 50% 39%,#5c765844,transparent 62%),linear-gradient(165deg,#213a3d,#172b2e); padding:22px 19px 16px; }
+.offer-forge .forge-card-panel::before { content:''; pointer-events:none; position:absolute; inset:8px; border:1px solid #bdaa6c13; border-radius:5px; }
+.offer-forge .forge-card-panel>* { position:relative; }
+.offer-forge .forge-card-panel .preview-label { font-size:9px; gap:8px; justify-content:flex-start; letter-spacing:1.4px; }
+.offer-forge .forge-draft-tag { margin-left:auto; font-size:9px; color:#c9bd92; border:1px solid #bba37042; border-radius:3px; padding:3px 7px; letter-spacing:.5px; }
+.offer-forge .forge-card-stage { position:relative; display:flex; justify-content:center; align-items:center; padding:25px 0 12px; min-height:402px; }
+.offer-forge .forge-card-stage::before { content:''; position:absolute; width:292px; height:292px; max-width:100%; border:1px solid #bcba8240; border-radius:50%; box-shadow:0 0 0 10px #d2bc8408,0 0 0 11px #d2bc8414; transform:rotate(-20deg) scaleY(.91); pointer-events:none; }
+.offer-forge .forge-card-stage .offer-card { width:247px; height:362px; margin:0; flex-shrink:0; transform:rotate(-2deg); box-shadow:8px 16px 24px #05101390; }
+.offer-forge .forge-card-stage .card-art { height:202px; }
+.offer-forge .forge-card-stage .card-art img { height:236px; }
+.offer-forge .forge-card-stage .offer-card:hover { transform:rotate(0deg) translateY(-3px); }
+.offer-forge .forge-card-stage .card-copy { padding-top:10px; }
+.offer-forge .forge-card-stage .card-copy p { font-size:10px; }
+.offer-forge .forge-card-panel .flavor-quote { margin-top:12px; font-size:11px; color:#c6c09f; line-height:1.8; }
+.offer-forge .forge-card-panel>.text-btn { font-size:10px; color:#91a58b; }
+.offer-forge .forge-empty-card { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; width:240px; height:345px; border:1px dashed #afbd9260; border-radius:15px; background:#253d3bd6; color:#a9bea3; }
+.offer-forge .forge-empty-card>strong { font:500 16px var(--serif); }
+.offer-forge .forge-empty-card p { margin:0; font-size:11px; line-height:1.9; }
+.offer-forge .forge-card-panel .saved-actions { display:flex; flex-direction:column; gap:10px; padding-top:17px; }
+.offer-forge .forge-card-panel .saved-actions .btn { font-size:12px; margin:0; min-height:42px; padding:10px 12px; }
+.offer-forge .forge-card-panel .success-label { margin-bottom:6px; font-size:10px; }
+.offer-forge .forge-card-panel .generation-error { font-size:11px; color:#d6aa8c; }
+.offer-forge .forge-receipt { grid-area:receipt; display:block; min-width:0; margin:0; padding:22px; text-align:left; border:1px solid var(--forge-line); border-radius:10px; background:linear-gradient(165deg,#2e403740,#1b30344a); scroll-margin-top:125px; }
+.offer-forge .forge-receipt>header { padding-bottom:17px; border-bottom:1px solid var(--forge-line); }
+.offer-forge .forge-receipt>header .eyebrow { font-size:7px; color:#92ac94; letter-spacing:1.7px; }
+.offer-forge .forge-receipt>header h2 { display:flex; align-items:center; gap:9px; color:#e3d8b7; font:500 18px var(--serif); margin:11px 0 7px; }
+.offer-forge .forge-receipt>header h2 span { font:400 9px sans-serif; color:#8b9e88; margin-left:auto; border:1px solid #a2ac7630; padding:3px 6px; border-radius:3px; }
+.offer-forge .forge-receipt>header p { display:block; font-size:10px; color:#95aa99; margin:0; line-height:1.8; }
+.offer-forge .forge-receipt-section { padding:17px 0; border-bottom:1px solid #97a18225; }
+.offer-forge .forge-receipt-section h3 { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; color:#cfd3b7; font-size:11px; font-weight:500; line-height:1.8; }
+.offer-forge .forge-receipt-section h3>b { color:#a89460; font:italic 13px var(--serif); }
+.offer-forge .forge-receipt-section h3>span { color:#d9c491; font-size:10px; margin-left:auto; font-weight:400; }
+.offer-forge .forge-money-breakdown { margin:0 0 10px; }
+.offer-forge .forge-money-breakdown>div { display:flex; justify-content:space-between; gap:12px; margin:9px 0; font-size:10px; }
+.offer-forge .forge-money-breakdown dt { color:#97ac98; }
+.offer-forge .forge-money-breakdown dd { margin:0; color:#d8cca6; font-variant-numeric:tabular-nums; }
+.offer-forge .forge-receipt .forge-receipt-note { display:block; margin:0; font-size:10px; color:#8fa68f; line-height:1.9; }
+.offer-forge .forge-receipt .forge-template-skill { display:block; font-size:11px; color:#c5c9af; line-height:1.8; margin:4px 0 12px; }
+.offer-forge .forge-template-body { color:#8fa68f; font-size:10px; line-height:1.9; margin-bottom:8px; }
+.offer-forge .forge-template-body strong { display:block; color:#d3cba8; font-size:11px; margin-top:3px; }
+.offer-forge .forge-contributions { list-style:none; margin:15px 0; padding:0; }
+.offer-forge .forge-contributions li { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px dashed #a3b18b20; }
+.offer-forge .forge-contributions li:first-child { padding-top:0; }
+.offer-forge .forge-contributions li:last-child { border-bottom:0; padding-bottom:0; }
+.offer-forge .forge-contributions li>div:first-child { min-width:0; }
+.offer-forge .forge-contributions li strong { font-size:10px; color:#bdc7ab; font-weight:400; }
+.offer-forge .forge-contributions li>div>span { display:block; font-size:9px; line-height:1.6; margin-top:3px; color:#849c87; }
+.offer-forge .forge-contributions .forge-contribution-delta { flex-shrink:0; text-align:right; padding-top:1px; }
+.offer-forge .forge-contributions .forge-contribution-delta .cost-delta { color:#a5cfd2; }
+.offer-forge .forge-contributions .forge-contribution-delta .tilt-attack { color:#d6b577; }
+.offer-forge .forge-contributions .forge-contribution-delta .tilt-health { color:#a9c39a; }
+.offer-forge .forge-contributions .forge-contribution-delta .tilt-neutral { color:#80978b; }
+.offer-forge .forge-applied-adjustment { padding:12px; margin:17px -2px 0; border:1px solid #b0aa7135; border-radius:5px; background:#83957009; }
+.offer-forge .forge-receipt .forge-applied-adjustment p { display:flex; gap:8px; margin:0 0 6px; font-size:10px; line-height:1.8; color:#a7b59b; }
+.offer-forge .forge-applied-adjustment strong { font-size:10px; color:#ddc894; white-space:nowrap; }
+.offer-forge .forge-applied-adjustment small { color:#8ca185; line-height:1.9; font-size:9px; margin-top:10px; }
+.offer-forge .forge-receipt .forge-benefit-cost { display:block; color:#dcad97; font-size:10px; line-height:1.8; margin:10px 0 0; }
+.offer-forge .forge-final-line { display:flex; justify-content:space-between; gap:10px; padding-top:17px; margin-top:17px; border-top:1px solid var(--forge-line); font-size:10px; color:#adb49c; }
+.offer-forge .forge-final-line strong { color:#e5d6ae; font-size:11px; }
+.offer-forge .forge-final-line i { font-style:normal; color:#778d7b; margin:0 3px; }
+.offer-forge .forge-receipt>footer { color:#7e9885; font-size:9px; line-height:1.9; padding-top:17px; }
+.offer-forge .forge-receipt-unavailable { text-align:center; padding:24px 4px 8px; color:#b3b996; }
+.offer-forge .forge-receipt-unavailable p { display:block; font-size:11px; line-height:1.9; color:#b4b69a; }
+
+@media(max-width:1100px) {
+  .offer-forge .forge-workspace { grid-template-columns:minmax(0,1fr) 330px; gap:22px; }
+  .offer-forge .forge-form { padding:22px; }
+  .offer-forge .forge-form .form-grid { column-gap:12px; }
+  .offer-forge .forge-live-stats { grid-template-columns:minmax(110px,1fr) minmax(300px,1.5fr) auto; gap:13px; padding:15px 18px; }
+  .offer-forge .forge-stat { gap:9px; }
+  .offer-forge .forge-receipt { padding:19px; }
+  .offer-forge .forge-form .section-heading small { display:none; }
+}
+@media(max-width:900px) {
+  .offer-forge .forge-heading-note { display:none; }
+  .offer-forge .forge-workspace { grid-template-columns:minmax(0,1fr) 300px; gap:18px; }
+  .offer-forge .forge-form { padding:20px 17px; }
+  .offer-forge .forge-form .form-grid { grid-template-columns:minmax(0,1fr); }
+  .offer-forge .forge-form .section-heading { gap:9px; }
+  .offer-forge .forge-form .section-heading h2 { font-size:16px; }
+  .offer-forge .forge-card-panel { padding:20px 14px 13px; }
+  .offer-forge .forge-card-stage .offer-card { width:230px; height:345px; }
+  .offer-forge .forge-card-stage .card-art { height:185px; }
+  .offer-forge .forge-card-stage { min-height:385px; }
+  .offer-forge .forge-receipt { padding:18px; }
+  .offer-forge .forge-live-stats { grid-template-columns:1fr minmax(270px,1.7fr); gap:12px; }
+  .offer-forge .forge-jump-links { grid-column:1/-1; flex-direction:row; justify-content:space-between; border-top:1px solid #9fac8022; padding-top:5px; }
+  .offer-forge .forge-jump-links button { min-height:23px; }
+  .offer-forge .forge-form,.offer-forge .forge-receipt { scroll-margin-top:161px; }
+}
+@media(max-width:760px) {
+  .offer-forge { padding-left:20px; padding-right:20px; }
+  .offer-forge .forge-heading { margin-bottom:18px; }
+  .offer-forge .forge-heading h1 { font-size:27px; line-height:1.6; }
+  .offer-forge .forge-heading p { font-size:11px; max-width:320px; line-height:1.9; }
+  .offer-forge .forge-process { gap:8px 11px; margin-bottom:18px; }
+  .offer-forge .forge-process>span { font-size:9px; gap:6px; letter-spacing:0; }
+  .offer-forge .forge-process b { font-size:11px; }
+  .offer-forge .forge-process svg { width:10px; margin-left:1px; }
+  .offer-forge .forge-live-stats { top:0; grid-template-columns:minmax(0,1fr); gap:11px; padding:12px 14px 7px; margin-bottom:19px; border-radius:8px; }
+  .offer-forge .forge-live-title { justify-content:space-between; gap:8px; }
+  .offer-forge .forge-live-title>div { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; }
+  .offer-forge .forge-live-title span:not(.live-dot) { font-size:8px; flex-shrink:0; letter-spacing:.8px; }
+  .offer-forge .forge-live-title strong { font-size:11px; margin-top:0; }
+  .offer-forge .forge-stat { gap:9px; }
+  .offer-forge .forge-stat:first-child { border-left:0; }
+  .offer-forge .forge-stat>svg { width:15px; }
+  .offer-forge .forge-stat b { font-size:28px; }
+  .offer-forge .forge-stat small { font-size:8px; margin-top:4px; letter-spacing:0; }
+  .offer-forge .forge-jump-links { padding-top:3px; }
+  .offer-forge .forge-jump-links button { font-size:9px; }
+  .offer-forge .forge-workspace { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:auto; grid-template-areas:'card' 'form' 'receipt'; gap:21px; }
+  .offer-forge .forge-form { padding:20px 17px 17px; }
+  .offer-forge .forge-form .form-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 12px; }
+  .offer-forge .forge-form .field { font-size:11px; margin-bottom:17px; }
+  .offer-forge .forge-form .field select { text-overflow:ellipsis; }
+  .offer-forge .forge-form .field small { font-size:10px; line-height:1.8; }
+  .offer-forge .forge-form .input-unit input { padding-right:65px; }
+  .offer-forge .forge-form .input-unit>span { font-size:8px; }
+  .offer-forge .forge-form .section-heading h2 { font-size:17px; }
+  .offer-forge .forge-form .forge-work-conditions { grid-template-columns:minmax(0,1fr); }
+  .offer-forge .forge-field-note { margin-top:0; }
+  .offer-forge .forge-card-panel { padding:20px 18px 14px; }
+  .offer-forge .forge-card-stage { padding-top:22px; min-height:365px; }
+  .offer-forge .forge-card-stage .offer-card { width:225px; height:336px; }
+  .offer-forge .forge-card-stage .card-art { height:178px; }
+  .offer-forge .forge-card-stage .card-art img { height:217px; }
+  .offer-forge .forge-card-panel .flavor-quote { font-size:11px; margin-top:10px; }
+  .offer-forge .creation-preview .forge-receipt { display:block; }
+  .offer-forge .forge-receipt { padding:22px 20px; }
+  .offer-forge .forge-receipt>header .eyebrow { font-size:7px; }
+  .offer-forge .forge-contributions li strong { font-size:11px; }
+  .offer-forge .forge-contributions li>div>span { font-size:10px; }
+  .offer-forge .forge-receipt .forge-receipt-note { font-size:11px; }
+  .offer-forge .forge-receipt>footer { font-size:10px; }
+  .offer-forge .forge-applied-adjustment small { font-size:10px; }
+  .offer-forge .forge-preview-error { padding:15px; }
+  .offer-forge .forge-form,.offer-forge .forge-receipt { scroll-margin-top:156px; }
+}
+@media(max-width:380px) {
+  .offer-forge { padding-left:15px; padding-right:15px; }
+  .offer-forge .forge-heading h1 { font-size:25px; }
+  .offer-forge .forge-form { padding:18px 14px; }
+  .offer-forge .forge-live-stats { padding-left:10px; padding-right:10px; }
+  .offer-forge .forge-receipt { padding:20px 16px; }
+  .offer-forge .forge-contributions li>div>span { font-size:9px; }
+  .offer-forge .forge-package>strong { font-size:22px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .offer-forge .forge-card-stage .offer-card,.offer-forge .forge-card-stage .offer-card:hover { transform:none; transition:none; }
+}

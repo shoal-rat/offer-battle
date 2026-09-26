@@ -7,6 +7,8 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {createMatch,defaultLoadout,applyCommand,chooseBotCommand,getView,exampleOffers} from '../../src/game/index';
 import type {Command,Loadout} from '../../src/game/types';
 import {LocalBackend} from '../../src/local-backend';
+import legacyRecord from '../fixtures/legacy-offer-record.json';
+import type {MatchState} from '../../src/game/types';
 
 const origin='https://players.example',password='long-test-password-2026';
 const pause=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -26,6 +28,7 @@ async function fixture(vars:Record<string,string>={}){
 
 test('Cloudflare: account auth, recovery rotation, hashed credentials, CORS and guest rejection',async()=>{
  const f=await fixture();try{
+  const health=await f.api('/healthz');assert.equal(health.body.rulesVersion,'2.0.0');assert.equal(health.body.offerCompilerVersion,'2.1.0');
   for(const path of ['/api/profile','/api/matches','/api/rooms/cloud_missing']){const result=await f.api(path);assert.equal(result.status,401);assert.equal(result.body.errorCode,'AUTH_REQUIRED');}
   const preflight=await f.mf.dispatchFetch('https://api.example/api/auth/register',{method:'OPTIONS',headers:{Origin:origin,'Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'authorization,content-type'}});assert.equal(preflight.status,204);assert.equal(preflight.headers.get('Access-Control-Allow-Origin'),origin);
   assert.equal((await f.api('/api/auth/register',undefined,{},undefined,{Origin:'https://players.example.evil'})).status,403);
@@ -116,5 +119,47 @@ test('Cloudflare: concurrent readiness starts exactly one match and keeps its de
   const latest=(await f.api(`/api/rooms/${room.room.id}`,a.token)).body;assert.equal(latest.room.status,'playing');assert.equal(latest.view.phase,'flex');assert.ok(latest.room.deadline>Date.now());assert.ok(latest.room.deadline<Date.now()+61000);
   const store=await f.mf.unsafeGetDurableObjectStorage('offer-battle-test','BattleRoom',{name:room.room.id});assert.equal((await store.exec('SELECT id FROM games')).length,1);
   await f.restart();assert.equal((await f.api(`/api/rooms/${room.room.id}`,b.token)).body.view.matchId,latest.view.matchId);
+ }finally{await f.close();}
+});
+
+test('Cloudflare: 2.0 history imports unchanged, persisted collections and both rematch seats upgrade to 2.1',async()=>{
+ const f=await fixture();try{
+  const a=await f.register('legacy_alice'),b=await f.register('legacy_bravo');
+  const imported=await f.api('/api/matches',a.token,{record:legacyRecord});assert.equal(imported.status,201,JSON.stringify(imported.body));
+  const importedReplay=(await f.api(`/api/matches/${imported.body.match.id}`,a.token)).body;
+  assert.equal(importedReplay.verified,true);assert.equal(importedReplay.frames.length,49);assert.equal(importedReplay.frames[0].players[0].offerZone[0].definition.baseAttack,7);
+  for(const version of ['999.0.0','2.1.0']){
+   const bad=structuredClone(legacyRecord);bad.loadouts[0].offers[0].rulesVersion=version;
+   assert.equal((await f.api('/api/matches',a.token,{record:bad})).status,400);
+  }
+  const combat=structuredClone(legacyRecord);combat.initialState.rulesVersion='999.0.0';assert.equal((await f.api('/api/matches',a.token,{record:combat})).status,400);
+  const reserved=structuredClone(legacyRecord);reserved.loadouts[0].offers[0].id='E999';assert.equal((await f.api('/api/matches',a.token,{record:reserved})).status,400);
+  const registry=await f.mf.unsafeGetDurableObjectStorage('offer-battle-test','AccountRegistry',{name:'registry'});
+  const profileKey='profile:'+a.account.id,profile=JSON.parse((await registry.exec<{value:string}>('SELECT value FROM documents WHERE key=? ORDER BY part',profileKey)).map(row=>row.value).join(''));
+  profile.offers=[legacyRecord.loadouts[0].offers[0]];profile.loadout=legacyRecord.loadouts[0];
+  await registry.exec('DELETE FROM documents WHERE key=?',profileKey);await registry.exec('INSERT INTO documents VALUES (?,?,?)',profileKey,0,JSON.stringify(profile));
+  const upgraded=(await f.api('/api/profile',a.token)).body;assert.equal(upgraded.offers[0].rulesVersion,'2.1.0');assert.equal(upgraded.loadout.offers.every((o:any)=>o.rulesVersion==='2.1.0'),true);
+  const created=(await f.api('/api/rooms',a.token,{mode:'friend'})).body;await f.api('/api/rooms/join',b.token,{code:created.code});
+  const store=await f.mf.unsafeGetDurableObjectStorage('offer-battle-test','BattleRoom',{name:created.room.id});
+  const room=JSON.parse((await store.exec<{value:string}>('SELECT value FROM documents WHERE key=? ORDER BY part','room')).map(row=>row.value).join(''));
+  room.seats.forEach((seat:any,i:number)=>seat.loadout=legacyRecord.loadouts[i]);
+  const friendInitial=structuredClone(legacyRecord.initialState) as MatchState;friendInitial.matchId='cloud_legacy_golden';
+  let state=friendInitial;
+  for(const [index,entry]of legacyRecord.journal.entries()){
+   state=applyCommand(state,entry.actorId,entry.command as Command).state;
+   await store.exec('INSERT INTO journal VALUES (?,?,?)',state.matchId,index+1,JSON.stringify(entry));
+  }
+  Object.assign(room,{status:'finished',matchId:state.matchId,deadline:null});
+  for(const [key,value]of [['room',room],['initial:'+state.matchId,friendInitial],['state:'+state.matchId,state]] as [string,unknown][]){await store.exec('DELETE FROM documents WHERE key=?',key);await store.exec('INSERT INTO documents VALUES (?,?,?)',key,0,JSON.stringify(value));}
+  await store.exec('INSERT INTO games VALUES (?,?)',state.matchId,Date.now()-1000);
+  const path=`/api/rooms/${room.id}`,before=(await f.api(path+'/replay',a.token)).body;
+  assert.equal(before.verified,true);assert.equal(before.frames[0].players[0].offerZone[0].definition.rulesVersion,'2.0.0');
+  const friendSaved=await f.api('/api/matches',a.token,{roomId:room.id});assert.equal(friendSaved.status,201);assert.equal(friendSaved.body.match.source,'friend');
+  await f.api(path+'/rematch',a.token,{});const rematch=await f.api(path+'/ready',b.token,{ready:true});assert.equal(rematch.status,200);
+  for(const player of rematch.body.view.players)assert.equal(player.offerZone.every((o:any)=>o.definition.rulesVersion==='2.1.0'),true);
+  const old=(await f.api(path+'/replay?matchId='+state.matchId,a.token)).body;assert.equal(old.verified,true);assert.deepEqual(old.frames,before.frames);
+  await f.restart();
+  assert.deepEqual((await f.api(`/api/matches/${friendSaved.body.match.id}`,a.token)).body.frames,before.frames);
+  assert.deepEqual((await f.api(`/api/matches/${imported.body.match.id}`,a.token)).body.frames,importedReplay.frames);
  }finally{await f.close();}
 });

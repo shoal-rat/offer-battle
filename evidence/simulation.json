@@ -1,14 +1,16 @@
 {
   "summary": {
+    "offerCompilerVersion": "2.1.0",
+    "battleRulesVersion": "2.0.0",
     "games": 220,
     "comboCoverage": 110,
-    "wins": 109,
-    "losses": 111,
-    "draws": 0,
-    "firstWins": 145,
-    "meanRound": 8.572727272727272,
-    "meanCommands": 57.56818181818182,
-    "elapsedSeconds": 25.117893416999998,
+    "wins": 117,
+    "losses": 102,
+    "draws": 1,
+    "firstWins": 153,
+    "meanRound": 8.881818181818181,
+    "meanCommands": 62.195454545454545,
+    "elapsedSeconds": 36.659438667,
     "allReplaysMatch": true
   },
   "records": [
@@ -20,10 +22,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 40,
+      "round": 10,
+      "commands": 83,
       "reason": "心态归零",
-      "hash": "0a59921d"
+      "hash": "a4337b60"
     },
     {
       "index": 1,
@@ -33,10 +35,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 12,
-      "commands": 91,
-      "reason": "第12轮结算",
-      "hash": "bde42ce2"
+      "round": 10,
+      "commands": 72,
+      "reason": "心态归零",
+      "hash": "e5c6a1bb"
     },
     {
       "index": 2,
@@ -47,9 +49,9 @@
       "winner": "a",
       "first": "b",
       "round": 7,
-      "commands": 52,
+      "commands": 54,
       "reason": "心态归零",
-      "hash": "90987fc8"
+      "hash": "718301d8"
     },
     {
       "index": 3,
@@ -60,9 +62,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 44,
+      "commands": 46,
       "reason": "心态归零",
-      "hash": "f24d30a8"
+      "hash": "fa4d1584"
     },
     {
       "index": 4,
@@ -70,12 +72,12 @@
       "primary": "H01",
       "secondary": "S04",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 54,
+      "round": 11,
+      "commands": 93,
       "reason": "心态归零",
-      "hash": "26e25869"
+      "hash": "6ff51fda"
     },
     {
       "index": 5,
@@ -85,10 +87,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 43,
+      "round": 7,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "d2020eb5"
+      "hash": "59a484c3"
     },
     {
       "index": 6,
@@ -98,10 +100,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 58,
+      "round": 7,
+      "commands": 46,
       "reason": "心态归零",
-      "hash": "507db942"
+      "hash": "0df317e8"
     },
     {
       "index": 7,
@@ -111,10 +113,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 52,
+      "round": 8,
+      "commands": 64,
       "reason": "心态归零",
-      "hash": "6b18daeb"
+      "hash": "44efc3dd"
     },
     {
       "index": 8,
@@ -125,9 +127,9 @@
       "winner": "b",
       "first": "a",
       "round": 8,
-      "commands": 50,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "c2b1c458"
+      "hash": "b948fdb9"
     },
     {
       "index": 9,
@@ -138,9 +140,9 @@
       "winner": "a",
       "first": "a",
       "round": 6,
-      "commands": 31,
+      "commands": 30,
       "reason": "心态归零",
-      "hash": "1b2d5aaf"
+      "hash": "62aee9c9"
     },
     {
       "index": 10,
@@ -148,12 +150,12 @@
       "primary": "H01",
       "secondary": "S10",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 56,
+      "commands": 49,
       "reason": "心态归零",
-      "hash": "ea9c9bc2"
+      "hash": "9e758f34"
     },
     {
       "index": 11,
@@ -163,10 +165,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 51,
+      "round": 10,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "c2e8461b"
+      "hash": "3e7b7aef"
     },
     {
       "index": 12,
@@ -179,7 +181,7 @@
       "round": 7,
       "commands": 40,
       "reason": "心态归零",
-      "hash": "abe682fd"
+      "hash": "9612ccfc"
     },
     {
       "index": 13,
@@ -187,12 +189,12 @@
       "primary": "H02",
       "secondary": "S02",
       "strategy": "control",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 57,
+      "round": 11,
+      "commands": 81,
       "reason": "心态归零",
-      "hash": "c6a46265"
+      "hash": "00cf0253"
     },
     {
       "index": 14,
@@ -202,10 +204,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 38,
+      "round": 7,
+      "commands": 56,
       "reason": "心态归零",
-      "hash": "a9c4c772"
+      "hash": "d080028f"
     },
     {
       "index": 15,
@@ -216,9 +218,9 @@
       "winner": "b",
       "first": "a",
       "round": 7,
-      "commands": 55,
+      "commands": 57,
       "reason": "心态归零",
-      "hash": "448e853d"
+      "hash": "f5fbd0fa"
     },
     {
       "index": 16,
@@ -228,10 +230,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 56,
+      "round": 9,
+      "commands": 69,
       "reason": "心态归零",
-      "hash": "337e01bf"
+      "hash": "f3bc53a8"
     },
     {
       "index": 17,
@@ -241,10 +243,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 56,
+      "round": 8,
+      "commands": 71,
       "reason": "心态归零",
-      "hash": "46553758"
+      "hash": "40434179"
     },
     {
       "index": 18,
@@ -254,10 +256,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 11,
-      "commands": 64,
+      "round": 8,
+      "commands": 48,
       "reason": "心态归零",
-      "hash": "c188d6b9"
+      "hash": "0a2d691d"
     },
     {
       "index": 19,
@@ -270,7 +272,7 @@
       "round": 12,
       "commands": 79,
       "reason": "心态归零",
-      "hash": "96951b70"
+      "hash": "022fab1f"
     },
     {
       "index": 20,
@@ -280,10 +282,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 45,
+      "round": 8,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "332ee32b"
+      "hash": "417d0275"
     },
     {
       "index": 21,
@@ -294,9 +296,9 @@
       "winner": "b",
       "first": "b",
       "round": 8,
-      "commands": 46,
+      "commands": 45,
       "reason": "心态归零",
-      "hash": "bb16554a"
+      "hash": "746e6855"
     },
     {
       "index": 22,
@@ -307,9 +309,9 @@
       "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 71,
-      "reason": "第12轮结算",
-      "hash": "82f53dbd"
+      "commands": 77,
+      "reason": "心态归零",
+      "hash": "b0bf891c"
     },
     {
       "index": 23,
@@ -320,9 +322,9 @@
       "winner": "a",
       "first": "b",
       "round": 11,
-      "commands": 74,
+      "commands": 73,
       "reason": "心态归零",
-      "hash": "24c5b0bc"
+      "hash": "918299b5"
     },
     {
       "index": 24,
@@ -332,10 +334,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 54,
-      "reason": "心态归零",
-      "hash": "d6af55b8"
+      "round": 12,
+      "commands": 91,
+      "reason": "第12轮结算",
+      "hash": "575146ba"
     },
     {
       "index": 25,
@@ -345,10 +347,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 12,
-      "commands": 77,
-      "reason": "第12轮结算",
-      "hash": "6e7b9692"
+      "round": 9,
+      "commands": 58,
+      "reason": "心态归零",
+      "hash": "79ae24f4"
     },
     {
       "index": 26,
@@ -359,9 +361,9 @@
       "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 80,
+      "commands": 86,
       "reason": "第12轮结算",
-      "hash": "9422e6c2"
+      "hash": "98cdfb6a"
     },
     {
       "index": 27,
@@ -371,10 +373,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 42,
-      "reason": "心态归零",
-      "hash": "42ce9361"
+      "round": 12,
+      "commands": 81,
+      "reason": "第12轮结算",
+      "hash": "f1cc9684"
     },
     {
       "index": 28,
@@ -385,9 +387,9 @@
       "winner": "b",
       "first": "b",
       "round": 6,
-      "commands": 40,
+      "commands": 41,
       "reason": "心态归零",
-      "hash": "3337fede"
+      "hash": "6e9d32d2"
     },
     {
       "index": 29,
@@ -398,9 +400,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 41,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "86b3ac7b"
+      "hash": "3bb36dab"
     },
     {
       "index": 30,
@@ -410,10 +412,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 54,
+      "round": 11,
+      "commands": 82,
       "reason": "心态归零",
-      "hash": "2a64b2d0"
+      "hash": "c7ec4101"
     },
     {
       "index": 31,
@@ -424,9 +426,9 @@
       "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 71,
+      "commands": 74,
       "reason": "第12轮结算",
-      "hash": "7cd9181d"
+      "hash": "50bc2308"
     },
     {
       "index": 32,
@@ -436,10 +438,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 11,
+      "round": 12,
       "commands": 74,
       "reason": "心态归零",
-      "hash": "ec8cb3e7"
+      "hash": "9c7e2889"
     },
     {
       "index": 33,
@@ -447,12 +449,12 @@
       "primary": "H04",
       "secondary": "S00",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 74,
+      "commands": 76,
       "reason": "第12轮结算",
-      "hash": "6160c663"
+      "hash": "a69910fa"
     },
     {
       "index": 34,
@@ -463,9 +465,9 @@
       "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 87,
+      "commands": 88,
       "reason": "第12轮结算",
-      "hash": "ffa153e4"
+      "hash": "5aa0e719"
     },
     {
       "index": 35,
@@ -475,10 +477,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 11,
-      "commands": 68,
+      "round": 9,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "5cd78c7c"
+      "hash": "546edc97"
     },
     {
       "index": 36,
@@ -488,10 +490,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "b",
-      "round": 11,
-      "commands": 72,
+      "round": 10,
+      "commands": 71,
       "reason": "心态归零",
-      "hash": "0171aac7"
+      "hash": "adf6e423"
     },
     {
       "index": 37,
@@ -502,9 +504,9 @@
       "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 80,
-      "reason": "心态归零",
-      "hash": "a4d1078f"
+      "commands": 81,
+      "reason": "第12轮结算",
+      "hash": "3ff711b3"
     },
     {
       "index": 38,
@@ -515,9 +517,9 @@
       "winner": "b",
       "first": "b",
       "round": 12,
-      "commands": 74,
+      "commands": 73,
       "reason": "第12轮结算",
-      "hash": "e00cdd47"
+      "hash": "14007b69"
     },
     {
       "index": 39,
@@ -527,10 +529,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 11,
-      "commands": 73,
+      "round": 12,
+      "commands": 76,
       "reason": "心态归零",
-      "hash": "28b6876f"
+      "hash": "a452f6eb"
     },
     {
       "index": 40,
@@ -541,9 +543,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 46,
+      "commands": 41,
       "reason": "心态归零",
-      "hash": "3e74798c"
+      "hash": "f391895d"
     },
     {
       "index": 41,
@@ -554,9 +556,9 @@
       "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 71,
+      "commands": 73,
       "reason": "第12轮结算",
-      "hash": "0de8cab9"
+      "hash": "b1c530bd"
     },
     {
       "index": 42,
@@ -566,10 +568,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 10,
-      "commands": 63,
+      "round": 7,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "05e7a69c"
+      "hash": "eb2d7ca1"
     },
     {
       "index": 43,
@@ -580,9 +582,9 @@
       "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 69,
+      "commands": 72,
       "reason": "第12轮结算",
-      "hash": "7de34723"
+      "hash": "5900c75d"
     },
     {
       "index": 44,
@@ -590,12 +592,12 @@
       "primary": "H05",
       "secondary": "S00",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 52,
+      "commands": 47,
       "reason": "心态归零",
-      "hash": "d15b751a"
+      "hash": "676fa8ee"
     },
     {
       "index": 45,
@@ -603,12 +605,12 @@
       "primary": "H05",
       "secondary": "S01",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 55,
+      "round": 9,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "8a7885be"
+      "hash": "5ca801c9"
     },
     {
       "index": 46,
@@ -618,10 +620,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 12,
-      "commands": 82,
+      "round": 10,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "63f4393f"
+      "hash": "ded58a8c"
     },
     {
       "index": 47,
@@ -631,10 +633,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 39,
+      "round": 8,
+      "commands": 55,
       "reason": "心态归零",
-      "hash": "401f2149"
+      "hash": "bcbaf5b6"
     },
     {
       "index": 48,
@@ -647,7 +649,7 @@
       "round": 12,
       "commands": 82,
       "reason": "第12轮结算",
-      "hash": "de7e50a1"
+      "hash": "be875db0"
     },
     {
       "index": 49,
@@ -657,10 +659,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 34,
+      "round": 10,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "1b4c99d0"
+      "hash": "820e3cc1"
     },
     {
       "index": 50,
@@ -668,12 +670,12 @@
       "primary": "H05",
       "secondary": "S06",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 6,
-      "commands": 39,
+      "round": 9,
+      "commands": 79,
       "reason": "心态归零",
-      "hash": "75a61e66"
+      "hash": "460bf46f"
     },
     {
       "index": 51,
@@ -684,9 +686,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 70,
+      "commands": 66,
       "reason": "第12轮结算",
-      "hash": "dd4be647"
+      "hash": "7004f207"
     },
     {
       "index": 52,
@@ -696,10 +698,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 34,
+      "round": 9,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "31f247f1"
+      "hash": "f797fffc"
     },
     {
       "index": 53,
@@ -709,10 +711,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 41,
+      "round": 9,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "eba4a247"
+      "hash": "120b9697"
     },
     {
       "index": 54,
@@ -720,12 +722,12 @@
       "primary": "H05",
       "secondary": "S10",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 58,
+      "round": 10,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "9461ed0c"
+      "hash": "f9b3be48"
     },
     {
       "index": 55,
@@ -736,9 +738,9 @@
       "winner": "b",
       "first": "b",
       "round": 6,
-      "commands": 33,
+      "commands": 32,
       "reason": "心态归零",
-      "hash": "3fe82153"
+      "hash": "50ea078e"
     },
     {
       "index": 56,
@@ -748,10 +750,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 50,
+      "round": 7,
+      "commands": 46,
       "reason": "心态归零",
-      "hash": "3a501cc3"
+      "hash": "2134f4ff"
     },
     {
       "index": 57,
@@ -759,12 +761,12 @@
       "primary": "H06",
       "secondary": "S02",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 56,
+      "round": 12,
+      "commands": 93,
       "reason": "心态归零",
-      "hash": "ce98028d"
+      "hash": "b2b0ff05"
     },
     {
       "index": 58,
@@ -775,9 +777,9 @@
       "winner": "b",
       "first": "b",
       "round": 6,
-      "commands": 35,
+      "commands": 39,
       "reason": "心态归零",
-      "hash": "c74484c9"
+      "hash": "703df916"
     },
     {
       "index": 59,
@@ -787,10 +789,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 52,
+      "round": 7,
+      "commands": 45,
       "reason": "心态归零",
-      "hash": "a7f1681e"
+      "hash": "29ca1eca"
     },
     {
       "index": 60,
@@ -801,9 +803,9 @@
       "winner": "b",
       "first": "b",
       "round": 8,
-      "commands": 55,
+      "commands": 56,
       "reason": "心态归零",
-      "hash": "7bda2ba4"
+      "hash": "22498066"
     },
     {
       "index": 61,
@@ -814,9 +816,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 77,
-      "reason": "心态归零",
-      "hash": "43e98b56"
+      "commands": 79,
+      "reason": "第12轮结算",
+      "hash": "6c6b5856"
     },
     {
       "index": 62,
@@ -827,9 +829,9 @@
       "winner": "a",
       "first": "a",
       "round": 6,
-      "commands": 31,
+      "commands": 32,
       "reason": "心态归零",
-      "hash": "6f16bd51"
+      "hash": "131ea140"
     },
     {
       "index": 63,
@@ -842,7 +844,7 @@
       "round": 7,
       "commands": 46,
       "reason": "心态归零",
-      "hash": "af8280c1"
+      "hash": "48e4c936"
     },
     {
       "index": 64,
@@ -850,12 +852,12 @@
       "primary": "H06",
       "secondary": "S09",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 6,
-      "commands": 40,
+      "round": 8,
+      "commands": 63,
       "reason": "心态归零",
-      "hash": "21e1afb0"
+      "hash": "dc912649"
     },
     {
       "index": 65,
@@ -863,12 +865,12 @@
       "primary": "H06",
       "secondary": "S10",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 55,
+      "commands": 50,
       "reason": "心态归零",
-      "hash": "fdc6c913"
+      "hash": "1b517b3b"
     },
     {
       "index": 66,
@@ -879,9 +881,9 @@
       "winner": "a",
       "first": "a",
       "round": 10,
-      "commands": 66,
+      "commands": 68,
       "reason": "心态归零",
-      "hash": "34c99fd7"
+      "hash": "bee52c36"
     },
     {
       "index": 67,
@@ -891,10 +893,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "a",
-      "round": 11,
-      "commands": 75,
+      "round": 9,
+      "commands": 73,
       "reason": "心态归零",
-      "hash": "f4e2d157"
+      "hash": "d82ef09d"
     },
     {
       "index": 68,
@@ -904,10 +906,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 9,
-      "commands": 57,
+      "round": 12,
+      "commands": 77,
       "reason": "心态归零",
-      "hash": "785bb818"
+      "hash": "d4ac81ea"
     },
     {
       "index": 69,
@@ -917,10 +919,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 64,
+      "round": 7,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "e52afd97"
+      "hash": "1827085f"
     },
     {
       "index": 70,
@@ -930,10 +932,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "b",
-      "round": 11,
-      "commands": 77,
+      "round": 8,
+      "commands": 55,
       "reason": "心态归零",
-      "hash": "2a767d83"
+      "hash": "2ca35126"
     },
     {
       "index": 71,
@@ -943,10 +945,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "a",
-      "round": 12,
-      "commands": 78,
-      "reason": "第12轮结算",
-      "hash": "5d2c9dec"
+      "round": 7,
+      "commands": 46,
+      "reason": "心态归零",
+      "hash": "d4db4a9c"
     },
     {
       "index": 72,
@@ -957,9 +959,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 39,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "4f233983"
+      "hash": "4c2d1b6e"
     },
     {
       "index": 73,
@@ -969,10 +971,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 63,
+      "round": 7,
+      "commands": 41,
       "reason": "心态归零",
-      "hash": "f99ae345"
+      "hash": "2d432180"
     },
     {
       "index": 74,
@@ -982,10 +984,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 48,
+      "round": 9,
+      "commands": 76,
       "reason": "心态归零",
-      "hash": "5f0f891e"
+      "hash": "dd7bfbd8"
     },
     {
       "index": 75,
@@ -998,7 +1000,7 @@
       "round": 10,
       "commands": 69,
       "reason": "心态归零",
-      "hash": "b3a3b4f1"
+      "hash": "c0f4cd82"
     },
     {
       "index": 76,
@@ -1011,7 +1013,7 @@
       "round": 7,
       "commands": 42,
       "reason": "心态归零",
-      "hash": "22269d2d"
+      "hash": "a07fe40f"
     },
     {
       "index": 77,
@@ -1022,9 +1024,9 @@
       "winner": "a",
       "first": "a",
       "round": 9,
-      "commands": 71,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "5fbfea09"
+      "hash": "5d37cb82"
     },
     {
       "index": 78,
@@ -1035,9 +1037,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 74,
+      "commands": 71,
       "reason": "第12轮结算",
-      "hash": "c8c4412e"
+      "hash": "af748a6a"
     },
     {
       "index": 79,
@@ -1047,10 +1049,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 40,
+      "round": 8,
+      "commands": 55,
       "reason": "心态归零",
-      "hash": "a82009d7"
+      "hash": "5ec2ce64"
     },
     {
       "index": 80,
@@ -1061,9 +1063,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 40,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "150af686"
+      "hash": "04aa1eb9"
     },
     {
       "index": 81,
@@ -1071,12 +1073,12 @@
       "primary": "H08",
       "secondary": "S04",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 70,
+      "commands": 64,
       "reason": "第12轮结算",
-      "hash": "5bec3b14"
+      "hash": "7d521385"
     },
     {
       "index": 82,
@@ -1087,9 +1089,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 40,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "163e7172"
+      "hash": "e309c176"
     },
     {
       "index": 83,
@@ -1099,10 +1101,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 9,
-      "commands": 61,
+      "round": 12,
+      "commands": 73,
       "reason": "心态归零",
-      "hash": "34126f09"
+      "hash": "f338a6b0"
     },
     {
       "index": 84,
@@ -1112,10 +1114,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 76,
+      "round": 9,
+      "commands": 65,
       "reason": "心态归零",
-      "hash": "15d4167c"
+      "hash": "915fbd51"
     },
     {
       "index": 85,
@@ -1125,10 +1127,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 33,
+      "round": 12,
+      "commands": 79,
       "reason": "心态归零",
-      "hash": "3fddaad3"
+      "hash": "dc484924"
     },
     {
       "index": 86,
@@ -1139,9 +1141,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 42,
+      "commands": 47,
       "reason": "心态归零",
-      "hash": "59f74c2d"
+      "hash": "0cd8e484"
     },
     {
       "index": 87,
@@ -1152,9 +1154,9 @@
       "winner": "a",
       "first": "a",
       "round": 8,
-      "commands": 53,
+      "commands": 65,
       "reason": "心态归零",
-      "hash": "58f6a651"
+      "hash": "79597ae7"
     },
     {
       "index": 88,
@@ -1165,9 +1167,9 @@
       "winner": "b",
       "first": "a",
       "round": 9,
-      "commands": 72,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "4cdd5fa6"
+      "hash": "0eb06fa4"
     },
     {
       "index": 89,
@@ -1177,10 +1179,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "b",
-      "round": 10,
-      "commands": 74,
+      "round": 7,
+      "commands": 59,
       "reason": "心态归零",
-      "hash": "7a7ca02c"
+      "hash": "46443dc9"
     },
     {
       "index": 90,
@@ -1191,9 +1193,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 41,
+      "commands": 46,
       "reason": "心态归零",
-      "hash": "c7246e9d"
+      "hash": "050a2c60"
     },
     {
       "index": 91,
@@ -1204,9 +1206,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 71,
+      "commands": 79,
       "reason": "第12轮结算",
-      "hash": "4e79bf27"
+      "hash": "c4ea631c"
     },
     {
       "index": 92,
@@ -1214,12 +1216,12 @@
       "primary": "H09",
       "secondary": "S04",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 42,
+      "round": 7,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "496d7413"
+      "hash": "6e879ec6"
     },
     {
       "index": 93,
@@ -1229,10 +1231,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "a",
-      "round": 10,
-      "commands": 80,
+      "round": 8,
+      "commands": 59,
       "reason": "心态归零",
-      "hash": "f16496ff"
+      "hash": "5dbf6931"
     },
     {
       "index": 94,
@@ -1242,10 +1244,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "b",
-      "round": 8,
-      "commands": 69,
+      "round": 9,
+      "commands": 82,
       "reason": "心态归零",
-      "hash": "a845bb1c"
+      "hash": "3a834521"
     },
     {
       "index": 95,
@@ -1253,12 +1255,12 @@
       "primary": "H09",
       "secondary": "S07",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 58,
+      "round": 6,
+      "commands": 40,
       "reason": "心态归零",
-      "hash": "4cdac46f"
+      "hash": "ae931899"
     },
     {
       "index": 96,
@@ -1266,12 +1268,12 @@
       "primary": "H09",
       "secondary": "S08",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 9,
-      "commands": 66,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "cb793168"
+      "hash": "a1fd51cc"
     },
     {
       "index": 97,
@@ -1282,9 +1284,9 @@
       "winner": "a",
       "first": "b",
       "round": 9,
-      "commands": 71,
+      "commands": 76,
       "reason": "心态归零",
-      "hash": "0013cb6b"
+      "hash": "1c7b711b"
     },
     {
       "index": 98,
@@ -1292,12 +1294,12 @@
       "primary": "H09",
       "secondary": "S10",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
-      "round": 9,
-      "commands": 58,
-      "reason": "心态归零",
-      "hash": "ace072a4"
+      "round": 12,
+      "commands": 90,
+      "reason": "第12轮结算",
+      "hash": "ab530d97"
     },
     {
       "index": 99,
@@ -1308,9 +1310,9 @@
       "winner": "b",
       "first": "b",
       "round": 8,
-      "commands": 54,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "90017ff1"
+      "hash": "5687213f"
     },
     {
       "index": 100,
@@ -1321,9 +1323,9 @@
       "winner": "a",
       "first": "b",
       "round": 7,
-      "commands": 52,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "182532db"
+      "hash": "95c94751"
     },
     {
       "index": 101,
@@ -1331,12 +1333,12 @@
       "primary": "H10",
       "secondary": "S02",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 62,
-      "reason": "心态归零",
-      "hash": "1a353ac1"
+      "round": 12,
+      "commands": 87,
+      "reason": "第12轮结算",
+      "hash": "e36087db"
     },
     {
       "index": 102,
@@ -1346,10 +1348,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 12,
-      "commands": 81,
+      "round": 9,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "612ae3b7"
+      "hash": "f63280d0"
     },
     {
       "index": 103,
@@ -1359,10 +1361,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 41,
+      "round": 11,
+      "commands": 74,
       "reason": "心态归零",
-      "hash": "e34f7a3e"
+      "hash": "1440cefa"
     },
     {
       "index": 104,
@@ -1373,9 +1375,9 @@
       "winner": "a",
       "first": "b",
       "round": 6,
-      "commands": 44,
+      "commands": 48,
       "reason": "心态归零",
-      "hash": "d684219f"
+      "hash": "4bae8eb2"
     },
     {
       "index": 105,
@@ -1383,12 +1385,12 @@
       "primary": "H10",
       "secondary": "S06",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
       "round": 9,
-      "commands": 67,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "53eeff8b"
+      "hash": "8217d81a"
     },
     {
       "index": 106,
@@ -1398,10 +1400,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 58,
+      "round": 9,
+      "commands": 74,
       "reason": "心态归零",
-      "hash": "7ba13dc4"
+      "hash": "a5179a37"
     },
     {
       "index": 107,
@@ -1409,12 +1411,12 @@
       "primary": "H10",
       "secondary": "S08",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 62,
+      "round": 9,
+      "commands": 68,
       "reason": "心态归零",
-      "hash": "d8451640"
+      "hash": "9463e84b"
     },
     {
       "index": 108,
@@ -1424,10 +1426,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "a",
-      "round": 9,
-      "commands": 62,
+      "round": 8,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "c7b3915a"
+      "hash": "0277e1e3"
     },
     {
       "index": 109,
@@ -1437,10 +1439,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "b",
-      "round": 10,
-      "commands": 75,
+      "round": 11,
+      "commands": 77,
       "reason": "心态归零",
-      "hash": "e22fc9bc"
+      "hash": "f4ef0a91"
     },
     {
       "index": 110,
@@ -1450,10 +1452,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 64,
+      "round": 6,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "c3031233"
+      "hash": "7d2edb71"
     },
     {
       "index": 111,
@@ -1464,9 +1466,9 @@
       "winner": "b",
       "first": "b",
       "round": 8,
-      "commands": 55,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "454c217a"
+      "hash": "ee231a41"
     },
     {
       "index": 112,
@@ -1476,10 +1478,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 61,
+      "round": 9,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "6502c82a"
+      "hash": "e8e0a0c2"
     },
     {
       "index": 113,
@@ -1487,12 +1489,12 @@
       "primary": "H01",
       "secondary": "S03",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
       "round": 8,
-      "commands": 57,
+      "commands": 61,
       "reason": "心态归零",
-      "hash": "a72e108e"
+      "hash": "ce52e522"
     },
     {
       "index": 114,
@@ -1502,10 +1504,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 61,
+      "round": 6,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "af5ef1bf"
+      "hash": "c35aefe1"
     },
     {
       "index": 115,
@@ -1515,10 +1517,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 10,
-      "commands": 70,
+      "round": 5,
+      "commands": 35,
       "reason": "心态归零",
-      "hash": "c8ab2174"
+      "hash": "a9c91720"
     },
     {
       "index": 116,
@@ -1526,12 +1528,12 @@
       "primary": "H01",
       "secondary": "S06",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
       "round": 10,
-      "commands": 84,
+      "commands": 77,
       "reason": "心态归零",
-      "hash": "63982e9d"
+      "hash": "4038c6f6"
     },
     {
       "index": 117,
@@ -1542,9 +1544,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 49,
+      "commands": 51,
       "reason": "心态归零",
-      "hash": "d6df30fa"
+      "hash": "c8c439c0"
     },
     {
       "index": 118,
@@ -1554,10 +1556,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "a",
-      "round": 8,
-      "commands": 56,
+      "round": 10,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "9d21830c"
+      "hash": "1d303cf7"
     },
     {
       "index": 119,
@@ -1568,9 +1570,9 @@
       "winner": "a",
       "first": "b",
       "round": 6,
-      "commands": 45,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "b09f2d7d"
+      "hash": "9a6853ee"
     },
     {
       "index": 120,
@@ -1580,10 +1582,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 48,
+      "round": 6,
+      "commands": 34,
       "reason": "心态归零",
-      "hash": "792e55e5"
+      "hash": "1df6c2e7"
     },
     {
       "index": 121,
@@ -1591,12 +1593,12 @@
       "primary": "H02",
       "secondary": "S00",
       "strategy": "control",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
       "round": 12,
-      "commands": 82,
-      "reason": "第12轮结算",
-      "hash": "98d54f47"
+      "commands": 84,
+      "reason": "心态归零",
+      "hash": "2e11bfbf"
     },
     {
       "index": 122,
@@ -1607,9 +1609,9 @@
       "winner": "a",
       "first": "b",
       "round": 7,
-      "commands": 49,
+      "commands": 48,
       "reason": "心态归零",
-      "hash": "8c901938"
+      "hash": "99cd2b2e"
     },
     {
       "index": 123,
@@ -1619,10 +1621,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 35,
+      "round": 5,
+      "commands": 33,
       "reason": "心态归零",
-      "hash": "cdcafc84"
+      "hash": "00179405"
     },
     {
       "index": 124,
@@ -1632,10 +1634,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 40,
+      "round": 7,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "284ba805"
+      "hash": "ee6f8831"
     },
     {
       "index": 125,
@@ -1646,9 +1648,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 49,
+      "commands": 47,
       "reason": "心态归零",
-      "hash": "18598d0c"
+      "hash": "f68410cb"
     },
     {
       "index": 126,
@@ -1658,10 +1660,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 70,
+      "round": 11,
+      "commands": 81,
       "reason": "心态归零",
-      "hash": "acffb36e"
+      "hash": "7825bcf2"
     },
     {
       "index": 127,
@@ -1671,10 +1673,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 38,
+      "round": 7,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "6e510313"
+      "hash": "1215d010"
     },
     {
       "index": 128,
@@ -1685,9 +1687,9 @@
       "winner": "b",
       "first": "a",
       "round": 8,
-      "commands": 60,
+      "commands": 66,
       "reason": "心态归零",
-      "hash": "8a10ba94"
+      "hash": "b38d1332"
     },
     {
       "index": 129,
@@ -1697,10 +1699,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "a",
-      "round": 8,
-      "commands": 59,
+      "round": 9,
+      "commands": 69,
       "reason": "心态归零",
-      "hash": "e5bf7e4a"
+      "hash": "ba9bdb36"
     },
     {
       "index": 130,
@@ -1710,10 +1712,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "a",
-      "round": 7,
-      "commands": 54,
+      "round": 8,
+      "commands": 68,
       "reason": "心态归零",
-      "hash": "b811b19a"
+      "hash": "1c5c046d"
     },
     {
       "index": 131,
@@ -1724,9 +1726,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 49,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "9599d013"
+      "hash": "4b528f75"
     },
     {
       "index": 132,
@@ -1736,10 +1738,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 11,
-      "commands": 71,
+      "round": 12,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "82692362"
+      "hash": "f21d9f7b"
     },
     {
       "index": 133,
@@ -1749,10 +1751,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 10,
-      "commands": 65,
+      "round": 11,
+      "commands": 74,
       "reason": "心态归零",
-      "hash": "b26130d9"
+      "hash": "a0decc0b"
     },
     {
       "index": 134,
@@ -1760,12 +1762,12 @@
       "primary": "H03",
       "secondary": "S02",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 8,
-      "commands": 62,
+      "commands": 61,
       "reason": "心态归零",
-      "hash": "3e4af85b"
+      "hash": "98e5761c"
     },
     {
       "index": 135,
@@ -1776,9 +1778,9 @@
       "winner": "a",
       "first": "a",
       "round": 9,
-      "commands": 61,
+      "commands": 64,
       "reason": "心态归零",
-      "hash": "87ae6aa3"
+      "hash": "40939c49"
     },
     {
       "index": 136,
@@ -1789,9 +1791,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 39,
+      "commands": 43,
       "reason": "心态归零",
-      "hash": "450c05c6"
+      "hash": "048b1619"
     },
     {
       "index": 137,
@@ -1802,9 +1804,9 @@
       "winner": "b",
       "first": "b",
       "round": 6,
-      "commands": 39,
+      "commands": 45,
       "reason": "心态归零",
-      "hash": "25892674"
+      "hash": "637ff66a"
     },
     {
       "index": 138,
@@ -1815,9 +1817,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 67,
-      "reason": "心态归零",
-      "hash": "94e78ee3"
+      "commands": 75,
+      "reason": "第12轮结算",
+      "hash": "b3b92b6b"
     },
     {
       "index": 139,
@@ -1827,10 +1829,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 41,
+      "round": 9,
+      "commands": 62,
       "reason": "心态归零",
-      "hash": "f4e33b51"
+      "hash": "e3dd0a28"
     },
     {
       "index": 140,
@@ -1841,9 +1843,9 @@
       "winner": "b",
       "first": "a",
       "round": 6,
-      "commands": 45,
+      "commands": 43,
       "reason": "心态归零",
-      "hash": "43492a23"
+      "hash": "82de8cb0"
     },
     {
       "index": 141,
@@ -1854,9 +1856,9 @@
       "winner": "b",
       "first": "b",
       "round": 10,
-      "commands": 76,
+      "commands": 68,
       "reason": "心态归零",
-      "hash": "5abbcf42"
+      "hash": "d7a3e59e"
     },
     {
       "index": 142,
@@ -1864,12 +1866,12 @@
       "primary": "H03",
       "secondary": "S10",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 7,
-      "commands": 44,
+      "round": 6,
+      "commands": 39,
       "reason": "心态归零",
-      "hash": "2247ebb1"
+      "hash": "58251de7"
     },
     {
       "index": 143,
@@ -1877,12 +1879,12 @@
       "primary": "H04",
       "secondary": "S00",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 59,
+      "round": 10,
+      "commands": 73,
       "reason": "心态归零",
-      "hash": "c8acb900"
+      "hash": "2b2b152d"
     },
     {
       "index": 144,
@@ -1890,12 +1892,12 @@
       "primary": "H04",
       "secondary": "S01",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 9,
-      "commands": 67,
+      "commands": 66,
       "reason": "心态归零",
-      "hash": "7736dbeb"
+      "hash": "e452ae85"
     },
     {
       "index": 145,
@@ -1905,10 +1907,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 9,
-      "commands": 62,
+      "round": 7,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "3aeb1e83"
+      "hash": "be43cdb6"
     },
     {
       "index": 146,
@@ -1919,9 +1921,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 42,
+      "commands": 51,
       "reason": "心态归零",
-      "hash": "5cfcc371"
+      "hash": "8c4e97d8"
     },
     {
       "index": 147,
@@ -1931,10 +1933,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 48,
+      "round": 8,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "b6e9f9bb"
+      "hash": "cb84d6ea"
     },
     {
       "index": 148,
@@ -1944,10 +1946,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 5,
-      "commands": 28,
+      "round": 6,
+      "commands": 36,
       "reason": "心态归零",
-      "hash": "a275a23f"
+      "hash": "48327e46"
     },
     {
       "index": 149,
@@ -1955,12 +1957,12 @@
       "primary": "H04",
       "secondary": "S06",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 7,
-      "commands": 44,
+      "round": 9,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "39c4bbcf"
+      "hash": "0cfa473a"
     },
     {
       "index": 150,
@@ -1968,12 +1970,12 @@
       "primary": "H04",
       "secondary": "S07",
       "strategy": "aggressive",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 7,
-      "commands": 48,
+      "round": 6,
+      "commands": 44,
       "reason": "心态归零",
-      "hash": "0a486063"
+      "hash": "b32f56c5"
     },
     {
       "index": 151,
@@ -1983,10 +1985,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 36,
+      "round": 12,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "be5bc238"
+      "hash": "e2f25a6b"
     },
     {
       "index": 152,
@@ -1997,9 +1999,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 39,
+      "commands": 43,
       "reason": "心态归零",
-      "hash": "be7722cd"
+      "hash": "56f4ce5f"
     },
     {
       "index": 153,
@@ -2009,10 +2011,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 41,
+      "round": 8,
+      "commands": 49,
       "reason": "心态归零",
-      "hash": "23b4a533"
+      "hash": "40c634ce"
     },
     {
       "index": 154,
@@ -2022,10 +2024,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "a",
-      "round": 9,
-      "commands": 71,
+      "round": 6,
+      "commands": 50,
       "reason": "心态归零",
-      "hash": "41635aa4"
+      "hash": "565613d3"
     },
     {
       "index": 155,
@@ -2035,10 +2037,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 6,
-      "commands": 41,
+      "round": 7,
+      "commands": 57,
       "reason": "心态归零",
-      "hash": "bf2d16f6"
+      "hash": "896511ea"
     },
     {
       "index": 156,
@@ -2048,10 +2050,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 12,
-      "commands": 93,
+      "round": 10,
+      "commands": 74,
       "reason": "心态归零",
-      "hash": "5f7b84d0"
+      "hash": "bab2f9e7"
     },
     {
       "index": 157,
@@ -2059,12 +2061,12 @@
       "primary": "H05",
       "secondary": "S03",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 86,
-      "reason": "第12轮结算",
-      "hash": "77149b51"
+      "commands": 90,
+      "reason": "心态归零",
+      "hash": "f858948f"
     },
     {
       "index": 158,
@@ -2075,9 +2077,9 @@
       "winner": "b",
       "first": "b",
       "round": 8,
-      "commands": 54,
+      "commands": 51,
       "reason": "心态归零",
-      "hash": "157aaec1"
+      "hash": "e5747185"
     },
     {
       "index": 159,
@@ -2088,9 +2090,9 @@
       "winner": "b",
       "first": "a",
       "round": 8,
-      "commands": 57,
+      "commands": 60,
       "reason": "心态归零",
-      "hash": "f3c843fa"
+      "hash": "de78425b"
     },
     {
       "index": 160,
@@ -2100,10 +2102,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 49,
+      "round": 12,
+      "commands": 88,
       "reason": "心态归零",
-      "hash": "6f7cda35"
+      "hash": "4ab0a9ab"
     },
     {
       "index": 161,
@@ -2111,12 +2113,12 @@
       "primary": "H05",
       "secondary": "S07",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 63,
-      "reason": "心态归零",
-      "hash": "ef7887d1"
+      "round": 12,
+      "commands": 96,
+      "reason": "第12轮结算",
+      "hash": "4f74d58a"
     },
     {
       "index": 162,
@@ -2124,12 +2126,12 @@
       "primary": "H05",
       "secondary": "S08",
       "strategy": "aggressive",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 7,
-      "commands": 39,
+      "round": 8,
+      "commands": 57,
       "reason": "心态归零",
-      "hash": "8d0229e1"
+      "hash": "2e58de28"
     },
     {
       "index": 163,
@@ -2137,12 +2139,12 @@
       "primary": "H05",
       "secondary": "S09",
       "strategy": "control",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
       "round": 10,
-      "commands": 74,
+      "commands": 76,
       "reason": "心态归零",
-      "hash": "dedf4e43"
+      "hash": "37beb1df"
     },
     {
       "index": 164,
@@ -2153,9 +2155,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 46,
+      "commands": 51,
       "reason": "心态归零",
-      "hash": "165d7c5e"
+      "hash": "ea89f38f"
     },
     {
       "index": 165,
@@ -2163,12 +2165,12 @@
       "primary": "H06",
       "secondary": "S00",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 8,
-      "commands": 63,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "f72e5565"
+      "hash": "a013395f"
     },
     {
       "index": 166,
@@ -2179,9 +2181,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 50,
+      "commands": 52,
       "reason": "心态归零",
-      "hash": "7bf8b971"
+      "hash": "87527fef"
     },
     {
       "index": 167,
@@ -2189,12 +2191,12 @@
       "primary": "H06",
       "secondary": "S02",
       "strategy": "growth",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 7,
-      "commands": 48,
+      "round": 9,
+      "commands": 85,
       "reason": "心态归零",
-      "hash": "25fe2917"
+      "hash": "bf45a65e"
     },
     {
       "index": 168,
@@ -2204,10 +2206,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 9,
-      "commands": 63,
-      "reason": "心态归零",
-      "hash": "d39ad929"
+      "round": 12,
+      "commands": 85,
+      "reason": "第12轮结算",
+      "hash": "786f9382"
     },
     {
       "index": 169,
@@ -2218,9 +2220,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 51,
+      "commands": 49,
       "reason": "心态归零",
-      "hash": "438d5eee"
+      "hash": "04d74b1b"
     },
     {
       "index": 170,
@@ -2231,9 +2233,9 @@
       "winner": "a",
       "first": "a",
       "round": 6,
-      "commands": 38,
+      "commands": 43,
       "reason": "心态归零",
-      "hash": "3cbdcac2"
+      "hash": "936cb6b5"
     },
     {
       "index": 171,
@@ -2243,10 +2245,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "a",
-      "round": 8,
-      "commands": 55,
+      "round": 9,
+      "commands": 65,
       "reason": "心态归零",
-      "hash": "a6034bd2"
+      "hash": "a38e908b"
     },
     {
       "index": 172,
@@ -2257,9 +2259,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 50,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "f957f69b"
+      "hash": "10551533"
     },
     {
       "index": 173,
@@ -2267,12 +2269,12 @@
       "primary": "H06",
       "secondary": "S08",
       "strategy": "growth",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 10,
-      "commands": 79,
+      "round": 7,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "91559c4f"
+      "hash": "0d6f06d4"
     },
     {
       "index": 174,
@@ -2280,12 +2282,12 @@
       "primary": "H06",
       "secondary": "S09",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 9,
-      "commands": 76,
+      "commands": 79,
       "reason": "心态归零",
-      "hash": "f794f015"
+      "hash": "e747ac14"
     },
     {
       "index": 175,
@@ -2295,10 +2297,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 51,
+      "round": 8,
+      "commands": 61,
       "reason": "心态归零",
-      "hash": "2733053e"
+      "hash": "d95e8965"
     },
     {
       "index": 176,
@@ -2309,9 +2311,9 @@
       "winner": "a",
       "first": "a",
       "round": 6,
-      "commands": 36,
+      "commands": 37,
       "reason": "心态归零",
-      "hash": "3f5d6d9f"
+      "hash": "300adf7c"
     },
     {
       "index": 177,
@@ -2321,10 +2323,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 12,
-      "commands": 76,
-      "reason": "第12轮结算",
-      "hash": "25c73b0f"
+      "round": 8,
+      "commands": 54,
+      "reason": "心态归零",
+      "hash": "bf7464d4"
     },
     {
       "index": 178,
@@ -2334,10 +2336,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 47,
+      "round": 12,
+      "commands": 81,
       "reason": "心态归零",
-      "hash": "109fb898"
+      "hash": "5a0ab87c"
     },
     {
       "index": 179,
@@ -2348,9 +2350,9 @@
       "winner": "a",
       "first": "a",
       "round": 7,
-      "commands": 42,
+      "commands": 40,
       "reason": "心态归零",
-      "hash": "108fa3c7"
+      "hash": "68abf51c"
     },
     {
       "index": 180,
@@ -2358,12 +2360,12 @@
       "primary": "H07",
       "secondary": "S04",
       "strategy": "aggressive",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 8,
-      "commands": 54,
-      "reason": "心态归零",
-      "hash": "a499f30b"
+      "round": 12,
+      "commands": 78,
+      "reason": "第12轮结算",
+      "hash": "836cf933"
     },
     {
       "index": 181,
@@ -2371,12 +2373,12 @@
       "primary": "H07",
       "secondary": "S05",
       "strategy": "control",
-      "winner": "b",
+      "winner": null,
       "first": "a",
       "round": 12,
       "commands": 70,
       "reason": "第12轮结算",
-      "hash": "64d69669"
+      "hash": "25a72001"
     },
     {
       "index": 182,
@@ -2387,9 +2389,9 @@
       "winner": "a",
       "first": "a",
       "round": 6,
-      "commands": 31,
+      "commands": 34,
       "reason": "心态归零",
-      "hash": "189b41e2"
+      "hash": "7a8be876"
     },
     {
       "index": 183,
@@ -2399,10 +2401,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "b",
-      "round": 8,
-      "commands": 53,
+      "round": 10,
+      "commands": 64,
       "reason": "心态归零",
-      "hash": "41d18ffe"
+      "hash": "8fa6f1c0"
     },
     {
       "index": 184,
@@ -2413,9 +2415,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 84,
+      "commands": 89,
       "reason": "第12轮结算",
-      "hash": "86554d0d"
+      "hash": "4bcf92e7"
     },
     {
       "index": 185,
@@ -2425,10 +2427,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 65,
+      "round": 8,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "c6fc0548"
+      "hash": "a89696e1"
     },
     {
       "index": 186,
@@ -2438,10 +2440,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 11,
-      "commands": 70,
+      "round": 12,
+      "commands": 77,
       "reason": "心态归零",
-      "hash": "0cc1e070"
+      "hash": "092db08a"
     },
     {
       "index": 187,
@@ -2449,12 +2451,12 @@
       "primary": "H08",
       "secondary": "S00",
       "strategy": "control",
-      "winner": "b",
+      "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 86,
-      "reason": "第12轮结算",
-      "hash": "2b6cba93"
+      "commands": 87,
+      "reason": "心态归零",
+      "hash": "08eea8c3"
     },
     {
       "index": 188,
@@ -2465,9 +2467,9 @@
       "winner": "a",
       "first": "b",
       "round": 12,
-      "commands": 80,
-      "reason": "第12轮结算",
-      "hash": "7f6bef95"
+      "commands": 85,
+      "reason": "心态归零",
+      "hash": "965cd988"
     },
     {
       "index": 189,
@@ -2478,9 +2480,9 @@
       "winner": "a",
       "first": "a",
       "round": 10,
-      "commands": 68,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "d891f86f"
+      "hash": "fbdc211b"
     },
     {
       "index": 190,
@@ -2491,9 +2493,9 @@
       "winner": "a",
       "first": "b",
       "round": 8,
-      "commands": 57,
+      "commands": 56,
       "reason": "心态归零",
-      "hash": "1d540508"
+      "hash": "d848f2b3"
     },
     {
       "index": 191,
@@ -2503,10 +2505,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 44,
+      "round": 9,
+      "commands": 61,
       "reason": "心态归零",
-      "hash": "3d8ac8b3"
+      "hash": "3d525ed0"
     },
     {
       "index": 192,
@@ -2517,9 +2519,9 @@
       "winner": "a",
       "first": "a",
       "round": 12,
-      "commands": 79,
+      "commands": 73,
       "reason": "第12轮结算",
-      "hash": "4a704ac0"
+      "hash": "6a2d634a"
     },
     {
       "index": 193,
@@ -2529,10 +2531,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "b",
-      "round": 10,
-      "commands": 67,
+      "round": 12,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "691bac8f"
+      "hash": "44dcc035"
     },
     {
       "index": 194,
@@ -2542,10 +2544,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "b",
-      "round": 7,
-      "commands": 51,
+      "round": 9,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "a514df15"
+      "hash": "eba6f38f"
     },
     {
       "index": 195,
@@ -2555,10 +2557,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "b",
-      "round": 9,
-      "commands": 61,
+      "round": 10,
+      "commands": 71,
       "reason": "心态归零",
-      "hash": "30e08c87"
+      "hash": "83d7df95"
     },
     {
       "index": 196,
@@ -2568,10 +2570,10 @@
       "strategy": "control",
       "winner": "a",
       "first": "a",
-      "round": 9,
-      "commands": 54,
+      "round": 12,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "6cd75bfd"
+      "hash": "98ea22bd"
     },
     {
       "index": 197,
@@ -2581,10 +2583,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 11,
-      "commands": 75,
+      "round": 7,
+      "commands": 49,
       "reason": "心态归零",
-      "hash": "2f399b4f"
+      "hash": "be568a2c"
     },
     {
       "index": 198,
@@ -2594,10 +2596,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 56,
+      "round": 12,
+      "commands": 72,
       "reason": "心态归零",
-      "hash": "8ad79c00"
+      "hash": "45908e82"
     },
     {
       "index": 199,
@@ -2605,12 +2607,12 @@
       "primary": "H09",
       "secondary": "S01",
       "strategy": "control",
-      "winner": "a",
+      "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 63,
+      "round": 7,
+      "commands": 42,
       "reason": "心态归零",
-      "hash": "12e66973"
+      "hash": "5e5690ad"
     },
     {
       "index": 200,
@@ -2620,10 +2622,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 41,
+      "round": 7,
+      "commands": 55,
       "reason": "心态归零",
-      "hash": "0944eb01"
+      "hash": "ac38533b"
     },
     {
       "index": 201,
@@ -2634,9 +2636,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 69,
-      "reason": "心态归零",
-      "hash": "2539a6d1"
+      "commands": 68,
+      "reason": "第12轮结算",
+      "hash": "29b0e0c8"
     },
     {
       "index": 202,
@@ -2644,12 +2646,12 @@
       "primary": "H09",
       "secondary": "S04",
       "strategy": "control",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 11,
-      "commands": 72,
+      "round": 10,
+      "commands": 77,
       "reason": "心态归零",
-      "hash": "2155a01b"
+      "hash": "1d1ece57"
     },
     {
       "index": 203,
@@ -2660,9 +2662,9 @@
       "winner": "a",
       "first": "a",
       "round": 8,
-      "commands": 47,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "0dedefe5"
+      "hash": "015c2a56"
     },
     {
       "index": 204,
@@ -2672,10 +2674,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 11,
-      "commands": 81,
+      "round": 8,
+      "commands": 53,
       "reason": "心态归零",
-      "hash": "01720448"
+      "hash": "c2cb9e97"
     },
     {
       "index": 205,
@@ -2686,9 +2688,9 @@
       "winner": "b",
       "first": "b",
       "round": 7,
-      "commands": 45,
+      "commands": 46,
       "reason": "心态归零",
-      "hash": "07a93665"
+      "hash": "afaf1c8d"
     },
     {
       "index": 206,
@@ -2699,9 +2701,9 @@
       "winner": "a",
       "first": "a",
       "round": 8,
-      "commands": 55,
+      "commands": 56,
       "reason": "心态归零",
-      "hash": "18a418b6"
+      "hash": "da8cf1b4"
     },
     {
       "index": 207,
@@ -2711,10 +2713,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 43,
+      "round": 8,
+      "commands": 67,
       "reason": "心态归零",
-      "hash": "6d5ce924"
+      "hash": "62e3c590"
     },
     {
       "index": 208,
@@ -2724,10 +2726,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "a",
-      "round": 12,
-      "commands": 79,
-      "reason": "第12轮结算",
-      "hash": "60407b07"
+      "round": 7,
+      "commands": 55,
+      "reason": "心态归零",
+      "hash": "616357b1"
     },
     {
       "index": 209,
@@ -2737,10 +2739,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 10,
-      "commands": 73,
+      "round": 9,
+      "commands": 74,
       "reason": "心态归零",
-      "hash": "6397dd56"
+      "hash": "860551c8"
     },
     {
       "index": 210,
@@ -2750,10 +2752,10 @@
       "strategy": "aggressive",
       "winner": "b",
       "first": "b",
-      "round": 9,
-      "commands": 61,
+      "round": 12,
+      "commands": 84,
       "reason": "心态归零",
-      "hash": "239864c3"
+      "hash": "2898ce0f"
     },
     {
       "index": 211,
@@ -2764,9 +2766,9 @@
       "winner": "b",
       "first": "a",
       "round": 12,
-      "commands": 74,
+      "commands": 76,
       "reason": "第12轮结算",
-      "hash": "8a9589ef"
+      "hash": "1e54b283"
     },
     {
       "index": 212,
@@ -2776,10 +2778,10 @@
       "strategy": "growth",
       "winner": "a",
       "first": "a",
-      "round": 8,
-      "commands": 47,
+      "round": 7,
+      "commands": 38,
       "reason": "心态归零",
-      "hash": "e9ab5238"
+      "hash": "cbaeeedd"
     },
     {
       "index": 213,
@@ -2787,12 +2789,12 @@
       "primary": "H10",
       "secondary": "S04",
       "strategy": "aggressive",
-      "winner": "a",
+      "winner": "b",
       "first": "a",
-      "round": 11,
-      "commands": 67,
+      "round": 9,
+      "commands": 70,
       "reason": "心态归零",
-      "hash": "44abdc61"
+      "hash": "86e01ec1"
     },
     {
       "index": 214,
@@ -2802,10 +2804,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 46,
+      "round": 8,
+      "commands": 58,
       "reason": "心态归零",
-      "hash": "3fed65a6"
+      "hash": "f746b82a"
     },
     {
       "index": 215,
@@ -2815,10 +2817,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "b",
-      "round": 7,
-      "commands": 48,
+      "round": 6,
+      "commands": 36,
       "reason": "心态归零",
-      "hash": "cae5f872"
+      "hash": "e77603e3"
     },
     {
       "index": 216,
@@ -2828,10 +2830,10 @@
       "strategy": "aggressive",
       "winner": "a",
       "first": "a",
-      "round": 7,
-      "commands": 42,
+      "round": 10,
+      "commands": 75,
       "reason": "心态归零",
-      "hash": "56295b10"
+      "hash": "87d9f9dd"
     },
     {
       "index": 217,
@@ -2841,10 +2843,10 @@
       "strategy": "control",
       "winner": "b",
       "first": "b",
-      "round": 6,
-      "commands": 39,
+      "round": 7,
+      "commands": 55,
       "reason": "心态归零",
-      "hash": "e2eca34f"
+      "hash": "b09338ba"
     },
     {
       "index": 218,
@@ -2854,10 +2856,10 @@
       "strategy": "growth",
       "winner": "b",
       "first": "a",
-      "round": 11,
-      "commands": 71,
-      "reason": "心态归零",
-      "hash": "25144639"
+      "round": 12,
+      "commands": 78,
+      "reason": "第12轮结算",
+      "hash": "7ef2fea2"
     },
     {
       "index": 219,
@@ -2865,12 +2867,12 @@
       "primary": "H10",
       "secondary": "S10",
       "strategy": "aggressive",
-      "winner": "b",
+      "winner": "a",
       "first": "b",
-      "round": 12,
-      "commands": 73,
-      "reason": "第12轮结算",
-      "hash": "005a8ff0"
+      "round": 10,
+      "commands": 67,
+      "reason": "心态归零",
+      "hash": "527964d5"
     }
   ]
 }

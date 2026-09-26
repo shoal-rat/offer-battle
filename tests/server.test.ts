@@ -5,8 +5,10 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {WebSocket} from 'ws';
 import {startServer} from '../server/index.js';
-import {chooseBotCommand,exampleOffers} from '../src/game/index.js';
+import {chooseBotCommand,exampleOffers,compileOffer,applyCommand} from '../src/game/index.js';
 import {AtomicStore} from '../server/storage.js';
+import legacyRecord from './fixtures/legacy-offer-record.json';
+import type {Command,MatchState} from '../src/game/types';
 
 const pause=(ms=15)=>new Promise(r=>setTimeout(r,ms));
 async function fixture(extra:Parameters<typeof startServer>[0]={}){
@@ -51,7 +53,7 @@ test('WebSocket: independent sessions receive private views, reconnect retains s
 test('zero-key Offer compilation and profile persistence, failed generation remains retryable',async()=>{const f=await fixture();try{
  const a=await f.session('收藏同学');const input=structuredClone(exampleOffers[0].profile!);input.company_display_name='<script>alert(1)</script>';
  const missing={...input,annual_equity_cny:null};assert.equal((await f.api('/api/offers',a.token,'POST',{profile:missing})).status,400);
- const created=await f.api('/api/offers',a.token,'POST',{profile:input,benefitId:null});assert.equal(created.status,201);assert.equal(created.body.offer.baseAttack,7);
+ const created=await f.api('/api/offers',a.token,'POST',{profile:input,benefitId:null});assert.equal(created.status,201);assert.equal(created.body.offer.baseAttack,compileOffer(input).baseAttack);
  await pause(60);const profile=(await f.api('/api/profile',a.token)).body;assert.equal(profile.offers.length,1);assert.equal(profile.offers[0].company,input.company_display_name);
  const started=await f.api(`/api/offers/${created.body.offer.id}/appearance`,a.token,'POST',{stage:'image'});await pause(50);const job=(await f.api(`/api/generation/jobs/${started.body.job.id}`,a.token)).body.job;assert.equal(job.state,'failed');assert.match(job.error,/本地角色/);assert.equal((await f.api('/api/profile',a.token)).body.offers.length,1);
  assert.equal((await f.api(`/api/generation/jobs/${job.id}/retry`,a.token,'POST',{})).status,200);
@@ -101,3 +103,24 @@ test('custom job names and validated rule archetype overrides preserve future Of
  const automatic=await f.api('/api/offers',a.token,'POST',{profile});assert.equal(automatic.status,201);assert.equal(automatic.body.offer.templateId,'T00');assert.equal(automatic.body.offer.name,'实验室AI顾问');
  const explicit=await f.api('/api/offers',a.token,'POST',{profile:{...profile,selected_template_id:'T09'}});assert.equal(explicit.status,201);assert.equal(explicit.body.offer.templateId,'T09');assert.equal(explicit.body.offer.annualPackage,automatic.body.offer.annualPackage);
  }finally{await f.close();}});
+
+test('Node restart upgrades 2.0 collections and both rematch seats while preserving archived replay',async()=>{
+ const f=await fixture({turnMs:60000});let restarted:Awaited<ReturnType<typeof startServer>>|undefined;
+ try{
+  const {a,b,roomId}=await friends(f);await f.app.close();
+  const db=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8')),room=db.rooms[roomId];
+  let state=structuredClone(legacyRecord.initialState) as MatchState;
+  for(const entry of legacyRecord.journal)state=applyCommand(state,entry.actorId,entry.command as Command).state;
+  room.seats.forEach((seat:any,i:number)=>seat.loadout=legacyRecord.loadouts[i]);
+  Object.assign(room,{initialState:legacyRecord.initialState,state,journal:legacyRecord.journal,status:'finished',deadline:null,receipts:{}});
+  db.profiles[a.profile.id].offers=[legacyRecord.loadouts[0].offers[0]];db.profiles[a.profile.id].loadout=legacyRecord.loadouts[0];
+  await writeFile(join(f.dataDir,'server.json'),JSON.stringify(db));
+  restarted=await startServer({port:0,host:'127.0.0.1',dataDir:f.dataDir,turnMs:60000});
+  const api=async(path:string,token:string,body?:unknown)=>{const response=await fetch(restarted!.url+path,{method:body===undefined?'GET':'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})});assert.equal(response.status,200);return response.json() as Promise<any>};
+  const profile=await api('/api/profile',a.token);assert.equal(profile.offers[0].rulesVersion,'2.1.0');assert.equal(profile.loadout.offers.every((o:any)=>o.rulesVersion==='2.1.0'),true);
+  const replay=await api(`/api/rooms/${roomId}/replay`,a.token);assert.equal(replay.verified,true);assert.equal(replay.frames[0].players[0].offerZone[0].definition.rulesVersion,'2.0.0');
+  await api(`/api/rooms/${roomId}/rematch`,a.token,{});const rematch=await api(`/api/rooms/${roomId}/ready`,b.token,{ready:true});
+  for(const player of rematch.view.players)assert.equal(player.offerZone.every((o:any)=>o.definition.rulesVersion==='2.1.0'),true);
+  const archived=await api(`/api/rooms/${roomId}/replay?matchId=${legacyRecord.initialState.matchId}`,a.token);assert.equal(archived.verified,true);assert.deepEqual(archived.frames,replay.frames);
+ }finally{if(restarted)await restarted.close();else await f.app.close();await rm(f.dataDir,{recursive:true,force:true});}
+});
