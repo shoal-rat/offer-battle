@@ -1,0 +1,178 @@
+{
+  "package": "offer_battle_public_spec_v2",
+  "rules_version": "2.0.0",
+  "content_type": "curated_design_specification_and_executable_reference",
+  "file_count_excluding_this_manifest": 34,
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 572,
+      "sha256": "75c04c74a93f31ff828b13abde5be14ef667f98e49cd7a71332545a92f438f61"
+    },
+    {
+      "path": "AGI_START_HERE.md",
+      "bytes": 6166,
+      "sha256": "15a8ce70fae8f4dbd1c584e92fb1d0b3c2c58990f11003a160969aa724651aac"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1241,
+      "sha256": "a07675fbab9a4fa0e614248dd7ec4f7ee1dcf6a7c0ce0e8093733dbf40c4ee7e"
+    },
+    {
+      "path": "LAUNCH_PROMPT.txt",
+      "bytes": 1302,
+      "sha256": "1c8df03123b40534742c6da03197111d912b8042c3c9ec712e9c022735fae991"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4227,
+      "sha256": "f7ac3f4c02b949f5a43b3b634bcb9314416ddee2036988fa76ce8e0a55de564a"
+    },
+    {
+      "path": "acceptance_tests.md",
+      "bytes": 8951,
+      "sha256": "b0734f2d42cb630d300e53a7696c5b31e9db8bbcdae817485c9b177f35211bae"
+    },
+    {
+      "path": "ai_prompts.md",
+      "bytes": 11187,
+      "sha256": "8d1d967dea169f91ff62aa2268276038e40dc6816ffed36c84d3b4e9c995a9bc"
+    },
+    {
+      "path": "art/art_bible.md",
+      "bytes": 7199,
+      "sha256": "ee074a01e13211fd801dc318b07378e3b31d3fdd9c46758499f846f009431eeb"
+    },
+    {
+      "path": "art/asset_index.md",
+      "bytes": 17195,
+      "sha256": "34634dc0ace549614604cfcc10577ab00f5865cbd31c9b1c279f6745201f58ba"
+    },
+    {
+      "path": "art/asset_manifest.json",
+      "bytes": 153562,
+      "sha256": "907856ec117f397a7ba4a6a8391eb3680195cbb9bbe72b27b667cdeb227195d7"
+    },
+    {
+      "path": "art/character_specs.json",
+      "bytes": 10194,
+      "sha256": "68fdd71b8039d7ef291bc168359e5e029c9432d47d0d3537db9565c3eb71cbd9"
+    },
+    {
+      "path": "data/dialogue_bank.json",
+      "bytes": 18867,
+      "sha256": "6b590b428ae53ffc10803ce252b52ed02c040913d953851d616053c25501f3c2"
+    },
+    {
+      "path": "data/education_combinations.json",
+      "bytes": 30804,
+      "sha256": "874bbe41e3cfe0dab1a3aca806cf083a7945a0f5b6285226592a596104f4194e"
+    },
+    {
+      "path": "data/loadout_presets.json",
+      "bytes": 4582,
+      "sha256": "81abd8d24b80f64730f9bbc2ff6bbcf9de43fcdc2d2d16f1c4f687358cb63f47"
+    },
+    {
+      "path": "data/runtime_tokens.json",
+      "bytes": 650,
+      "sha256": "758f22370360a8c7a5c13f9ba8d0247b181a4292e3edc0e552195c2a0e8760f6"
+    },
+    {
+      "path": "data/showcase_scenarios.json",
+      "bytes": 2262,
+      "sha256": "893cf68e36688f5c267b9ee8ce6181d66f29fc72505808660206a1385ddc422b"
+    },
+    {
+      "path": "education_catalog.json",
+      "bytes": 18205,
+      "sha256": "4ff62bc28c39dcf28ef68e98cf1c34070ee969829183ddd90317da8f497932f6"
+    },
+    {
+      "path": "education_system.md",
+      "bytes": 11906,
+      "sha256": "541ddabd8d3469504c155204e3e053e7ba07f66b2a598841716be8d6d6075d01"
+    },
+    {
+      "path": "engineering/balance_and_delivery.md",
+      "bytes": 4019,
+      "sha256": "5056aeedac76c0b2dafa550d34a5718e90f2cc6c5424223517c11a1babbaa244"
+    },
+    {
+      "path": "engineering/build_contract.md",
+      "bytes": 7021,
+      "sha256": "7cdc37b73238b5e3f0e196f8b7d4eaa040e99fd41ef99f74e4de1246e0fc2de1"
+    },
+    {
+      "path": "engineering/state_and_network.md",
+      "bytes": 6982,
+      "sha256": "3480869f5152f52da17f832c7227b09e8a1a9ff67ce9755a92a827a9a4e415d9"
+    },
+    {
+      "path": "example_offers.json",
+      "bytes": 5938,
+      "sha256": "7da9b5c6152bedcacca23a8ee8fcea641aff0cbf9fa127da612d2648b4aed9b1"
+    },
+    {
+      "path": "game_design.md",
+      "bytes": 66602,
+      "sha256": "1370adc460e3de818bdf91f19feb05d4d639b23e9021c45b500823fb721ece75"
+    },
+    {
+      "path": "prompts/art_generation.md",
+      "bytes": 4612,
+      "sha256": "7cd5cb5270339767df1c5441b7d5c9e64b36b600d354a4134258be8895236605"
+    },
+    {
+      "path": "reference/education_reference.py",
+      "bytes": 11113,
+      "sha256": "cf437620dd890b88c5db8b3d73666a599779e6a9ef42aeeb616736cae209c546"
+    },
+    {
+      "path": "reports/bundle_validation.json",
+      "bytes": 960,
+      "sha256": "71c4d9900f1defaafc92558f219a122796c68d07139c3b06163a717ff981039a"
+    },
+    {
+      "path": "reports/reference_tests.txt",
+      "bytes": 4912,
+      "sha256": "abd47a236b5d7fbc2d3505d7167c27d2847a1a07227cb5ccb719896ab26073dd"
+    },
+    {
+      "path": "reports/validation_console.txt",
+      "bytes": 960,
+      "sha256": "fbc40c8787e9c644971c756e2b2eed58a8339eba387bb33cf45eff539acc81b1"
+    },
+    {
+      "path": "rules_catalog.json",
+      "bytes": 19409,
+      "sha256": "7e9665890f9f7088f80dfc904552012b53e285f3cf995b9f34909fcf606a0396"
+    },
+    {
+      "path": "tests/delivery_acceptance.md",
+      "bytes": 1805,
+      "sha256": "6feb8d0d3f77444df8f31d7035fb021dced1b20d24b710ea56f55c9a2baf4065"
+    },
+    {
+      "path": "tests/education_acceptance.md",
+      "bytes": 5709,
+      "sha256": "3e5969db2b3fd24e04e6a2350865eddd4cd4925a33849b68946787d53fbae947"
+    },
+    {
+      "path": "tests/education_cases.json",
+      "bytes": 12467,
+      "sha256": "7bc714ca6c07f9a6979f85232e1886434af3e1755209bcbb6fb3fdbdc6031005"
+    },
+    {
+      "path": "tests/test_education_reference.py",
+      "bytes": 11594,
+      "sha256": "5c78bf48443ba316fa8a28b140e1430711c57ae0dce62ea83cc71cfaf80ccc81"
+    },
+    {
+      "path": "validate_bundle.py",
+      "bytes": 11026,
+      "sha256": "f4db0718f19681a942709e1d622bc92c63a2d5f02bccadc9c99d733b07e8824f"
+    }
+  ]
+}

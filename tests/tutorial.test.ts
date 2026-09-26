@@ -1,0 +1,39 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,rm,readFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {startServer} from '../server/index.js';
+import {tutorialCatalog} from '../src/game/tutorial.js';
+import {getView} from '../src/game/views.js';
+
+async function fixture(){const dataDir=await mkdtemp(join(tmpdir(),'offer-tutorial-'));let app=await startServer({port:0,host:'127.0.0.1',dataDir,botDelayMs:1,tickMs:2,turnMs:15});const session=await fetch(app.url+'/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nickname:'教程测试'})}).then(r=>r.json()) as any;async function api(path:string,body?:unknown){const r=await fetch(app.url+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',Authorization:`Bearer ${session.token}`},...(body?{body:JSON.stringify(body)}:{})});return {status:r.status,body:await r.json() as any};}return {dataDir,api,async restart(){await app.close();app=await startServer({port:0,host:'127.0.0.1',dataDir,botDelayMs:1,tickMs:2,turnMs:15});},async close(){await app.close();await rm(dataDir,{recursive:true,force:true});}};}
+function command(room:any,cmd:any,id=crypto.randomUUID()){return {...cmd,matchId:room.view.matchId,expectedStateVersion:room.view.version,commandId:id};}
+for(const lesson of tutorialCatalog)test(`interactive tutorial ${lesson.id}: complete every legal learner step, scripted mentor and verified replay`,async()=>{const f=await fixture();try{
+ let room=(await f.api('/api/rooms',{mode:'bot',training:true,lessonId:lesson.id})).body;assert.equal(room.room.tutorial.stepIndex,0);assert.equal(room.room.deadline,null);assert.equal(room.room.players[1].name,'前辈 · 秋招导师');const initialMatch=room.view.matchId;
+ const apiPath=`/api/rooms/${room.room.id}`;const count=room.room.tutorial.stepCount;
+ for(let step=0;step<count;step++){
+  const t=room.room.tutorial;assert.equal(t.stepIndex,step);assert.equal(t.completed,false);assert.ok(t.allowedCommands.length>0,`${lesson.id} step ${step}: no legal action`);assert.deepEqual(room.view.legalActions,t.allowedCommands);assert.equal(room.view.activePlayerId,'p1');
+  const before=room.view.version,rejection=await f.api(apiPath+'/command',command(room,{type:'CONCEDE'}));assert.equal(rejection.body.errorCode,'TUTORIAL_STEP');assert.equal(rejection.body.view.version,before);assert.match(rejection.body.rejection,/先完成/);
+  const submitted=command(room,t.allowedCommands[0]);const next=(await f.api(apiPath+'/command',submitted)).body;assert.equal(next.ok,true,next.rejection);assert.equal(next.room.tutorial.stepIndex,step+1);assert.ok(next.view.version>before);room=next;
+  const duplicate=(await f.api(apiPath+'/command',submitted)).body;assert.equal(duplicate.duplicate,true);assert.equal(duplicate.room.tutorial.stepIndex,step+1);assert.equal(duplicate.view.version,room.view.version);
+  if(lesson.id==='L01'&&step===0){assert.equal(room.view.players[0].timeRemaining,0);assert.equal(room.view.players[0].board[0].canAttack,false);}
+  if(lesson.id==='L02'&&step===0)assert.equal(room.view.players[1].board.find((u:any)=>u.definitionId==='N05').health,3);
+  if(lesson.id==='L02'&&step===1)assert.equal(room.view.players[1].board.some((u:any)=>u.definitionId==='N05'),false);
+  if(lesson.id==='L03'&&step===0){assert.equal(room.view.players[0].negotiationUsed,true);assert.equal(room.view.players[0].timeRemaining,1);assert.equal(room.view.players[0].offerZone.find((o:any)=>o.id==='E03').status,'negotiated');}
+  if(lesson.id==='L04'&&step===0){assert.equal(room.view.players[0].education.usedThisOwnTurn,true);assert.equal(room.view.players[0].education.secondaryUsed,false);}
+  if(lesson.id==='L04'&&step===2){assert.equal(room.view.players[0].education.secondaryUsed,true);assert.equal(room.view.players[0].board[0].damage,0);}
+  if(lesson.id==='L05'&&step===0)assert.equal(room.view.players[0].board[0].age,35);
+  if(lesson.id==='L05'&&step===1)assert.ok(room.view.players[0].board[0].notice);
+  if(lesson.id==='L05'&&step===2){assert.equal(room.view.players[0].board[0].managed,true);assert.equal(room.view.players[0].board[0].tags.includes('frontline'),false);}
+ }
+ assert.equal(room.room.tutorial.completed,true);assert.deepEqual(room.view.legalActions,[]);assert.equal(room.room.tutorial.summary.length,3);if(lesson.id==='L05'){assert.equal(room.view.players[0].board.length,1);assert.equal(room.view.players[0].board[0].notice,undefined);assert.ok(room.view.events.some((e:any)=>e.type==='notice_expired'));}
+ const completedVersion=room.view.version;await new Promise(r=>setTimeout(r,35));room=(await f.api(apiPath)).body;assert.equal(room.view.version,completedVersion,'automatic bot or timer changed the lesson');
+ const replay=(await f.api(apiPath+'/replay')).body;assert.equal(replay.verified,true);assert.equal(replay.frames.at(-1).version,room.view.version);assert.equal(JSON.stringify(replay).includes('rngState'),false);
+ const raw=JSON.parse(await readFile(join(f.dataDir,'server.json'),'utf8')).rooms[room.room.id];assert.ok(raw.journal.every((entry:any)=>!['TIMEOUT'].includes(entry.command.type)));assert.ok(raw.journal.length>=count);assert.ok(getView(raw.state,'p1').legalActions.length>0,'tutorial gate, not corrupted core state, prevents more actions');
+ const reset=(await f.api(apiPath+'/rematch',{})).body;assert.equal(reset.room.tutorial.stepIndex,0);assert.notEqual(reset.view.matchId,initialMatch);assert.equal(reset.room.tutorial.completed,false);assert.equal((await f.api(apiPath+`/replay?matchId=${initialMatch}`)).body.verified,true);
+ }finally{await f.close();}});
+
+test('tutorial mode cannot enter friend or ordinary bot matches and does not accept unknown or combined fixtures',async()=>{const f=await fixture();try{for(const input of [{mode:'friend',training:true,lessonId:'L01'},{mode:'bot',lessonId:'L01'},{mode:'bot',training:true,lessonId:'L99'},{mode:'bot',training:true,lessonId:'L01',practiceScenario:'SC01'}])assert.equal((await f.api('/api/rooms',input)).status,400);const fixed=await f.api('/api/rooms',{mode:'bot',training:true,lessonId:'L01',loadout:{offers:[],baseDeck:[],primaryId:'invalid'}});assert.equal(fixed.status,201);assert.equal(fixed.body.view.players[0].offerZone.length,3);const normal=(await f.api('/api/rooms',{mode:'bot',training:true,skipSetup:true})).body;assert.equal(normal.room.tutorial,undefined);assert.equal(normal.view.phase,'playing');if(normal.view.activePlayerId==='p1')assert.ok(normal.view.legalActions.some((c:any)=>c.type==='END_TURN'));else assert.deepEqual(normal.view.legalActions,[]);}finally{await f.close();}});
+
+test('tutorial progress and deterministic mentor actions survive service restart and cannot skip targets',async()=>{const f=await fixture();try{let room=(await f.api('/api/rooms',{mode:'bot',training:true,lessonId:'L02'})).body;const path=`/api/rooms/${room.room.id}`;const wrong={...room.room.tutorial.allowedCommands[0],targetId:room.view.players[1].board.find((u:any)=>u.definitionId==='N01').id};const rejected=(await f.api(path+'/command',command(room,wrong))).body;assert.equal(rejected.errorCode,'TUTORIAL_STEP');assert.equal(rejected.view.version,0);room=(await f.api(path+'/command',command(room,room.room.tutorial.allowedCommands[0]))).body;await f.restart();const resumed=(await f.api(path)).body;assert.equal(resumed.room.tutorial.stepIndex,1);assert.equal(resumed.view.version,room.view.version);assert.deepEqual(resumed.room.tutorial.allowedCommands,room.room.tutorial.allowedCommands);assert.equal(resumed.room.deadline,null);const next=(await f.api(path+'/command',command(resumed,resumed.room.tutorial.allowedCommands[0]))).body;assert.equal(next.ok,true);assert.equal(next.room.tutorial.stepIndex,2);}finally{await f.close();}});

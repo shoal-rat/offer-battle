@@ -1,0 +1,46 @@
+test_all_110_ordered_loadouts (test_education_reference.EducationTests.test_all_110_ordered_loadouts) ... ok
+test_c9_selection_order (test_education_reference.EducationTests.test_c9_selection_order) ... ok
+test_cost_floor_and_legal_stacks (test_education_reference.EducationTests.test_cost_floor_and_legal_stacks) ... ok
+test_deterministic_same_input (test_education_reference.EducationTests.test_deterministic_same_input) ... ok
+test_double_jlu_total_buff (test_education_reference.EducationTests.test_double_jlu_total_buff) ... ok
+test_every_primary_handler (test_education_reference.EducationTests.test_every_primary_handler) ... ok
+test_every_secondary_handler (test_education_reference.EducationTests.test_every_secondary_handler) ... ok
+test_hand_rotation_order_and_no_card_advantage (test_education_reference.EducationTests.test_hand_rotation_order_and_no_card_advantage) ... ok
+test_insufficient_time_is_atomic (test_education_reference.EducationTests.test_insufficient_time_is_atomic) ... ok
+test_jlu_buff_bounce_clears_keeps_spent_and_age (test_education_reference.EducationTests.test_jlu_buff_bounce_clears_keeps_spent_and_age) ... ok
+test_jlu_post_ultimate_meal_only (test_education_reference.EducationTests.test_jlu_post_ultimate_meal_only) ... ok
+test_jlu_preparation_at_full_mind (test_education_reference.EducationTests.test_jlu_preparation_at_full_mind) ... ok
+test_jlu_ready_requires_offer (test_education_reference.EducationTests.test_jlu_ready_requires_offer) ... ok
+test_jlu_two_preparations (test_education_reference.EducationTests.test_jlu_two_preparations) ... ok
+test_jlu_ultimate_exact_stats_damage_age_attack (test_education_reference.EducationTests.test_jlu_ultimate_exact_stats_damage_age_attack) ... ok
+test_overseas_return_rejects_full_hand (test_education_reference.EducationTests.test_overseas_return_rejects_full_hand) ... ok
+test_overseas_return_ticket (test_education_reference.EducationTests.test_overseas_return_ticket) ... ok
+test_overseas_ticket_expires_next_owner_end (test_education_reference.EducationTests.test_overseas_ticket_expires_next_owner_end) ... ok
+test_primary_c9_rejects_existing_coupon (test_education_reference.EducationTests.test_primary_c9_rejects_existing_coupon) ... ok
+test_project_token_rush (test_education_reference.EducationTests.test_project_token_rush) ... ok
+test_public_view_omits_opponent_hand_and_decks (test_education_reference.EducationTests.test_public_view_omits_opponent_hand_and_decks) ... ok
+test_rank_boundaries (test_education_reference.EducationTests.test_rank_boundaries) ... ok
+test_rank_rejects_unknown_and_boolean (test_education_reference.EducationTests.test_rank_rejects_unknown_and_boolean) ... ok
+test_referral_upgrade_not_sum (test_education_reference.EducationTests.test_referral_upgrade_not_sum) ... ok
+test_rotation_rejects_empty_deck_and_offer (test_education_reference.EducationTests.test_rotation_rejects_empty_deck_and_offer) ... ok
+test_s00_heals_before_fatigue (test_education_reference.EducationTests.test_s00_heals_before_fatigue) ... ok
+test_same_school_uses_distinct_skills (test_education_reference.EducationTests.test_same_school_uses_distinct_skills) ... ok
+test_secondary_damage_retires_offer (test_education_reference.EducationTests.test_secondary_damage_retires_offer) ... ok
+test_secondary_draw_fatigue_and_stop_on_lethal (test_education_reference.EducationTests.test_secondary_draw_fatigue_and_stop_on_lethal) ... ok
+test_secondary_draw_overflow (test_education_reference.EducationTests.test_secondary_draw_overflow) ... ok
+test_secondary_jlu_does_not_create_primary (test_education_reference.EducationTests.test_secondary_jlu_does_not_create_primary) ... ok
+test_secondary_locked_round_three (test_education_reference.EducationTests.test_secondary_locked_round_three) ... ok
+test_secondary_never_refreshes (test_education_reference.EducationTests.test_secondary_never_refreshes) ... ok
+test_secondary_summon_board_full (test_education_reference.EducationTests.test_secondary_summon_board_full) ... ok
+test_secondary_two_targets_distinct (test_education_reference.EducationTests.test_secondary_two_targets_distinct) ... ok
+test_secondary_unlocked_round_four (test_education_reference.EducationTests.test_secondary_unlocked_round_four) ... ok
+test_shared_primary_then_secondary (test_education_reference.EducationTests.test_shared_primary_then_secondary) ... ok
+test_shared_secondary_then_primary (test_education_reference.EducationTests.test_shared_secondary_then_primary) ... ok
+test_support_upgrade (test_education_reference.EducationTests.test_support_upgrade) ... ok
+test_support_upgrade_rejects_offer (test_education_reference.EducationTests.test_support_upgrade_rejects_offer) ... ok
+test_tax_uses_largest_increase (test_education_reference.EducationTests.test_tax_uses_largest_increase) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 0.003s
+
+OK

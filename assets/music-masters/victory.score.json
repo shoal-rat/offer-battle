@@ -1,0 +1,487 @@
+{
+  "id": "victory",
+  "title": "Offer Accepted",
+  "bpm": 108,
+  "bars": 4,
+  "key": "D major",
+  "loop": false,
+  "chords": [
+    [
+      38,
+      45,
+      50,
+      54
+    ],
+    [
+      43,
+      50,
+      54,
+      59
+    ],
+    [
+      45,
+      52,
+      57,
+      61
+    ],
+    [
+      38,
+      45,
+      50,
+      54
+    ]
+  ],
+  "melody": [
+    74,
+    78,
+    81,
+    86,
+    85,
+    81,
+    78,
+    86
+  ],
+  "mood": "warm brass, celesta, rising fanfare",
+  "events": [
+    {
+      "note": 45,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 50,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 54,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 0,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.29,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 2,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 0.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 62,
+      "beat": 1.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 2.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 66,
+      "beat": 3.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 0,
+      "duration": 1.3,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 86,
+      "beat": 0,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 78,
+      "beat": 2.5,
+      "duration": 1.1,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 90,
+      "beat": 2.5,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 50,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 54,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 59,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 43,
+      "beat": 4,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.29,
+      "pan": -0.06
+    },
+    {
+      "note": 55,
+      "beat": 6,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 55,
+      "beat": 4.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 66,
+      "beat": 5.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 62,
+      "beat": 6.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 71,
+      "beat": 7.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 4,
+      "duration": 1.3,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 93,
+      "beat": 4,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 86,
+      "beat": 6.5,
+      "duration": 1.1,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 98,
+      "beat": 6.5,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 52,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 57,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 61,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 45,
+      "beat": 8,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.29,
+      "pan": -0.06
+    },
+    {
+      "note": 57,
+      "beat": 10,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 57,
+      "beat": 8.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 9.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 64,
+      "beat": 10.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 73,
+      "beat": 11.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 85,
+      "beat": 8,
+      "duration": 1.3,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 97,
+      "beat": 8,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 81,
+      "beat": 10.5,
+      "duration": 1.1,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 93,
+      "beat": 10.5,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 45,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 50,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 54,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 12,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.29,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 14,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 12.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 62,
+      "beat": 13.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 14.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 66,
+      "beat": 15.0,
+      "duration": 0.65,
+      "instrument": "piano",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 78,
+      "beat": 12,
+      "duration": 1.3,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 90,
+      "beat": 12,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 86,
+      "beat": 14.5,
+      "duration": 1.1,
+      "instrument": "brass",
+      "velocity": 0.49,
+      "pan": 0.13
+    },
+    {
+      "note": 98,
+      "beat": 14.5,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 57,
+      "beat": 12,
+      "duration": 3.7,
+      "instrument": "brass",
+      "velocity": 0.28,
+      "pan": 0
+    },
+    {
+      "note": 62,
+      "beat": 12,
+      "duration": 3.7,
+      "instrument": "brass",
+      "velocity": 0.28,
+      "pan": 0
+    },
+    {
+      "note": 66,
+      "beat": 12,
+      "duration": 3.7,
+      "instrument": "brass",
+      "velocity": 0.28,
+      "pan": 0
+    }
+  ]
+}

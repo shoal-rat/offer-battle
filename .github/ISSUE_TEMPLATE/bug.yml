@@ -1,0 +1,20 @@
+name: 游戏问题
+description: 报告无法出牌、显示异常、联机或回放问题
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: 如何复现
+      description: 说明浏览器、玩法入口、回合和操作顺序。请勿上传账号密码、恢复码或真实薪酬截图。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期与实际表现
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 游戏版本与浏览器

@@ -1,0 +1,21 @@
+services:
+  game:
+    build: .
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 20s
+    # One process owns the atomic JSON store. Do not scale this service to replicas.
+    ports:
+      - "${SERVER_BIND:-127.0.0.1}:${PORT:-5173}:5173"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 5173
+      DATA_DIR: /var/lib/offer-battle
+    volumes:
+      - game-data:/var/lib/offer-battle
+volumes:
+  game-data:

@@ -1,0 +1,27 @@
+node_modules
+dist/
+dist-pages/
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env.*
+!.env.example
+coverage/
+test-results/
+/data/
+.env
+work/
+evidence/playwright-report/
+evidence/test-results/
+.DS_Store
+dist-*/
+
+# Publish curated evidence only; raw browser reports may contain local paths or account traces.
+evidence/*
+!evidence/release-validation.json
+!evidence/assets-final.txt
+!evidence/simulation.json
+!evidence/sfx-quality.json
+!evidence/audio/
+evidence/audio/*
+!evidence/audio/music-v2-quality.json

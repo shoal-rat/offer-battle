@@ -1,0 +1,4585 @@
+{
+  "schema_version": "1.0.0",
+  "rules_version": "2.0.0",
+  "purpose": "production_specification",
+  "asset_slots": 190,
+  "produced_binary_assets_in_this_design_package": 0,
+  "runtime_reference": "asset_id; generated runtime map chooses existing preferred or fallback path",
+  "master_character_size": [
+    1024,
+    1536
+  ],
+  "card_ratio": "3:4",
+  "primary_secondary_composite_count": 110,
+  "assets": [
+    {
+      "id": "hero_h01_full",
+      "label": "清北主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h01/full.png",
+      "fallback_path": "assets/heroes/h01/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。深色短发，发梢整齐。奶白衬衫与深红短外套。道具：细框眼镜、写满批注的小册。表情：轻轻抬眼，像已经看过答案。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h01_portrait",
+      "label": "清北头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h01/portrait.webp",
+      "fallback_path": "assets/heroes/h01/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h01_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h02_full",
+      "label": "C9主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h02/full.png",
+      "fallback_path": "assets/heroes/h02/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。柔软黑发，中分。靛蓝学院外套。道具：便条、文件夹、小型毕业帽别针。表情：从容微笑，一只手递便条。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h02_portrait",
+      "label": "C9头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h02/portrait.webp",
+      "fallback_path": "assets/heroes/h02/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h02_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h03_full",
+      "label": "985主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h03/full.png",
+      "fallback_path": "assets/heroes/h03/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。深棕高马尾或短碎发。橙棕连帽外套。道具：咖啡、打卡本、歪掉的领带。表情：熬夜后仍然兴奋。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h03_portrait",
+      "label": "985头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h03/portrait.webp",
+      "fallback_path": "assets/heroes/h03/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h03_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h04_full",
+      "label": "211主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h04/full.png",
+      "fallback_path": "assets/heroes/h04/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。栗色短发，小翘毛。青绿色休闲西装。道具：手机上的校友消息、工牌。表情：一脸刚打听到消息的得意。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h04_portrait",
+      "label": "211头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h04/portrait.webp",
+      "fallback_path": "assets/heroes/h04/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h04_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h05_full",
+      "label": "一本主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h05/full.png",
+      "fallback_path": "assets/heroes/h05/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。柔顺齐肩发或整齐短发。米色针织背心与衬衫。道具：便当袋、备忘录。表情：淡定，嘴角微扬。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h05_portrait",
+      "label": "一本头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h05/portrait.webp",
+      "fallback_path": "assets/heroes/h05/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h05_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h06_full",
+      "label": "二本／双非主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h06/full.png",
+      "fallback_path": "assets/heroes/h06/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。利落黑色短发。牛仔色工作外套。道具：作品文件夹、袖口铅笔。表情：向前一步，准备直接动手。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h06_portrait",
+      "label": "二本／双非头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h06/portrait.webp",
+      "fallback_path": "assets/heroes/h06/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h06_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h07_full",
+      "label": "海外 Top 50主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h07/full.png",
+      "fallback_path": "assets/heroes/h07/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。浅棕波浪短发。海军蓝毕业披肩与白色通勤装。道具：登机箱、护照夹、环形行程图。表情：像在安排下一趟行程。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h07_portrait",
+      "label": "海外 Top 50头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h07/portrait.webp",
+      "fallback_path": "assets/heroes/h07/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h07_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h08_full",
+      "label": "海外 Top 100主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h08/full.png",
+      "fallback_path": "assets/heroes/h08/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。茶色卷发，发卡。湖蓝项目外套。道具：作品集、折叠展示板。表情：笑得自信，正在讲项目。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h08_portrait",
+      "label": "海外 Top 100头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h08/portrait.webp",
+      "fallback_path": "assets/heroes/h08/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h08_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h09_full",
+      "label": "海外 100+主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h09/full.png",
+      "fallback_path": "assets/heroes/h09/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。暖棕蓬松短发。砖红通勤卫衣。道具：贴满旅行贴纸的电脑包。表情：耸肩微笑，随时换招。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h09_portrait",
+      "label": "海外 100+头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h09/portrait.webp",
+      "fallback_path": "assets/heroes/h09/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h09_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "hero_h10_full",
+      "label": "校友流派主角母版",
+      "kind": "character",
+      "preferred_path": "assets/heroes/h10/full.png",
+      "fallback_path": "assets/heroes/h10/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "统一秋招二次元世界观，成年职场小人，约2.8头身，全身独立人物。浅栗色蓬松短发，头顶一根翘毛。奶油白短羽绒外套、深蓝内搭、长围巾。道具：小圆毕业帽、两枚签到章、写字留白的牌匾。表情：脸软，眼神嚣张，笑得像全校都站在身后。可爱、机灵、稍显欠揍。赛璐璐阴影，干净轮廓，透明背景，预留头顶与脚下边距。文字、Logo、数字由界面后期叠加。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "hero_h10_portrait",
+      "label": "校友流派头像",
+      "kind": "portrait",
+      "preferred_path": "assets/heroes/h10/portrait.webp",
+      "fallback_path": "assets/heroes/h10/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "hero_h10_full"
+      ],
+      "prompt": "从对应母版裁切头肩，保留发型和表情。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "safe_face_rect": [
+        0.18,
+        0.05,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "offer_t00_full",
+      "label": "普通同事母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t00/full.png",
+      "fallback_path": "assets/offers/t00/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，衬衫、基础工牌、电脑包。人物气质对应普通同事。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t00_portrait",
+      "label": "普通同事头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t00/portrait.webp",
+      "fallback_path": "assets/offers/t00/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t00_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t01_full",
+      "label": "一线卷王母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t01/full.png",
+      "fallback_path": "assets/offers/t01/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，连帽衫、咖啡、终端投影。人物气质对应一线卷王。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t01_portrait",
+      "label": "一线卷王头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t01/portrait.webp",
+      "fallback_path": "assets/offers/t01/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t01_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t02_full",
+      "label": "稳定守岗母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t02/full.png",
+      "fallback_path": "assets/offers/t02/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，针织外套、文件夹、保温杯。人物气质对应稳定守岗。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t02_portrait",
+      "label": "稳定守岗头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t02/portrait.webp",
+      "fallback_path": "assets/offers/t02/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t02_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t03_full",
+      "label": "流程大师母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t03/full.png",
+      "fallback_path": "assets/offers/t03/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，西装、平板、便利贴。人物气质对应流程大师。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t03_portrait",
+      "label": "流程大师头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t03/portrait.webp",
+      "fallback_path": "assets/offers/t03/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t03_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t04_full",
+      "label": "硬件老法师母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t04/full.png",
+      "fallback_path": "assets/offers/t04/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，工装、量具、卷起袖口。人物气质对应硬件老法师。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t04_portrait",
+      "label": "硬件老法师头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t04/portrait.webp",
+      "fallback_path": "assets/offers/t04/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t04_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t05_full",
+      "label": "项目经理母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t05/full.png",
+      "fallback_path": "assets/offers/t05/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，文件夹、袖珍排期板、领带。人物气质对应项目经理。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t05_portrait",
+      "label": "项目经理头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t05/portrait.webp",
+      "fallback_path": "assets/offers/t05/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t05_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t06_full",
+      "label": "销售冠军母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t06/full.png",
+      "fallback_path": "assets/offers/t06/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，商务外套、手机、合同夹。人物气质对应销售冠军。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t06_portrait",
+      "label": "销售冠军头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t06/portrait.webp",
+      "fallback_path": "assets/offers/t06/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t06_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t07_full",
+      "label": "测试拆台王母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t07/full.png",
+      "fallback_path": "assets/offers/t07/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，放大镜、测试清单、故障贴纸。人物气质对应测试拆台王。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t07_portrait",
+      "label": "测试拆台王头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t07/portrait.webp",
+      "fallback_path": "assets/offers/t07/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t07_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t08_full",
+      "label": "人事终面官母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t08/full.png",
+      "fallback_path": "assets/offers/t08/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，衬衫、简历夹、印章。人物气质对应人事终面官。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t08_portrait",
+      "label": "人事终面官头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t08/portrait.webp",
+      "fallback_path": "assets/offers/t08/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t08_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t09_full",
+      "label": "咨询方案师母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t09/full.png",
+      "fallback_path": "assets/offers/t09/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，汇报板、文件袋、眼镜。人物气质对应咨询方案师。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t09_portrait",
+      "label": "咨询方案师头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t09/portrait.webp",
+      "fallback_path": "assets/offers/t09/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t09_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t10_full",
+      "label": "创业合伙人母版",
+      "kind": "character",
+      "preferred_path": "assets/offers/t10/full.png",
+      "fallback_path": "assets/offers/t10/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，2.8头身，卫衣、透明筹码、饼状投影。人物气质对应创业合伙人。眼神机灵、表情带一点得意，统一赛璐璐画法。透明背景，完整轮廓，画面不嵌入卡框与技能文字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "offer_t10_portrait",
+      "label": "创业合伙人头像",
+      "kind": "portrait",
+      "preferred_path": "assets/offers/t10/portrait.webp",
+      "fallback_path": "assets/offers/t10/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t10_full"
+      ],
+      "prompt": "保持母版角色一致，裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e01_full",
+      "label": "方盒科技专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e01/full.png",
+      "fallback_path": "assets/examples/e01/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t01_full"
+      ],
+      "prompt": "沿用t01职业母版的脸型比例与画风，为示例公司方盒科技、岗位算法工程师制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e01_portrait",
+      "label": "方盒科技头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e01/portrait.webp",
+      "fallback_path": "assets/examples/e01/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e01_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e02_full",
+      "label": "城建服务中心专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e02/full.png",
+      "fallback_path": "assets/examples/e02/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t02_full"
+      ],
+      "prompt": "沿用t02职业母版的脸型比例与画风，为示例公司城建服务中心、岗位综合职能岗制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e02_portrait",
+      "label": "城建服务中心头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e02/portrait.webp",
+      "fallback_path": "assets/examples/e02/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e02_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e03_full",
+      "label": "蓝帆产品部专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e03/full.png",
+      "fallback_path": "assets/examples/e03/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t03_full"
+      ],
+      "prompt": "沿用t03职业母版的脸型比例与画风，为示例公司蓝帆产品部、岗位产品经理制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e03_portrait",
+      "label": "蓝帆产品部头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e03/portrait.webp",
+      "fallback_path": "assets/examples/e03/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e03_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e04_full",
+      "label": "小锤制造专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e04/full.png",
+      "fallback_path": "assets/examples/e04/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t04_full"
+      ],
+      "prompt": "沿用t04职业母版的脸型比例与画风，为示例公司小锤制造、岗位研发工程师制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e04_portrait",
+      "label": "小锤制造头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e04/portrait.webp",
+      "fallback_path": "assets/examples/e04/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e04_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e05_full",
+      "label": "新饼科技专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e05/full.png",
+      "fallback_path": "assets/examples/e05/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t10_full"
+      ],
+      "prompt": "沿用t10职业母版的脸型比例与画风，为示例公司新饼科技、岗位研发合伙岗制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e05_portrait",
+      "label": "新饼科技头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e05/portrait.webp",
+      "fallback_path": "assets/examples/e05/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e05_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e06_full",
+      "label": "电话金融专属示例",
+      "kind": "character",
+      "preferred_path": "assets/examples/e06/full.png",
+      "fallback_path": "assets/examples/e06/full.svg",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [
+        "offer_t06_full"
+      ],
+      "prompt": "沿用t06职业母版的脸型比例与画风，为示例公司电话金融、岗位机构销售制作专属服装配色和工牌。统一成年可爱二次元小人，保持独特人物而非整张卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "example_e06_portrait",
+      "label": "电话金融头像",
+      "kind": "portrait",
+      "preferred_path": "assets/examples/e06/portrait.webp",
+      "fallback_path": "assets/examples/e06/portrait.svg",
+      "dimensions": [
+        384,
+        384
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "example_e06_full"
+      ],
+      "prompt": "从对应示例裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n01_full",
+      "label": "实习搭子",
+      "kind": "character",
+      "preferred_path": "assets/support/n01/full.png",
+      "fallback_path": "assets/support/n01/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是实习搭子，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n01_portrait",
+      "label": "实习搭子头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n01/portrait.webp",
+      "fallback_path": "assets/support/n01/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n01_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n02_full",
+      "label": "面经收集员",
+      "kind": "character",
+      "preferred_path": "assets/support/n02/full.png",
+      "fallback_path": "assets/support/n02/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是面经收集员，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n02_portrait",
+      "label": "面经收集员头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n02/portrait.webp",
+      "fallback_path": "assets/support/n02/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n02_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n03_full",
+      "label": "校招生鼠鼠",
+      "kind": "character",
+      "preferred_path": "assets/support/n03/full.png",
+      "fallback_path": "assets/support/n03/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是校招生鼠鼠，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n03_portrait",
+      "label": "校招生鼠鼠头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n03/portrait.webp",
+      "fallback_path": "assets/support/n03/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n03_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n04_full",
+      "label": "内推学长",
+      "kind": "character",
+      "preferred_path": "assets/support/n04/full.png",
+      "fallback_path": "assets/support/n04/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是内推学长，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n04_portrait",
+      "label": "内推学长头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n04/portrait.webp",
+      "fallback_path": "assets/support/n04/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n04_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n05_full",
+      "label": "老员工",
+      "kind": "character",
+      "preferred_path": "assets/support/n05/full.png",
+      "fallback_path": "assets/support/n05/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是老员工，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n05_portrait",
+      "label": "老员工头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n05/portrait.webp",
+      "fallback_path": "assets/support/n05/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n05_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n06_full",
+      "label": "猎头姐姐",
+      "kind": "character",
+      "preferred_path": "assets/support/n06/full.png",
+      "fallback_path": "assets/support/n06/full.svg",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "同一世界观的成年可爱二次元小人，身份是猎头姐姐，用姿态和一个职场道具表现角色；工牌、通勤服装，干净线条，透明背景。校招生鼠鼠使用鼠鼠发夹，人形主体。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "support_n06_portrait",
+      "label": "猎头姐姐头像",
+      "kind": "portrait",
+      "preferred_path": "assets/support/n06/portrait.webp",
+      "fallback_path": "assets/support/n06/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "support_n06_full"
+      ],
+      "prompt": "从母版裁切头肩。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k01_full",
+      "label": "实习生",
+      "kind": "character",
+      "preferred_path": "assets/tokens/k01/full.png",
+      "fallback_path": "assets/tokens/k01/full.svg",
+      "dimensions": [
+        512,
+        768
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，实习生，休闲通勤装，抱着文件夹；K03带项目小工具。透明背景，和学校主角统一画风。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k01_portrait",
+      "label": "实习生头像",
+      "kind": "portrait",
+      "preferred_path": "assets/tokens/k01/portrait.webp",
+      "fallback_path": "assets/tokens/k01/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "token_k01_full"
+      ],
+      "prompt": "母版裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k02_full",
+      "label": "临时同事",
+      "kind": "character",
+      "preferred_path": "assets/tokens/k02/full.png",
+      "fallback_path": "assets/tokens/k02/full.svg",
+      "dimensions": [
+        512,
+        768
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，临时同事，休闲通勤装，抱着文件夹；K03带项目小工具。透明背景，和学校主角统一画风。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k02_portrait",
+      "label": "临时同事头像",
+      "kind": "portrait",
+      "preferred_path": "assets/tokens/k02/portrait.webp",
+      "fallback_path": "assets/tokens/k02/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "token_k02_full"
+      ],
+      "prompt": "母版裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k03_full",
+      "label": "项目搭子",
+      "kind": "character",
+      "preferred_path": "assets/tokens/k03/full.png",
+      "fallback_path": "assets/tokens/k03/full.svg",
+      "dimensions": [
+        512,
+        768
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "成年可爱二次元职场小人，项目搭子，休闲通勤装，抱着文件夹；K03带项目小工具。透明背景，和学校主角统一画风。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "token_k03_portrait",
+      "label": "项目搭子头像",
+      "kind": "portrait",
+      "preferred_path": "assets/tokens/k03/portrait.webp",
+      "fallback_path": "assets/tokens/k03/portrait.svg",
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "derived_crop",
+      "priority": "P0",
+      "dependencies": [
+        "token_k03_full"
+      ],
+      "prompt": "母版裁切。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n07_illustration",
+      "label": "追问细节卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n07.png",
+      "fallback_path": "assets/cards/n07.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《追问细节》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：使一个敌方角色失去2点底气。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n08_illustration",
+      "label": "今晚不卷卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n08.png",
+      "fallback_path": "assets/cards/n08.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《今晚不卷》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：恢复自己3点心态。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n09_illustration",
+      "label": "面经复盘卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n09.png",
+      "fallback_path": "assets/cards/n09.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《面经复盘》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：抽2张牌。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n10_illustration",
+      "label": "打听工时卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n10.png",
+      "fallback_path": "assets/cards/n10.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《打听工时》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：使一个敌方角色失去3点底气；目标有一线标签时，改为失去4点。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n11_illustration",
+      "label": "补充材料卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n11.png",
+      "fallback_path": "assets/cards/n11.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《补充材料》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：一个敌方角色在其拥有者下个回合无法主动开怼。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n12_illustration",
+      "label": "流程重走卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n12.png",
+      "fallback_path": "assets/cards/n12.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《流程重走》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：收回一个敌方角色。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n13_illustration",
+      "label": "跳槽卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n13.png",
+      "fallback_path": "assets/cards/n13.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《跳槽》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：收回一张自己的Offer，然后抽1张牌。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n14_illustration",
+      "label": "别画饼了卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n14.png",
+      "fallback_path": "assets/cards/n14.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《别画饼了》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：一个敌方角色排面-2，最低0，持续至其拥有者下个回合结束；抽1张牌。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n15_illustration",
+      "label": "临时加班卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n15.png",
+      "fallback_path": "assets/cards/n15.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《临时加班》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：一个友方角色本回合排面+3；自己失去2点心态。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n16_illustration",
+      "label": "做出成果卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n16.png",
+      "fallback_path": "assets/cards/n16.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《做出成果》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：一个友方角色排面+2，底气上限与当前底气各+2。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n17_illustration",
+      "label": "部门聚餐卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n17.png",
+      "fallback_path": "assets/cards/n17.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《部门聚餐》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：所有友方角色各恢复2点底气，然后恢复自己2点心态。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n18_illustration",
+      "label": "群面拷打卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n18.png",
+      "fallback_path": "assets/cards/n18.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《群面拷打》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：所有敌方角色同时失去2点底气。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n19_illustration",
+      "label": "预算砍半卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n19.png",
+      "fallback_path": "assets/cards/n19.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《预算砍半》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：场上所有角色同时失去3点底气。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n20_illustration",
+      "label": "组织优化卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n20.png",
+      "fallback_path": "assets/cards/n20.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《组织优化》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：让一个当前底气不超过3的敌方角色退场。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n21_illustration",
+      "label": "终面摊牌卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n21.png",
+      "fallback_path": "assets/cards/n21.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《终面摊牌》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：使一个敌方角色失去5点底气；若其为原始耗时至少5小时的Offer，随后恢复自己2点心态。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n22_illustration",
+      "label": "反问环节卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n22.png",
+      "fallback_path": "assets/cards/n22.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《反问环节》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：对手失去3点心态。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n23_illustration",
+      "label": "截图发群里卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n23.png",
+      "fallback_path": "assets/cards/n23.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《截图发群里》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：对手角色主动开怼你的主角并造成心态伤害后，若对局仍在继续，对手失去3点心态。触发后消耗。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_n24_illustration",
+      "label": "这届同学真卷卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/n24.png",
+      "fallback_path": "assets/cards/n24.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《这届同学真卷》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：召唤两个2排面、3底气的临时同事。需要两个空位。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f01_illustration",
+      "label": "三十五岁卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f01.png",
+      "fallback_path": "assets/cards/f01.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《三十五岁》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：给一个35岁的敌方一线Offer挂上优化通知。在你的下个回合开始时，若它仍是同一次上桌的35岁一线Offer，让它退场。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f02_illustration",
+      "label": "股权重估卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f02.png",
+      "fallback_path": "assets/cards/f02.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《股权重估》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：对一个敌方Offer：先清除其期权条款提供的排面加成，使该条款本次上桌失效；随后使其失去2点底气。没有期权的目标只受到伤害。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f03_illustration",
+      "label": "转管理卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f03.png",
+      "fallback_path": "assets/cards/f03.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《转管理》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：一张友方Offer失去一线标签，排面-2，最低0；随后抽1张牌。转管理状态持续至收回或退场。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f04_illustration",
+      "label": "合同写着呢卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f04.png",
+      "fallback_path": "assets/cards/f04.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《合同写着呢》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：对手下一张以你的单个Offer为目标的拆台牌，其全部效果取消。对手已付时间不退还。触发后消耗。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f05_illustration",
+      "label": "换个话题卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f05.png",
+      "fallback_path": "assets/cards/f05.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《换个话题》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：选择聊年包、聊生活或聊以后，立即成为公共话题，持续至本轮结束。后使用的话题覆盖先前话题。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "card_f06_illustration",
+      "label": "先问工时卡图",
+      "kind": "action_art",
+      "preferred_path": "assets/cards/f06.png",
+      "fallback_path": "assets/cards/f06.svg",
+      "dimensions": [
+        768,
+        576
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "《先问工时》的二次元办公室讽刺插画，小道具构成视觉主角。用日历、合同、聊天气泡、屏幕或文件表达牌名。牌面效果是：对手的角色下一次主动开怼你的主角前，该角色本回合排面-3，最低0。此次开怼继续结算。触发后消耗。。最多出现一名可爱职场小人的半身，构图清楚，背景简洁，不绘制可读文字或数字。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h01_badge",
+      "label": "清北主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h01/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应清北。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h02_badge",
+      "label": "C9主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h02/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应C9。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h03_badge",
+      "label": "985主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h03/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应985。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h04_badge",
+      "label": "211主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h04/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应211。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h05_badge",
+      "label": "一本主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h05/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应一本。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h06_badge",
+      "label": "二本／双非主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h06/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应二本／双非。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h07_badge",
+      "label": "海外 Top 50主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h07/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应海外 Top 50。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h08_badge",
+      "label": "海外 Top 100主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h08/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应海外 Top 100。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h09_badge",
+      "label": "海外 100+主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h09/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应海外 100+。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "school_h10_badge",
+      "label": "校友流派主学历章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/h10/badge.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "制作原创几何学历章，对应校友流派。文字由前端叠加。精致边线、轻纸张阴影、透明背景。校友流派使用夸张毕业帽和双章槽。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s00_seal",
+      "label": "直接就业进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s00/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应直接就业，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s00_accessory",
+      "label": "直接就业配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s00/accessory.png",
+      "fallback_path": "assets/education/s00/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题直接就业，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s01_seal",
+      "label": "清北进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s01/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应清北，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s01_accessory",
+      "label": "清北配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s01/accessory.png",
+      "fallback_path": "assets/education/s01/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题清北，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s02_seal",
+      "label": "C9进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s02/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应C9，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s02_accessory",
+      "label": "C9配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s02/accessory.png",
+      "fallback_path": "assets/education/s02/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题C9，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s03_seal",
+      "label": "985进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s03/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应985，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s03_accessory",
+      "label": "985配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s03/accessory.png",
+      "fallback_path": "assets/education/s03/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题985，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s04_seal",
+      "label": "211进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s04/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应211，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s04_accessory",
+      "label": "211配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s04/accessory.png",
+      "fallback_path": "assets/education/s04/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题211，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s05_seal",
+      "label": "一本进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s05/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应一本，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s05_accessory",
+      "label": "一本配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s05/accessory.png",
+      "fallback_path": "assets/education/s05/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题一本，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s06_seal",
+      "label": "二本／双非进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s06/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应二本／双非，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s06_accessory",
+      "label": "二本／双非配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s06/accessory.png",
+      "fallback_path": "assets/education/s06/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题二本／双非，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s07_seal",
+      "label": "海外 Top 50进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s07/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应海外 Top 50，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s07_accessory",
+      "label": "海外 Top 50配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s07/accessory.png",
+      "fallback_path": "assets/education/s07/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题海外 Top 50，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s08_seal",
+      "label": "海外 Top 100进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s08/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应海外 Top 100，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s08_accessory",
+      "label": "海外 Top 100配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s08/accessory.png",
+      "fallback_path": "assets/education/s08/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题海外 Top 100，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s09_seal",
+      "label": "海外 100+进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s09/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应海外 100+，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s09_accessory",
+      "label": "海外 100+配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s09/accessory.png",
+      "fallback_path": "assets/education/s09/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题海外 100+，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "education_s10_seal",
+      "label": "校友流派进修章",
+      "kind": "vector_ui",
+      "preferred_path": "assets/education/s10/seal.svg",
+      "fallback_path": null,
+      "dimensions": [
+        256,
+        256
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创进修印章，对应校友流派，与主学历章有明显形状区别。解锁、可用、已用三个状态使用CSS处理。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "education_s10_accessory",
+      "label": "校友流派配饰",
+      "kind": "accessory",
+      "preferred_path": "assets/education/s10/accessory.png",
+      "fallback_path": "assets/education/s10/accessory.svg",
+      "dimensions": [
+        512,
+        512
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "给二次元职场主角叠加的透明配饰，主题校友流派，包括一枚胸针与小型披肩局部。人物本体留空。锚点为主角右胸和肩线。校友流派使用第二枚小毕业帽与认证章。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "anchors": {
+        "chest": [
+          0.64,
+          0.4
+        ],
+        "shoulder": [
+          0.52,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "icon_mind",
+      "label": "mind图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/mind.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：mind。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_time",
+      "label": "time图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/time.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：time。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_attack",
+      "label": "attack图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/attack.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：attack。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_health",
+      "label": "health图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/health.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：health。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_age",
+      "label": "age图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/age.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：age。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_guard",
+      "label": "guard图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/guard.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：guard。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_frontline",
+      "label": "frontline图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/frontline.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：frontline。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_life",
+      "label": "life图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/life.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：life。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_salary",
+      "label": "salary图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/salary.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：salary。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_future",
+      "label": "future图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/future.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：future。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_referral",
+      "label": "referral图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/referral.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：referral。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_return_ticket",
+      "label": "return_ticket图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/return_ticket.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：return_ticket。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_optimization",
+      "label": "optimization图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/optimization.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：optimization。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_retort",
+      "label": "retort图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/retort.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：retort。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_primary_skill",
+      "label": "primary_skill图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/primary_skill.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：primary_skill。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_secondary_skill",
+      "label": "secondary_skill图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/secondary_skill.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：secondary_skill。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_jlu_stamp",
+      "label": "jlu_stamp图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/jlu_stamp.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：jlu_stamp。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "icon_jlu_ready",
+      "label": "jlu_ready图标",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/icons/jlu_ready.svg",
+      "fallback_path": null,
+      "dimensions": [
+        96,
+        96
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "生活化界面图标：jlu_ready。时间使用时钟，心态使用表情，排面使用对话冲击线，底气使用胸牌。扁平双色、清晰轮廓。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_offer",
+      "label": "offer卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/offer.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，offer类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_support",
+      "label": "support卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/support.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，support类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_action",
+      "label": "action卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/action.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，action类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_retort",
+      "label": "retort卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/retort.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，retort类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_back_default",
+      "label": "back_default卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/back_default.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，back_default类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "frame_back_jlu",
+      "label": "back_jlu卡框",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/frames/back_jlu.svg",
+      "fallback_path": null,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "现代二次元卡牌界面框架，back_jlu类型。工牌、圆角纸张、便签、印章视觉。中心透空，预留顶部信息和底部规则框。数值文字由UI绘制。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "background_home",
+      "label": "home背景",
+      "kind": "background",
+      "preferred_path": "assets/backgrounds/home.webp",
+      "fallback_path": "assets/backgrounds/home.svg",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "二次元办公室秋招主题home背景，纸张、文件袋、轻木色桌面、散落便利贴，中央保留低对比空区。温暖柔和、少细节，适合叠加清晰卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "background_table",
+      "label": "table背景",
+      "kind": "background",
+      "preferred_path": "assets/backgrounds/table.webp",
+      "fallback_path": "assets/backgrounds/table.svg",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "production_method": "generated_or_local_svg",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "二次元办公室秋招主题table背景，纸张、文件袋、轻木色桌面、散落便利贴，中央保留低对比空区。温暖柔和、少细节，适合叠加清晰卡片。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "topic_salary",
+      "label": "聊年包话题条",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/topics/salary.svg",
+      "fallback_path": null,
+      "dimensions": [
+        960,
+        120
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "聊年包的聊天话题条，使用工资袋、便当或日历的几何符号，中央文字留空。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "topic_life",
+      "label": "聊生活话题条",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/topics/life.svg",
+      "fallback_path": null,
+      "dimensions": [
+        960,
+        120
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "聊生活的聊天话题条，使用工资袋、便当或日历的几何符号，中央文字留空。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "topic_future",
+      "label": "聊以后话题条",
+      "kind": "vector_ui",
+      "preferred_path": "assets/ui/topics/future.svg",
+      "fallback_path": null,
+      "dimensions": [
+        960,
+        120
+      ],
+      "production_method": "vector",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "聊以后的聊天话题条，使用工资袋、便当或日历的几何符号，中央文字留空。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "vfx_deploy",
+      "label": "deploy特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/deploy.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件deploy驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 350,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_damage",
+      "label": "damage特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/damage.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件damage驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 180,
+      "reduced_motion_ms": 180,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_heal",
+      "label": "heal特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/heal.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件heal驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 300,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_draw",
+      "label": "draw特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/draw.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件draw驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 250,
+      "reduced_motion_ms": 250,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_negotiate",
+      "label": "negotiate特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/negotiate.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件negotiate驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 550,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_retort_flip",
+      "label": "retort_flip特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/retort_flip.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件retort_flip驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 450,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_age_up",
+      "label": "age_up特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/age_up.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件age_up驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 250,
+      "reduced_motion_ms": 250,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_optimization",
+      "label": "optimization特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/optimization.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件optimization驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 450,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_graduation",
+      "label": "graduation特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/graduation.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件graduation驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 650,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_jlu_collect",
+      "label": "jlu_collect特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/jlu_collect.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件jlu_collect驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 450,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "symbol",
+        "motion",
+        "fade"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_jlu_ultimate",
+      "label": "jlu_ultimate特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/jlu_ultimate.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件jlu_ultimate驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 1200,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "camera_nudge",
+        "six_decorative_alumni",
+        "large_sign",
+        "target_stat_pop",
+        "stamp_hit"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "vfx_jlu_double",
+      "label": "jlu_double特效",
+      "kind": "vfx",
+      "preferred_path": "assets/vfx/jlu_double.json",
+      "fallback_path": null,
+      "dimensions": null,
+      "production_method": "procedural_animation",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "按事件jlu_double驱动的分层特效，使用SVG/CSS/Web Animations。规则状态已经结算后播放，不能阻塞输入。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "duration_ms": 1200,
+      "reduced_motion_ms": 300,
+      "layers": [
+        "camera_nudge",
+        "six_decorative_alumni",
+        "large_sign",
+        "double_graduation_seal",
+        "target_stat_pop"
+      ],
+      "decorative_only": true
+    },
+    {
+      "id": "sfx_click",
+      "label": "click音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/click.wav",
+      "fallback_path": "assets/audio/sfx/click.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，click，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_card_pick",
+      "label": "card_pick音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/card_pick.wav",
+      "fallback_path": "assets/audio/sfx/card_pick.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，card_pick，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_deploy",
+      "label": "deploy音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/deploy.wav",
+      "fallback_path": "assets/audio/sfx/deploy.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，deploy，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_attack",
+      "label": "attack音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/attack.wav",
+      "fallback_path": "assets/audio/sfx/attack.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，attack，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_damage",
+      "label": "damage音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/damage.wav",
+      "fallback_path": "assets/audio/sfx/damage.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，damage，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_heal",
+      "label": "heal音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/heal.wav",
+      "fallback_path": "assets/audio/sfx/heal.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，heal，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_draw",
+      "label": "draw音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/draw.wav",
+      "fallback_path": "assets/audio/sfx/draw.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，draw，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_negotiate",
+      "label": "negotiate音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/negotiate.wav",
+      "fallback_path": "assets/audio/sfx/negotiate.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，negotiate，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_retort",
+      "label": "retort音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/retort.wav",
+      "fallback_path": "assets/audio/sfx/retort.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，retort，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_age_up",
+      "label": "age_up音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/age_up.wav",
+      "fallback_path": "assets/audio/sfx/age_up.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，age_up，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_optimization",
+      "label": "optimization音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/optimization.wav",
+      "fallback_path": "assets/audio/sfx/optimization.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，optimization，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_graduation",
+      "label": "graduation音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/graduation.wav",
+      "fallback_path": "assets/audio/sfx/graduation.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，graduation，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_jlu_collect",
+      "label": "jlu_collect音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/jlu_collect.wav",
+      "fallback_path": "assets/audio/sfx/jlu_collect.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，jlu_collect，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_jlu_ultimate",
+      "label": "jlu_ultimate音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/jlu_ultimate.wav",
+      "fallback_path": "assets/audio/sfx/jlu_ultimate.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，jlu_ultimate，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_win",
+      "label": "win音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/win.wav",
+      "fallback_path": "assets/audio/sfx/win.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，win，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "sfx_lose",
+      "label": "lose音效",
+      "kind": "audio",
+      "preferred_path": "assets/audio/sfx/lose.wav",
+      "fallback_path": "assets/audio/sfx/lose.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创短音效，lose，来自纸张、工牌、消息、盖章、翻页等生活声音意象。无配音，不刺耳，峰值留余量。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 1,
+      "target_duration_seconds": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "music_lobby",
+      "label": "lobby音乐",
+      "kind": "audio",
+      "preferred_path": "assets/audio/music/lobby.wav",
+      "fallback_path": "assets/audio/music/lobby.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创轻快办公室节奏，木琴、轻鼓、拨弦感，短循环无突兀首尾。战斗比大厅节奏紧凑。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 2,
+      "target_duration_seconds": [
+        20,
+        45
+      ]
+    },
+    {
+      "id": "music_battle",
+      "label": "battle音乐",
+      "kind": "audio",
+      "preferred_path": "assets/audio/music/battle.wav",
+      "fallback_path": "assets/audio/music/battle.wav",
+      "dimensions": null,
+      "production_method": "generated_or_procedural_audio",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "原创轻快办公室节奏，木琴、轻鼓、拨弦感，短循环无突兀首尾。战斗比大厅节奏紧凑。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ],
+      "sample_rate": 44100,
+      "channels": 2,
+      "target_duration_seconds": [
+        20,
+        45
+      ]
+    },
+    {
+      "id": "share_invitation",
+      "label": "invitation分享模板",
+      "kind": "layout",
+      "preferred_path": "assets/share/invitation.json",
+      "fallback_path": null,
+      "dimensions": [
+        1080,
+        1440
+      ],
+      "production_method": "html_canvas_composition",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "分享排版模板invitation，组合真实人物与事件数据，支持从前端合成输出PNG。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "share_battle_report",
+      "label": "battle_report分享模板",
+      "kind": "layout",
+      "preferred_path": "assets/share/battle_report.json",
+      "fallback_path": null,
+      "dimensions": [
+        1080,
+        1440
+      ],
+      "production_method": "html_canvas_composition",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "分享排版模板battle_report，组合真实人物与事件数据，支持从前端合成输出PNG。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    },
+    {
+      "id": "share_graduation_photo",
+      "label": "graduation_photo分享模板",
+      "kind": "layout",
+      "preferred_path": "assets/share/graduation_photo.json",
+      "fallback_path": null,
+      "dimensions": [
+        1080,
+        1440
+      ],
+      "production_method": "html_canvas_composition",
+      "priority": "P0",
+      "dependencies": [],
+      "prompt": "分享排版模板graduation_photo，组合真实人物与事件数据，支持从前端合成输出PNG。",
+      "required_for_complete_delivery": true,
+      "acceptance": [
+        "实际文件可读取",
+        "资源ID唯一",
+        "客户端按ID查找",
+        "对应界面真实使用"
+      ]
+    }
+  ],
+  "art_generation_order": [
+    "hero_h10_full",
+    "example_e01_full",
+    "offer_t02_full",
+    "frame_offer",
+    "background_table",
+    "school_h10_badge",
+    "education_s10_seal",
+    "vfx_jlu_ultimate",
+    "remaining_character_masters",
+    "derived_portraits",
+    "action_art",
+    "ui_and_accessories",
+    "vfx_and_audio",
+    "share_layouts"
+  ],
+  "completion": "All required slots resolve to actual readable files. Local vector or procedural outputs are recorded distinctly from model-generated outputs."
+}

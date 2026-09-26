@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "H01_S00",
+    "primary_id": "H01",
+    "secondary_id": "S00",
+    "title": "清北出身 · 毕业就上班",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S01",
+    "primary_id": "H01",
+    "secondary_id": "S01",
+    "title": "清北出身 · 清北进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S02",
+    "primary_id": "H01",
+    "secondary_id": "S02",
+    "title": "清北出身 · C9进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S03",
+    "primary_id": "H01",
+    "secondary_id": "S03",
+    "title": "清北出身 · 985进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S04",
+    "primary_id": "H01",
+    "secondary_id": "S04",
+    "title": "清北出身 · 211进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S05",
+    "primary_id": "H01",
+    "secondary_id": "S05",
+    "title": "清北出身 · 一本进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S06",
+    "primary_id": "H01",
+    "secondary_id": "S06",
+    "title": "把题做进项目",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S07",
+    "primary_id": "H01",
+    "secondary_id": "S07",
+    "title": "清北出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S08",
+    "primary_id": "H01",
+    "secondary_id": "S08",
+    "title": "清北出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S09",
+    "primary_id": "H01",
+    "secondary_id": "S09",
+    "title": "清北出身 · 海外 100+进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H01_S10",
+    "primary_id": "H01",
+    "secondary_id": "S10",
+    "title": "清北出身 · 校友流派进修",
+    "primary_art_id": "hero_h01_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S00",
+    "primary_id": "H02",
+    "secondary_id": "S00",
+    "title": "C9出身 · 毕业就上班",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S01",
+    "primary_id": "H02",
+    "secondary_id": "S01",
+    "title": "C9出身 · 清北进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S02",
+    "primary_id": "H02",
+    "secondary_id": "S02",
+    "title": "C9出身 · C9进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S03",
+    "primary_id": "H02",
+    "secondary_id": "S03",
+    "title": "C9出身 · 985进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S04",
+    "primary_id": "H02",
+    "secondary_id": "S04",
+    "title": "C9出身 · 211进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S05",
+    "primary_id": "H02",
+    "secondary_id": "S05",
+    "title": "C9出身 · 一本进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S06",
+    "primary_id": "H02",
+    "secondary_id": "S06",
+    "title": "C9出身 · 二本／双非进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S07",
+    "primary_id": "H02",
+    "secondary_id": "S07",
+    "title": "C9出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S08",
+    "primary_id": "H02",
+    "secondary_id": "S08",
+    "title": "C9出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S09",
+    "primary_id": "H02",
+    "secondary_id": "S09",
+    "title": "C9出身 · 海外 100+进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H02_S10",
+    "primary_id": "H02",
+    "secondary_id": "S10",
+    "title": "C9出身 · 校友流派进修",
+    "primary_art_id": "hero_h02_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S00",
+    "primary_id": "H03",
+    "secondary_id": "S00",
+    "title": "985出身 · 毕业就上班",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S01",
+    "primary_id": "H03",
+    "secondary_id": "S01",
+    "title": "985出身 · 清北进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S02",
+    "primary_id": "H03",
+    "secondary_id": "S02",
+    "title": "985出身 · C9进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S03",
+    "primary_id": "H03",
+    "secondary_id": "S03",
+    "title": "本硕都在卷",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S04",
+    "primary_id": "H03",
+    "secondary_id": "S04",
+    "title": "985出身 · 211进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S05",
+    "primary_id": "H03",
+    "secondary_id": "S05",
+    "title": "985出身 · 一本进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S06",
+    "primary_id": "H03",
+    "secondary_id": "S06",
+    "title": "985出身 · 二本／双非进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S07",
+    "primary_id": "H03",
+    "secondary_id": "S07",
+    "title": "985出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S08",
+    "primary_id": "H03",
+    "secondary_id": "S08",
+    "title": "985出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S09",
+    "primary_id": "H03",
+    "secondary_id": "S09",
+    "title": "985出身 · 海外 100+进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H03_S10",
+    "primary_id": "H03",
+    "secondary_id": "S10",
+    "title": "985出身 · 校友流派进修",
+    "primary_art_id": "hero_h03_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S00",
+    "primary_id": "H04",
+    "secondary_id": "S00",
+    "title": "211出身 · 毕业就上班",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S01",
+    "primary_id": "H04",
+    "secondary_id": "S01",
+    "title": "211出身 · 清北进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S02",
+    "primary_id": "H04",
+    "secondary_id": "S02",
+    "title": "内推转接成功",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S03",
+    "primary_id": "H04",
+    "secondary_id": "S03",
+    "title": "211出身 · 985进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S04",
+    "primary_id": "H04",
+    "secondary_id": "S04",
+    "title": "211出身 · 211进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S05",
+    "primary_id": "H04",
+    "secondary_id": "S05",
+    "title": "211出身 · 一本进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S06",
+    "primary_id": "H04",
+    "secondary_id": "S06",
+    "title": "211出身 · 二本／双非进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S07",
+    "primary_id": "H04",
+    "secondary_id": "S07",
+    "title": "211出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S08",
+    "primary_id": "H04",
+    "secondary_id": "S08",
+    "title": "211出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S09",
+    "primary_id": "H04",
+    "secondary_id": "S09",
+    "title": "211出身 · 海外 100+进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H04_S10",
+    "primary_id": "H04",
+    "secondary_id": "S10",
+    "title": "211出身 · 校友流派进修",
+    "primary_art_id": "hero_h04_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S00",
+    "primary_id": "H05",
+    "secondary_id": "S00",
+    "title": "一本出身 · 毕业就上班",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S01",
+    "primary_id": "H05",
+    "secondary_id": "S01",
+    "title": "一本出身 · 清北进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S02",
+    "primary_id": "H05",
+    "secondary_id": "S02",
+    "title": "一本出身 · C9进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S03",
+    "primary_id": "H05",
+    "secondary_id": "S03",
+    "title": "一本出身 · 985进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S04",
+    "primary_id": "H05",
+    "secondary_id": "S04",
+    "title": "一本出身 · 211进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S05",
+    "primary_id": "H05",
+    "secondary_id": "S05",
+    "title": "一本出身 · 一本进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S06",
+    "primary_id": "H05",
+    "secondary_id": "S06",
+    "title": "一本出身 · 二本／双非进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S07",
+    "primary_id": "H05",
+    "secondary_id": "S07",
+    "title": "一本出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S08",
+    "primary_id": "H05",
+    "secondary_id": "S08",
+    "title": "一本出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S09",
+    "primary_id": "H05",
+    "secondary_id": "S09",
+    "title": "一本出身 · 海外 100+进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H05_S10",
+    "primary_id": "H05",
+    "secondary_id": "S10",
+    "title": "一本出身 · 校友流派进修",
+    "primary_art_id": "hero_h05_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S00",
+    "primary_id": "H06",
+    "secondary_id": "S00",
+    "title": "二本／双非出身 · 毕业就上班",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S01",
+    "primary_id": "H06",
+    "secondary_id": "S01",
+    "title": "一路上岸",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S02",
+    "primary_id": "H06",
+    "secondary_id": "S02",
+    "title": "二本／双非出身 · C9进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S03",
+    "primary_id": "H06",
+    "secondary_id": "S03",
+    "title": "二本／双非出身 · 985进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S04",
+    "primary_id": "H06",
+    "secondary_id": "S04",
+    "title": "二本／双非出身 · 211进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S05",
+    "primary_id": "H06",
+    "secondary_id": "S05",
+    "title": "二本／双非出身 · 一本进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S06",
+    "primary_id": "H06",
+    "secondary_id": "S06",
+    "title": "二本／双非出身 · 二本／双非进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S07",
+    "primary_id": "H06",
+    "secondary_id": "S07",
+    "title": "二本／双非出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S08",
+    "primary_id": "H06",
+    "secondary_id": "S08",
+    "title": "二本／双非出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S09",
+    "primary_id": "H06",
+    "secondary_id": "S09",
+    "title": "二本／双非出身 · 海外 100+进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H06_S10",
+    "primary_id": "H06",
+    "secondary_id": "S10",
+    "title": "二本／双非出身 · 校友流派进修",
+    "primary_art_id": "hero_h06_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S00",
+    "primary_id": "H07",
+    "secondary_id": "S00",
+    "title": "海外 Top 50出身 · 毕业就上班",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S01",
+    "primary_id": "H07",
+    "secondary_id": "S01",
+    "title": "海外 Top 50出身 · 清北进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S02",
+    "primary_id": "H07",
+    "secondary_id": "S02",
+    "title": "海外 Top 50出身 · C9进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S03",
+    "primary_id": "H07",
+    "secondary_id": "S03",
+    "title": "海外 Top 50出身 · 985进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S04",
+    "primary_id": "H07",
+    "secondary_id": "S04",
+    "title": "海外 Top 50出身 · 211进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S05",
+    "primary_id": "H07",
+    "secondary_id": "S05",
+    "title": "海外 Top 50出身 · 一本进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S06",
+    "primary_id": "H07",
+    "secondary_id": "S06",
+    "title": "海外 Top 50出身 · 二本／双非进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S07",
+    "primary_id": "H07",
+    "secondary_id": "S07",
+    "title": "海外 Top 50出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S08",
+    "primary_id": "H07",
+    "secondary_id": "S08",
+    "title": "海外 Top 50出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S09",
+    "primary_id": "H07",
+    "secondary_id": "S09",
+    "title": "海外 Top 50出身 · 海外 100+进修",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H07_S10",
+    "primary_id": "H07",
+    "secondary_id": "S10",
+    "title": "全球转校友流派",
+    "primary_art_id": "hero_h07_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S00",
+    "primary_id": "H08",
+    "secondary_id": "S00",
+    "title": "海外 Top 100出身 · 毕业就上班",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S01",
+    "primary_id": "H08",
+    "secondary_id": "S01",
+    "title": "海外 Top 100出身 · 清北进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S02",
+    "primary_id": "H08",
+    "secondary_id": "S02",
+    "title": "海外 Top 100出身 · C9进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S03",
+    "primary_id": "H08",
+    "secondary_id": "S03",
+    "title": "海外 Top 100出身 · 985进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S04",
+    "primary_id": "H08",
+    "secondary_id": "S04",
+    "title": "海外 Top 100出身 · 211进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S05",
+    "primary_id": "H08",
+    "secondary_id": "S05",
+    "title": "海外 Top 100出身 · 一本进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S06",
+    "primary_id": "H08",
+    "secondary_id": "S06",
+    "title": "海外 Top 100出身 · 二本／双非进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S07",
+    "primary_id": "H08",
+    "secondary_id": "S07",
+    "title": "海外 Top 100出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S08",
+    "primary_id": "H08",
+    "secondary_id": "S08",
+    "title": "海外 Top 100出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S09",
+    "primary_id": "H08",
+    "secondary_id": "S09",
+    "title": "海外 Top 100出身 · 海外 100+进修",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H08_S10",
+    "primary_id": "H08",
+    "secondary_id": "S10",
+    "title": "全球转校友流派",
+    "primary_art_id": "hero_h08_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S00",
+    "primary_id": "H09",
+    "secondary_id": "S00",
+    "title": "海外 100+出身 · 毕业就上班",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S01",
+    "primary_id": "H09",
+    "secondary_id": "S01",
+    "title": "海外 100+出身 · 清北进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S02",
+    "primary_id": "H09",
+    "secondary_id": "S02",
+    "title": "海外 100+出身 · C9进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S03",
+    "primary_id": "H09",
+    "secondary_id": "S03",
+    "title": "海外 100+出身 · 985进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S04",
+    "primary_id": "H09",
+    "secondary_id": "S04",
+    "title": "海外 100+出身 · 211进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S05",
+    "primary_id": "H09",
+    "secondary_id": "S05",
+    "title": "海外 100+出身 · 一本进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S06",
+    "primary_id": "H09",
+    "secondary_id": "S06",
+    "title": "海外 100+出身 · 二本／双非进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S07",
+    "primary_id": "H09",
+    "secondary_id": "S07",
+    "title": "海外 100+出身 · 海外 Top 50进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S08",
+    "primary_id": "H09",
+    "secondary_id": "S08",
+    "title": "海外 100+出身 · 海外 Top 100进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S09",
+    "primary_id": "H09",
+    "secondary_id": "S09",
+    "title": "海外 100+出身 · 海外 100+进修",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H09_S10",
+    "primary_id": "H09",
+    "secondary_id": "S10",
+    "title": "全球转校友流派",
+    "primary_art_id": "hero_h09_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S00",
+    "primary_id": "H10",
+    "secondary_id": "S00",
+    "title": "校友流派毕业就开打",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s00_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "jlu_ultimate"
+  },
+  {
+    "id": "H10_S01",
+    "primary_id": "H10",
+    "secondary_id": "S01",
+    "title": "校友流派出身 · 清北进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s01_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S02",
+    "primary_id": "H10",
+    "secondary_id": "S02",
+    "title": "校友流派出身 · C9进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s02_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S03",
+    "primary_id": "H10",
+    "secondary_id": "S03",
+    "title": "校友流派出身 · 985进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s03_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S04",
+    "primary_id": "H10",
+    "secondary_id": "S04",
+    "title": "校友流派出身 · 211进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s04_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S05",
+    "primary_id": "H10",
+    "secondary_id": "S05",
+    "title": "校友流派出身 · 一本进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s05_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S06",
+    "primary_id": "H10",
+    "secondary_id": "S06",
+    "title": "校友流派出身 · 二本／双非进修",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s06_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S07",
+    "primary_id": "H10",
+    "secondary_id": "S07",
+    "title": "国际吉",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s07_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S08",
+    "primary_id": "H10",
+    "secondary_id": "S08",
+    "title": "国际吉",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s08_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S09",
+    "primary_id": "H10",
+    "secondary_id": "S09",
+    "title": "国际吉",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s09_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "graduation"
+  },
+  {
+    "id": "H10_S10",
+    "primary_id": "H10",
+    "secondary_id": "S10",
+    "title": "本硕连读·宇宙校友流派",
+    "primary_art_id": "hero_h10_full",
+    "secondary_seal_id": "education_s10_seal",
+    "gameplay_bonus": null,
+    "cosmetic_recipe": "jlu_double"
+  }
+]

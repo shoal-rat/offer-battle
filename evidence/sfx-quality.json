@@ -1,0 +1,576 @@
+{
+  "version": "2.0",
+  "design": "Tactile modern office collectible-card sound design; distinct movement/contact; no stock samples, no voices.",
+  "sampleRate": 44100,
+  "format": "PCM16 mono WAV",
+  "mastering": "Peak ceiling 0.67 (-3.48 dBFS), active-level targets -19.5/-17.5 dBFS, 3ms attack anti-click fade, 45ms tail fade.",
+  "cueAlignment": {
+    "attack": "whoosh only, player schedules independent damage contact at 350ms",
+    "graduation": "charge 0-405ms then seal impact",
+    "jlu_ultimate": "charge 0-405ms then crest impact with six chime partial layers"
+  },
+  "count": 16,
+  "allChecksPassed": true,
+  "assets": [
+    {
+      "id": "sfx_click",
+      "url": "/assets/audio/sfx/click.wav",
+      "bytes": 10628,
+      "sha256": "453b520b19455f60bfed524eedcc30c37a35ac1f00134de6d78c39e09683157f",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.12,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -7.96,
+      "rmsDbFS": -21.33,
+      "crestDb": 13.37,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "muted wooden button",
+          "atSeconds": 0
+        },
+        {
+          "name": "tiny card edge",
+          "atSeconds": 0.002
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_card_pick",
+      "url": "/assets/audio/sfx/card_pick.wav",
+      "bytes": 22976,
+      "sha256": "5314bcdf20575e76d5c559df005e82ff4f01f1701c9a6426309f81b363de099e",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.26,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -6.4,
+      "rmsDbFS": -22.04,
+      "crestDb": 15.64,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "paper flex and fibres",
+          "atSeconds": 0
+        },
+        {
+          "name": "soft edge flick",
+          "atSeconds": 0.012
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_draw",
+      "url": "/assets/audio/sfx/draw.wav",
+      "bytes": 34442,
+      "sha256": "e7127a6c731b445a2a19f57a1299a4f7ac4f8d15e857e79f5186f0f0851bb898",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.39,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -5.04,
+      "rmsDbFS": -21.22,
+      "crestDb": 16.19,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "card pull",
+          "atSeconds": 0
+        },
+        {
+          "name": "deck separation",
+          "atSeconds": 0.1
+        },
+        {
+          "name": "light desk contact",
+          "atSeconds": 0.2
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_deploy",
+      "url": "/assets/audio/sfx/deploy.wav",
+      "bytes": 47672,
+      "sha256": "8eb8702b4facc138e98219fc1a9d70c0693995479f2def7c47131d2f1dc76a8e",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.54,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.8,
+      "rmsDbFS": -22.02,
+      "crestDb": 18.23,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "card settling",
+          "atSeconds": 0
+        },
+        {
+          "name": "solid walnut landing",
+          "atSeconds": 0.012
+        },
+        {
+          "name": "brass frame resonance",
+          "atSeconds": 0.025
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_attack",
+      "url": "/assets/audio/sfx/attack.wav",
+      "bytes": 30032,
+      "sha256": "8e38f5c398eb2eb67f658e1e11697e194ba9f76838223debd7a2fb609f93a969",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.34,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -5.12,
+      "rmsDbFS": -20.69,
+      "crestDb": 15.57,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "accelerating card air displacement",
+          "atSeconds": 0.005
+        },
+        {
+          "name": "leading paper edge",
+          "atSeconds": 0.2
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_damage",
+      "url": "/assets/audio/sfx/damage.wav",
+      "bytes": 56492,
+      "sha256": "bf5ba4795e7a863bb17ced3f0ebb38dc932c7f423b00ba2e81ff0c0345d3c97a",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.64,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -25.87,
+      "crestDb": 22.39,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "low body, tactile crack, dull brass",
+          "atSeconds": 0
+        },
+        {
+          "name": "cardboard frame contact",
+          "atSeconds": 0.025
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_heal",
+      "url": "/assets/audio/sfx/heal.wav",
+      "bytes": 93536,
+      "sha256": "9e3ed245e091e5fe7d70ad5502844af3bc1df6c5f44d4029566278cacc467eae",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 1.06,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -5.35,
+      "rmsDbFS": -19.47,
+      "crestDb": 14.12,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "soft rising air",
+          "atSeconds": 0
+        },
+        {
+          "name": "warm restorative chime",
+          "atSeconds": 0.0
+        },
+        {
+          "name": "warm restorative chime",
+          "atSeconds": 0.1
+        },
+        {
+          "name": "warm restorative chime",
+          "atSeconds": 0.2
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_retort",
+      "url": "/assets/audio/sfx/retort.wav",
+      "bytes": 73250,
+      "sha256": "bc2d5e38307345a397be3debdd02723d31f7884bd203f7008cbb4586d31c9b9b",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.83,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -22.02,
+      "crestDb": 18.54,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "heavy card turning",
+          "atSeconds": 0
+        },
+        {
+          "name": "flip arc",
+          "atSeconds": 0.12
+        },
+        {
+          "name": "decisive stamp contact",
+          "atSeconds": 0.24
+        },
+        {
+          "name": "violet seal ping",
+          "atSeconds": 0.28
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_negotiate",
+      "url": "/assets/audio/sfx/negotiate.wav",
+      "bytes": 52964,
+      "sha256": "e36e526863afaf2f8ee9c3e1424daa8335d110f018deb8223c0557f32ea39e88",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.6,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -23.52,
+      "crestDb": 20.04,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "contract placement",
+          "atSeconds": 0
+        },
+        {
+          "name": "rubber stamp and wood",
+          "atSeconds": 0.12
+        },
+        {
+          "name": "metal stamp handle",
+          "atSeconds": 0.15
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_age_up",
+      "url": "/assets/audio/sfx/age_up.wav",
+      "bytes": 34442,
+      "sha256": "7432194c04e6f16b835af9c326b76893b92b979109f3d0b899132e8dcc284cc6",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.39,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -4.25,
+      "rmsDbFS": -21.61,
+      "crestDb": 17.37,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "calendar leaf turn",
+          "atSeconds": 0
+        },
+        {
+          "name": "calendar spring tick",
+          "atSeconds": 0.17
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_optimization",
+      "url": "/assets/audio/sfx/optimization.wav",
+      "bytes": 73250,
+      "sha256": "e85e7ed839c355c4ecddd682bf72f8394d6a3b87167fc681cbf98b49d440a8f6",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.83,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.97,
+      "rmsDbFS": -19.76,
+      "crestDb": 15.78,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "document and packing carton",
+          "atSeconds": 0
+        },
+        {
+          "name": "card retreat",
+          "atSeconds": 0.13
+        },
+        {
+          "name": "soft hollow carton close",
+          "atSeconds": 0.26
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_graduation",
+      "url": "/assets/audio/sfx/graduation.wav",
+      "bytes": 125288,
+      "sha256": "4e9fe0e63951b4b9f90758ad500d798f760da6764e11d703629103c6070a8f04",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 1.42,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -22.28,
+      "crestDb": 18.8,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "quiet air and tonal charge",
+          "atSeconds": 0
+        },
+        {
+          "name": "engraved seal impact",
+          "atSeconds": 0.405
+        },
+        {
+          "name": "gold certification overtones",
+          "atSeconds": 0.43
+        },
+        {
+          "name": "gold certification overtones",
+          "atSeconds": 0.505
+        },
+        {
+          "name": "gold certification overtones",
+          "atSeconds": 0.58
+        },
+        {
+          "name": "gold certification overtones",
+          "atSeconds": 0.655
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_jlu_collect",
+      "url": "/assets/audio/sfx/jlu_collect.wav",
+      "bytes": 60020,
+      "sha256": "7d1a93ab6e806bd8a64b9fe8d6a9141945f67a6d14d455c421e5c6b436a9af0d",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 0.68,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -23.3,
+      "crestDb": 19.82,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "sign-in stamp",
+          "atSeconds": 0
+        },
+        {
+          "name": "badge call",
+          "atSeconds": 0.045
+        },
+        {
+          "name": "badge response",
+          "atSeconds": 0.16
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_jlu_ultimate",
+      "url": "/assets/audio/sfx/jlu_ultimate.wav",
+      "bytes": 153512,
+      "sha256": "91567f4c70bbaf165d83afa601e398401a052dac051bf2aa75114625c1016ca5",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 1.74,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -3.48,
+      "rmsDbFS": -26.33,
+      "crestDb": 22.85,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "gathering alumni charge",
+          "atSeconds": 0
+        },
+        {
+          "name": "rising group energy",
+          "atSeconds": 0.2
+        },
+        {
+          "name": "large shared crest contact",
+          "atSeconds": 0.405
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.43
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.457
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.484
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.511
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.538
+        },
+        {
+          "name": "six original resonant voices, no speech",
+          "atSeconds": 0.565
+        },
+        {
+          "name": "golden paper confetti",
+          "atSeconds": 0.61
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_win",
+      "url": "/assets/audio/sfx/win.wav",
+      "bytes": 187028,
+      "sha256": "aa00254e334b42e38d8368a28ccbf0ae9b4656f6f8780d4cac2528fc98d28932",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 2.12,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -4.19,
+      "rmsDbFS": -20.65,
+      "crestDb": 16.45,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "original four-note bright cadence",
+          "atSeconds": 0.0
+        },
+        {
+          "name": "original four-note bright cadence",
+          "atSeconds": 0.16
+        },
+        {
+          "name": "original four-note bright cadence",
+          "atSeconds": 0.32
+        },
+        {
+          "name": "original four-note bright cadence",
+          "atSeconds": 0.48
+        },
+        {
+          "name": "warm final root",
+          "atSeconds": 0.46
+        },
+        {
+          "name": "restrained celebration confetti",
+          "atSeconds": 0.56
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    },
+    {
+      "id": "sfx_lose",
+      "url": "/assets/audio/sfx/lose.wav",
+      "bytes": 172034,
+      "sha256": "bb2a271d50fb4e1eca5515e07e75ca8ad3a063fa400087d70735ca83d360bfa6",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 1.95,
+      "dimensions": null,
+      "transparent": false,
+      "peakDbFS": -4.75,
+      "rmsDbFS": -20.33,
+      "crestDb": 15.59,
+      "clippedSamples": 0,
+      "firstSample": 0,
+      "lastSample": 0,
+      "layers": [
+        {
+          "name": "original gentle descending cadence",
+          "atSeconds": 0.0
+        },
+        {
+          "name": "original gentle descending cadence",
+          "atSeconds": 0.2
+        },
+        {
+          "name": "original gentle descending cadence",
+          "atSeconds": 0.4
+        },
+        {
+          "name": "original gentle descending cadence",
+          "atSeconds": 0.6000000000000001
+        },
+        {
+          "name": "soft grounded close",
+          "atSeconds": 0.6
+        }
+      ],
+      "source": "original_layered_procedural_synthesis"
+    }
+  ]
+}

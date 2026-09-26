@@ -1,0 +1,24 @@
+
+> offer-battle@2.0.0 assets:check
+> tsx scripts/check-assets.ts
+
+{
+  "required": 190,
+  "registered": 190,
+  "verified": 190,
+  "music": {
+    "required": 6,
+    "registered": 6,
+    "verified": 6,
+    "originalsVerified": 12
+  },
+  "animations": {
+    "required": 1,
+    "registered": 1,
+    "verified": 1,
+    "originalsVerified": 1
+  },
+  "totalRuntimeVerified": 197,
+  "originalsVerified": 13,
+  "errors": []
+}

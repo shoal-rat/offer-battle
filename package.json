@@ -1,0 +1,68 @@
+{
+  "name": "offer-battle",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "tsx server/index.ts --production",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test",
+    "test:visual": "playwright test --grep visual",
+    "assets:check": "tsx scripts/check-assets.ts",
+    "assets:local": "tsx scripts/check-assets.ts",
+    "content:seed": "tsx scripts/seed.ts",
+    "simulate": "tsx scripts/simulate.ts",
+    "build:pages": "node scripts/build-pages.mjs",
+    "prepare:pages": "node scripts/prepare-pages.mjs",
+    "dev:cloud": "wrangler dev",
+    "deploy:cloud": "wrangler deploy",
+    "typecheck:cloudflare": "tsc -p tsconfig.cloudflare.json",
+    "build:cloudflare": "wrangler deploy --dry-run --outdir work/cloudflare-bundle",
+    "test:cloudflare": "npm run typecheck:cloudflare && npm run build:cloudflare && tsx --test tests/cloudflare/*.test.ts",
+    "deploy:cloudflare": "wrangler deploy",
+    "test:e2e:static": "playwright test --config playwright.static.config.ts"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tsx": "4.23.15",
+    "vite": "8.3.1",
+    "ws": "8.21.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260926.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.0.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@types/ws": "8.18.1",
+    "miniflare": "^5.20260925.0-alpha",
+    "typescript": "7.0.2",
+    "wrangler": "^4.141.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "description": "工资先亮，底牌后出。把精准岗位 Offer 变成策略卡牌的原创网页游戏。",
+  "license": "MIT",
+  "author": "shoal-rat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoal-rat/offer-battle.git"
+  },
+  "homepage": "https://weikezhang.cn/offer-battle/",
+  "bugs": {
+    "url": "https://github.com/shoal-rat/offer-battle/issues"
+  },
+  "keywords": [
+    "card-game",
+    "offer",
+    "typescript",
+    "cloudflare-workers",
+    "durable-objects",
+    "multiplayer"
+  ]
+}

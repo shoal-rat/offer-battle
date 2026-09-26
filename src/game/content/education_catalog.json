@@ -1,0 +1,634 @@
+{
+  "rules_version": "2.0.0",
+  "selection": {
+    "primary_required": true,
+    "secondary_default": "S00",
+    "ordered": true,
+    "legal_primary_ids": [
+      "H01",
+      "H02",
+      "H03",
+      "H04",
+      "H05",
+      "H06",
+      "H07",
+      "H08",
+      "H09",
+      "H10"
+    ],
+    "legal_secondary_ids": [
+      "S00",
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10"
+    ],
+    "combination_count": 110,
+    "rank_band_display": {
+      "H07": "海外 Top 50：1—50",
+      "H08": "海外 Top 100：51—100",
+      "H09": "海外 100+：101及以后"
+    },
+    "unranked_policy": "选择档位后保存自述；名次字段留空。任何情况下不得由模型虚构排名。",
+    "optional_rank_metadata": [
+      "ranking_system",
+      "ranking_edition",
+      "exact_rank",
+      "institution_display_name"
+    ],
+    "academic_history": "用户资料与本局流派配置分开存储；先后槽位固定，不能自动互换。"
+  },
+  "shared_rules": {
+    "catalog": "education_catalog.json",
+    "primary_count": 10,
+    "secondary_count": 11,
+    "ordered_combinations": 110,
+    "shared_action_limit_per_own_turn": 1,
+    "secondary_unlock_round": 4,
+    "secondary_uses_per_match": 1,
+    "primary_and_secondary_public": true,
+    "same_track_in_both_slots_allowed": true,
+    "combo_bonuses": "presentation_only",
+    "primary_unlock_round": 1,
+    "discount_floor": 1,
+    "retort_interaction": "Education effects are hero skills, not action cards; F04 and B07 do not trigger.",
+    "cost_increase_rule": "School hand taxes on the same card use the largest live increase, not their sum.",
+    "refund_rule": "Invalid commands leave resources and use counters unchanged. Viewing hidden information commits the activation before reveal."
+  },
+  "tracks": [
+    {
+      "primary_id": "H01",
+      "secondary_id": "S01",
+      "name": "清北",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H02",
+      "secondary_id": "S02",
+      "name": "C9",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H03",
+      "secondary_id": "S03",
+      "name": "985",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H04",
+      "secondary_id": "S04",
+      "name": "211",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H05",
+      "secondary_id": "S05",
+      "name": "一本",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H06",
+      "secondary_id": "S06",
+      "name": "二本／双非",
+      "kind": "domestic",
+      "rank_band": null
+    },
+    {
+      "primary_id": "H07",
+      "secondary_id": "S07",
+      "name": "海外 Top 50",
+      "kind": "overseas",
+      "rank_band": {
+        "min": 1,
+        "max": 50
+      }
+    },
+    {
+      "primary_id": "H08",
+      "secondary_id": "S08",
+      "name": "海外 Top 100",
+      "kind": "overseas",
+      "rank_band": {
+        "min": 51,
+        "max": 100
+      }
+    },
+    {
+      "primary_id": "H09",
+      "secondary_id": "S09",
+      "name": "海外 100+",
+      "kind": "overseas",
+      "rank_band": {
+        "min": 101,
+        "max": null
+      }
+    },
+    {
+      "primary_id": "H10",
+      "secondary_id": "S10",
+      "name": "吉林大学",
+      "kind": "domestic",
+      "rank_band": null
+    }
+  ],
+  "primary": [
+    {
+      "id": "H01",
+      "name": "清北",
+      "skill": "先看答案",
+      "time_cost": 2,
+      "text": "查看对手当前手牌，选择其中一张标记。该牌在对手下个回合耗时+1。空手时无法使用。同一张牌的此类加时不叠加。",
+      "slot": "primary",
+      "handler": "education_primary_h01",
+      "asset_id": "hero_h01_full",
+      "target": "enemy_hand_choice"
+    },
+    {
+      "id": "H02",
+      "name": "C9",
+      "skill": "导师打招呼",
+      "time_cost": 2,
+      "text": "查看自己牌库顶最多3张，选1张置顶，其余按原顺序到底。获得1小时内推便条：下一张原始耗时至少5小时的Offer少花1小时。持有任何内推便条时无法使用。空牌库仍可获得便条。",
+      "slot": "primary",
+      "handler": "education_primary_h02",
+      "asset_id": "hero_h02_full",
+      "target": "top_deck_choice"
+    },
+    {
+      "id": "H03",
+      "name": "985",
+      "skill": "再卷一轮",
+      "time_cost": 1,
+      "text": "一个友方角色本回合排面+2；自己失去1点心态。",
+      "slot": "primary",
+      "handler": "education_primary_h03",
+      "asset_id": "hero_h03_full",
+      "target": "friendly_unit"
+    },
+    {
+      "id": "H04",
+      "name": "211",
+      "skill": "校友内推",
+      "time_cost": 2,
+      "text": "抽1张牌。",
+      "slot": "primary",
+      "handler": "education_primary_h04",
+      "asset_id": "hero_h04_full",
+      "target": "none"
+    },
+    {
+      "id": "H05",
+      "name": "一本",
+      "skill": "稳住基本盘",
+      "time_cost": 2,
+      "text": "一个友方角色恢复2点底气，自己恢复1点心态。没有友方角色时只恢复心态。",
+      "slot": "primary",
+      "handler": "education_primary_h05",
+      "asset_id": "hero_h05_full",
+      "target": "optional_friendly_unit"
+    },
+    {
+      "id": "H06",
+      "name": "二本／双非",
+      "skill": "先干再说",
+      "time_cost": 2,
+      "text": "召唤一个1排面、2底气的实习生。使用时自己的场上角色更少，则召唤2排面、2底气版本。场上没有空位时无法使用。",
+      "slot": "primary",
+      "handler": "education_primary_h06",
+      "asset_id": "hero_h06_full",
+      "target": "empty_friendly_slot"
+    },
+    {
+      "id": "H07",
+      "name": "海外 Top 50",
+      "skill": "跨国调度",
+      "time_cost": 2,
+      "text": "收回一张己方Offer，获得绑定它的返场便条：它下次从手牌上桌少花1小时。便条在自己下个回合结束时到期。手牌已满、没有己方Offer或已有未消耗返场便条时无法使用。",
+      "slot": "primary",
+      "handler": "education_primary_h07",
+      "asset_id": "hero_h07_full",
+      "target": "friendly_offer"
+    },
+    {
+      "id": "H08",
+      "name": "海外 Top 100",
+      "skill": "项目加分",
+      "time_cost": 2,
+      "text": "使一个己方助阵角色排面+1、底气上限+1，保留已受伤害。本次上桌内持续。",
+      "slot": "primary",
+      "handler": "education_primary_h08",
+      "asset_id": "hero_h08_full",
+      "target": "friendly_support"
+    },
+    {
+      "id": "H09",
+      "name": "海外 100+",
+      "skill": "换个赛道",
+      "time_cost": 1,
+      "text": "将一张手里的通用牌放到自己牌库底，然后抽1张。操作前牌库必须非空；不能选择Offer。",
+      "slot": "primary",
+      "handler": "education_primary_h09",
+      "asset_id": "hero_h09_full",
+      "target": "shared_hand_card"
+    },
+    {
+      "id": "H10",
+      "name": "吉林大学",
+      "skill": "宇宙吉大",
+      "time_cost": 2,
+      "text": "分阶段：前两次发动校友集合，各恢复自己1点心态并获得1枚公开签到章。满2枚后，下次发动全校撑腰：使一张己方Offer获得+4排面、+4底气上限，保留已受伤害。全校撑腰每局一次。用过后技能变为校友饭局：恢复自己2点心态。每次发动共用本回合学历行动机会。",
+      "slot": "primary",
+      "handler": "education_primary_h10",
+      "asset_id": "hero_h10_full",
+      "target": "stage_dependent_friendly_offer"
+    }
+  ],
+  "secondary": [
+    {
+      "id": "S00",
+      "name": "直接就业",
+      "skill": "先领工资",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s00",
+      "target": "none",
+      "text": "恢复自己2点心态，然后抽1张牌。",
+      "effects": [
+        {
+          "kind": "heal_mind",
+          "amount": 2
+        },
+        {
+          "kind": "draw",
+          "count": 1
+        }
+      ],
+      "asset_id": "education_s00_seal"
+    },
+    {
+      "id": "S01",
+      "name": "清北",
+      "skill": "终面直通",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s01",
+      "target": "enemy_hand",
+      "text": "查看对手当前手牌，标记其中1张。该牌在对手下个回合耗时+2。同牌学校加时取最大有效值。对手空手时无法使用。",
+      "effects": [
+        {
+          "kind": "reveal_hand",
+          "to": "owner"
+        },
+        {
+          "kind": "school_tax",
+          "amount": 2,
+          "expires": "opponent_next_turn_end"
+        }
+      ],
+      "asset_id": "education_s01_seal"
+    },
+    {
+      "id": "S02",
+      "name": "C9",
+      "skill": "课题结项",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s02",
+      "target": "none",
+      "text": "获得2小时内推便条：下一张原始耗时至少5小时的Offer少花2小时。已有1小时便条时升级为2小时，数值不相加。恢复自己2点心态。",
+      "effects": [
+        {
+          "kind": "referral_coupon_set_max",
+          "amount": 2
+        },
+        {
+          "kind": "heal_mind",
+          "amount": 2
+        }
+      ],
+      "asset_id": "education_s02_seal"
+    },
+    {
+      "id": "S03",
+      "name": "985",
+      "skill": "论文提交",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s03",
+      "target": "friendly_unit",
+      "text": "一个己方角色获得+2排面、+2底气上限，保留已受伤害。随后自己失去1点心态。强化持续本次上桌。",
+      "effects": [
+        {
+          "kind": "deployment_buff",
+          "attack": 2,
+          "max_health": 2
+        },
+        {
+          "kind": "mind_damage",
+          "amount": 1
+        }
+      ],
+      "asset_id": "education_s03_seal"
+    },
+    {
+      "id": "S04",
+      "name": "211",
+      "skill": "校友推荐信",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s04",
+      "target": "none",
+      "text": "抽2张牌，逐张处理满手与焦虑。",
+      "effects": [
+        {
+          "kind": "draw",
+          "count": 2
+        }
+      ],
+      "asset_id": "education_s04_seal"
+    },
+    {
+      "id": "S05",
+      "name": "一本",
+      "skill": "答辩稳过",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s05",
+      "target": "optional_friendly_unit",
+      "text": "一个己方角色恢复3点底气，自己恢复3点心态。无己方角色时仅恢复心态。",
+      "effects": [
+        {
+          "kind": "heal_unit",
+          "amount": 3
+        },
+        {
+          "kind": "heal_mind",
+          "amount": 3
+        }
+      ],
+      "asset_id": "education_s05_seal"
+    },
+    {
+      "id": "S06",
+      "name": "二本／双非",
+      "skill": "项目实战",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s06",
+      "target": "empty_friendly_slot",
+      "text": "召唤一个2排面、3底气的临时项目搭子。它上桌当回合可以开怼角色，不能开怼主角。需要1个空位。",
+      "effects": [
+        {
+          "kind": "summon",
+          "token_id": "K03",
+          "attack": 2,
+          "max_health": 3,
+          "rush_units": true
+        }
+      ],
+      "asset_id": "education_s06_seal"
+    },
+    {
+      "id": "S07",
+      "name": "海外 Top 50",
+      "skill": "跨国履历",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s07",
+      "target": "friendly_offer",
+      "text": "收回一张己方Offer，然后抽1张牌。发动前必须有己方Offer且手牌未满。",
+      "effects": [
+        {
+          "kind": "bounce_offer"
+        },
+        {
+          "kind": "draw",
+          "count": 1
+        }
+      ],
+      "asset_id": "education_s07_seal"
+    },
+    {
+      "id": "S08",
+      "name": "海外 Top 100",
+      "skill": "跨组协作",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s08",
+      "target": "one_or_two_friendly_units",
+      "text": "选择1至2个不同的己方角色，各获得+1排面、+1底气上限，保留已受伤害。强化持续本次上桌。",
+      "effects": [
+        {
+          "kind": "deployment_buff_multi",
+          "max_targets": 2,
+          "attack": 1,
+          "max_health": 1
+        }
+      ],
+      "asset_id": "education_s08_seal"
+    },
+    {
+      "id": "S09",
+      "name": "海外 100+",
+      "skill": "作品说话",
+      "time_cost": 2,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s09",
+      "target": "enemy_unit",
+      "text": "一个敌方角色失去3点底气。其原始耗时至少5小时则改为4点。按英雄技能伤害结算。",
+      "effects": [
+        {
+          "kind": "damage_unit",
+          "base": 3,
+          "original_time_gte": 5,
+          "bonus": 1
+        }
+      ],
+      "asset_id": "education_s09_seal"
+    },
+    {
+      "id": "S10",
+      "name": "吉林大学",
+      "skill": "母校再认证",
+      "time_cost": 3,
+      "slot": "secondary",
+      "unlock_round": 4,
+      "uses_per_match": 1,
+      "handler": "education_secondary_s10",
+      "target": "friendly_offer",
+      "text": "一张己方Offer获得+2排面、+2底气上限，保留已受伤害。强化持续本次上桌。",
+      "effects": [
+        {
+          "kind": "deployment_buff",
+          "attack": 2,
+          "max_health": 2
+        }
+      ],
+      "asset_id": "education_s10_seal"
+    }
+  ],
+  "combo_titles": [
+    {
+      "primary": "H10",
+      "secondary": "S10",
+      "title": "本硕连读·宇宙吉大",
+      "line": "第一学历吉大，第二学历还是吉大。教育背景形成闭环。",
+      "vfx": "jlu_double",
+      "priority": 100
+    },
+    {
+      "primary": "H10",
+      "secondary": "S07",
+      "title": "国际吉",
+      "line": "出去看过世界，回来全是校友。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H10",
+      "secondary": "S08",
+      "title": "国际吉",
+      "line": "全球校友群，我先拉个吉大分群。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H10",
+      "secondary": "S09",
+      "title": "国际吉",
+      "line": "排名各写各的，母校统一写吉大。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H07",
+      "secondary": "S10",
+      "title": "全球转吉大",
+      "line": "世界排名聊完了，下一站母校认证。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H08",
+      "secondary": "S10",
+      "title": "全球转吉大",
+      "line": "履历绕了一圈，最后落在校友群。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H09",
+      "secondary": "S10",
+      "title": "全球转吉大",
+      "line": "前面的排名先收起来，吉大这页展开。",
+      "vfx": "graduation",
+      "priority": 90
+    },
+    {
+      "primary": "H06",
+      "secondary": "S01",
+      "title": "一路上岸",
+      "line": "第一页你看完了，第二页该我说了。",
+      "vfx": "graduation",
+      "priority": 80
+    },
+    {
+      "primary": "H01",
+      "secondary": "S06",
+      "title": "把题做进项目",
+      "line": "题我会，活我也干。",
+      "vfx": "graduation",
+      "priority": 80
+    },
+    {
+      "primary": "H03",
+      "secondary": "S03",
+      "title": "本硕都在卷",
+      "line": "上半场卷绩点，下半场卷论文。",
+      "vfx": "graduation",
+      "priority": 80
+    },
+    {
+      "primary": "H04",
+      "secondary": "S02",
+      "title": "内推转接成功",
+      "line": "校友拉完群，导师接着拉。",
+      "vfx": "graduation",
+      "priority": 80
+    },
+    {
+      "primary": "H10",
+      "secondary": "S00",
+      "title": "吉大毕业就开打",
+      "line": "毕业证刚拿到，母校先替我撑一局。",
+      "vfx": "jlu_ultimate",
+      "priority": 80
+    }
+  ],
+  "default_combo_title": "{primary_name}出身 · {secondary_name}进修",
+  "same_track_rules": "同名可同时入选。两个槽位使用各自定义；第一学历技能不因同校翻倍。",
+  "jlu": {
+    "primary_id": "H10",
+    "secondary_id": "S10",
+    "charge_cap": 2,
+    "preparation_cost": 2,
+    "preparation_heal": 1,
+    "ultimate_cost": 2,
+    "ultimate_attack": 4,
+    "ultimate_max_health": 4,
+    "ultimate_limit_per_match": 1,
+    "post_ultimate_cost": 2,
+    "post_ultimate_heal": 2,
+    "secondary_cost": 3,
+    "secondary_attack": 2,
+    "secondary_max_health": 2,
+    "charge_is_public": true,
+    "requires_target_when_ready": true,
+    "ready_requires_release_before_more_meals": true,
+    "buff_scope": "current_deployment",
+    "extra_attack": false,
+    "age_reset": false,
+    "immunity": false,
+    "extra_board_slots": 0,
+    "combined_max_education_buff": {
+      "attack": 6,
+      "max_health": 6
+    },
+    "total_cost_to_combine": 9,
+    "minimum_education_actions_to_combine": 4,
+    "display_rarity": "校友指定最强",
+    "combo_effects": "presentation_only"
+  },
+  "turn_rule": "每个自己的回合先重置共享学历行动。第二学历只在第4轮及以后、尚未消耗时可用。一次成功发动占用本回合唯一学历行动。"
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "id": "P01",
+    "name": "校友流派毕业就开打",
+    "primary_id": "H10",
+    "secondary_id": "S00",
+    "offer_ids": [
+      "E01",
+      "E02",
+      "E04"
+    ],
+    "base_deck": [
+      "N01",
+      "N01",
+      "N02",
+      "N02",
+      "N03",
+      "N03",
+      "N07",
+      "N07",
+      "N15",
+      "N15",
+      "N22",
+      "N22"
+    ],
+    "default_flex": [
+      "F01",
+      "F04",
+      "F05"
+    ],
+    "base_deck_name": "抢节奏"
+  },
+  {
+    "id": "P02",
+    "name": "本硕连读·宇宙校友流派",
+    "primary_id": "H10",
+    "secondary_id": "S10",
+    "offer_ids": [
+      "E01",
+      "E02",
+      "E04"
+    ],
+    "base_deck": [
+      "N02",
+      "N02",
+      "N05",
+      "N05",
+      "N08",
+      "N08",
+      "N09",
+      "N11",
+      "N17",
+      "N18",
+      "N19",
+      "N21"
+    ],
+    "default_flex": [
+      "F01",
+      "F03",
+      "F04"
+    ],
+    "base_deck_name": "稳到后期"
+  },
+  {
+    "id": "P03",
+    "name": "国际吉",
+    "primary_id": "H10",
+    "secondary_id": "S07",
+    "offer_ids": [
+      "E01",
+      "E03",
+      "E04"
+    ],
+    "base_deck": [
+      "N03",
+      "N03",
+      "N04",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N18"
+    ],
+    "default_flex": [
+      "F01",
+      "F03",
+      "F04"
+    ],
+    "base_deck_name": "反复拆台"
+  },
+  {
+    "id": "P04",
+    "name": "全球调度",
+    "primary_id": "H07",
+    "secondary_id": "S02",
+    "offer_ids": [
+      "E01",
+      "E03",
+      "E05"
+    ],
+    "base_deck": [
+      "N03",
+      "N03",
+      "N04",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N18"
+    ],
+    "default_flex": [
+      "F01",
+      "F02",
+      "F04"
+    ],
+    "base_deck_name": "反复拆台"
+  },
+  {
+    "id": "P05",
+    "name": "项目开花",
+    "primary_id": "H06",
+    "secondary_id": "S08",
+    "offer_ids": [
+      "E02",
+      "E04",
+      "E06"
+    ],
+    "base_deck": [
+      "N01",
+      "N01",
+      "N02",
+      "N02",
+      "N03",
+      "N03",
+      "N07",
+      "N07",
+      "N15",
+      "N15",
+      "N22",
+      "N22"
+    ],
+    "default_flex": [
+      "F01",
+      "F04",
+      "F06"
+    ],
+    "base_deck_name": "抢节奏"
+  },
+  {
+    "id": "P06",
+    "name": "边卷边缓",
+    "primary_id": "H03",
+    "secondary_id": "S05",
+    "offer_ids": [
+      "E01",
+      "E02",
+      "E06"
+    ],
+    "base_deck": [
+      "N01",
+      "N01",
+      "N02",
+      "N02",
+      "N03",
+      "N03",
+      "N07",
+      "N07",
+      "N15",
+      "N15",
+      "N22",
+      "N22"
+    ],
+    "default_flex": [
+      "F01",
+      "F03",
+      "F04"
+    ],
+    "base_deck_name": "抢节奏"
+  },
+  {
+    "id": "P07",
+    "name": "看题换招",
+    "primary_id": "H01",
+    "secondary_id": "S09",
+    "offer_ids": [
+      "E01",
+      "E03",
+      "E04"
+    ],
+    "base_deck": [
+      "N03",
+      "N03",
+      "N04",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N18"
+    ],
+    "default_flex": [
+      "F01",
+      "F02",
+      "F05"
+    ],
+    "base_deck_name": "反复拆台"
+  },
+  {
+    "id": "P08",
+    "name": "毕业就有活",
+    "primary_id": "H09",
+    "secondary_id": "S06",
+    "offer_ids": [
+      "E02",
+      "E04",
+      "E06"
+    ],
+    "base_deck": [
+      "N01",
+      "N01",
+      "N02",
+      "N02",
+      "N03",
+      "N03",
+      "N07",
+      "N07",
+      "N15",
+      "N15",
+      "N22",
+      "N22"
+    ],
+    "default_flex": [
+      "F01",
+      "F04",
+      "F05"
+    ],
+    "base_deck_name": "抢节奏"
+  },
+  {
+    "id": "P09",
+    "name": "稳到论文过",
+    "primary_id": "H05",
+    "secondary_id": "S03",
+    "offer_ids": [
+      "E02",
+      "E04",
+      "E05"
+    ],
+    "base_deck": [
+      "N02",
+      "N02",
+      "N05",
+      "N05",
+      "N08",
+      "N08",
+      "N09",
+      "N11",
+      "N17",
+      "N18",
+      "N19",
+      "N21"
+    ],
+    "default_flex": [
+      "F01",
+      "F02",
+      "F04"
+    ],
+    "base_deck_name": "稳到后期"
+  },
+  {
+    "id": "P10",
+    "name": "校友接导师",
+    "primary_id": "H04",
+    "secondary_id": "S02",
+    "offer_ids": [
+      "E01",
+      "E03",
+      "E05"
+    ],
+    "base_deck": [
+      "N03",
+      "N03",
+      "N04",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N18"
+    ],
+    "default_flex": [
+      "F01",
+      "F03",
+      "F04"
+    ],
+    "base_deck_name": "反复拆台"
+  }
+]

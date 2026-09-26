@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "verificationDate": "2026-09-26",
+  "rulesVersion": "2.0.0",
+  "scope": "Code and local-runtime release validation. Public deployment acceptance is documented separately in DEPLOYMENT.md.",
+  "checks": {
+    "unit": {
+      "command": "npm test",
+      "passed": 159,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 2673.17075
+    },
+    "assets": {
+      "command": "npm run assets:check",
+      "baseAssets": 190,
+      "musicTracks": 6,
+      "animationClips": 1,
+      "verifiedRuntimeAssets": 197,
+      "missing": 0
+    },
+    "nodeBrowser": {
+      "command": "npm run build && E2E_PRODUCTION=1 npm run test:e2e",
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 150623.419
+    },
+    "staticBrowser": {
+      "command": "npm run test:e2e:static",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 17692.576
+    },
+    "cloudflare": {
+      "command": "npm run test:cloudflare",
+      "passed": 6,
+      "failed": 0,
+      "runtime": "workerd / Miniflare with SQLite Durable Objects",
+      "coverage": [
+        "account hashing, recovery and revocation",
+        "CORS and admission limits",
+        "full friend match, deterministic replay, rematch and restart",
+        "WebSocket hibernation and logout rejection",
+        "real alarm timeout without client polling",
+        "local record reconstruction and custom-offer recompilation",
+        "concurrent ready and idempotent command submission"
+      ]
+    },
+    "typescript": {
+      "commands": [
+        "npm run typecheck",
+        "npm run typecheck:cloudflare"
+      ],
+      "status": "passed"
+    },
+    "designReference": {
+      "command": "python3 spec/validate_bundle.py",
+      "referenceTestsPassed": 41,
+      "status": "passed"
+    }
+  },
+  "boundaries": {
+    "staticGuest": "1440px and 390px UI walkthrough blocks all API requests, verifies zero API requests, resumes after refresh, and removes finished temporary state.",
+    "accountUI": "Uses deterministic engine positions and controlled transport fixtures. Backend behavior is independently verified by the Cloudflare suite.",
+    "nodeBrowser": "Uses real HTTP/WebSocket for service paths, with deterministic engine fixtures for timing-sensitive presentation cases.",
+    "fullscreen": "Checks gesture request and rejection fallback with browser fixtures; not a claim of physical-device native fullscreen coverage.",
+    "publicNetwork": "See DEPLOYMENT.md; local suites are not public-network load tests."
+  },
+  "historicalEvidence": {
+    "simulation": "evidence/simulation.json",
+    "games": 220,
+    "combinations": 110,
+    "replayConsistent": true,
+    "rerunInThisReleasePass": false
+  }
+}

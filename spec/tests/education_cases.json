@@ -1,0 +1,422 @@
+[
+  {
+    "id": "E001",
+    "given_when": "选择H10与S10",
+    "then": "组合合法，展示本硕连读，拥有H10与S10两个定义",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E002",
+    "given_when": "遍历10×11槽位搭配",
+    "then": "110种全部合法，顺序保留",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E003",
+    "given_when": "同一所学校填两个槽位",
+    "then": "主技能与进修技能各取相应槽位版本",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E004",
+    "given_when": "名次1与50",
+    "then": "归入H07/S07",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E005",
+    "given_when": "名次51与100",
+    "then": "归入H08/S08",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E006",
+    "given_when": "名次101与999",
+    "then": "归入H09/S09",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E007",
+    "given_when": "名次为空且玩家选择档位",
+    "then": "保存自选档位，具体名次继续为空",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E008",
+    "given_when": "输入0、负数或小数名次",
+    "then": "数值名次校验拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E009",
+    "given_when": "第3轮发动第二学历",
+    "then": "拒绝，资源和次数不变",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E010",
+    "given_when": "第4轮首次发动第二学历",
+    "then": "合法，使用后本局进修消耗",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E011",
+    "given_when": "先主技能再进修",
+    "then": "第二次拒绝，共享机会已消耗",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E012",
+    "given_when": "先进修再主技能",
+    "then": "第二次拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E013",
+    "given_when": "下一个己方回合开始",
+    "then": "只刷新共享机会，进修仍已消耗",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E014",
+    "given_when": "进修选择非法目标",
+    "then": "不扣时间、不扣共享机会、不扣进修次数",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E015",
+    "given_when": "进修耗时不足",
+    "then": "事务整体拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E016",
+    "given_when": "清北查看后关闭面板",
+    "then": "不退费用，进入待选择，截止时自动选择",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E017",
+    "given_when": "H01与S01标记同一牌",
+    "then": "有效学校加时最多2，不能变3",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E018",
+    "given_when": "对手下回合结束",
+    "then": "到期学校加时清除",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E019",
+    "given_when": "C9已有1小时便条，再用S02",
+    "then": "升级为2，恢复2心态，便条不相加",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E020",
+    "given_when": "持有2小时便条使用H02",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E021",
+    "given_when": "原始7小时，谈薪3，内推2",
+    "then": "最终2小时，合法上桌消耗便条",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E022",
+    "given_when": "原始5小时，内推2，返场1",
+    "then": "最终2小时",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E023",
+    "given_when": "提交同目标谈薪加返场",
+    "then": "区域与历史条件校验拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E024",
+    "given_when": "各类优惠足以低于1小时",
+    "then": "实际仍支付1小时",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E025",
+    "given_when": "H07收回35岁受伤Offer",
+    "then": "清伤害与本次强化，保留35岁，创建1小时返场便条",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E026",
+    "given_when": "返场便条作用于另一张Offer",
+    "then": "不适用，便条保留",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E027",
+    "given_when": "绑定Offer下次从手牌上桌",
+    "then": "返场便条消耗，登场能力照常，年龄保留",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E028",
+    "given_when": "自己的下个回合结束未使用便条",
+    "then": "便条到期清除",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E029",
+    "given_when": "H07已有便条再使用",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E030",
+    "given_when": "H07或S07发动时满手",
+    "then": "拒绝，不产生回手弃置",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E031",
+    "given_when": "H08选择己方Offer",
+    "then": "拒绝，只能助阵角色",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E032",
+    "given_when": "H08选择临时实习生",
+    "then": "有效，+1排面/+1底气上限",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E033",
+    "given_when": "H09换通用手牌",
+    "then": "先放到底，再抽，手牌数量不增加",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E034",
+    "given_when": "H09选择手中Offer",
+    "then": "拒绝，Offer不能进通用牌库",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E035",
+    "given_when": "H09发动前牌库空",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E036",
+    "given_when": "S06在满场使用",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E037",
+    "given_when": "S06生成项目搭子",
+    "then": "2/3、临时、原始耗时2，当回合只能怼角色",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E038",
+    "given_when": "S08重复选择同一角色",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E039",
+    "given_when": "S08选择两个不同己方角色",
+    "then": "分别+1/+1，本次上桌内有效",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E040",
+    "given_when": "S09命中原始耗时5角色",
+    "then": "4点底气伤害",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E041",
+    "given_when": "S09命中有合同与保障保护的Offer",
+    "then": "合同不触发、保障不消耗，按英雄技能伤害结算",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E042",
+    "given_when": "S09打掉Offer",
+    "then": "该Offer拥有者正常失去2心态",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E043",
+    "given_when": "S04满手抽2",
+    "then": "两张依次公开弃置，进修仍消耗",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E044",
+    "given_when": "S04空牌库且首段焦虑致命",
+    "then": "结束对局，不处理第二段",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E045",
+    "given_when": "S00在1心态、空牌库时使用",
+    "then": "先恢复2，再结算1点焦虑，剩2心态",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E046",
+    "given_when": "第一次H10集合",
+    "then": "扣2小时、恢复1、签到1，不生成战斗角色",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E047",
+    "given_when": "满心态H10集合",
+    "then": "心态仍30，签到正常增加",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E048",
+    "given_when": "同回合再次集合",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E049",
+    "given_when": "第二次集合",
+    "then": "签到2、READY公开、下次主技能改为全校撑腰",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E050",
+    "given_when": "READY没有己方Offer",
+    "then": "无法发动，章数和时间保持",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E051",
+    "given_when": "READY选择助阵角色",
+    "then": "拒绝",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E052",
+    "given_when": "全校撑腰选己方Offer",
+    "then": "扣2小时、+4/+4、清章、终极使用标记为true",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E053",
+    "given_when": "被强化Offer已攻击且35岁带优化",
+    "then": "保留攻击已用、35岁和优化通知",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E054",
+    "given_when": "全校撑腰后场上数量",
+    "then": "没有新增战斗角色，最多仍4",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E055",
+    "given_when": "释放后下回合主技能",
+    "then": "变为2小时恢复2心态，不重建章数",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E056",
+    "given_when": "强化目标被收回再上桌",
+    "then": "+4/+4消失，年龄保留，大招次数不恢复",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E057",
+    "given_when": "强后S10作用于同上桌实例",
+    "then": "累计+6/+6，两次技能发生在不同回合",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E058",
+    "given_when": "两次集合、H10大招、S10完整账单",
+    "then": "消耗9小时、四次不同己方回合学历行动",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E059",
+    "given_when": "第一学历其他学校＋S10",
+    "then": "只获得+2/+2进修，不产生H10技能或签到",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E060",
+    "given_when": "更换校友流派皮肤或组合称号",
+    "then": "所有战斗标记和数值不变",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E061",
+    "given_when": "客户端伪造签到99或大招未用",
+    "then": "服务端拒绝或忽略，状态不变",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E062",
+    "given_when": "重放同一个JLU命令ID",
+    "then": "不重复加章或加属性",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E063",
+    "given_when": "关闭校友流派大招动画",
+    "then": "最终状态与普通动画相同",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E064",
+    "given_when": "对手读取学历公开数据",
+    "then": "看见两个流派、签到章、进修和大招状态，看不到隐藏牌",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E065",
+    "given_when": "机器人处理未知反话",
+    "then": "只根据公开条件和策略估计，不读取真实反话ID",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E066",
+    "given_when": "技能强化后使用F02股权重估",
+    "then": "只清期权来源，学历强化继续保留",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E067",
+    "given_when": "技能强化后使用F03转管理",
+    "then": "移除一线并降低2排面，其他学历强化正常保留",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E068",
+    "given_when": "对有挡话保护的角色使用S09",
+    "then": "目标合法，挡话不改英雄技能目标",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E069",
+    "given_when": "JLU大招目标伤害值为3",
+    "then": "增加4底气上限，伤害仍3，当前底气增加4",
+    "status": "specified_for_game_implementation"
+  },
+  {
+    "id": "E070",
+    "given_when": "校友流派＋海外组合开场",
+    "then": "国际吉称号与配饰，技能数值取两个原定义",
+    "status": "specified_for_game_implementation"
+  }
+]

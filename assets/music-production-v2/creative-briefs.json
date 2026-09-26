@@ -1,0 +1,57 @@
+{
+  "workflow": "https://www.runninghub.cn/ai-detail/2043228996799832066",
+  "modelAsDisplayed": "ACE-Step XL Turbo",
+  "date": "2026-09-26",
+  "direction": "Original instrumental card-game score, recurring six-note motif, chamber orchestra and acoustic plucked instruments, no quotations of existing compositions. Audio generated from authored creative briefs, then locally mastered.",
+  "tracks": {
+    "lobby": {
+      "title": "金秋会客厅",
+      "taskId": "2103816422038917122",
+      "actualCredits": 12,
+      "requestedSeconds": 90,
+      "creativeBrief": "D major, 88 BPM, 6/8. Warm witty chamber folk: acoustic guitar/lute arpeggios, clarinet/flute lead, viola/cello and natural bass, sparse celesta and hand drum. D-F#-A-B-A-E motif, eight-bar question/answer. A theme, B minor development, richer A return. Natural dynamics and room sound; no vocals, chiptune, pop drums or existing melody.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    },
+    "battle": {
+      "title": "底牌后出",
+      "taskId": "2103817151440969730",
+      "actualCredits": 8,
+      "requestedSeconds": 90,
+      "creativeBrief": "D minor, 106 BPM, 4/4. Tactically playful chamber orchestra: pizzicato bass and short cello, interlocking spiccato strings, bassoon/clarinet question-answer, restrained French horns and frame/timpani/shaker percussion. D-F-A-Bb-A-E motif. Dm(add9)-Bbmaj7-Gm6-A7sus-A7, A/F-major B/A counterpoint form. Dynamic rests every eight bars; no vocals, EDM, harsh MIDI or known music.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    },
+    "tutorial": {
+      "title": "第一张底牌",
+      "taskId": "2103817749972353025",
+      "actualCredits": 6,
+      "requestedSeconds": 90,
+      "creativeBrief": "D major, 80 BPM, 6/8. Supportive mentor mood: fingerpicked acoustic guitar, sparse harp, breathing flute melody, gently humorous bassoon, soft piano and pizzicato strings. D-F#-A-B-A-E motif. A/B-minor variation/A form. Half the density of combat music, restrained dynamics, no voices or heavy drums.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    },
+    "danger": {
+      "title": "最后一份底气",
+      "taskId": "2103818334452809730",
+      "actualCredits": 12,
+      "requestedSeconds": 90,
+      "creativeBrief": "D minor, 106 BPM, 4/4. Same D-F-A-Bb-A-E motif under pressure: low-string ostinato, quiet viola sixteenths, spare woodwind, hopeful horn fragments, structural timpani and light syncopated tambourine. Dm-A7/C#-Bbmaj7-Gm6-A7 chromatic inner voice. Alternate tension, build, small peak and retreat every sixteen bars. No voices, horror noise or EDM.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    },
+    "victory": {
+      "title": "好消息，录用了",
+      "taskId": "2103818813593309186",
+      "actualCredits": 11,
+      "requestedSeconds": 30,
+      "creativeBrief": "D major. Compact orchestral victory cue; warm horns, strings, harp and celesta resolve original motif into an inviting acceptance celebration. No vocals.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    },
+    "defeat": {
+      "title": "明天再赴约",
+      "taskId": "2103819586288971778",
+      "actualCredits": 9,
+      "requestedSeconds": 30,
+      "creativeBrief": "B minor to D major. Bittersweet, dignified chamber coda with piano, cello and clarinet, a hopeful final cadence. No vocals.",
+      "lyricsInstruction": "[Instrumental]; no vocals, humming, spoken word or lyrics"
+    }
+  },
+  "totalCredits": 58
+}

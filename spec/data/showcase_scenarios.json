@@ -1,0 +1,110 @@
+[
+  {
+    "id": "SC01",
+    "title": "校友集合到全校撑腰",
+    "kind": "explicit_training_fixture",
+    "primary": "H10",
+    "secondary": "S00",
+    "round": 4,
+    "jlu_signins": 2,
+    "friendly_offer": "E01",
+    "expected_actions": [
+      "USE_PRIMARY target=E01"
+    ],
+    "must_show": [
+      "公开2章",
+      "全校撑腰＋4／＋4",
+      "主技能进入饭局"
+    ]
+  },
+  {
+    "id": "SC02",
+    "title": "本硕连读叠加",
+    "kind": "explicit_training_fixture",
+    "primary": "H10",
+    "secondary": "S10",
+    "round": 6,
+    "jlu_ultimate_used": true,
+    "friendly_offer": "E02",
+    "existing_modifiers": [
+      {
+        "source": "H10",
+        "attack": 4,
+        "health": 4
+      }
+    ],
+    "expected_actions": [
+      "USE_SECONDARY target=E02"
+    ],
+    "must_show": [
+      "＋2／＋2追加",
+      "总学历来源＋6／＋6",
+      "已兑现"
+    ]
+  },
+  {
+    "id": "SC03",
+    "title": "母校刚到Offer先下班",
+    "kind": "explicit_training_fixture",
+    "actor_primary": "H04",
+    "target_offer": "E01",
+    "target_modifiers": [
+      {
+        "source": "H10",
+        "attack": 4,
+        "health": 4
+      }
+    ],
+    "actor_hand": [
+      "N12"
+    ],
+    "expected_actions": [
+      "PLAY_CARD N12 target=E01"
+    ],
+    "must_show": [
+      "回手清强化",
+      "原年龄保留",
+      "大招次数仍已使用"
+    ]
+  },
+  {
+    "id": "SC04",
+    "title": "三十五岁转管理",
+    "kind": "explicit_training_fixture",
+    "friendly_offer": "E01",
+    "age": 35,
+    "optimization_pending": true,
+    "hand": [
+      "F03"
+    ],
+    "expected_actions": [
+      "PLAY_CARD F03 target=E01"
+    ],
+    "must_show": [
+      "一线标签移除",
+      "通知到期失效",
+      "年龄仍35"
+    ]
+  },
+  {
+    "id": "SC05",
+    "title": "海外返场减费",
+    "kind": "explicit_training_fixture",
+    "primary": "H07",
+    "secondary": "S02",
+    "friendly_offer": "E01",
+    "referral_discount": 2,
+    "expected_actions": [
+      "USE_PRIMARY target=E01",
+      "DEPLOY_OFFER from=hand"
+    ],
+    "must_show": [
+      "回手便条1",
+      "原始5实际2",
+      "两个便条消耗"
+    ],
+    "round": 4,
+    "time_remaining": 4,
+    "secondary_used": true
+  }
+]

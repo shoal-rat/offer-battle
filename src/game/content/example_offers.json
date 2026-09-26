@@ -1,0 +1,293 @@
+[
+  {
+    "id": "E01",
+    "profile": {
+      "company_display_name": "方盒科技",
+      "ownership": "private",
+      "industry": "internet",
+      "company_stage": "established",
+      "role_family": "algorithm",
+      "role_title": "算法工程师",
+      "city": "示例城市",
+      "monthly_fixed_cny": 25000,
+      "guaranteed_months": 16,
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 80000,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [],
+      "card_display_name": "大厂算法岗"
+    },
+    "selected_benefit_id": null,
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 400000,
+      "annual_package_cny": 480000,
+      "template_id": "T01",
+      "benefit_id": null,
+      "original_time": 5,
+      "base_attack": 7,
+      "base_max_health": 4,
+      "career_tags": [
+        "frontline"
+      ],
+      "definition_hash": "b77c800e0a16369074350a395f723bd2bce86e70cf342ebd4c76f0dc00899705"
+    }
+  },
+  {
+    "id": "E02",
+    "profile": {
+      "company_display_name": "城建服务中心",
+      "ownership": "state_owned",
+      "industry": "other",
+      "company_stage": "established",
+      "role_family": "administration",
+      "role_title": "综合职能岗",
+      "city": "示例城市",
+      "monthly_fixed_cny": 12500,
+      "guaranteed_months": 16,
+      "annual_fixed_allowance_cny": 20000,
+      "annual_target_bonus_cny": 0,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [
+        "B01"
+      ],
+      "card_display_name": "国企综合岗"
+    },
+    "selected_benefit_id": "B01",
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 220000,
+      "annual_package_cny": 220000,
+      "template_id": "T02",
+      "benefit_id": "B01",
+      "original_time": 3,
+      "base_attack": 2,
+      "base_max_health": 4,
+      "career_tags": [
+        "long_term"
+      ],
+      "definition_hash": "2c83ae00780652b06ad4962e152a5c822396ef10cfb503c1335e4d64aa32b11a"
+    }
+  },
+  {
+    "id": "E03",
+    "profile": {
+      "company_display_name": "蓝帆产品部",
+      "ownership": "foreign_owned",
+      "industry": "other",
+      "company_stage": "established",
+      "role_family": "product",
+      "role_title": "产品经理",
+      "city": "示例城市",
+      "monthly_fixed_cny": 22500,
+      "guaranteed_months": 16,
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 0,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [
+        "B02"
+      ],
+      "card_display_name": "外企产品经理"
+    },
+    "selected_benefit_id": "B02",
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 360000,
+      "annual_package_cny": 360000,
+      "template_id": "T03",
+      "benefit_id": "B02",
+      "original_time": 4,
+      "base_attack": 3,
+      "base_max_health": 3,
+      "career_tags": [
+        "coordination"
+      ],
+      "definition_hash": "7659430c92a8018450895ccc823ee0cb7df2ec4d4a1bb226147795632476c5fc"
+    }
+  },
+  {
+    "id": "E04",
+    "profile": {
+      "company_display_name": "小锤制造",
+      "ownership": "private",
+      "industry": "manufacturing",
+      "company_stage": "established",
+      "role_family": "hardware_rd",
+      "role_title": "研发工程师",
+      "city": "示例城市",
+      "monthly_fixed_cny": 20000,
+      "guaranteed_months": 14,
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 0,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [],
+      "card_display_name": "制造业研发"
+    },
+    "selected_benefit_id": null,
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 280000,
+      "annual_package_cny": 280000,
+      "template_id": "T04",
+      "benefit_id": null,
+      "original_time": 4,
+      "base_attack": 3,
+      "base_max_health": 5,
+      "career_tags": [
+        "long_term"
+      ],
+      "definition_hash": "2036403e54a9763f77beb4f19a541c1e07e9e69040851fae73a01763d423290c"
+    }
+  },
+  {
+    "id": "E05",
+    "profile": {
+      "company_display_name": "新饼科技",
+      "ownership": "private",
+      "industry": "internet",
+      "company_stage": "startup",
+      "role_family": "general_rd",
+      "role_title": "研发合伙岗",
+      "city": "示例城市",
+      "monthly_fixed_cny": 25000,
+      "guaranteed_months": 12,
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 50000,
+      "annual_equity_cny": 300000,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [
+        "B04"
+      ],
+      "card_display_name": "初创研发合伙人"
+    },
+    "selected_benefit_id": "B04",
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 300000,
+      "annual_package_cny": 650000,
+      "template_id": "T10",
+      "benefit_id": "B04",
+      "original_time": 6,
+      "base_attack": 6,
+      "base_max_health": 5,
+      "career_tags": [
+        "long_term"
+      ],
+      "definition_hash": "07836bcf303d8d9e4f9954fdfbda3ca04368b3437a4782f6b75ecf41b6e0dc82"
+    }
+  },
+  {
+    "id": "E06",
+    "profile": {
+      "company_display_name": "电话金融",
+      "ownership": "private",
+      "industry": "finance",
+      "company_stage": "established",
+      "role_family": "sales",
+      "role_title": "机构销售",
+      "city": "示例城市",
+      "monthly_fixed_cny": 30000,
+      "guaranteed_months": 12,
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 160000,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "confirmed_benefits": [
+        "B03"
+      ],
+      "card_display_name": "金融机构销售"
+    },
+    "selected_benefit_id": "B03",
+    "definition": {
+      "rules_version": "2.0.0",
+      "annual_fixed_cny": 360000,
+      "annual_package_cny": 520000,
+      "template_id": "T06",
+      "benefit_id": "B03",
+      "original_time": 5,
+      "base_attack": 6,
+      "base_max_health": 3,
+      "career_tags": [
+        "commercial"
+      ],
+      "definition_hash": "df5b3d097e4a22433bc2c1060e449b5f4beb7c0f0259d9864b84558ea8b0b892"
+    }
+  },
+  {
+    "id": "E07",
+    "fictional_example": true,
+    "source_note": "纯属虚构的公共体验卡，薪酬仅用于演示规则，不代表真实公司或岗位待遇。",
+    "profile": {
+      "company_stage": "established",
+      "city": "虚构示例城市",
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 0,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "card_display_name": "银行基层",
+      "company_display_name": "虚构城北银行",
+      "ownership": "state_owned",
+      "industry": "finance",
+      "role_family": "administration",
+      "role_title": "银行基层综合岗",
+      "monthly_fixed_cny": 12000,
+      "guaranteed_months": 14,
+      "confirmed_benefits": [
+        "B01"
+      ]
+    },
+    "selected_benefit_id": "B01"
+  },
+  {
+    "id": "E08",
+    "fictional_example": true,
+    "source_note": "纯属虚构的公共体验卡，薪酬仅用于演示规则，不代表真实公司或岗位待遇。",
+    "profile": {
+      "company_stage": "established",
+      "city": "虚构示例城市",
+      "annual_fixed_allowance_cny": 0,
+      "annual_target_bonus_cny": 120000,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "card_display_name": "投行做债",
+      "company_display_name": "虚构远帆证券",
+      "ownership": "private",
+      "industry": "finance",
+      "role_family": "investment_banking",
+      "role_title": "投行债券承做",
+      "monthly_fixed_cny": 22000,
+      "guaranteed_months": 14,
+      "confirmed_benefits": []
+    },
+    "selected_benefit_id": null
+  },
+  {
+    "id": "E09",
+    "fictional_example": true,
+    "source_note": "纯属虚构的公共体验卡，薪酬仅用于演示规则，不代表真实公司或岗位待遇。",
+    "profile": {
+      "company_stage": "established",
+      "city": "虚构示例城市",
+      "annual_fixed_allowance_cny": 24000,
+      "annual_target_bonus_cny": 0,
+      "annual_equity_cny": 0,
+      "one_time_signing_cny": 0,
+      "card_display_name": "央企总部",
+      "company_display_name": "虚构华岳集团总部",
+      "ownership": "central_state_owned",
+      "industry": "other",
+      "role_family": "administration",
+      "role_title": "总部综合管理岗",
+      "monthly_fixed_cny": 18000,
+      "guaranteed_months": 16,
+      "confirmed_benefits": [
+        "B01"
+      ]
+    },
+    "selected_benefit_id": "B01"
+  }
+]

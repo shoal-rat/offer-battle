@@ -1,0 +1,2031 @@
+{
+  "id": "battle",
+  "title": "工资先亮，底牌后出",
+  "bpm": 100,
+  "bars": 16,
+  "key": "D minor",
+  "loop": true,
+  "chords": [
+    [
+      38,
+      45,
+      48,
+      52
+    ],
+    [
+      46,
+      53,
+      57,
+      60
+    ],
+    [
+      41,
+      48,
+      53,
+      57
+    ],
+    [
+      48,
+      55,
+      60,
+      62
+    ]
+  ],
+  "melody": [
+    74,
+    77,
+    81,
+    84,
+    81,
+    77,
+    76,
+    74
+  ],
+  "mood": "pizzicato ostinato, low strings, clockwork percussion",
+  "events": [
+    {
+      "note": 45,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 48,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 52,
+      "beat": 0,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 0,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 2,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 0.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 0.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 1.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 64,
+      "beat": 1.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 2.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 57,
+      "beat": 2.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 64,
+      "beat": 3.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 3.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 0,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 86,
+      "beat": 0,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 77,
+      "beat": 2.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 53,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 57,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 60,
+      "beat": 4,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 46,
+      "beat": 4,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 58,
+      "beat": 6,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 58,
+      "beat": 4.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 4.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 5.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 5.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 6.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 6.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 7.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 7.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 4,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 84,
+      "beat": 6.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 48,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 53,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 57,
+      "beat": 8,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 41,
+      "beat": 8,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 53,
+      "beat": 10,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 53,
+      "beat": 8.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 8.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 9.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 9.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 10.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 10.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 11.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 11.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 8,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 77,
+      "beat": 10.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 55,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 60,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 62,
+      "beat": 12,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 48,
+      "beat": 12,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 60,
+      "beat": 14,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 60,
+      "beat": 12.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 12.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 67,
+      "beat": 13.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 74,
+      "beat": 13.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 14.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 67,
+      "beat": 14.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 15.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 15.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 76,
+      "beat": 12,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 88,
+      "beat": 12,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 74,
+      "beat": 14.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 45,
+      "beat": 16,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 48,
+      "beat": 16,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 52,
+      "beat": 16,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 16,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 18,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 16.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 16.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 17.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 64,
+      "beat": 17.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 18.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 57,
+      "beat": 18.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 64,
+      "beat": 19.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 19.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 16,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 86,
+      "beat": 16,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 77,
+      "beat": 18.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 53,
+      "beat": 20,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 57,
+      "beat": 20,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 60,
+      "beat": 20,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 46,
+      "beat": 20,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 58,
+      "beat": 22,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 58,
+      "beat": 20.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 20.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 21.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 21.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 22.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 22.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 23.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 23.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 20,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 84,
+      "beat": 22.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 48,
+      "beat": 24,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 53,
+      "beat": 24,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 57,
+      "beat": 24,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 41,
+      "beat": 24,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 53,
+      "beat": 26,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 53,
+      "beat": 24.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 24.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 25.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 25.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 26.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 26.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 27.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 27.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 24,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 77,
+      "beat": 26.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 55,
+      "beat": 28,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 60,
+      "beat": 28,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 62,
+      "beat": 28,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 48,
+      "beat": 28,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 60,
+      "beat": 30,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 60,
+      "beat": 28.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 28.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 67,
+      "beat": 29.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 74,
+      "beat": 29.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 30.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 67,
+      "beat": 30.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 31.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 31.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 76,
+      "beat": 28,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 88,
+      "beat": 28,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 74,
+      "beat": 30.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 45,
+      "beat": 32,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 48,
+      "beat": 32,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 52,
+      "beat": 32,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 32,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 34,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 32.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 32.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 33.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 64,
+      "beat": 33.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 34.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 57,
+      "beat": 34.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 64,
+      "beat": 35.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 35.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 32,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 86,
+      "beat": 32,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 77,
+      "beat": 34.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 53,
+      "beat": 36,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 57,
+      "beat": 36,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 60,
+      "beat": 36,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 46,
+      "beat": 36,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 58,
+      "beat": 38,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 58,
+      "beat": 36.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 36.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 37.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 37.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 38.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 38.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 39.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 39.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 36,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 84,
+      "beat": 38.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 48,
+      "beat": 40,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 53,
+      "beat": 40,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 57,
+      "beat": 40,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 41,
+      "beat": 40,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 53,
+      "beat": 42,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 53,
+      "beat": 40.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 40.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 41.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 41.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 42.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 42.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 43.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 43.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 40,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 77,
+      "beat": 42.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 55,
+      "beat": 44,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 60,
+      "beat": 44,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 62,
+      "beat": 44,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 48,
+      "beat": 44,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 60,
+      "beat": 46,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 60,
+      "beat": 44.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 44.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 67,
+      "beat": 45.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 74,
+      "beat": 45.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 46.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 67,
+      "beat": 46.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 47.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 47.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 76,
+      "beat": 44,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 88,
+      "beat": 44,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 74,
+      "beat": 46.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 45,
+      "beat": 48,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 48,
+      "beat": 48,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 52,
+      "beat": 48,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 38,
+      "beat": 48,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 50,
+      "beat": 50,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 50,
+      "beat": 48.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 48.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 57,
+      "beat": 49.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 64,
+      "beat": 49.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 50.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 57,
+      "beat": 50.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 64,
+      "beat": 51.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 51.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 48,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 86,
+      "beat": 48,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 77,
+      "beat": 50.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 53,
+      "beat": 52,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 57,
+      "beat": 52,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 60,
+      "beat": 52,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 46,
+      "beat": 52,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 58,
+      "beat": 54,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 58,
+      "beat": 52.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 52.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 53.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 53.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 54.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 54.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 55.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 55.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 52,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 84,
+      "beat": 54.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 48,
+      "beat": 56,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 53,
+      "beat": 56,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 57,
+      "beat": 56,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 41,
+      "beat": 56,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 53,
+      "beat": 58,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 53,
+      "beat": 56.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 56.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 60,
+      "beat": 57.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 69,
+      "beat": 57.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 65,
+      "beat": 58.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 60,
+      "beat": 58.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 69,
+      "beat": 59.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 65,
+      "beat": 59.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 81,
+      "beat": 56,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 77,
+      "beat": 58.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 55,
+      "beat": 60,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": -0.45
+    },
+    {
+      "note": 60,
+      "beat": 60,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.0
+    },
+    {
+      "note": 62,
+      "beat": 60,
+      "duration": 3.6,
+      "instrument": "pad",
+      "velocity": 0.115,
+      "pan": 0.45
+    },
+    {
+      "note": 48,
+      "beat": 60,
+      "duration": 1.6,
+      "instrument": "bass",
+      "velocity": 0.42,
+      "pan": -0.06
+    },
+    {
+      "note": 60,
+      "beat": 62,
+      "duration": 1.4,
+      "instrument": "bass",
+      "velocity": 0.23,
+      "pan": 0.06
+    },
+    {
+      "note": 60,
+      "beat": 60.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 60.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 67,
+      "beat": 61.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 74,
+      "beat": 61.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 72,
+      "beat": 62.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 67,
+      "beat": 62.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 74,
+      "beat": 63.0,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.27,
+      "pan": 0.35
+    },
+    {
+      "note": 72,
+      "beat": 63.5,
+      "duration": 0.33,
+      "instrument": "pluck",
+      "velocity": 0.2,
+      "pan": -0.35
+    },
+    {
+      "note": 76,
+      "beat": 60,
+      "duration": 1.3,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    },
+    {
+      "note": 88,
+      "beat": 60,
+      "duration": 0.6,
+      "instrument": "bell",
+      "velocity": 0.13,
+      "pan": -0.26
+    },
+    {
+      "note": 74,
+      "beat": 62.5,
+      "duration": 1.1,
+      "instrument": "piano",
+      "velocity": 0.37,
+      "pan": 0.13
+    }
+  ]
+}

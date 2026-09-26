@@ -1,0 +1,689 @@
+{
+  "game": "秋招斗兽棋：Offer开打",
+  "rules_version": "2.0.0",
+  "status": "prototype_baseline",
+  "hero_mind": 30,
+  "time_cap": 8,
+  "max_rounds": 12,
+  "turn_seconds": 30,
+  "offer_slots": 3,
+  "base_deck_size": 12,
+  "flex_deck_size": 3,
+  "deck_size": 15,
+  "board_slots": 4,
+  "hand_limit": 8,
+  "first_player_starting_hand": 3,
+  "second_player_starting_hand": 4,
+  "draw_on_first_turn": true,
+  "mulligan_limit": 2,
+  "offer_retire_mind_loss": 2,
+  "hero_skill_uses_per_own_turn": 1,
+  "negotiations_per_match": 1,
+  "retort_slots": 1,
+  "age_track": [
+    22,
+    27,
+    31,
+    35
+  ],
+  "salary_tiers": [
+    {
+      "min_cny": 1,
+      "max_exclusive_cny": 150000,
+      "time_cost": 2
+    },
+    {
+      "min_cny": 150000,
+      "max_exclusive_cny": 250000,
+      "time_cost": 3
+    },
+    {
+      "min_cny": 250000,
+      "max_exclusive_cny": 400000,
+      "time_cost": 4
+    },
+    {
+      "min_cny": 400000,
+      "max_exclusive_cny": 600000,
+      "time_cost": 5
+    },
+    {
+      "min_cny": 600000,
+      "max_exclusive_cny": 900000,
+      "time_cost": 6
+    },
+    {
+      "min_cny": 900000,
+      "max_exclusive_cny": null,
+      "time_cost": 7
+    }
+  ],
+  "negotiation_discount": [
+    {
+      "original_time_min": 2,
+      "original_time_max": 3,
+      "discount": 1
+    },
+    {
+      "original_time_min": 4,
+      "original_time_max": 5,
+      "discount": 2
+    },
+    {
+      "original_time_min": 6,
+      "original_time_max": 7,
+      "discount": 3
+    }
+  ],
+  "base_formula": "attack=c+template.attack_delta; health=c+template.health_delta; both initially >=1",
+  "benefit_stat_price": "One optional active benefit. Decrease initial max_health by 1; if max_health is 1, decrease attack by 1. Resulting attack and max_health must each be >=1.",
+  "base_copy_limit": 2,
+  "flex_unique": true,
+  "public_topics": [
+    {
+      "id": "salary",
+      "name": "聊年包",
+      "default_rounds": [
+        1,
+        3
+      ],
+      "effect": "原始耗时至少5小时的场上Offer排面+1。"
+    },
+    {
+      "id": "life",
+      "name": "聊生活",
+      "default_rounds": [
+        4,
+        6
+      ],
+      "effect": "自己的回合结束时，若自己场上至少有一个带生活条款的Offer，额外恢复1点心态。每人每回合最多一次。"
+    },
+    {
+      "id": "future",
+      "name": "聊以后",
+      "default_rounds": [
+        7,
+        12
+      ],
+      "effect": "场上年龄至少31岁的Offer排面+1。"
+    }
+  ],
+  "heroes": [
+    {
+      "id": "H01",
+      "name": "清北",
+      "skill": "先看答案",
+      "time_cost": 2,
+      "text": "查看对手当前手牌，选择其中一张标记。该牌在对手下个回合耗时+1。空手时无法使用。同一张牌的此类加时不叠加。",
+      "slot": "primary",
+      "handler": "education_primary_h01",
+      "asset_id": "hero_h01_full",
+      "target": "enemy_hand_choice"
+    },
+    {
+      "id": "H02",
+      "name": "C9",
+      "skill": "导师打招呼",
+      "time_cost": 2,
+      "text": "查看自己牌库顶最多3张，选1张置顶，其余按原顺序到底。获得1小时内推便条：下一张原始耗时至少5小时的Offer少花1小时。持有任何内推便条时无法使用。空牌库仍可获得便条。",
+      "slot": "primary",
+      "handler": "education_primary_h02",
+      "asset_id": "hero_h02_full",
+      "target": "top_deck_choice"
+    },
+    {
+      "id": "H03",
+      "name": "985",
+      "skill": "再卷一轮",
+      "time_cost": 1,
+      "text": "一个友方角色本回合排面+2；自己失去1点心态。",
+      "slot": "primary",
+      "handler": "education_primary_h03",
+      "asset_id": "hero_h03_full",
+      "target": "friendly_unit"
+    },
+    {
+      "id": "H04",
+      "name": "211",
+      "skill": "校友内推",
+      "time_cost": 2,
+      "text": "抽1张牌。",
+      "slot": "primary",
+      "handler": "education_primary_h04",
+      "asset_id": "hero_h04_full",
+      "target": "none"
+    },
+    {
+      "id": "H05",
+      "name": "一本",
+      "skill": "稳住基本盘",
+      "time_cost": 2,
+      "text": "一个友方角色恢复2点底气，自己恢复1点心态。没有友方角色时只恢复心态。",
+      "slot": "primary",
+      "handler": "education_primary_h05",
+      "asset_id": "hero_h05_full",
+      "target": "optional_friendly_unit"
+    },
+    {
+      "id": "H06",
+      "name": "二本／双非",
+      "skill": "先干再说",
+      "time_cost": 2,
+      "text": "召唤一个1排面、2底气的实习生。使用时自己的场上角色更少，则召唤2排面、2底气版本。场上没有空位时无法使用。",
+      "slot": "primary",
+      "handler": "education_primary_h06",
+      "asset_id": "hero_h06_full",
+      "target": "empty_friendly_slot"
+    },
+    {
+      "id": "H07",
+      "name": "海外 Top 50",
+      "skill": "跨国调度",
+      "time_cost": 2,
+      "text": "收回一张己方Offer，获得绑定它的返场便条：它下次从手牌上桌少花1小时。便条在自己下个回合结束时到期。手牌已满、没有己方Offer或已有未消耗返场便条时无法使用。",
+      "slot": "primary",
+      "handler": "education_primary_h07",
+      "asset_id": "hero_h07_full",
+      "target": "friendly_offer"
+    },
+    {
+      "id": "H08",
+      "name": "海外 Top 100",
+      "skill": "项目加分",
+      "time_cost": 2,
+      "text": "使一个己方助阵角色排面+1、底气上限+1，保留已受伤害。本次上桌内持续。",
+      "slot": "primary",
+      "handler": "education_primary_h08",
+      "asset_id": "hero_h08_full",
+      "target": "friendly_support"
+    },
+    {
+      "id": "H09",
+      "name": "海外 100+",
+      "skill": "换个赛道",
+      "time_cost": 1,
+      "text": "将一张手里的通用牌放到自己牌库底，然后抽1张。操作前牌库必须非空；不能选择Offer。",
+      "slot": "primary",
+      "handler": "education_primary_h09",
+      "asset_id": "hero_h09_full",
+      "target": "shared_hand_card"
+    },
+    {
+      "id": "H10",
+      "name": "校友流派",
+      "skill": "校友主角",
+      "time_cost": 2,
+      "text": "分阶段：前两次发动校友集合，各恢复自己1点心态并获得1枚公开签到章。满2枚后，下次发动全校撑腰：使一张己方Offer获得+4排面、+4底气上限，保留已受伤害。全校撑腰每局一次。用过后技能变为校友饭局：恢复自己2点心态。每次发动共用本回合学历行动机会。",
+      "slot": "primary",
+      "handler": "education_primary_h10",
+      "asset_id": "hero_h10_full",
+      "target": "stage_dependent_friendly_offer"
+    }
+  ],
+  "offer_templates": [
+    {
+      "id": "T00",
+      "name": "普通同事",
+      "attack_delta": 0,
+      "health_delta": 1,
+      "career_tags": [
+        "general"
+      ],
+      "main_effect": "上桌：恢复自己1点心态。"
+    },
+    {
+      "id": "T01",
+      "name": "一线卷王",
+      "attack_delta": 2,
+      "health_delta": -1,
+      "career_tags": [
+        "frontline"
+      ],
+      "main_effect": "主动开怼时，自己失去1点心态，与本次交锋伤害一起结算。"
+    },
+    {
+      "id": "T02",
+      "name": "稳定守岗",
+      "attack_delta": -1,
+      "health_delta": 2,
+      "career_tags": [
+        "long_term"
+      ],
+      "main_effect": "挡话。"
+    },
+    {
+      "id": "T03",
+      "name": "流程大师",
+      "attack_delta": -1,
+      "health_delta": 0,
+      "career_tags": [
+        "coordination"
+      ],
+      "main_effect": "上桌：可以收回一张自己的其他Offer。"
+    },
+    {
+      "id": "T04",
+      "name": "硬件老法师",
+      "attack_delta": -1,
+      "health_delta": 1,
+      "career_tags": [
+        "long_term"
+      ],
+      "main_effect": "年龄至少31岁时排面+2；35岁时底气上限额外+2。阶段带来的底气上限变化保持已受伤害不变。"
+    },
+    {
+      "id": "T05",
+      "name": "项目经理",
+      "attack_delta": -1,
+      "health_delta": 0,
+      "career_tags": [
+        "coordination"
+      ],
+      "main_effect": "上桌：可以使一个其他友方角色排面+1，底气上限与当前底气各+1。"
+    },
+    {
+      "id": "T06",
+      "name": "销售冠军",
+      "attack_delta": 1,
+      "health_delta": -1,
+      "career_tags": [
+        "commercial"
+      ],
+      "main_effect": "主动开怼对方主角并造成心态伤害后，抽1张牌。"
+    },
+    {
+      "id": "T07",
+      "name": "测试拆台王",
+      "attack_delta": -1,
+      "health_delta": 0,
+      "career_tags": [
+        "technical"
+      ],
+      "main_effect": "上桌：可以使一个敌方角色失去2点底气。"
+    },
+    {
+      "id": "T08",
+      "name": "人事终面官",
+      "attack_delta": -1,
+      "health_delta": 0,
+      "career_tags": [
+        "coordination"
+      ],
+      "main_effect": "上桌：可以使一个敌方角色在其拥有者下个回合无法主动开怼。"
+    },
+    {
+      "id": "T09",
+      "name": "咨询方案师",
+      "attack_delta": -1,
+      "health_delta": 0,
+      "career_tags": [
+        "resources"
+      ],
+      "main_effect": "上桌：查看自己牌库顶最多3张，选1张加入手牌，其余洗回牌库。这是拿牌；空牌库时视为抽1张并结算焦虑。"
+    },
+    {
+      "id": "T10",
+      "name": "创业合伙人",
+      "attack_delta": 0,
+      "health_delta": 0,
+      "career_tags": [
+        "long_term"
+      ],
+      "main_effect": "每提升一个职场阶段，排面比新人阶段多1，最多+3。"
+    }
+  ],
+  "benefits": [
+    {
+      "id": "B01",
+      "name": "双休",
+      "lifestyle": true,
+      "text": "自己的回合结束时，恢复自己1点心态。"
+    },
+    {
+      "id": "B02",
+      "name": "弹性安排",
+      "lifestyle": true,
+      "text": "上桌当回合可以主动开怼角色；当回合无法主动开怼主角。"
+    },
+    {
+      "id": "B03",
+      "name": "通勤短",
+      "lifestyle": true,
+      "text": "上桌：恢复自己2点心态。"
+    },
+    {
+      "id": "B04",
+      "name": "期权",
+      "lifestyle": false,
+      "text": "年龄至少31岁时排面+2；35岁时改为总共+3。"
+    },
+    {
+      "id": "B05",
+      "name": "安家补助",
+      "lifestyle": false,
+      "text": "上桌：抽1张牌。"
+    },
+    {
+      "id": "B06",
+      "name": "轮岗",
+      "lifestyle": false,
+      "text": "上桌二选一：排面+1；或底气上限与当前底气各+2。"
+    },
+    {
+      "id": "B07",
+      "name": "保障条款",
+      "lifestyle": false,
+      "text": "每次上桌后，首次受到对手拆台牌的底气伤害减少2，最低0。消耗后不再生效。"
+    }
+  ],
+  "base_cards": [
+    {
+      "id": "N01",
+      "name": "实习搭子",
+      "time_cost": 1,
+      "type": "support",
+      "rules_text": "无技能。",
+      "attack": 1,
+      "max_health": 2
+    },
+    {
+      "id": "N02",
+      "name": "面经收集员",
+      "time_cost": 2,
+      "type": "support",
+      "rules_text": "无技能。",
+      "attack": 2,
+      "max_health": 3
+    },
+    {
+      "id": "N03",
+      "name": "校招生鼠鼠",
+      "time_cost": 2,
+      "type": "support",
+      "rules_text": "主动开怼原始耗时至少5小时的角色时，本次交锋排面+3。",
+      "attack": 2,
+      "max_health": 2
+    },
+    {
+      "id": "N04",
+      "name": "内推学长",
+      "time_cost": 3,
+      "type": "support",
+      "rules_text": "上桌：抽1张牌。",
+      "attack": 2,
+      "max_health": 3
+    },
+    {
+      "id": "N05",
+      "name": "老员工",
+      "time_cost": 4,
+      "type": "support",
+      "rules_text": "挡话。",
+      "attack": 3,
+      "max_health": 6
+    },
+    {
+      "id": "N06",
+      "name": "猎头姐姐",
+      "time_cost": 3,
+      "type": "support",
+      "rules_text": "上桌：可以收回一张自己的其他Offer。",
+      "attack": 2,
+      "max_health": 3
+    },
+    {
+      "id": "N07",
+      "name": "追问细节",
+      "time_cost": 1,
+      "type": "action",
+      "rules_text": "使一个敌方角色失去2点底气。"
+    },
+    {
+      "id": "N08",
+      "name": "今晚不卷",
+      "time_cost": 1,
+      "type": "action",
+      "rules_text": "恢复自己3点心态。"
+    },
+    {
+      "id": "N09",
+      "name": "面经复盘",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "抽2张牌。"
+    },
+    {
+      "id": "N10",
+      "name": "打听工时",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "使一个敌方角色失去3点底气；目标有一线标签时，改为失去4点。"
+    },
+    {
+      "id": "N11",
+      "name": "补充材料",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "一个敌方角色在其拥有者下个回合无法主动开怼。"
+    },
+    {
+      "id": "N12",
+      "name": "流程重走",
+      "time_cost": 3,
+      "type": "action",
+      "rules_text": "收回一个敌方角色。"
+    },
+    {
+      "id": "N13",
+      "name": "跳槽",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "收回一张自己的Offer，然后抽1张牌。"
+    },
+    {
+      "id": "N14",
+      "name": "别画饼了",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "一个敌方角色排面-2，最低0，持续至其拥有者下个回合结束；抽1张牌。"
+    },
+    {
+      "id": "N15",
+      "name": "临时加班",
+      "time_cost": 1,
+      "type": "action",
+      "rules_text": "一个友方角色本回合排面+3；自己失去2点心态。"
+    },
+    {
+      "id": "N16",
+      "name": "做出成果",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "一个友方角色排面+2，底气上限与当前底气各+2。"
+    },
+    {
+      "id": "N17",
+      "name": "部门聚餐",
+      "time_cost": 3,
+      "type": "action",
+      "rules_text": "所有友方角色各恢复2点底气，然后恢复自己2点心态。"
+    },
+    {
+      "id": "N18",
+      "name": "群面拷打",
+      "time_cost": 3,
+      "type": "action",
+      "rules_text": "所有敌方角色同时失去2点底气。"
+    },
+    {
+      "id": "N19",
+      "name": "预算砍半",
+      "time_cost": 4,
+      "type": "action",
+      "rules_text": "场上所有角色同时失去3点底气。"
+    },
+    {
+      "id": "N20",
+      "name": "组织优化",
+      "time_cost": 4,
+      "type": "action",
+      "rules_text": "让一个当前底气不超过3的敌方角色退场。"
+    },
+    {
+      "id": "N21",
+      "name": "终面摊牌",
+      "time_cost": 5,
+      "type": "action",
+      "rules_text": "使一个敌方角色失去5点底气；若其为原始耗时至少5小时的Offer，随后恢复自己2点心态。"
+    },
+    {
+      "id": "N22",
+      "name": "反问环节",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "对手失去3点心态。"
+    },
+    {
+      "id": "N23",
+      "name": "截图发群里",
+      "time_cost": 2,
+      "type": "retort",
+      "rules_text": "对手角色主动开怼你的主角并造成心态伤害后，若对局仍在继续，对手失去3点心态。触发后消耗。"
+    },
+    {
+      "id": "N24",
+      "name": "这届同学真卷",
+      "time_cost": 4,
+      "type": "action",
+      "rules_text": "召唤两个2排面、3底气的临时同事。需要两个空位。"
+    }
+  ],
+  "flex_cards": [
+    {
+      "id": "F01",
+      "name": "三十五岁",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "给一个35岁的敌方一线Offer挂上优化通知。在你的下个回合开始时，若它仍是同一次上桌的35岁一线Offer，让它退场。"
+    },
+    {
+      "id": "F02",
+      "name": "股权重估",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "对一个敌方Offer：先清除其期权条款提供的排面加成，使该条款本次上桌失效；随后使其失去2点底气。没有期权的目标只受到伤害。"
+    },
+    {
+      "id": "F03",
+      "name": "转管理",
+      "time_cost": 2,
+      "type": "action",
+      "rules_text": "一张友方Offer失去一线标签，排面-2，最低0；随后抽1张牌。转管理状态持续至收回或退场。"
+    },
+    {
+      "id": "F04",
+      "name": "合同写着呢",
+      "time_cost": 2,
+      "type": "retort",
+      "rules_text": "对手下一张以你的单个Offer为目标的拆台牌，其全部效果取消。对手已付时间不退还。触发后消耗。"
+    },
+    {
+      "id": "F05",
+      "name": "换个话题",
+      "time_cost": 1,
+      "type": "action",
+      "rules_text": "选择聊年包、聊生活或聊以后，立即成为公共话题，持续至本轮结束。后使用的话题覆盖先前话题。"
+    },
+    {
+      "id": "F06",
+      "name": "先问工时",
+      "time_cost": 2,
+      "type": "retort",
+      "rules_text": "对手的角色下一次主动开怼你的主角前，该角色本回合排面-3，最低0。此次开怼继续结算。触发后消耗。"
+    }
+  ],
+  "base_deck_presets": {
+    "抢节奏": [
+      "N01",
+      "N01",
+      "N02",
+      "N02",
+      "N03",
+      "N03",
+      "N07",
+      "N07",
+      "N15",
+      "N15",
+      "N22",
+      "N22"
+    ],
+    "稳到后期": [
+      "N02",
+      "N02",
+      "N05",
+      "N05",
+      "N08",
+      "N08",
+      "N09",
+      "N11",
+      "N17",
+      "N18",
+      "N19",
+      "N21"
+    ],
+    "反复拆台": [
+      "N03",
+      "N03",
+      "N04",
+      "N04",
+      "N06",
+      "N07",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N18"
+    ]
+  },
+  "implementation_contract": {
+    "runtime_rule_resolution": "Use explicit tested handlers keyed by hero/template/benefit/card ID. rules_text is development specification, not executable model input.",
+    "zone_policy_source": "game_design.md section 17",
+    "acceptance_source": "acceptance_tests.md",
+    "hidden_information": "Server owns full state; send per-player views only.",
+    "template_matching_order": [
+      "T08",
+      "T07",
+      "T06",
+      "T05",
+      "T09",
+      "T04",
+      "T02",
+      "T03",
+      "T10",
+      "T01",
+      "T00"
+    ],
+    "education_source": "education_catalog.json and game_design.md section 8",
+    "delivery_source": "AGI_START_HERE.md and engineering/build_contract.md",
+    "resource_source": "art/asset_manifest.json",
+    "discount_formula": "max(1, original_time + max_live_school_tax + other_tax - negotiation - referral - linked_return)"
+  },
+  "education": {
+    "catalog": "education_catalog.json",
+    "primary_count": 10,
+    "secondary_count": 11,
+    "ordered_combinations": 110,
+    "shared_action_limit_per_own_turn": 1,
+    "secondary_unlock_round": 4,
+    "secondary_uses_per_match": 1,
+    "primary_and_secondary_public": true,
+    "same_track_in_both_slots_allowed": true,
+    "combo_bonuses": "presentation_only",
+    "primary_unlock_round": 1,
+    "discount_floor": 1,
+    "retort_interaction": "Education effects are hero skills, not action cards; F04 and B07 do not trigger.",
+    "cost_increase_rule": "School hand taxes on the same card use the largest live increase, not their sum.",
+    "refund_rule": "Invalid commands leave resources and use counters unchanged. Viewing hidden information commits the activation before reveal."
+  }
+}

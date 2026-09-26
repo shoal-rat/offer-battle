@@ -1,0 +1,34 @@
+[
+  {
+    "id": "K01",
+    "name": "实习生",
+    "type": "support",
+    "temporary": true,
+    "original_time": 1,
+    "attack": 1,
+    "max_health": 2,
+    "alt_attack_if_behind": 2,
+    "asset_id": "token_k01_full"
+  },
+  {
+    "id": "K02",
+    "name": "临时同事",
+    "type": "support",
+    "temporary": true,
+    "original_time": 2,
+    "attack": 2,
+    "max_health": 3,
+    "asset_id": "token_k02_full"
+  },
+  {
+    "id": "K03",
+    "name": "项目搭子",
+    "type": "support",
+    "temporary": true,
+    "original_time": 2,
+    "attack": 2,
+    "max_health": 3,
+    "rush_units_on_deploy": true,
+    "asset_id": "token_k03_full"
+  }
+]

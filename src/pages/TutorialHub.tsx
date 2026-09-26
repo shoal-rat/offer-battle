@@ -1,0 +1,17 @@
+import {Art,Icon,Badge,heroPath} from '../ui';
+import '../styles/tutorial.css';
+export interface LessonSummary {id:string;title:string;subtitle?:string;description?:string;duration?:string;icon?:string;skills?:string[]}
+export const tutorialCards:LessonSummary[]=[
+ {id:'L01',title:'第一份底气',subtitle:'时间 · 上桌 · 开怼',description:'先认识牌桌，再亲手让第一张角色出击。',duration:'约 2 分钟',icon:'sword',skills:['花时间出牌','等待行动','攻击目标']},
+ {id:'L02',title:'有话好好挡',subtitle:'挡话 · 行动牌 · 目标',description:'正面突破防线，分清角色攻击与行动牌。',duration:'约 2 分钟',icon:'shield',skills:['认识挡话','指定目标','掌握交换']},
+ {id:'L03',title:'另一份筹码',subtitle:'Offer · 岗位类型 · 谈薪',description:'拿一份 Offer 作筹码，让更好的工作提前上桌。',duration:'约 2 分钟',icon:'mail',skills:['比较年包','认清类型','谈薪上桌']},
+ {id:'L04',title:'母校来撑腰',subtitle:'主技能 · 进修 · 共享行动',description:'学会留好时机，把学历变成一次漂亮的转折。',duration:'约 3 分钟',icon:'crown',skills:['发动主技能','第四轮进修','选择强化目标']},
+ {id:'L05',title:'过了三十五',subtitle:'年龄 · 优化 · 转管理',description:'处理人生的关键回合，完成你的入职考核。',duration:'约 2 分钟',icon:'trophy',skills:['识别通知','转管理解围','完成考核']},
+];
+export const progressKey='offer-tutorial-completed-v1';
+export function readTutorialProgress():string[]{try{const p=JSON.parse(localStorage.getItem(progressKey)||'[]');return Array.isArray(p)?p.filter(x=>typeof x==='string'):[]}catch{return []}}
+export default function TutorialHub({completed,busy,onStart,onPractice,lessons=tutorialCards}:{completed:string[];busy:boolean;onStart:(id:string)=>void;onPractice:()=>void;lessons?:LessonSummary[]}){
+ const next=lessons.find(l=>!completed.includes(l.id))||lessons[0],allDone=lessons.every(l=>completed.includes(l.id));
+ return <main className="page academy-page"><div className="academy-hero"><section><span className="eyebrow">THE FIRST OFFER · 新人入职训练</span><h1>第一场胜利，<br/><em>从这里开始。</em></h1><p>我是你的带教前辈。先不用配卡，<br/>我们一边打，一边认识这张牌桌。</p><div className="academy-progress"><span>{completed.filter(id=>lessons.some(l=>l.id===id)).length} / {lessons.length} 课完成</span><div><i style={{width:`${completed.filter(id=>lessons.some(l=>l.id===id)).length/lessons.length*100}%`}}/></div></div><div className="academy-actions"><button className="btn gold" disabled={busy} onClick={()=>onStart(next.id)}><Icon name={allDone?'replay':'arrow'}/>{busy?'导师正在摆好牌桌…':allDone?'重温入职训练':completed.length?'继续我的训练':'开始第一课'}</button><button className="text-btn" onClick={onPractice}>我已经会了，直接练习<Icon name="arrow" size={15}/></button></div></section><div className="academy-mentor"><div className="mentor-orbit"/><Art src={heroPath('H05')} alt="带教前辈"/><div className="mentor-note"><span>带教前辈 · 林同学</span><strong>别急，第一局我陪你。</strong><p>每一步都亲手操作，随时可以重来。</p></div></div></div>
+ <div className="academy-curriculum"><div className="section-heading"><span>05</span><h2>五堂小课，一次学会。</h2><small>进度自动保存在当前浏览器</small></div><div className="lesson-path">{lessons.map((l,i)=>{const done=completed.includes(l.id),open=i===0||completed.includes(lessons[i-1].id)||done;return <button className={`lesson-card ${done?'complete':''} ${open?'unlocked':'locked'}`} key={l.id} disabled={!open||busy} onClick={()=>onStart(l.id)}><span className="lesson-number">{done?<Icon name="check"/>:String(i+1).padStart(2,'0')}</span><div className="lesson-content"><span className="lesson-topic">{l.subtitle}</span><h3>{l.title}</h3><p>{l.description}</p><div className="lesson-tags">{l.skills?.map(s=><span key={s}>{s}</span>)}</div></div><span className="lesson-end"><Badge>{done?'已完成':!open?'完成上一课解锁':l.duration||'实战小课'}</Badge><Icon name={done?'replay':open?'arrow':'lock'}/></span></button>})}</div></div></main>
+}
