@@ -1,6 +1,7 @@
 /** Runtime budgets, not an assertion that every planned scene has been filmed. */
 export type MotionChannel='feedback'|'ambient'|'navigation'|'battle'|'attention';
-export const MOTION_LIMITS={ambientConcurrent:2,attentionConcurrent:1,compressAfterMs:3000,catchUpAfterMs:5000,resultDeadlineMs:2000} as const;
+/** A backlog first plays faster (compressScale), and only a very long one snaps to the current table. */
+export const MOTION_LIMITS={ambientConcurrent:2,attentionConcurrent:1,compressAfterMs:5200,compressScale:.6,compressFloorMs:260,catchUpAfterMs:9000,resultDeadlineMs:2800} as const;
 export const MOTION_CUES=[
   {
     "id": "M01",

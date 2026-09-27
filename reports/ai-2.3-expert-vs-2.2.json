@@ -1,0 +1,1787 @@
+{
+ "schemaVersion": 1,
+ "question": "Does the 2.3 expert (endgame playouts from round 9, 8 finalists) beat the frozen 2.2.0 expert?",
+ "method": "scripts/benchmark-expert.ts: 54 pairs, mirrored loadouts drawn from practice-opponent templates, seats exchanged within each pair, fixed node budgets (time guard disabled), 9 shards. Summary via scripts/summarize-expert-bench.ts (4000-resample paired bootstrap).",
+ "runs": [
+  {
+   "variant": "2.3 expert: endgame playouts (shipped)",
+   "summary": {
+    "games": 108,
+    "pairs": 54,
+    "wins": 57,
+    "losses": 48,
+    "draws": 3,
+    "scoreRate": 0.542,
+    "ci95": [
+     0.509,
+     0.579
+    ],
+    "byStyle": {
+     "aggressive": 0.528,
+     "control": 0.569,
+     "growth": 0.528
+    },
+    "thinkMs": 3238.507541999992,
+    "referenceThinkMs": 1316.4889580000017
+   },
+   "records": [
+    {
+     "pair": 0,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 0,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 1,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 1,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 2,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 2,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 3,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 3,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 4,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 4,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 5,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": true
+    },
+    {
+     "pair": 5,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 7,
+     "challengerFirst": false
+    },
+    {
+     "pair": 6,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 6,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 7,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 7,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 8,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 8,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": false
+    },
+    {
+     "pair": 9,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 9,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 10,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 10,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 11,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 11,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 12,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 12,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 13,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 13,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 14,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 14,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 15,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 15,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 16,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 10,
+     "challengerFirst": true
+    },
+    {
+     "pair": 16,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 17,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 17,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 18,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 18,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 19,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 19,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 20,
+     "swap": 0,
+     "style": "growth",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 20,
+     "swap": 1,
+     "style": "growth",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 21,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 21,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 22,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 22,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 23,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": true
+    },
+    {
+     "pair": 23,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 7,
+     "challengerFirst": false
+    },
+    {
+     "pair": 24,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 24,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 25,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 25,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 26,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 26,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 27,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 27,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 28,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 28,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 29,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 29,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 30,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 30,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 31,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 31,
+     "swap": 1,
+     "style": "control",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 32,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 32,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 33,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 9,
+     "challengerFirst": false
+    },
+    {
+     "pair": 33,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 9,
+     "challengerFirst": true
+    },
+    {
+     "pair": 34,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 10,
+     "challengerFirst": false
+    },
+    {
+     "pair": 34,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 10,
+     "challengerFirst": true
+    },
+    {
+     "pair": 35,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 5,
+     "challengerFirst": true
+    },
+    {
+     "pair": 35,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 5,
+     "challengerFirst": false
+    },
+    {
+     "pair": 36,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 36,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 37,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 37,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 38,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 38,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 39,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 39,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 40,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 40,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 41,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 41,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 42,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 10,
+     "challengerFirst": true
+    },
+    {
+     "pair": 42,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 43,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 43,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 44,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 44,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 45,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 45,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 46,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 46,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 47,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 47,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 48,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 48,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 49,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 49,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 50,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 50,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 51,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 51,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 52,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 52,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 53,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 53,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    }
+   ]
+  },
+  {
+   "variant": "trade-pressure evaluation only (not shipped)",
+   "summary": {
+    "games": 108,
+    "pairs": 54,
+    "wins": 52,
+    "losses": 53,
+    "draws": 3,
+    "scoreRate": 0.495,
+    "ci95": [
+     0.435,
+     0.556
+    ],
+    "byStyle": {
+     "aggressive": 0.458,
+     "control": 0.5,
+     "growth": 0.528
+    },
+    "thinkMs": 2041.1806660000002,
+    "referenceThinkMs": 1829.5859999999957
+   },
+   "records": [
+    {
+     "pair": 0,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 0,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 1,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 1,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 2,
+     "swap": 0,
+     "style": "growth",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 2,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 3,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 3,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 4,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 4,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 5,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": true
+    },
+    {
+     "pair": 5,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 7,
+     "challengerFirst": false
+    },
+    {
+     "pair": 6,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 10,
+     "challengerFirst": true
+    },
+    {
+     "pair": 6,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 7,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 7,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 8,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 8,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": false
+    },
+    {
+     "pair": 9,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 9,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 10,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 10,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 11,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 11,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 12,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 12,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 13,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 13,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 14,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": true
+    },
+    {
+     "pair": 14,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 15,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 15,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 16,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 16,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 17,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 17,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 18,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 18,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 19,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 19,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 20,
+     "swap": 0,
+     "style": "growth",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 20,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 21,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 21,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 22,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 22,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 23,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 7,
+     "challengerFirst": true
+    },
+    {
+     "pair": 23,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 24,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 24,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0.5,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 25,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 10,
+     "challengerFirst": true
+    },
+    {
+     "pair": 25,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 26,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 9,
+     "challengerFirst": true
+    },
+    {
+     "pair": 26,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 27,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 27,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 28,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 28,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 29,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 29,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 30,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 30,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 31,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 31,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 32,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 32,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 33,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 10,
+     "challengerFirst": false
+    },
+    {
+     "pair": 33,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 34,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 34,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 35,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 5,
+     "challengerFirst": true
+    },
+    {
+     "pair": 35,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 5,
+     "challengerFirst": false
+    },
+    {
+     "pair": 36,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 9,
+     "challengerFirst": true
+    },
+    {
+     "pair": 36,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 37,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 37,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 38,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 38,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 39,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 39,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 40,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 40,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 41,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 8,
+     "challengerFirst": true
+    },
+    {
+     "pair": 41,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 42,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 42,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 9,
+     "challengerFirst": false
+    },
+    {
+     "pair": 43,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 43,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 44,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 44,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 45,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 45,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 46,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 46,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 47,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 47,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 48,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 48,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    },
+    {
+     "pair": 49,
+     "swap": 0,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 49,
+     "swap": 1,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 50,
+     "swap": 0,
+     "style": "growth",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 50,
+     "swap": 1,
+     "style": "growth",
+     "score": 0,
+     "round": 9,
+     "challengerFirst": false
+    },
+    {
+     "pair": 51,
+     "swap": 0,
+     "style": "aggressive",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 51,
+     "swap": 1,
+     "style": "aggressive",
+     "score": 0,
+     "round": 8,
+     "challengerFirst": false
+    },
+    {
+     "pair": 52,
+     "swap": 0,
+     "style": "control",
+     "score": 1,
+     "round": 12,
+     "challengerFirst": true
+    },
+    {
+     "pair": 52,
+     "swap": 1,
+     "style": "control",
+     "score": 0,
+     "round": 12,
+     "challengerFirst": false
+    },
+    {
+     "pair": 53,
+     "swap": 0,
+     "style": "growth",
+     "score": 0,
+     "round": 11,
+     "challengerFirst": false
+    },
+    {
+     "pair": 53,
+     "swap": 1,
+     "style": "growth",
+     "score": 1,
+     "round": 11,
+     "challengerFirst": true
+    }
+   ]
+  }
+ ],
+ "notDone": [
+  "Deeper response search (responseDepth 8, 6 samples) and playouts from round 7 were started but stopped after 19 and 6 games because they were several times slower; no conclusion is drawn from those partial runs.",
+  "Human play strength is not measured by bot-vs-bot pairing."
+ ]
+}

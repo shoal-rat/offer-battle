@@ -5,6 +5,11 @@ import {
   soundsForCue,
   soundsForBatch,
 } from "../src/sound-effects";
+import { ATTACK_TIMING, CARD_TIMING, RETIRE_AFTER_IMPACT, REWRITE_MS } from "../src/components/battle-motion";
+import { resultMotionDuration } from "../src/components/result-motion";
+const LIFT = ATTACK_TIMING.lift,
+  CONTACT = ATTACK_TIMING.contact,
+  EXIT = ATTACK_TIMING.contact + ATTACK_TIMING.hold;
 import type { BattleCue, Command, MatchState } from "../src/game/types";
 import {
   createMatch,
@@ -24,8 +29,8 @@ test("semantic cues schedule attack, impact, retirement and education audio at t
   assert.deepEqual(
     soundsForCue(cue(1, "attack")).map((s) => [s.file, s.delay]),
     [
-      ["attack", 40],
-      ["damage", 640],
+      ["attack", LIFT],
+      ["damage", CONTACT],
     ],
   );
   assert.equal(soundsForCue(cue(2, "retire"))[0].delay, 0);
@@ -61,11 +66,11 @@ test("each event is heard once across snapshots, duplicates, stale updates and m
     sounds.consume("m", [cue(1, "draw"), attack, attack]);
     sounds.consume("m", [attack]);
     sounds.consume("m", [cue(1, "draw")]);
-    env.tick(39);
+    env.tick(LIFT - 1);
     assert.equal(env.instances.length, 0);
     env.tick(1);
     assert.equal(env.instances.length, 1);
-    env.tick(599);
+    env.tick(CONTACT - LIFT - 1);
     assert.equal(env.instances.length, 1);
     env.tick(1);
     assert.equal(env.instances.length, 2);
@@ -170,22 +175,24 @@ test("ending sound plays once at the fracture beat after the final attack, with 
  const cues=[cue(1,"attack"),cue(2,"result",{effectId:"winner",targetId:"a"})];
  for(const [selfId,file] of [["a","win"],["b","lose"]]){
   const groups=soundsForBatch(cues,selfId);
-  assert.equal(groups.length,1);assert.equal(groups[0].duration,1830);
-  assert.deepEqual(groups[0].sounds.map(s=>[s.file,s.delay]),[["attack",40],["damage",640],[file,1340]]);
+  const ending=ATTACK_TIMING.duration+resultMotionDuration(cues[1]);
+  assert.equal(groups.length,1);assert.equal(groups[0].duration,ending);
+  assert.deepEqual(groups[0].sounds.map(s=>[s.file,s.delay]),[["attack",LIFT],["damage",CONTACT],[file,ATTACK_TIMING.duration+160]]);
  }
  assert.deepEqual(soundsForBatch([cue(3,"result",{effectId:"draw"})],"a")[0].sounds,[]);
  assert.equal(soundsForBatch(cues,"a",true)[0].duration,100);
  const env=fakeAudioEnvironment();
  try{
   const sounds=new SoundEffects();sounds.set(true,.5);sounds.consume("m",[]);sounds.consume("m",cues,"a");
-  env.tick(39);assert.deepEqual(filenames(env.instances),[]);
+  const win=ATTACK_TIMING.duration+160,ending=ATTACK_TIMING.duration+resultMotionDuration(cues[1]);
+  env.tick(LIFT-1);assert.deepEqual(filenames(env.instances),[]);
   env.tick(1);assert.deepEqual(filenames(env.instances),["attack.wav"]);
-  env.tick(599);assert.deepEqual(filenames(env.instances),["attack.wav"]);
+  env.tick(CONTACT-LIFT-1);assert.deepEqual(filenames(env.instances),["attack.wav"]);
   env.tick(1);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav"]);
-  env.tick(699);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav"]);
+  env.tick(win-CONTACT-1);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav"]);
   env.tick(1);assert.deepEqual(filenames(env.instances),["attack.wav","damage.wav","win.wav"]);
   sounds.consume("m",cues,"a");
-  env.tick(489);assert.equal(env.timers.size,1);
+  env.tick(ending-win-1);assert.equal(env.timers.size,1);
   env.tick(1);assert.equal(env.timers.size,0);
   env.tick(3000);assert.equal(env.instances.length,3);sounds.dispose();
  }finally{env.restore()}
@@ -194,17 +201,18 @@ test("ending sound plays once at the fracture beat after the final attack, with 
 test("ending preserves one shared retirement layer and does not invent an attack for a noncombat result", () => {
  const cues=[cue(1,"attack"),cue(2,"damage"),cue(3,"retire"),cue(4,"retire"),cue(5,"result",{effectId:"winner",targetId:"a"})];
  const [group]=soundsForBatch(cues,"a");
- assert.equal(group.duration,1830);
- assert.deepEqual(group.sounds.map(s=>[s.file,s.delay]),[["attack",40],["damage",640],["optimization",640],["win",1340]]);
+ const attackGroup=EXIT+ATTACK_TIMING.departure;
+ assert.equal(group.duration,attackGroup+resultMotionDuration(cues[4]));
+ assert.deepEqual(group.sounds.map(s=>[s.file,s.delay]),[["attack",LIFT],["damage",CONTACT],["optimization",EXIT],["win",attackGroup+160]]);
  const [noncombat]=soundsForBatch([cues[4]],"b");
- assert.equal(noncombat.duration,650);
+ assert.equal(noncombat.duration,resultMotionDuration(cues[4]));
  assert.deepEqual(noncombat.sounds.map(s=>[s.file,s.delay]),[["lose",160]]);
  const [reduced]=soundsForBatch(cues,"a",true);
  assert.equal(reduced.duration,100);
  assert.deepEqual(reduced.sounds.map(s=>[s.file,s.delay]),[["win",0]]);
 });
 
-test("real simultaneous combat death produces one impact and shared retirement at the 640 ms contact", () => {
+test("real simultaneous combat death produces one impact at contact and a shared retirement right after the hit-stop", () => {
   let state = engineGame();
   state = play(state, "N01");
   state = play(state, "N01", "b");
@@ -226,13 +234,14 @@ test("real simultaneous combat death produces one impact and shared retirement a
   assert.equal(cues.filter((c) => c.kind === "retire").length, 2);
   const groups = soundsForBatch(cues, "a");
   assert.equal(groups.length, 1);
-  assert.equal(groups[0].duration, 1180);
+  // Both stand-ups tear; the defender's number is still pencilled before the group ends.
+  assert.equal(groups[0].duration, Math.max(EXIT + ATTACK_TIMING.departure, CONTACT + REWRITE_MS));
   assert.deepEqual(
     groups[0].sounds.map((s) => [s.file, s.delay]),
     [
-      ["attack", 40],
-      ["damage", 640],
-      ["optimization", 640],
+      ["attack", LIFT],
+      ["damage", CONTACT],
+      ["optimization", EXIT],
     ],
   );
   const env = fakeAudioEnvironment();
@@ -241,10 +250,12 @@ test("real simultaneous combat death produces one impact and shared retirement a
     sounds.set(true, 0.5);
     sounds.consume(state.matchId, []);
     sounds.consume(state.matchId, cues, "a");
-    env.tick(150);
+    env.tick(LIFT);
     assert.deepEqual(filenames(env.instances), ["attack.wav"]);
-    env.tick(489);assert.deepEqual(filenames(env.instances), ["attack.wav"]);
+    env.tick(CONTACT - LIFT - 1);assert.deepEqual(filenames(env.instances), ["attack.wav"]);
     env.tick(1);
+    assert.deepEqual(filenames(env.instances), ["attack.wav", "damage.wav"]);
+    env.tick(EXIT - CONTACT);
     assert.deepEqual(filenames(env.instances), [
       "attack.wav",
       "damage.wav",
@@ -276,8 +287,8 @@ test("real eight-target action coalesces eight damage and retirement cues into o
     groups[0].sounds.map((s) => [s.file, s.delay]),
     [
       ["card_pick", 0],
-      ["damage", 160],
-      ["optimization", 160],
+      ["damage", CARD_TIMING.ownImpact],
+      ["optimization", CARD_TIMING.ownImpact + RETIRE_AFTER_IMPACT],
     ],
   );
 });

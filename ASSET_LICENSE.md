@@ -12,10 +12,12 @@ AI 辅助媒体随工程保留，是为了让项目可以完整运行、复核�
 | 2.2 人物、六位动物助阵、道具、动作与表情 | 内置 imagegen 原创生成或同身份编辑，裁切导出；SVG 配饰与互补遮罩为项目代码 | `public/art2.2-manifest.json`、`assets/paper-source/`、`scripts/paper-assets-input.json`、`scripts/paper-assets-expressions-input.json` |
 | WebP 角色、头像与衍生图 | 上述原图的格式转换、裁切或复用，保留父子来源关系 | `assets/production_report.json`、`public/assets/manifest.json` |
 | UI、配饰、卡框与文字 | 项目代码、SVG、DOM/Canvas 绘制；文字与数值不烧录进卡牌图 | `public/assets/`、`src/`、`scripts/` |
-| 金色校友徽章技能影片 | Running Hub 中的 MiniMax H3 Max Turbo 生成；本地压缩并移除原音轨 | `assets/animation-originals/`、`public/assets/animations/manifest.json` |
+| 金色校友徽章技能影片 | Running Hub 中的 MiniMax H3 Max Turbo 生成；本地压缩并移除原音轨。2.3 起牌桌改用纸艺奖章花结，影片文件保留在仓库但不再在对局中播放 | `assets/animation-originals/`、`public/assets/animations/manifest.json` |
 | 六首正式情境配乐 | 根据项目的主题、段落、配器要求，通过 RunningHub / ACE-Step XL Turbo 生成纯器乐，再在本地母带处理与制作循环 | `assets/music-production-v2/`、`public/assets/audio/music/score-manifest.json`、`scripts/master_music.py` |
 | 16 种短音效 | 项目脚本合成纸张、木击、气流、冲击和泛音层 | `scripts/compose_sfx.py`、`public/assets/audio/` |
 | 初版合成音乐草稿 | 代码生成 MIDI、WAV 与逐音符 JSON；并非正式生成配乐的转录谱 | `assets/music-masters/`、`scripts/compose_music.py` |
+| 2.3 纸艺材质与铅笔涂鸦 | 项目脚本程序化生成的纸张纤维、牛皮纸板、撕边轮廓、胶带、铅笔爱心/星芒/时钟涂鸦（SVG 滤镜与多边形，不含外部图片） | `scripts/generate-paper-tokens.mjs`、`src/styles/paper-tokens.css` |
+| 2.3 手写界面字体 | 第三方开源字体「小赖字体 Xiaolai SC」，SIL OFL 1.1，通过 npm 包 `@chinese-fonts/xiaolai` 引入，不属于本项目 MIT 授权范围 | `THIRD_PARTY_NOTICES.md`、`node_modules/@chinese-fonts/xiaolai/` |
 | 游戏截图 | 项目实际界面的截图，包含上述资源 | `docs/images/` |
 
 更详细的尺寸、资源数量与制作方法见 [ASSET_REPORT.md](ASSET_REPORT.md)。资源 ID 与哈希用于来源追踪和缺失检查，不能单独证明授权或原创性。

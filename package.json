@@ -1,6 +1,6 @@
 {
   "name": "offer-battle",
-  "version": "2.2.0-beta.2",
+  "version": "2.3.0-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -31,6 +31,7 @@
     "test:agents:verify": "tsx scripts/agent-testing/runner.ts verify"
   },
   "dependencies": {
+    "@chinese-fonts/xiaolai": "3.0.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tsx": "4.23.15",

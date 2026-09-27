@@ -1,0 +1,26 @@
+/* Pencil numbers on the battle table. Loaded by Battle.tsx after papercraft-battle.css so it has the last word. */
+:is(.battle-page.battle-fit,.battle-effects) .battle-unit :is(.unit-attack,.unit-health){color:var(--pencil-graphite)!important;-webkit-text-stroke:.7px currentColor!important;paint-order:normal!important;font-size:25px!important;font-weight:400!important;filter:drop-shadow(0 2px 0 #3B2A1A2e)}
+:is(.battle-page.battle-fit,.battle-effects) .battle-unit .unit-attack{background-image:var(--doodle-burst)!important}
+:is(.battle-page.battle-fit,.battle-effects) .battle-unit .unit-health{background-image:var(--doodle-heart)!important;color:var(--pencil-red)!important}
+:is(.battle-page.battle-fit,.battle-effects) .battle-unit .unit-health.damaged{color:#A1231B!important}
+.battle-page.battle-fit .hero-mind{background:var(--doodle-heart) center/contain no-repeat!important;color:var(--pencil-red)!important;-webkit-text-stroke:.7px currentColor!important;paint-order:normal!important;font-size:24px!important;font-weight:400!important;filter:drop-shadow(0 2px 0 #3B2A1A33)}
+.battle-page.battle-fit .time-resource>strong{background:var(--doodle-clock) center/contain no-repeat!important;color:var(--pencil-graphite)!important;-webkit-text-stroke:.7px currentColor!important;paint-order:normal!important;font-weight:400!important}
+.battle-page.battle-fit .time-resource>strong>small{-webkit-text-stroke:0!important;color:var(--pencil-soft)!important}
+.battle-page.battle-fit .enemy-offers .offer-mini span{background:var(--doodle-clock) center/contain no-repeat!important;color:var(--pencil-graphite)!important;-webkit-text-stroke:0!important}
+.battle-page.battle-fit .round-counter b{font-weight:400!important;-webkit-text-stroke:.5px currentColor}
+.unit-peek-stats>span{font-weight:400!important;-webkit-text-stroke:.5px currentColor}
+.unit-peek-stats>span::before{background-image:var(--doodle-burst)!important}
+.unit-peek-stats>.peek-health{color:var(--pencil-red)}
+.unit-peek-stats>.peek-health::before{background-image:var(--doodle-heart)!important}
+
+/* Held numbers (a blow still travelling) and pencil rewrites draw with the same hand and colour. */
+:is(.battle-page,.battle-effects) [data-hold]::after{color:inherit!important;-webkit-text-stroke:.7px currentColor!important;paint-order:normal!important}
+:is(.battle-page,.battle-effects) [data-hold]{color:transparent!important}
+:is(.battle-page,.battle-effects) .unit-health[data-hold]::after,:is(.battle-page,.battle-effects) .hero-mind[data-hold]::after{color:var(--pencil-red)!important}
+:is(.battle-page,.battle-effects) .unit-attack[data-hold]::after{color:var(--pencil-graphite)!important}
+:is(.battle-page,.battle-effects) [data-rewrite],:is(.battle-page,.battle-effects) [data-rewrite]::after{color:transparent!important;-webkit-text-stroke-color:transparent!important}
+
+/* ── Mind: a bar coloured in with red pencil hatching inside a graphite outline ─ */
+.battle-page.battle-fit .mind-track{background:var(--tex-fiber),#FFFDF7!important;box-shadow:0 0 0 1.5px #34322E99,1px 1px 0 1.5px #34322E33!important;border-radius:3px 6px 4px 5px!important;height:10px!important}
+.battle-page.battle-fit .mind-track i{background:repeating-linear-gradient(-58deg,#C8372Dd9 0 1.6px,transparent 1.6px 3.6px),repeating-linear-gradient(32deg,#D9463B66 0 1px,transparent 1px 4.5px)!important;border-radius:2px!important}
+

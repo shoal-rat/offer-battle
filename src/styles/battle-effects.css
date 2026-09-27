@@ -1,22 +1,107 @@
-.battle-effects{position:fixed;inset:0;z-index:88;pointer-events:none!important;overflow:hidden;isolation:isolate;contain:layout style;--fx-gold:#f4d38b}.battle-effects *{pointer-events:none!important}.battle-fx-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3}.battle-fx-flight,.battle-fx-ghost{position:absolute;z-index:2;transform-origin:center;will-change:transform,opacity;filter:drop-shadow(0 12px 18px #0008) drop-shadow(0 0 9px #ffe2a680)}.battle-fx-flight>*{margin:0!important;animation:none!important;transition:none!important;width:100%!important;height:100%!important}.battle-fx-flight *{animation:none!important;transition:none!important}.battle-fx-flight .unit-info{display:none}.battle-fx-ghost{z-index:1}.battle-fx-ghost>*{width:100%!important;height:100%!important;animation:none!important}.battle-fx-card-back{width:100%;height:100%;border:3px solid #d9bd7d;border-radius:25%;background:repeating-linear-gradient(45deg,#143b42,#143b42 5px,#315d5a 6px,#315d5a 8px);box-shadow:inset 0 0 0 5px #202d26,inset 0 0 0 6px #cbb880}.battle-fx-number{position:absolute;z-index:8;white-space:nowrap;font:900 clamp(32px,4vw,54px)/1 Georgia,'Songti SC',serif;letter-spacing:-1px;color:#ffedbd;-webkit-text-stroke:1px #633420;text-shadow:0 3px 0 #673922,0 5px 2px #0a131d,0 0 19px #ffbc6070;will-change:transform,opacity}.battle-fx-number.heal{color:#d3ffd4;-webkit-text-stroke-color:#24483a;text-shadow:0 3px 0 #2c6550,0 5px 2px #0a131d,0 0 24px #69edb9}.battle-fx-number.buff{color:#fff1b5;-webkit-text-stroke-color:#66552a;text-shadow:0 3px 0 #3c4732,0 5px 2px #0a131d,0 0 24px #acd77a}.battle-fx-number.small{font-size:clamp(18px,2.4vw,29px);letter-spacing:2px}.battle-fx-number.skill{font-family:'Songti SC',Georgia,serif;padding:9px 20px;border-top:1px solid #efce7966;border-bottom:1px solid #efce7966;background:linear-gradient(90deg,transparent,#0e292cef 18%,#183e39ed 82%,transparent);color:#ffebbb;max-width:84vw;text-overflow:ellipsis;overflow:hidden;letter-spacing:3px;-webkit-text-stroke:0;text-shadow:0 2px 5px #000,0 0 20px #e8bc6770}.battle-fx-retort{position:absolute;z-index:6;border:3px solid #d5baf0;border-radius:7px;background:linear-gradient(135deg,#243545,#5f456a);box-shadow:0 0 0 4px #192634,0 0 0 5px #c4a4d8,0 0 48px #d1b5e377;color:#ffe7bf;font:700 25px 'Songti SC',serif;padding:35px 27px;white-space:nowrap;text-shadow:0 2px 2px #141924}.battle-fx-video{position:fixed;z-index:87;transform:translate(-50%,-50%);width:min(620px,105vw);height:auto;max-width:none;mix-blend-mode:screen;opacity:.93;filter:contrast(1.1);pointer-events:none}.battle-effects[data-reduced-motion=true] .battle-fx-video{display:none}@media(max-width:600px){.battle-fx-number{font-size:36px}.battle-fx-number.small{font-size:18px;letter-spacing:1px}.battle-fx-retort{font-size:19px;padding:25px 20px}.battle-fx-flight{filter:drop-shadow(0 8px 10px #0008) drop-shadow(0 0 6px #ffe2a6aa)}}@media(prefers-reduced-motion:reduce){html:not([data-reduced=false]) .battle-fx-flight,html:not([data-reduced=false]) .battle-fx-ghost,html:not([data-reduced=false]) .battle-fx-video{display:none}html:not([data-reduced=false]) .battle-fx-number{will-change:opacity}}
-/* 2.2 paper compositor: temporary decoration has no interactive surface or persistent RAF. */
-.paper-fx-ring{position:absolute;width:78px;height:78px;border:2px solid;border-radius:50%;pointer-events:none;z-index:4}
-.paper-fx-chip{position:absolute;width:6px;height:10px;border-radius:1px;pointer-events:none;z-index:5}
-.paper-hit-outline{outline:2px solid #e8c17c88;outline-offset:2px}
-.paper-fx-draw{position:absolute;width:22px;height:32px;border:2px solid #c7a975;border-radius:3px;background:repeating-linear-gradient(45deg,#e4d8bb,#e4d8bb 4px,#b0beb6 4px,#b0beb6 7px);z-index:5}
-.battle-fx-retort.paper-contract{background:#f6efd9;color:#784c42;border:2px solid #947652;padding:15px 20px;box-shadow:0 6px 12px #162c3a30;font-size:18px;text-shadow:none}
-.battle-effects .battle-fx-video{position:absolute;width:min(500px,84vw);transform:translate(-50%,-50%);height:auto;mix-blend-mode:screen}
+/* Battle effects layer: temporary paper props only. Nothing here is interactive or persistent. */
+.battle-effects{position:fixed;inset:0;z-index:88;pointer-events:none!important;overflow:hidden;isolation:isolate;contain:layout style;perspective:900px}
+.battle-effects *{pointer-events:none!important}
+.motion-status{position:fixed;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+
+/* Flying stand-up and exit ghosts keep the table art, lifted off the paper with a deeper shadow. */
+.battle-fx-flight,.battle-fx-ghost{position:absolute;z-index:6;transform-origin:50% 80%;will-change:transform,opacity;filter:drop-shadow(0 18px 10px #3B2A1A40) drop-shadow(0 3px 0 #3B2A1A26)}
+.battle-fx-flight>*,.battle-fx-ghost>*{margin:0!important;animation:none!important;transition:none!important;width:100%!important;height:100%!important;visibility:visible!important}
+.battle-fx-flight *,.battle-fx-ghost *{animation:none!important;transition:none!important}
+.battle-fx-flight .unit-info,.battle-fx-ghost .unit-info{display:none}
+.battle-fx-ghost{z-index:4;transform-style:preserve-3d}
 .battle-fx-flight .paper-character,.battle-fx-ghost .paper-character{width:100%;height:100%}
 .battle-fx-flight .unit-portrait{overflow:visible}
-.battle-effects[data-reduced-motion=true] .paper-fx-chip,.battle-effects[data-reduced-motion=true] .paper-fx-ring{display:none}
-.motion-status{position:fixed;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
-.battle-persona-line{position:absolute;z-index:12;top:58px;left:50%;transform:translateX(-50%);max-width:min(70vw,520px);padding:7px 14px;margin:0;border:1px solid #a58561;background:#fff6dd;color:#46372e;border-radius:3px 12px 12px 12px;box-shadow:0 3px 0 #69473120;font-size:13px;pointer-events:none}
-.turn-flash{animation:none!important;pointer-events:none}
-
-/* Compact keeps semantic movement/numbers, while removing costly decorative filter layers. */
+.battle-fx-flight .unit-name{display:block!important}
+.battle-fx-card-back{width:100%;height:100%;border-radius:10px;border:3px solid #FFFDF6;background:var(--tex-fiber),repeating-linear-gradient(45deg,#E07F6E 0 7px,#EC9C8C 7px 14px);box-shadow:0 3px 0 #9A4F42}
 html[data-motion-quality=compact] .battle-fx-flight,html[data-motion-quality=compact] .battle-fx-ghost{filter:none}
 
-/* One moving actor: its table slot stays reserved while the whole original is hidden. */
-.battle-fx-flight .unit-name{display:block!important;bottom:24px;font-size:13px;line-height:1.3;text-shadow:0 1px #fff}
-.battle-attack-caption{position:absolute;z-index:10;transform:translate(-50%,-50%);max-width:min(90vw,600px);padding:8px 18px;border:2px solid #b39b71;border-radius:5px 11px 5px 9px;background:#fff8e6;color:#593a2c;box-shadow:0 5px 0 #604f382b;font-size:clamp(13px,1.1vw,17px);font-weight:750;text-align:center}
-.paper-attack-target{outline:3px dashed #c64c40!important;outline-offset:5px}
+/* Hand card lifting off toward its slot or dissolving into its effect. */
+.fx-card-flight{position:absolute;z-index:7;transform-origin:50% 60%;filter:drop-shadow(0 14px 12px #3B2A1A45)}
+.fx-card-flight>*{width:100%!important;height:100%!important;margin:0!important;visibility:visible!important;animation:none!important}
+
+/* Torn-apart exit: two halves of the same stand-up peel away from a ragged seam. */
+.fx-tear-group{z-index:5;filter:drop-shadow(0 8px 6px #3B2A1A30)}
+.fx-tear{position:absolute;inset:0;will-change:transform,opacity}
+.fx-tear>*{width:100%!important;height:100%!important;margin:0!important;visibility:visible!important;animation:none!important}
+.fx-tear-left{transform-origin:20% 90%}.fx-tear-right{transform-origin:80% 90%}
+.fx-tear::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 42%,#FFFDF6 47% 53%,transparent 58%);mix-blend-mode:screen;opacity:.85}
+
+/* Cut-paper splat: dark backing, colored star, white number with an ink edge. */
+.fx-splat{position:absolute;z-index:12;width:var(--splat-size,78px);height:var(--splat-size,78px);display:grid;place-items:center;will-change:transform,opacity}
+.fx-splat-back,.fx-splat-face{position:absolute;inset:0}
+.fx-splat-back{transform:translate(2px,4px) scale(1.08)}
+.fx-splat-face{background-image:var(--tex-fiber)!important;background-blend-mode:multiply}
+.fx-splat-face::after{content:'';position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffffff55,transparent 60%)}
+.fx-splat strong{position:relative;font:900 calc(var(--splat-size,78px)*.4)/1 var(--ob-font-display);color:#fff;-webkit-text-stroke:5px #3A1712;paint-order:stroke fill;letter-spacing:-1px;white-space:nowrap}
+.fx-splat.tone-heal strong{-webkit-text-stroke-color:#1C4A33}
+.fx-splat.tone-buff strong{-webkit-text-stroke-color:#5A3C0C;font-size:calc(var(--splat-size,78px)*.3)}
+
+/* Paper chips, rings, speed lines and sparkles. */
+.fx-chip{position:absolute;z-index:11;width:9px;height:13px;box-shadow:0 1px 0 #0000001f;will-change:transform,opacity}
+.fx-chip.shape-1{width:12px;height:12px;clip-path:polygon(50% 0,100% 100%,0 90%)}
+.fx-chip.shape-2{width:8px;height:8px;border-radius:50%}
+.fx-ring{position:absolute;z-index:10;width:var(--ring-size,96px);height:var(--ring-size,96px);border:6px solid;border-radius:50%;clip-path:var(--torn-soft)}
+.fx-speed{position:absolute;z-index:11;width:36px;height:4px;border-radius:3px;transform-origin:0 50%}
+.fx-sparkle{position:absolute;z-index:11;width:12px;height:12px;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+
+/* Rubber stamp: slammed on at an angle, ink bleeding slightly at the border. */
+.fx-stamp{position:absolute;z-index:13;padding:8px 16px 7px;font:900 clamp(15px,1.25vw,20px)/1.2 var(--ob-font-display);letter-spacing:2px;white-space:nowrap;max-width:min(70vw,360px);overflow:hidden;text-overflow:ellipsis;color:var(--stamp-ink,#2E2A26);border:3px solid currentColor;border-radius:6px;background:var(--tex-fiber),#FFF8E8;box-shadow:inset 0 0 0 2px #FFF8E8,inset 0 0 0 4px currentColor,0 5px 0 #3B2A1A1f;clip-path:var(--snip-1)}
+.fx-stamp.tone-skill{--stamp-ink:#2F55A4}.fx-stamp.tone-retort{--stamp-ink:#6E45A8}.fx-stamp.tone-damage{--stamp-ink:#B8352C}.fx-stamp.tone-buff{--stamp-ink:#9A6212}.fx-stamp.tone-heal{--stamp-ink:#237A50}
+
+/* Turn banner: a paper ribbon with folded tails and a strip of washi tape. */
+.fx-banner{position:absolute;inset:0;z-index:30}
+.fx-banner-ribbon{position:absolute;left:50%;top:46%;display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 90px 18px;background:var(--tex-fiber),linear-gradient(#F26A5A,#E0574B);color:#fff;filter:drop-shadow(0 10px 0 #7C2C23) drop-shadow(0 22px 22px #3B2A1A55);clip-path:polygon(0 0,100% 0,calc(100% - 38px) 50%,100% 100%,0 100%,38px 50%)}
+.fx-banner-ribbon::before{content:'';position:absolute;left:44px;right:44px;top:7px;bottom:7px;border:2px dashed #FFFFFF8c;border-radius:3px}
+.fx-banner-ribbon strong{position:relative;font:900 clamp(34px,4.4vw,62px)/1.05 var(--ob-font-display);letter-spacing:8px;-webkit-text-stroke:6px #7C2C23;paint-order:stroke fill}
+.fx-banner-ribbon small{position:relative;font:700 clamp(13px,1.1vw,16px)/1.3 var(--ob-font-ui);letter-spacing:3px;color:#FFF3DE}
+.fx-banner.theirs .fx-banner-ribbon{background:var(--tex-fiber),linear-gradient(#7E93B8,#687DA3);filter:drop-shadow(0 10px 0 #33405A) drop-shadow(0 22px 22px #3B2A1A55)}
+
+/* Opponent card reveal: the real card flips up beside the table, holds, then flies to its target. */
+.fx-showcase{position:fixed;left:0;top:0;width:0;height:0;z-index:90;pointer-events:none;perspective:1100px;animation:fx-showcase-move var(--showcase-ms,1150ms) both}
+.fx-showcase-card{position:absolute;left:-111px;top:-155px;width:222px;height:310px;transform-style:preserve-3d;animation:fx-showcase-flip var(--showcase-ms,1150ms) both}
+.fx-showcase-front,.fx-showcase-back{position:absolute;inset:0;backface-visibility:hidden;filter:drop-shadow(0 20px 18px #3B2A1A55)}
+.fx-showcase-front .common-card{margin:0!important;pointer-events:none}
+.fx-showcase-back{transform:rotateY(180deg);border-radius:14px;border:5px solid #FFFDF6;background:var(--tex-fiber),repeating-linear-gradient(45deg,#E07F6E 0 9px,#EC9C8C 9px 18px);box-shadow:0 5px 0 #9A4F42}
+@keyframes fx-showcase-move{
+ 0%{transform:translate(var(--from-x),var(--from-y)) scale(.28);opacity:0}
+ 8%{opacity:1}
+ 24%{transform:translate(var(--rest-x),var(--rest-y)) scale(1.08);animation-timing-function:cubic-bezier(.3,1.5,.5,1)}
+ 32%{transform:translate(var(--rest-x),var(--rest-y)) scale(1)}
+ 72%{transform:translate(var(--rest-x),var(--rest-y)) scale(1);opacity:1;animation-timing-function:cubic-bezier(.6,0,.9,.5)}
+ 100%{transform:translate(var(--to-x),var(--to-y)) scale(.18);opacity:0}
+}
+@keyframes fx-showcase-flip{0%{transform:rotateY(180deg) rotateZ(-8deg)}24%{transform:rotateY(0) rotateZ(2deg)}34%,100%{transform:rotateY(0) rotateZ(-1deg)}}
+
+/* Draw: a card back arcs from the pile into the hand. */
+.paper-fx-draw{position:absolute;z-index:9;width:44px;height:62px;border-radius:6px;border:3px solid #FFFDF6;background:var(--tex-fiber),repeating-linear-gradient(45deg,#E07F6E 0 5px,#EC9C8C 5px 10px);box-shadow:0 3px 0 #9A4F42,0 8px 12px #3B2A1A40}
+
+/* Retort contract: a signed slip that flips up over the protected character. */
+.battle-fx-retort{position:absolute;z-index:12;white-space:nowrap}
+.battle-fx-retort.paper-contract{padding:16px 22px 14px;background:var(--tex-fiber),#FBF3E1;color:#5A3B78;font:900 20px/1.2 var(--ob-font-display);letter-spacing:3px;border:0;clip-path:var(--torn-2);box-shadow:none;filter:drop-shadow(0 6px 0 #6E45A855)}
+.battle-fx-retort.paper-contract::after{content:'';position:absolute;left:14px;right:14px;bottom:9px;border-bottom:2px dashed #9B7AC9}
+
+/* Award rosette for big skills: scalloped paper petals, ribbon tails, stamped centre. */
+.fx-rosette{position:absolute;z-index:13;width:150px;height:150px;--rosette:#F4C24D;--rosette-edge:#A8792A}
+.fx-rosette.tone-skill{--rosette:#6F93D6;--rosette-edge:#2F55A4}
+.fx-rosette-petals{position:absolute;inset:0;border-radius:50%;background:var(--tex-fiber),repeating-conic-gradient(var(--rosette) 0 10deg,#FFF3C9 10deg 20deg);-webkit-mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 61%),repeating-conic-gradient(#000 0 7deg,transparent 7deg 10deg);mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 61%),repeating-conic-gradient(#000 0 7deg,transparent 7deg 10deg);filter:drop-shadow(0 5px 0 var(--rosette-edge))}
+.fx-rosette-tails{position:absolute;left:50%;top:58%;width:84px;height:92px;margin-left:-42px;background:linear-gradient(90deg,var(--rosette) 0 44%,transparent 44% 56%,var(--rosette) 56%);clip-path:polygon(0 0,44% 0,44% 100%,22% 84%,0 100%,56% 0,100% 0,100% 100%,78% 84%,56% 100%);transform:rotate(-8deg);filter:drop-shadow(0 4px 0 var(--rosette-edge))}
+.fx-rosette-core{position:absolute;inset:30px;display:grid;place-items:center;border-radius:50%;background:var(--tex-fiber),#FFFDF6;border:4px solid var(--rosette);box-shadow:inset 0 0 0 3px #FFFDF6,inset 0 0 0 5px var(--rosette-edge);font:900 26px/1 var(--ob-font-display);color:var(--rosette-edge);letter-spacing:2px}
+/* Skill film, kept from the original production pass (no longer scheduled by the paper table). */
+.battle-fx-video{position:absolute;z-index:8;transform:translate(-50%,-50%);width:min(500px,84vw);height:auto;max-width:none;mix-blend-mode:multiply;opacity:.9;pointer-events:none}
+.battle-effects[data-reduced-motion=true] .battle-fx-video{display:none}
+
+/* Attack caption: a small paper tag, only while the blow travels. */
+.battle-attack-caption{position:absolute;z-index:14;transform:translate(-50%,-50%);max-width:min(90vw,520px);padding:6px 14px 5px;background:var(--tex-fiber),#FFFDF6;color:#3B2A1A;font:800 clamp(12px,1vw,15px)/1.3 var(--ob-font-ui);letter-spacing:1px;white-space:nowrap;clip-path:var(--torn-3);filter:drop-shadow(0 3px 0 #3B2A1A26)}
+
+/* Persona speech: a paper speech bubble near the top of the table. */
+.battle-persona-line{position:absolute;z-index:12;top:58px;left:50%;transform:translateX(-50%);max-width:min(70vw,520px);padding:8px 16px;margin:0;border:0;background:var(--tex-fiber),#FFFDF6;color:#3B2A1A;border-radius:14px 14px 14px 4px;box-shadow:0 3px 0 #C8B89A,0 8px 14px #3B2A1A1c;font-size:13px;pointer-events:none}
+.turn-flash{animation:none!important;pointer-events:none}
+
+@media(max-width:600px){
+ .fx-showcase-card{width:170px;height:238px;left:-85px;top:-119px}
+ .fx-showcase-front .common-card{transform:scale(.766);transform-origin:0 0}
+ .fx-banner-ribbon{padding:16px 54px 14px}
+ .fx-banner-ribbon strong{letter-spacing:4px}
+}
+@media(prefers-reduced-motion:reduce){html:not([data-reduced=false]) .battle-fx-flight,html:not([data-reduced=false]) .battle-fx-ghost,html:not([data-reduced=false]) .battle-fx-video{display:none}}
+.battle-effects[data-reduced-motion=true] .fx-chip,.battle-effects[data-reduced-motion=true] .fx-ring,.battle-effects[data-reduced-motion=true] .fx-sparkle{display:none}

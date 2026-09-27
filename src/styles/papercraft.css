@@ -1,0 +1,104 @@
+/* Papercraft 2.3 — a handmade paper world in the spirit of pop-up storybook games.
+   Materials come from paper-tokens.css (procedural fibre, kraft board, torn silhouettes).
+   Only decoration changes here: hit areas, text and focus outlines keep their full rectangles. */
+:root{
+ --ob-font-display:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
+ --ob-font-number:'Arial Rounded MT Bold','Arial Rounded MT','PingFang SC',ui-rounded,system-ui,sans-serif;
+ --pc-paper:#FBF3E1;--pc-paper-hi:#FFFDF7;--pc-desk:#EFE3CB;--pc-kraft:#C39A6B;--pc-kraft-dark:#8C6A45;
+ --pc-ink:#2F2A25;--pc-ink-soft:#5C5249;--pc-shadow:#3B2A1A;
+ --pc-red:#E0574B;--pc-red-dark:#8F2E27;--pc-yellow:#F4C24D;--pc-yellow-dark:#A8792A;--pc-green:#5FB487;--pc-green-dark:#23704A;
+ --pc-blue:#6F93D6;--pc-blue-dark:#2F55A4;--pc-purple:#9B7AC9;--pc-rose:#F5D5CB;--pc-mint:#D3EBDA;--pc-sky:#D9E5F7;--pc-manila:#EFD39B;
+ --ob-bg:#F1E6CF;--ob-surface:#FBF3E1;--ob-ink:#2F2A25;--ob-muted:#6A5E52;--ob-paper-edge:#CDBB98;--ob-shadow-paper:0 3px 0 #CDBB98;
+}
+html,body{background:var(--tex-fiber),var(--tex-flecks),var(--ob-bg)}
+body,.app{background:var(--tex-fiber),var(--tex-flecks),radial-gradient(ellipse at 50% 0%,#F8F0DF 0%,transparent 70%),var(--ob-bg)!important;color:var(--pc-ink)}
+::selection{background:#F4C24D88}
+.app h1,.app h2,.app h3{font-family:var(--ob-font-display);font-weight:900;letter-spacing:.5px}
+
+/* Buttons: scissor-cut card stock with a darker board edge under it. */
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck){--paper-shape:var(--snip-1);transition:translate .12s cubic-bezier(.3,1.4,.5,1),scale .12s}
+/* ::before is the board the paper was cut from: a 2px edge all round and a thicker lip underneath. */
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::before{background:var(--paper-line);transform:none;inset:-2px -2px -6px -2px;clip-path:var(--paper-shape)}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.badge,.benefit-pill,.detail-origin,.skill-button,.end-turn,.replacement-choice,.strategy-deck)::after{background:var(--tex-fiber),linear-gradient(180deg,#FFFFFF47 0 38%,transparent 38%),var(--paper-fill);border:0;box-shadow:inset 0 0 0 2px #FFFFFF73,inset 0 -3px 0 #0000000f;clip-path:var(--paper-shape)}
+.app :is(.btn,.stage-hotspot-label,.stage-account,.skill-button,.end-turn,.replacement-choice,.strategy-deck){--paper-line:#8C7A63}
+.app .btn:nth-of-type(2n){--paper-shape:var(--snip-2)}.app .btn:nth-of-type(3n){--paper-shape:var(--snip-3)}
+.app .btn:hover:not(:disabled){transform:none;translate:0 -2px}
+.app .btn:active:not(:disabled){transform:none;translate:0 3px}
+.app .btn:active:not(:disabled)::before{inset:-2px -2px -3px -2px}
+.app .btn{font-weight:800;letter-spacing:.5px}
+.app .btn.subtle,.app .btn:not(.gold){--paper-fill:#FFFDF7}
+.app .btn.gold{--paper-fill:var(--pc-red);--paper-line:var(--pc-red-dark);color:#fff;text-shadow:0 1px 0 #7C2C2399}
+.app .btn.gold svg{color:#fff}
+.app .badge{--paper-fill:var(--pc-paper-hi);--paper-line:#B8A585;--paper-shape:var(--torn-1)}
+.app .badge::before,.app .benefit-pill::before{inset:-1px -1px -3px -1px}
+.app .benefit-pill{--paper-fill:var(--pc-mint);--paper-line:#8FB99D;--paper-shape:var(--torn-2)}
+.app .icon-btn{background:var(--tex-fiber),var(--pc-paper-hi);border:0;border-radius:50%;box-shadow:0 0 0 2px #FFFDF7,0 0 0 3.5px #BFA982,0 4px 0 2px #A38B66;transition:translate .12s}
+.app .icon-btn:hover{background:var(--tex-fiber),#FFF4D6;translate:0 -1px}
+.app .icon-btn:active{translate:0 2px;box-shadow:0 0 0 2px #FFFDF7,0 0 0 3.5px #BFA982,0 1px 0 2px #A38B66}
+.app .text-btn{color:var(--pc-blue-dark);font-weight:700}
+
+/* Fields: a slip of paper with a pencil underline. */
+.app :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){background:var(--tex-fiber),var(--pc-paper-hi);border:0;border-radius:4px;box-shadow:inset 0 0 0 1.5px #D5C29F,inset 0 -3px 0 #E8DCC3,0 2px 0 #E2D3B4}
+.app :is(input,select,textarea):focus{outline:3px solid var(--pc-blue);outline-offset:2px}
+
+/* Dialogs: a torn sheet held down with a strip of washi tape. The sheet stays an unclipped scroll box. */
+.modal-backdrop{background:#3B2A1A73!important;backdrop-filter:blur(2px) saturate(.9)!important}
+.app .modal,.modal{border:16px solid transparent!important;border-image:var(--sheet-cream) 24 round!important;background:var(--tex-fiber),var(--pc-paper)!important;background-clip:padding-box!important;border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 6px 0 #B9A27C) drop-shadow(0 22px 30px #3B2A1A55);padding:14px 16px 16px!important}
+.app .modal header{padding-top:8px}
+.app .modal header::before{content:'';position:absolute;left:50%;top:-10px;width:120px;height:26px;margin-left:-60px;background:repeating-linear-gradient(90deg,#F4C24D8c 0 10px,#F8D57A8c 10px 20px);clip-path:polygon(3% 0,97% 4%,100% 22%,96% 40%,100% 60%,97% 80%,100% 100%,2% 96%,0 78%,4% 58%,0 40%,3% 20%);transform:rotate(-2deg);pointer-events:none;mix-blend-mode:multiply}
+.app .modal header::after{height:6px;background:repeating-linear-gradient(90deg,#CDBB98 0 8px,transparent 8px 13px);clip-path:none;bottom:2px}
+.app .modal header h2{font-size:24px;color:var(--pc-ink)}
+.app .modal .eyebrow{letter-spacing:3px;color:var(--pc-red);font-weight:800}
+
+/* Cards: cream card stock, deckled edge, a stitched inner line and a coloured band behind the art. */
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card){--card-band:#F7DFA9;--card-band-dark:#D9A94E;background:none!important;border:0!important;box-shadow:none!important;border-radius:10px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 8px 9px #3B2A1A26);isolation:isolate;transition:translate .16s cubic-bezier(.3,1.4,.5,1),rotate .16s,scale .16s,filter .16s}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::before{content:'';display:block!important;position:absolute;inset:0;z-index:-2;pointer-events:none;clip-path:var(--torn-soft);background:var(--tex-fiber),linear-gradient(180deg,#FFFFFF66,transparent 30%),var(--pc-paper)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::after{content:'';position:absolute;inset:5px;z-index:-1;pointer-events:none;border:1.5px dashed #CDB891;border-radius:8px}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-support{--card-band:#CBE7D3;--card-band-dark:#6DAA83}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-action{--card-band:#D6E2F6;--card-band-dark:#7D9BD0}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-retort{--card-band:#E3D6F3;--card-band-dark:#9B7AC9}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card .card-art,.common-art){background:var(--tex-fiber),radial-gradient(ellipse at 50% 30%,#FFFFFF80,transparent 65%),var(--card-band)!important;border-radius:6px 9px 5px 8px!important;box-shadow:inset 0 0 0 2px #FFFDF7,inset 0 3px 6px #3B2A1A26!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card):hover{transform:none;translate:0 -4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 14px 14px #3B2A1A33)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card).selected{outline:3px dashed var(--pc-blue-dark);outline-offset:4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 0 12px #6F93D6aa)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card).unavailable{opacity:1;filter:drop-shadow(0 3px 0 #BCA47C) grayscale(.35) brightness(.97)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .card-ribbon{font-family:var(--ob-font-display);font-weight:900}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .card-ribbon::before{background:var(--tex-fiber),var(--pc-paper-hi);clip-path:var(--torn-3)}
+/* Cost: a yellow clock coin. Attack: a sun burst. Health: a paper heart. White numbers with an ink edge. */
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost{background:var(--badge-clock) center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:50%!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px #6B4A12;paint-order:stroke fill;text-shadow:none!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost small{color:#fff;-webkit-text-stroke:3px #6B4A12;paint-order:stroke fill}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost.discounted{filter:hue-rotate(80deg) saturate(1.1)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat{background:transparent center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:0!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px var(--stat-edge,#5B1A15);paint-order:stroke fill;text-shadow:none!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.attack{background-image:var(--badge-burst)!important;--stat-edge:#6B4A12}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.health{background-image:var(--badge-heart)!important;--stat-edge:#6E1F18}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.health.damaged{color:#FFD6D0!important}
+
+/* Page headings and panels shared by the collection, loadout and account pages. */
+.app .page-heading h1{font-size:clamp(28px,3vw,44px);color:var(--pc-ink);text-shadow:2px 3px 0 #E6D2AE}
+.app .site-header{background:var(--tex-fiber),var(--pc-paper)!important;border-bottom:0!important;box-shadow:0 3px 0 #D8C6A2,0 8px 14px #3B2A1A14!important}
+.app .brand-emblem{background:var(--badge-clock) center/contain no-repeat!important;color:#6B4A12}
+.toast{background:var(--tex-fiber),var(--pc-ink)!important;color:#FFF8EA!important;clip-path:var(--torn-2);border-radius:0!important;font-weight:700}
+.save-status{border:0!important;background:var(--tex-fiber),var(--pc-mint)!important;clip-path:var(--torn-1);box-shadow:none!important}
+
+/* Home stage: fibre everywhere, torn labels, the book on a kraft desk edge. */
+.paper-stage{background:transparent!important}
+.app .stage-hotspot-label{--paper-shape:var(--torn-2);font-weight:800;font-family:var(--ob-font-display)}
+.app .hotspot-play .stage-hotspot-label{--paper-shape:var(--snip-2);color:#fff;text-shadow:0 1px 0 #7C2C2399;font-size:22px}
+.app .hotspot-play .stage-hotspot-label svg{color:#fff}
+.app .stage-hotspot small{background:var(--tex-fiber),#FFF8E8E6;clip-path:var(--torn-3);padding:3px 8px;color:var(--pc-ink-soft)}
+.app .stage-title h1{color:#2F3F48;text-shadow:3px 4px 0 #E3C79E;font-family:var(--ob-font-display)}
+.app .stage-title h1::before{background:var(--tex-fiber),#FFFDF7!important;filter:drop-shadow(0 5px 0 #D6C09A)}
+.app .stage-speech{background:var(--tex-fiber),#FFFDF7;border:0;box-shadow:0 0 0 2.5px #3E4A52,0 5px 0 2.5px #C8B38E;border-radius:20px 20px 4px 20px}
+.app .stage-book{filter:drop-shadow(0 12px 0 #B79A6E) drop-shadow(0 18px 16px #3B2A1A30)}
+.app .stage-account{--paper-shape:var(--torn-1)}
+
+/* Page panels: every large box becomes a torn sheet laid on the desk (content keeps its rectangle). */
+.app :is(.starter-decks,.education-builder,.deck-health,.forge-live-stats,.form-panel,.compile-receipt,.collection-filters,.forge-card-panel,.forge-preview-error,.history-list,.account-panel-sheet){border:14px solid transparent!important;border-image:var(--sheet-cream-thick) 24 round!important;border-radius:0!important;background:var(--tex-fiber),var(--pc-paper)!important;background-clip:padding-box!important;box-shadow:0 18px 22px -16px #3B2A1A55!important}
+.app .forge-card-panel{border-image:var(--sheet-mint) 24 round!important;background:var(--tex-fiber),var(--pc-mint)!important;background-clip:padding-box!important;rotate:.5deg}
+.app .forge-preview-error{border-image:var(--sheet-yellow) 24 round!important;background:var(--tex-fiber),#FBE7A1!important;background-clip:padding-box!important}
+.app .forge-empty-card{background:var(--tex-fiber),#F1FBF4!important;border-color:#8FC1A2!important}
+.app :is(.strategy-deck,.starter-deck-option){box-shadow:none}
+/* The home world: a torn sky sheet, and one sheet of fibre over the whole diorama so it reads as paper. */
+.app .stage-sky{clip-path:var(--torn-deep)}
+.app .stage-world::after{content:'';position:absolute;inset:0;z-index:6;pointer-events:none;background:var(--tex-fiber);mix-blend-mode:multiply;opacity:.85}
+@media(prefers-reduced-motion:reduce){html:not([data-reduced=false]) .app :is(.offer-card,.common-card,.btn){transition:none}}
+@media(forced-colors:active){.app .modal,.modal{border:2px solid CanvasText!important;border-image:none!important;filter:none}:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::before,:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::after{display:none}}

@@ -12,7 +12,9 @@ export interface BotKnowledge {
   knownEnemyHand: HandCard[];
   publicPlayed: string[];
 }
-export interface SearchBudget { beamWidth: number; maxNodes: number; maxMs: number; maxDepth: number; samples: number; responseDepth: number }
+export interface SearchBudget { beamWidth: number; maxNodes: number; maxMs: number; maxDepth: number; samples: number; responseDepth: number;
+  /** Endgame judgement: from this round on, finalists are also scored by playing every sampled world to the end. */
+  playoutFromRound?: number; finalists?: number }
 export interface BotDecisionRequest {
   view: MatchView;
   knowledge?: BotKnowledge;

@@ -1,14 +1,16 @@
-import { applyCommand, canAttack, handCost, offerCost } from '../engine';
-import { candidateActions, getView } from '../views';
-import { education } from '../catalog';
-import type { Command, MatchState } from '../types';
-import { BOT_BUDGETS, BOT_VERSION } from './config';
-import { botRandom, sampleObservation, stateKey, possibleRetorts } from './belief';
-import { cardValue, evaluateState, WIN } from './evaluate';
-import { setupScore } from './setup';
-import { updateBotKnowledge } from './knowledge';
-import { chooseLegacyBotCommand } from './legacy';
-import type { BotDecision, BotDecisionRequest } from './types';
+import { applyCommand, canAttack, handCost, offerCost } from '../../engine';
+import { candidateActions, getView } from '../../views';
+import { education } from '../../catalog';
+import type { Command, MatchState } from '../../types';
+import type { SearchBudget, BotDifficulty } from '../types';
+/** The 2.2.0 production budgets, frozen with the algorithm. */
+const BOT_BUDGETS:Record<BotDifficulty,SearchBudget>={easy:{beamWidth:4,maxNodes:80,maxMs:40,maxDepth:2,samples:1,responseDepth:0},normal:{beamWidth:8,maxNodes:300,maxMs:100,maxDepth:6,samples:1,responseDepth:0},hard:{beamWidth:16,maxNodes:1500,maxMs:300,maxDepth:6,samples:1,responseDepth:3},expert:{beamWidth:32,maxNodes:5000,maxMs:800,maxDepth:8,samples:4,responseDepth:4}};
+const BOT_VERSION='2.2.0';
+import { botRandom, sampleObservation, stateKey, possibleRetorts } from '../belief';
+import { cardValue, evaluateState, WIN } from './evaluate-2-2';
+import { setupScore } from '../setup';
+import { updateBotKnowledge } from '../knowledge';
+import type { BotDecision, BotDecisionRequest } from '../types';
 
 interface Node {states:MatchState[];path:Command[];score:number;boundary:boolean}
 /** Cheap rejection only. Every remaining transition is settled once by the rule engine. */
@@ -29,20 +31,8 @@ function candidates(s:MatchState,id:string):Command[] {
   });
 }
 const aggregate=(values:number[])=>values.reduce((a,b)=>a+b,0)/values.length*0.7+Math.min(...values)*0.3;
-/** Plays one sampled world to the final bell with the fast rule-of-thumb policy for both seats.
- * Most matches are decided by the round-12 mind comparison, which a static evaluation only approximates. */
-function playout(start:MatchState,selfId:string):number{
-  let s=start;
-  for(let step=0;step<260&&!s.result;step++){
-    const actor=s.pendingChoice?.ownerId??s.activePlayerId,base={...s,events:[],processedCommandIds:[]};
-    let r=applyCommand(base,actor,chooseLegacyBotCommand(getView(s,actor),'balanced'));
-    if(r.error)r=applyCommand(base,actor,{type:'END_TURN'});
-    if(r.error)break;s=r.state;
-  }
-  if(!s.result){const me=s.players.find(p=>p.id===selfId)!,foe=s.players.find(p=>p.id!==selfId)!;return 0.5+Math.max(-.45,Math.min(.45,(me.mind-foe.mind)/40))}
-  return s.result.winnerId===selfId?1:s.result.winnerId===null?0.5:0;
-}
-export function decideBotCommand(request:BotDecisionRequest):BotDecision {
+/** Frozen 2.2.0 search. Benchmarks only; production uses ../search.ts. */
+export function decideBotCommandV22(request:BotDecisionRequest):BotDecision {
   const started=performance.now(),{view,style,difficulty}=request;
   const budget={...BOT_BUDGETS[difficulty],...request.budget};
   const knowledge=updateBotKnowledge(request.knowledge,view);
@@ -115,7 +105,7 @@ export function decideBotCommand(request:BotDecisionRequest):BotDecision {
   const completed=leaves;
   if(completed.length&&remaining()){
     completed.sort((a,b)=>b.score-a.score);
-    const finalists=completed.slice(0,Math.min(budget.finalists??6,budget.beamWidth));
+    const finalists=completed.slice(0,Math.min(6,budget.beamWidth));
     // Compare every finalist at the same turn boundary. For a reveal/draw leaf,
     // this is valuation only: the recorded variation still stops at the reveal.
     // Choices use their stable first option, never a pre-reveal identity oracle.
@@ -164,16 +154,6 @@ export function decideBotCommand(request:BotDecisionRequest):BotDecision {
       }
       finalists.sort((a,b)=>b.score-a.score);best=finalists[0];
     }else best=finalists[0];
-    // Expert endgame: blend in the real final result of each finalist, averaged over sampled worlds.
-    if(budget.playoutFromRound!==undefined&&view.round>=budget.playoutFromRound&&finalists.length>1){
-      const late=Math.min(1,Math.max(.25,(view.round-budget.playoutFromRound+1)/4)),weight=600*late;
-      for(const n of finalists){
-        if(performance.now()-started>=budget.maxMs)break;
-        const results=n.states.map(state=>state.result?(state.result.winnerId===view.selfId?1:state.result.winnerId===null?.5:0):playout(state,view.selfId));
-        n.score+=weight*(results.reduce((a,b)=>a+b,0)/results.length-.5);
-      }
-      finalists.sort((a,b)=>b.score-a.score);best=finalists[0];
-    }
   }
   const safeRoots=rootNodes.filter(isSafe);
   if(safeRoots.length&&!safeRoots.some(n=>JSON.stringify(n.path[0])===JSON.stringify(best.path[0]))){best=safeRoots.sort((a,b)=>b.score-a.score)[0];avoidedLoss=true}

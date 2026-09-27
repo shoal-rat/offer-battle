@@ -14,7 +14,7 @@ export interface MotionRequest {
 }
 export interface MotionHandle {id:string;finished:Promise<MotionEndReason>;cancel:()=>void;fastForward:()=>void}
 interface Scheduler {now:()=>number;set:(callback:()=>void,delayMs:number)=>unknown;clear:(handle:unknown)=>void}
-interface Job {request:MotionRequest;key:string;channel:MotionChannel;duration:number;controller:AbortController;cleanups:Set<()=>void>;timers:Set<unknown>;animations:Set<Animation>;started:number|null;resolve:(reason:MotionEndReason)=>void;done:boolean;handle:MotionHandle}
+interface Job {compressed?:boolean;request:MotionRequest;key:string;channel:MotionChannel;duration:number;controller:AbortController;cleanups:Set<()=>void>;timers:Set<unknown>;animations:Set<Animation>;started:number|null;resolve:(reason:MotionEndReason)=>void;done:boolean;handle:MotionHandle}
 export interface MotionDiagnostics {active:number;queued:number;timers:number;animations:number;scopes:string[];compressed:number;caughtUp:number;errors:number;activeChannels:MotionChannel[]}
 const nativeScheduler:Scheduler={now:()=>typeof performance!=='undefined'?performance.now():Date.now(),set:(fn,ms)=>setTimeout(fn,ms),clear:id=>clearTimeout(id as ReturnType<typeof setTimeout>)};
 const initialPreferences:MotionPreferences={preference:'system',reduced:false,ambientPaused:false,quality:'full',hidden:false};
@@ -51,7 +51,8 @@ export class MotionDirector {
    const pending=[...this.active,...this.queue].filter(old=>old.channel==='battle'&&old.request.scope===request.scope);
    const budget=pending.reduce((sum,old)=>sum+(old.started===null?old.duration:Math.max(0,old.duration-(this.scheduler.now()-old.started))),0)+job.duration;
    if(budget>MOTION_LIMITS.catchUpAfterMs){this.counts.caughtUp++;for(const old of pending)this.end(old,'catch-up',false);this.end(job,'catch-up');return handle}
-   if(budget>MOTION_LIMITS.compressAfterMs){this.counts.compressed++;for(const old of pending)if(old.started===null)old.duration=Math.min(old.duration,120);job.duration=Math.min(job.duration,120)}
+   // Speed up what has not started yet instead of flashing it: every blow still reads.
+   if(budget>MOTION_LIMITS.compressAfterMs){this.counts.compressed++;const quicker=(ms:number)=>Math.min(ms,Math.max(MOTION_LIMITS.compressFloorMs,Math.round(ms*MOTION_LIMITS.compressScale)));for(const old of pending)if(old.started===null&&!old.compressed){old.duration=quicker(old.duration);old.compressed=true}job.duration=quicker(job.duration);job.compressed=true}
   }
   this.queue.push(job);this.pump();return handle;
  }

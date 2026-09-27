@@ -1,0 +1,32 @@
+/* Pencil on paper: every word is written by hand (Xiaolai SC, SIL OFL 1.1), numbers are pencilled onto doodles.
+   Graphite for text and attack/cost, red pencil for health and mind. Loaded after papercraft.css. */
+:root{
+ --ob-font-hand:'Xiaolai SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
+ --ob-font-ui:var(--ob-font-hand);--ob-font-display:var(--ob-font-hand);--ob-font-number:var(--ob-font-hand);--serif:var(--ob-font-hand);
+ --pencil-graphite:#34322E;--pencil-soft:#5E5850;--pencil-red:#C8372D;
+ --ob-ink:#34322E;--ob-muted:#625B52;--pc-ink:#34322E;--pc-ink-soft:#625B52;
+ font-synthesis:weight;
+}
+/* The hand is the only typeface: an explicit family elsewhere (serif titles, UI stacks) must not break the page's voice. */
+body :where(:not(svg,svg *)){font-family:var(--ob-font-hand)!important}
+body{-webkit-font-smoothing:antialiased;letter-spacing:.2px}
+/* A soft graphite edge: pencil lines are never perfectly crisp. */
+.app :is(h1,h2,h3,strong,.card-ribbon,.btn,.stage-hotspot-label){text-shadow:0 0 .6px currentColor}
+
+/* ── Numbers: written in pencil on small doodles pinned to paper ─────────── */
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .card-cost{background:var(--doodle-clock) center/contain no-repeat!important;color:var(--pencil-graphite)!important;-webkit-text-stroke:.5px currentColor!important;text-shadow:none!important;font-weight:400!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .card-cost small{color:var(--pencil-soft)!important;-webkit-text-stroke:0!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .stat{color:var(--pencil-graphite)!important;-webkit-text-stroke:.6px currentColor!important;text-shadow:none!important;font-weight:400!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .stat.attack{background-image:var(--doodle-burst)!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .stat.health{background-image:var(--doodle-heart)!important;color:var(--pencil-red)!important;padding-bottom:3px}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.battle-effects) :is(.offer-card,.common-card) .stat.health.damaged{color:#9E2019!important;text-decoration:underline wavy #C8372D80 1px;text-underline-offset:2px}
+
+/* ── The pencil and its rewrite sheet ─ */
+.fx-rewrite{position:absolute;z-index:15;display:grid;place-items:center;pointer-events:none}
+.fx-rewrite>span{grid-area:1/1;font-family:var(--ob-font-hand);line-height:1;-webkit-text-stroke:.7px currentColor}
+.fx-rewrite.red{color:var(--pencil-red)}.fx-rewrite.graphite{color:var(--pencil-graphite)}
+.fx-rewrite-smudge{grid-area:1/1;width:70%;height:46%;border-radius:50%;background:radial-gradient(ellipse,#8E877D66,transparent 70%);filter:blur(1.5px)}
+.fx-pencil{position:absolute;z-index:16;width:112px;height:15px;transform-origin:0 50%;pointer-events:none;filter:drop-shadow(2px 5px 3px #3B2A1A55)}
+.fx-pencil>svg{display:block;width:100%;height:100%;transition:transform .06s}
+.fx-pencil.erasing>svg{transform:scaleX(-1)}
+@media(max-width:1023px){.fx-pencil{width:84px;height:11px}}

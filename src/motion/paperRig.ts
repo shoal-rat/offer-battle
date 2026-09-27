@@ -27,6 +27,8 @@ export function paperRig(root:HTMLElement):PaperRig {
 export function clonePaperRig(root:HTMLElement){
  const clone=root.cloneNode(true) as HTMLElement;
  remapCloneIds(clone);clone.removeAttribute('data-battle-id');clone.setAttribute('aria-hidden','true');clone.style.pointerEvents='none';
+ // A source hidden mid-flight or waiting for its entrance must not produce an invisible copy.
+ clone.style.visibility='';delete clone.dataset.awaitEntrance;delete clone.dataset.inFlight;delete clone.dataset.attackTarget;
  clone.querySelectorAll('[data-battle-id],button,input,select,[tabindex]').forEach(node=>{node.removeAttribute('data-battle-id');if(node instanceof HTMLElement)node.tabIndex=-1});
  return clone;
 }

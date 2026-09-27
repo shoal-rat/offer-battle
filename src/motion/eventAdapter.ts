@@ -16,7 +16,7 @@ export class BattleEventAdapter {
   const fresh=this.cursor.consume(view.matchId,view.visualCues??[]);
   const initial=!previous||previous.matchId!==view.matchId;
   const newOwnTurn=!initial&&previous.activePlayerId!==view.activePlayerId&&view.activePlayerId===view.selfId;
-  const groups=hidden?[]:groupBattleCues(fresh,reduced);
+  const groups=hidden?[]:groupBattleCues(fresh,reduced,view.selfId);
   return {initial,newOwnTurn,hidden,fresh:hidden?[]:fresh,groups};
  }
  sync(view:MatchView){this.consume(view,false,true)}

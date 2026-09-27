@@ -31,3 +31,4 @@ __pycache__/
 *.py[cod]
 
 !evidence/online-validation.json
+.claude/

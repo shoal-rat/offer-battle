@@ -9,7 +9,7 @@
 
 **[▶ 免费试玩](https://weikezhang.cn/offer-battle/)** · **[30 秒实机与图文介绍](https://weikezhang.cn/offer-battle/about/)** · **[本地运行](#本地运行)**
 
-`2.2 公测`　`单人练习 / 好友联机`　`桌面 / 手机`
+`2.3 公测`　`单人练习 / 好友联机`　`桌面 / 手机`
 
 [![秋招斗兽棋宣传封面：年包48万，就一定赢我？](public/about/media/cover-1600x900.webp)](https://weikezhang.cn/offer-battle/about/#film)
 
@@ -36,7 +36,7 @@
 | ![制造业研发的真实造卡界面，年包28万、双休](public/about/media/created-card.webp) | ![实际创建的好友房间与邀请入口](public/about/media/friend-room.webp) |
 | 已保存的制造业研发卡，资料与卡面一起预览。 | 复制邀请链接，或分享房间码，等朋友入席。 |
 
-*以上为 2.2 公测版真实截图；[图文介绍里可以查看完整原图和 30 秒实机](https://weikezhang.cn/offer-battle/about/)。*
+*以上为 2.2 公测版真实截图（2.3 已换为手工纸艺牌桌与铅笔手写体）；[图文介绍里可以查看完整原图和 30 秒实机](https://weikezhang.cn/offer-battle/about/)。*
 
 ## 第一局，三步就上桌
 
@@ -73,7 +73,7 @@ npm start
 | 验证范围与已知边界 | [测试报告](TEST_REPORT.md) · [公测 QA](docs/QA_BETA_2.md) |
 | 提问题、修 bug 或加一张新卡 | [参与贡献](CONTRIBUTING.md) · [Issues](https://github.com/shoal-rat/offer-battle/issues) |
 
-当前源码 **2.2.0-beta.2**，仍在公测与持续修补。完整验收尚未完成，发布版本与验证证据以部署、测试记录为准。欢迎带着一张读不清的牌、一次不顺手的操作，或一个能用回放复现的局面来反馈。
+当前源码 **2.3.0-beta.1**，仍在公测与持续修补。完整验收尚未完成，发布版本与验证证据以部署、测试记录为准。欢迎带着一张读不清的牌、一次不顺手的操作，或一个能用回放复现的局面来反馈。
 
 <details>
 <summary>开发验证命令</summary>

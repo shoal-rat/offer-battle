@@ -373,7 +373,9 @@ export function useCardDrag(options: Options) {
         )
           return;
         clear();
-        const r = event.currentTarget.getBoundingClientRect();
+        // Layout size, not the painted box: a hovered card is scaled up, and the ghost must keep the resting size.
+        const element = event.currentTarget as HTMLElement;
+        const r = { width: element.offsetWidth || element.getBoundingClientRect().width, height: element.offsetHeight || element.getBoundingClientRect().height };
         session.current = {
           source,
           element: event.currentTarget,

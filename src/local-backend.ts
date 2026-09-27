@@ -9,6 +9,8 @@ import {applyCommand,chooseBotCommand,compileOffer,createMatch,createShowcase,de
 import {createTutorial,getTutorialView,isLessonId,sameTutorialCommand,tutorialCoachCommands,type TutorialProgress} from './game/tutorial';
 import type {Command,Loadout,MatchState,OfferDefinition,OfferProfile} from './game/types';
 import type {Profile,RoomResponse} from './api';
+import {battlePresentationSettled} from './motion/presentationGate';
+import {botOpponent} from './game/botOpponents';
 
 export interface GameSocket {
   readyState:number;
@@ -20,7 +22,9 @@ export interface GameSocket {
   close(code?:number,reason?:string):void;
 }
 export interface LocalStorage {getItem(key:string):string|null;setItem(key:string,value:string):void;removeItem(key:string):void}
-interface Options {persistentStorage:LocalStorage;transientStorage:LocalStorage;now?:()=>number;autoTick?:boolean;botDelayMs?:number;turnMs?:number;setupMs?:number}
+interface Options {persistentStorage:LocalStorage;transientStorage:LocalStorage;now?:()=>number;autoTick?:boolean;botDelayMs?:number;turnMs?:number;setupMs?:number;
+  /** The practice bot waits until the previous move has finished playing on the table. */
+  presentationSettled?:()=>boolean}
 type Strategy='aggressive'|'control'|'growth';
 interface Seat {id:string;name:string;loadout:Loadout;isBot:boolean;ready:boolean}
 interface JournalEntry {actorId:string;command:Command}
@@ -50,6 +54,7 @@ export class LocalBackend {
   private activeRoomId:string|null=null;
   private botRunner=new BotWorkerClient();
   private pendingBot?:{roomId:string;matchId:string;version:number;requestId:string};
+  private readyBot?:{roomId:string;matchId:string;version:number;view:ReturnType<typeof getView>;decision:BotDecision};
   constructor(private options:Options) {
     this.now=options.now??Date.now;
     let stored:Profile|undefined;
@@ -90,7 +95,13 @@ export class LocalBackend {
     if(!Array.isArray(value.flexDeck)||value.flexDeck.length!==3||new Set(value.flexDeck).size!==3||value.flexDeck.some(c=>!/^F0[1-6]$/.test(c)))throw new LocalBackendError('请选择三张不同的应对牌');
     return currentLoadout(value);
   }
-  private cancelBot(){this.pendingBot=undefined;this.botRunner.cancel()}
+  private cancelBot(){this.pendingBot=undefined;this.readyBot=undefined;this.botRunner.cancel()}
+  private acceptBot(room:LocalRoom,view:ReturnType<typeof getView>,decision:BotDecision){
+    if(room.id!==this.activeRoomId||room.state.matchId!==decision.matchId||room.state.version!==decision.stateVersion||room.status!=='playing')return false;
+    const {principalVariation:_private,command:_privateCommand,...diagnostic}=decision;room.botDecisions??=[];room.botDecisions.push(diagnostic);
+    room.botKnowledge=updateBotKnowledge(room.botKnowledge,view,decision.command);
+    room.lastBotAt=this.now();return this.apply(room,'p2',{...decision.command,commandId:id('bot')}).ok;
+  }
   private start(room:LocalRoom,skipSetup=room.setupMode==='quick'){
     this.cancelBot();room.botVersion=BOT_VERSION;room.botDecisions=[];room.botKnowledge=undefined;
     room.skipSetup=skipSetup;
@@ -131,24 +142,29 @@ export class LocalBackend {
     for(const room of this.rooms.values()){
       if(room.status!=='playing'||room.tutorial)continue;
       let changed=this.expire(room);
-      if(room.state.phase!=='finished'&&this.now()-room.lastBotAt>=(this.options.botDelayMs??1280)){
+      if(room.state.phase!=='finished'&&room.id===this.activeRoomId){
         const bot=room.state.players.find(p=>p.id==='p2')!;
-        const shouldAct=(room.state.phase==='flex'&&!bot.flexReady)||(room.state.phase==='mulligan'&&!bot.mulliganReady)||(room.state.phase==='playing'&&(room.state.pendingChoice?.ownerId??room.state.activePlayerId)==='p2');
-        if(shouldAct&&room.id===this.activeRoomId&&!this.pendingBot){
+        const botTurn=(room.state.phase==='flex'&&!bot.flexReady)||(room.state.phase==='mulligan'&&!bot.mulliganReady)||(room.state.phase==='playing'&&(room.state.pendingChoice?.ownerId??room.state.activePlayerId)==='p2');
+        // The move waits for its pace (and, during play, for the table to finish showing the last move);
+        // the thinking does not: it starts at once, so a stronger search hides behind the animation.
+        const paced=()=>this.now()-room.lastBotAt>=(this.options.botDelayMs??1280)&&(room.state.phase!=='playing'||(this.options.presentationSettled??battlePresentationSettled)());
+        const ready=this.readyBot&&this.readyBot.roomId===room.id&&this.readyBot.matchId===room.state.matchId&&this.readyBot.version===room.state.version?this.readyBot:undefined;
+        if(botTurn&&ready){if(paced()){this.readyBot=undefined;changed=this.acceptBot(room,ready.view,ready.decision)||changed}}
+        else if(botTurn&&!this.pendingBot){
           const view=getView(room.state,'p2');room.botKnowledge=updateBotKnowledge(room.botKnowledge??createBotKnowledge(view,room.seats[1].loadout),view);
           const request={view,knowledge:room.botKnowledge,difficulty:room.difficulty,style:room.strategy,botSeed:room.botSeed+view.version,requestId:id('think'),...(room.deadline===null?{}:{budget:{maxMs:Math.max(5,Math.min(BOT_BUDGETS[room.difficulty].maxMs,room.deadline-this.now()-250))}})};
-          const accept=(decision:BotDecision)=>{
-            if(room.id!==this.activeRoomId||room.state.matchId!==decision.matchId||room.state.version!==decision.stateVersion||room.status!=='playing')return false;
-            const {principalVariation:_private,command:_privateCommand,...diagnostic}=decision;room.botDecisions??=[];room.botDecisions.push(diagnostic);
-            room.botKnowledge=updateBotKnowledge(room.botKnowledge,view,decision.command);
-            room.lastBotAt=this.now();return this.apply(room,'p2',{...decision.command,commandId:id('bot')}).ok;
-          };
-          if(typeof Worker==='undefined'){changed=accept(decideBotCommand(request))||changed}
-          else if([...this.sockets.values()].includes(room.id)){
+          const store=(decision:BotDecision)=>{this.readyBot={roomId:room.id,matchId:view.matchId,version:view.version,view,decision}};
+          if(typeof Worker==='undefined'){
+            store(decideBotCommand(request));
+            if(paced()){const next=this.readyBot!;this.readyBot=undefined;changed=this.acceptBot(room,next.view,next.decision)||changed}
+          }else if([...this.sockets.values()].includes(room.id)){
             this.pendingBot={roomId:room.id,matchId:view.matchId,version:view.version,requestId:request.requestId};this.broadcast(room);
             void this.botRunner.request(request).then(decision=>{
               if(this.pendingBot?.requestId!==request.requestId)return;
-              this.pendingBot=undefined;if(decision&&accept(decision)){this.saveRoom(room);this.broadcast(room)}
+              this.pendingBot=undefined;if(decision)store(decision);
+              // Already paced (the table is still): play at once rather than waiting for the next tick.
+              if(this.readyBot&&paced()){const next=this.readyBot;this.readyBot=undefined;if(this.acceptBot(room,next.view,next.decision))this.saveRoom(room)}
+              this.broadcast(room);
             });
           }
         }
@@ -222,9 +238,10 @@ export class LocalBackend {
       if(input.lessonId!==undefined&&(!isLessonId(input.lessonId)||input.training!==true||input.practiceScenario))throw new LocalBackendError('教程只支持明确选择的单人练习课程');
       if(input.practiceScenario&&(input.training!==true||!showcaseCatalog.some(s=>s.id===input.practiceScenario)))throw new LocalBackendError('演示场景仅用于明确选择的单人练习');
       const strategy:Strategy=['aggressive','control','growth'].includes(input.strategy)?input.strategy:'aggressive';
-      const names={aggressive:'卷王 · 进攻型',control:'合同大师 · 控制型',growth:'长期主义 · 养成型'};
-      const seats=[{id:'p1',name:this.profile.nickname,isBot:false,ready:true,loadout:this.loadoutFor(input.lessonId?{presetIndex:5}:input.loadout)},{id:'p2',name:input.lessonId?'前辈 · 秋招导师':names[strategy],isBot:true,ready:true,loadout:defaultLoadout('p2',names[strategy],strategy==='aggressive'?5:strategy==='control'?6:8)}];
-      const room={trackAchievements:input.achievementsEnabled===true,id:id('local'),code:'LOCAL',mode:'bot',strategy,difficulty:normalizeDifficulty(input.difficulty),setupMode:normalizeSetupMode(input.setupMode,input.skipSetup===true),botVersion:BOT_VERSION,botSeed:seed(),training:input.training===true,seats,seed:seed(),...(input.lessonId?{tutorial:{lessonId:input.lessonId,stepIndex:0}}:{}),...(input.practiceScenario?{scenario:showcaseCatalog.find(s=>s.id===input.practiceScenario)}:{})} as LocalRoom;
+      // Lessons keep their authored mentor; every other practice table deals a fresh opponent from the public templates.
+      const botSeed=seed(),opponent=input.lessonId?{name:'前辈 · 秋招导师',loadout:defaultLoadout('p2','前辈 · 秋招导师',5)}:botOpponent(strategy,botSeed);
+      const seats=[{id:'p1',name:this.profile.nickname,isBot:false,ready:true,loadout:this.loadoutFor(input.lessonId?{presetIndex:5}:input.loadout)},{id:'p2',name:opponent.name,isBot:true,ready:true,loadout:opponent.loadout}];
+      const room={trackAchievements:input.achievementsEnabled===true,id:id('local'),code:'LOCAL',mode:'bot',strategy,difficulty:normalizeDifficulty(input.difficulty),setupMode:normalizeSetupMode(input.setupMode,input.skipSetup===true),botVersion:BOT_VERSION,botSeed,training:input.training===true,seats,seed:seed(),...(input.lessonId?{tutorial:{lessonId:input.lessonId,stepIndex:0}}:{}),...(input.practiceScenario?{scenario:showcaseCatalog.find(s=>s.id===input.practiceScenario)}:{})} as LocalRoom;
       if(input.experiment){if(input.experiment.kind==='series'){room.experiment=seriesDescriptor();room.series=createSeries(seats.map(s=>s.loadout) as [Loadout,Loadout],experimentFlags({series:true}));}else{const fixture=input.experiment.kind==='challenge'?createChallenge(input.experiment.id,experimentFlags({challenges:true})):createBoss(input.experiment.id,experimentFlags({boss:true}));room.experiment=fixture.descriptor;if(input.experiment.kind==='boss')room.difficulty='hard';}room.training=true;}
       this.start(room,room.setupMode==='quick');this.rooms.set(room.id,room);this.activeRoomId=room.id;this.saveRoom(room);return this.snapshot(room) as T;
     }

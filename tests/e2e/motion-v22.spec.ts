@@ -1,4 +1,5 @@
 import {test,expect,type Page,type WebSocketRoute} from '@playwright/test';
+import {MOTION_LIMITS} from '../../src/motion/cues';
 import {writeFile,mkdir} from 'node:fs/promises';
 import {createMatch,applyCommand,getView,defaultLoadout,chooseBotCommand} from '../../src/game/index';
 import type {MatchState,Command} from '../../src/game/types';
@@ -74,7 +75,7 @@ test('rapid confirmed snapshots cannot strand results behind battle queues; full
  // One authoritative snapshot may carry multiple public resolver groups after reconnect.
  const crowded=structuredClone(state);for(let i=0;i<12;i++){crowded.version++;crowded.eventSequence++;crowded.events.push({sequence:crowded.eventSequence,type:'card',text:'已确认行动',actorId:'p1',visual:{kind:'card',playerId:'p1',label:'已确认行动'}} as any)}
  await send(crowded);await send(attack(crowded,true));await expect(page.locator('.result-banner')).toBeVisible();const frames=await stop(page);
- const received=frames.find(f=>f.phase==='finished'),result=frames.find(f=>f.result);await writeFile('work/motion-v22/result-deadline.json',JSON.stringify({receivedAt:received?.at,resultAt:result?.at,elapsedMs:result?.at-received?.at,resultOverlap:frames.some(f=>f.ending&&f.result)},null,2));expect(received).toBeTruthy();expect(result).toBeTruthy();expect(result.at-received.at).toBeLessThanOrEqual(2000);expect(frames.some(f=>f.ending&&f.result)).toBe(false);expect(frames.some(f=>f.ending)).toBe(true);
+ const received=frames.find(f=>f.phase==='finished'),result=frames.find(f=>f.result);await writeFile('work/motion-v22/result-deadline.json',JSON.stringify({receivedAt:received?.at,resultAt:result?.at,elapsedMs:result?.at-received?.at,resultOverlap:frames.some(f=>f.ending&&f.result)},null,2));expect(received).toBeTruthy();expect(result).toBeTruthy();expect(result.at-received.at).toBeLessThanOrEqual(MOTION_LIMITS.resultDeadlineMs);expect(frames.some(f=>f.ending&&f.result)).toBe(false);expect(frames.some(f=>f.ending)).toBe(true);
  await expect(page.locator('.battle-effects')).toHaveAttribute('data-busy','false');await expect(page.locator('.battle-effects')).toHaveAttribute('data-director-errors','0');
  await send(attack(crowded,true));await page.waitForTimeout(200);await expect(page.locator('.battle-defeat')).toHaveCount(0);
 });

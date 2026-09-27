@@ -1,6 +1,6 @@
 import {publicUrl} from './deployment';
 import type { BattleCue } from "./game/types";
-import { ATTACK_TIMING, cueOffset, groupBattleCues } from "./components/battle-motion";
+import { ATTACK_TIMING, DEPLOY_TIMING, cueOffset, groupBattleCues, type MotionGroup } from "./components/battle-motion";
 import { resultMotionDuration } from "./components/result-motion";
 
 export type SoundFile =
@@ -24,15 +24,19 @@ export interface CueSound {
   delay: number;
   duck?: number;
   protectMs?: number;
+  /** Playback rate; heavier blows play the same clip lower and slower. */
+  rate?: number;
 }
 /** Delays align with the card lunge, impact, and retirement beats of BattleEffects. */
 export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
   switch (cue.kind) {
-    case "attack":
+    case "attack": {
+      const heavy = (cue.amount ?? 0) >= 5;
       return [
-        { file: "attack", delay: 40, duck: 0.55, protectMs: 380 },
-        { file: "damage", delay: ATTACK_TIMING.contact, duck: 0.4 },
+        { file: "attack", delay: ATTACK_TIMING.lift, duck: 0.55, protectMs: 380 },
+        { file: "damage", delay: ATTACK_TIMING.contact, duck: 0.4, ...(heavy ? { rate: 0.82 } : {}) },
       ];
+    }
     case "retire":
       return [{ file: "optimization", delay: 0, duck: 0.6 }];
     case "primary_skill":
@@ -54,7 +58,7 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
     case "retort":
       return [{ file: "retort", delay: 0, duck: 0.45 }];
     case "deploy":
-      return [{ file: "deploy", delay: 255, duck: 0.65 }];
+      return [{ file: "deploy", delay: DEPLOY_TIMING.land - 40, duck: 0.65 }];
     case "damage":
       return [{ file: "damage", delay: 0, duck: 0.5 }];
     case "heal":
@@ -88,11 +92,48 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
   }
 }
 
+/** Window event the battle table dispatches when a group's animation begins. */
+export const BATTLE_SOUND_EVENT = "offer-battle-sounds";
 export interface SoundGroup {
   id: string;
   sounds: CueSound[];
   duration: number;
 }
+/** One sound per layer for a resolver group, timed to the same beats as its animation. */
+export function soundsForGroup(
+  group: MotionGroup,
+  selfId?: string,
+  reduced = false,
+): SoundGroup {
+  const lead = group.cues[0],
+    layers = new Map<SoundFile, CueSound>();
+  for (const [index, cue] of group.cues.entries())
+    for (const sound of soundsForCue(cue, selfId)) {
+      if (layers.has(sound.file)) continue;
+      let delay = sound.delay;
+      if (index > 0 && sound.file === "damage")
+        delay =
+          lead.kind === "attack"
+            ? ATTACK_TIMING.contact
+            : ["primary_skill", "secondary_skill", "card", "retort"].includes(lead.kind)
+              ? cueOffset(group, index)
+              : delay;
+      if (
+        index > 0 &&
+        sound.file === "heal" &&
+        ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
+      )
+        delay = cueOffset(group, index);
+      if (index > 0 && sound.file === "optimization") delay = cueOffset(group,index);
+      layers.set(sound.file, { ...sound, delay: reduced ? 0 : delay });
+    }
+  return {
+    id: group.id,
+    sounds: [...layers.values()],
+    duration: group.duration,
+  };
+}
+
 /** Use the same resolver groups as the visual queue, with one sound per layer.
  * Eight damage/death events describe eight targets, not eight simultaneous clips.
  */
@@ -101,37 +142,7 @@ export function soundsForBatch(
   selfId?: string,
   reduced = false,
 ): SoundGroup[] {
-  const groups = groupBattleCues(cues, reduced).map((group) => {
-    const lead = group.cues[0],
-      layers = new Map<SoundFile, CueSound>();
-    for (const [index, cue] of group.cues.entries())
-      for (const sound of soundsForCue(cue, selfId)) {
-        if (layers.has(sound.file)) continue;
-        let delay = sound.delay;
-        if (index > 0 && sound.file === "damage")
-          delay =
-            lead.kind === "attack"
-              ? ATTACK_TIMING.contact
-              : ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
-                ? 160
-                : lead.kind === "retort"
-                  ? 120
-                  : delay;
-        if (
-          index > 0 &&
-          sound.file === "heal" &&
-          ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
-        )
-          delay = 160;
-        if (index > 0 && sound.file === "optimization") delay = cueOffset(group,index);
-        layers.set(sound.file, { ...sound, delay: reduced ? 0 : delay });
-      }
-    return {
-      id: group.id,
-      sounds: [...layers.values()],
-      duration: group.duration,
-    };
-  });
+  const groups = groupBattleCues(cues, reduced, selfId).map((group) => soundsForGroup(group, selfId, reduced));
   // These cues have no visual motion group, but still get one quiet feedback cue.
   const extras = cues.filter(
     (c) => c.kind === "covered",
@@ -177,6 +188,8 @@ export class SoundEffects {
   private queue: SoundGroup[] = [];
   private running = false;
   private listening = false;
+  /** When the battle table drives sound, snapshots only advance the watermark. */
+  private driven = false;
   private readonly visibility = () => {
     if (document.hidden) this.stop();
   };
@@ -194,6 +207,20 @@ export class SoundEffects {
       : 0.35;
     if (!enabled) this.stop();
     else for (const audio of this.playing) audio.volume = this.volume;
+  }
+  /** Hand timing to the visual director: each group's sounds start when its animation starts. */
+  setPresentationDriven(value: boolean) {
+    this.driven = value;
+    if (value) {
+      this.queue = [];
+    }
+  }
+  /** Play one presented group now; `scale` follows a sped-up backlog. */
+  playGroup(sounds: CueSound[], scale = 1) {
+    if (!this.enabled || (typeof document !== "undefined" && document.hidden))
+      return;
+    for (const sound of sounds)
+      this.later(() => this.play(sound), Math.max(0, sound.delay * scale));
   }
   /** Call for every snapshot, including while muted, so old sounds never replay. */
   consume(matchId: string, cues: BattleCue[], selfId?: string) {
@@ -219,6 +246,12 @@ export class SoundEffects {
     const explicit = typeof document !== 'undefined' ? document.documentElement?.dataset.reduced : undefined;
     const reduced = explicit !== undefined ? explicit === 'true' : typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(unique.some(c=>c.kind==='result'))this.stop();
+    if (this.driven) {
+      // Hidden-card cues have no animation group; give them their quiet feedback directly.
+      for (const cue of unique.filter((c) => c.kind === "covered"))
+        for (const sound of soundsForCue(cue, selfId)) this.play(sound);
+      return;
+    }
     this.queue = [
       ...this.queue,
       ...soundsForBatch(unique, selfId, reduced),
@@ -266,6 +299,10 @@ export class SoundEffects {
     try {
       const audio = new Audio(publicUrl(`/assets/audio/sfx/${sound.file}.wav?rev=2`));
       audio.volume = this.volume;
+      if (sound.rate) {
+        audio.preservesPitch = false;
+        audio.playbackRate = sound.rate;
+      }
       this.playing.add(audio);
       if (sound.protectMs)
         this.protectedUntil.set(audio, performance.now() + sound.protectMs);
