@@ -1,6 +1,16 @@
 # 发布与运维
 
-网页位于 **https://weikezhang.cn/offer-battle/**，源代码位于 **https://github.com/shoal-rat/offer-battle**。已上线基础版本使用 GitHub Pages 与 Cloudflare Workers Free；后端地址为 **https://offer-battle-api.offer-battle.workers.dev**，健康检查地址为 `/healthz`。历史线上验收见本页末尾。2.2 的本地开发证据不能替代该版本的发布后验收；本轮独立验收仍为待执行。
+网页位于 **https://weikezhang.cn/offer-battle/**，源代码位于 **https://github.com/shoal-rat/offer-battle**。已上线基础版本使用 GitHub Pages 与 Cloudflare Workers Free；后端地址为 **https://offer-battle-api.offer-battle.workers.dev**，健康检查地址为 `/healthz`。历史线上验收见本页末尾。本地开发证据不能替代发布后验收；独立验收仍为待执行。
+
+## 2.3.0-beta.1 已发布
+
+2026-09-28 已更新 [正式网页](https://weikezhang.cn/offer-battle/)。发布源码为 `d6ee8e799bf48f093a6334272365f4ea09fc1db3`，网站提交为 `c9de8d249c9574077ab45e36829c24cbf9d0993e`，[Pages 部署](https://github.com/shoal-rat/shoal-rat.github.io/actions/runs/36417971375) 成功。战斗规则仍为 2.0.0、Offer 编译器仍为 2.1.0，Cloudflare Worker 未改动也未重新部署，`/healthz` 返回的版本与前端一致。
+
+本轮包含手工纸艺牌桌与铅笔手写体、铅笔改写数值、分拍攻击与撕纸退场、按炉石节奏放慢的演出与 Web Audio 同步音效、拖出手牌区即出牌与单击拿近细看、哑光纸倾斜、第 4/7 轮时代更替仪式、随机人机对手与更强的“终面Boss”，以及重拍的截图、封面和 30 秒宣传片。详见 [更新日志](CHANGELOG.md) 与 [纸艺 2.3 报告](reports/PAPERCRAFT_2_3.md)。
+
+线上 `release.json` 版本为 2.3.0-beta.1，内容哈希 `4def33ba9a26…`（889 个文件，189,009,029 字节，算法见清单）；首页、介绍页、宣传片、封面、截图与 3 个脚本包的线上哈希逐一与发布目录一致。线上静态站游客用例在 1440 与 390 px 下真实完成第一课、刷新恢复与临时数据清理，零 API 请求、零页面错误；介绍页视频元数据为 30 s、1080×1920。
+
+发布前本地 298 项单测、73 项主浏览器（生产服务器）、15 项静态站和 11 项 Cloudflare 集成检查通过；开发代理用真实界面对“终面Boss”完整打过一局。48 次独立验收仍未执行。
 
 ## 2.2.0-beta.2 已发布
 
