@@ -15,10 +15,10 @@ test('ending is a separate final group after lethal damage and retirement, inclu
  const groups=groupBattleCues([cue(1,'card'),cue(2,'deploy'),cue(3,'attack'),cue(4,'damage'),cue(5,'retire'),result]);
  assert.deepEqual(groups.at(-2)?.cues.map(c=>c.kind),['attack','damage','retire']);
  assert.equal(groups.at(-2)?.duration,attackWithExit);
- assert.deepEqual(groups.at(-1)?.cues,[result]);assert.equal(groups.at(-1)?.duration,resultMotionDuration(result));assert.equal(resultMotionDuration(result),1600);
+ assert.deepEqual(groups.at(-1)?.cues,[result]);assert.equal(groups.at(-1)?.duration,resultMotionDuration(result));assert.equal(resultMotionDuration(result),2000);
  assert.equal(boundedQueue([],groups).at(-1)?.cues[0].kind,'result');
  assert.equal(groupBattleCues([result],true)[0].duration,100);
- assert.equal(groupBattleCues([{...result,effectId:'draw'}])[0].duration,1100);
+ assert.equal(groupBattleCues([{...result,effectId:'draw'}])[0].duration,1400);
 });
 test('an opponent card is revealed before it resolves; your own card resolves quickly',()=>{
  const played={...cue(1,'card'),playerId:'foe'},follow=cue(2,'damage'),exit=cue(3,'retire');

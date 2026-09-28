@@ -90,7 +90,7 @@ function DragGhost({ ghost }: { ghost: Ghost }) {
           ? ghost.needsTarget
             ? "松开选择目标"
             : "松开出牌"
-          : "拖到发光区域 · 移到外面取消"}
+          : "拖到牌桌上任意位置出牌 · 移到外面取消"}
       </div>
     </div>,
     document.body,
@@ -111,7 +111,7 @@ export function useCardDrag(options: Options) {
   const motionScope=useId();
   function clearHighlights() {
     for (const el of highlighted.current)
-      el.classList.remove("card-drag-target", "card-drag-board-target");
+      el.classList.remove("card-drag-target", "card-drag-board-target", "card-drag-table-target");
     highlighted.current.clear();
     hovered.current?.classList.remove("card-drag-hover");
     hovered.current = null;
@@ -146,13 +146,24 @@ export function useCardDrag(options: Options) {
       return { location: {}, target: null, board: null };
     const target = hit.closest<HTMLElement>("[data-battle-id]"),
       board = hit.closest<HTMLElement>("[data-card-drop-zone]");
+    // Lifted above the hand tray and still over the play-mat: anywhere there is a clear "play it".
+    const table = arena.querySelector<HTMLElement>(".arena"),
+      dock = arena.querySelector<HTMLElement>(".hand-dock");
+    const mat = table?.getBoundingClientRect(),
+      tray = dock?.getBoundingClientRect();
+    const leftHand =
+      !!mat &&
+      x >= mat.left && x <= mat.right && y >= mat.top && y <= mat.bottom &&
+      (!tray || y < tray.top - 8) &&
+      !hit.closest(".hand-dock");
     return {
       location: {
         targetId: target?.dataset.battleId,
         boardId: board?.dataset.cardDropZone,
+        leftHand,
       },
       target,
-      board,
+      board: board ?? (leftHand ? table ?? null : null),
     };
   }
   function candidates(active: DragSession) {
@@ -175,7 +186,7 @@ export function useCardDrag(options: Options) {
         el.classList.add("card-drag-target");
         highlighted.current.add(el);
       }
-    if (actions.length)
+    if (actions.length) {
       for (const el of arena.querySelectorAll<HTMLElement>(
         "[data-card-drop-zone]",
       ))
@@ -183,6 +194,13 @@ export function useCardDrag(options: Options) {
           el.classList.add("card-drag-board-target");
           highlighted.current.add(el);
         }
+      // The whole play-mat accepts the card once it leaves the hand.
+      const table = arena.querySelector<HTMLElement>(".arena");
+      if (table) {
+        table.classList.add("card-drag-table-target");
+        highlighted.current.add(table);
+      }
+    }
   }
   function move(event: PointerEvent) {
     const active = session.current;

@@ -1,25 +1,29 @@
 import type {BattleCue} from '../game/types';
 import {resultMotionDuration} from './result-motion';
 
-/** One attack beat: lift, wind-up, lunge, hit-stop at contact, recoil home.
- * Stats, damage splats, screen shake and sounds all land on `contact`. */
-export const ATTACK_TIMING={duration:960,lift:170,contact:420,hold:70,departure:640} as const;
+/** Paced after Hearthstone: every beat is long enough to read, the blow itself is quick.
+ * Attack: lift, lean back, lunge, hit-stop at contact, recoil home. Stats, splats, shake and sound land on `contact`.
+ * A retirement shivers first, then tears (`departure` includes the shiver). */
+export const ATTACK_TIMING={duration:1100,lift:220,contact:520,hold:110,departure:980} as const;
+export const RETIRE_SHIVER=260;
 /** A played card is revealed before its effect lands (opponent) or dissolves quickly (self). */
-export const CARD_TIMING={reveal:1150,revealImpact:880,own:460,ownImpact:220} as const;
-export const DEPLOY_TIMING={duration:620,land:380} as const;
-export const SKILL_TIMING={primary:760,secondary:980,impact:300} as const;
-export const RETIRE_AFTER_IMPACT=90;
+export const CARD_TIMING={reveal:1800,revealImpact:1400,own:620,ownImpact:320} as const;
+export const DEPLOY_TIMING={duration:820,land:500} as const;
+export const SKILL_TIMING={primary:1000,secondary:1300,impact:420} as const;
+export const RETIRE_AFTER_IMPACT=160;
+/** How long a splat, stamp or label stays readable on the table. */
+export const READ_MS=1500;
 /** A pencil erases the old number and writes the new one after each blow lands. */
-export const REWRITE_MS=720;
+export const REWRITE_MS=950;
 /** The attacker's own number is rewritten a little quicker, as it settles back into its slot. */
 export const ATTACK_REWRITE_MS=Math.round(REWRITE_MS*.85);
 /** When a surviving attacker, back home, gets its own number rewritten. */
-export const ATTACK_REWRITE_AT=ATTACK_TIMING.duration-180;
+export const ATTACK_REWRITE_AT=ATTACK_TIMING.duration-260;
 /** When cue `index` reveals its numbers (retirement penalties land just after the tear starts). */
 export function landingOffset(group:MotionGroup,index:number){
  const lead=group.cues[0],cue=group.cues[index];
  if(index===0)return lead.kind==='attack'?ATTACK_TIMING.contact:group.impact??0;
- return cueOffset(group,index)+(cue.kind==='retire'||cue.kind==='bounce'?140:0);
+ return cueOffset(group,index)+(cue.kind==='retire'||cue.kind==='bounce'?RETIRE_SHIVER:0);
 }
 export interface MotionGroup {id:string;cues:BattleCue[];duration:number;impact?:number;mine?:boolean}
 const leaders=new Set(['attack','primary_skill','secondary_skill','card','deploy','retort','result']);
@@ -42,13 +46,13 @@ function leaderTiming(cue:BattleCue,reduced:boolean,selfId?:string):{duration:nu
   case 'deploy':return {duration:DEPLOY_TIMING.duration,impact:DEPLOY_TIMING.land};
   case 'primary_skill':return {duration:SKILL_TIMING.primary,impact:SKILL_TIMING.impact};
   case 'secondary_skill':return {duration:SKILL_TIMING.secondary,impact:SKILL_TIMING.impact};
-  case 'retort':return {duration:680,impact:300};
+  case 'retort':return {duration:900,impact:380};
   case 'card':{
    // Without a viewer (tests, replay export) the short own-card beat is used.
    const hidden=!!selfId&&!!cue.playerId&&cue.playerId!==selfId;
    return hidden?{duration:CARD_TIMING.reveal,impact:CARD_TIMING.revealImpact}:{duration:CARD_TIMING.own,impact:CARD_TIMING.ownImpact};
   }
-  default:return {duration:cue.kind==='draw'?360:cue.kind==='bounce'?560:cue.kind==='retire'?ATTACK_TIMING.departure:420};
+  default:return {duration:cue.kind==='draw'?480:cue.kind==='bounce'?760:cue.kind==='retire'?ATTACK_TIMING.departure:cue.kind==='status'||cue.kind==='topic'?900:600};
  }
 }
 export function groupBattleCues(cues:BattleCue[],reduced=false,selfId?:string):MotionGroup[]{
@@ -72,7 +76,7 @@ export function groupBattleCues(cues:BattleCue[],reduced=false,selfId?:string):M
  }
  // Never unlock/compact a board while an aftermath ghost is still on screen.
  for(const group of groups)if(!reduced&&group.cues.some(c=>c.kind==='retire'||c.kind==='bounce')){
-  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+(cue.kind==='bounce'?560:ATTACK_TIMING.departure)]:[]);
+  const exits=group.cues.flatMap((cue,index)=>cue.kind==='retire'||cue.kind==='bounce'?[cueOffset(group,index)+(cue.kind==='bounce'?760:ATTACK_TIMING.departure)]:[]);
   group.duration=Math.max(group.duration,...exits);
  }
  return groups;
@@ -106,7 +110,7 @@ export function attackKeyframes(dx:number,dy:number,died:boolean):Keyframe[]{
  return [
   {transform:'translate(0,0) scale(1) rotate(0deg)',easing:'cubic-bezier(.2,.8,.3,1)'},
   {offset:at(ATTACK_TIMING.lift),transform:`translate(${-ux*back*.4}px,${-uy*back*.4-16}px) scale(1.16) rotate(${-tilt*.6}deg)`,easing:'cubic-bezier(.4,0,.6,1)'},
-  {offset:at(ATTACK_TIMING.lift+80),transform:`translate(${-ux*back}px,${-uy*back-18}px) scale(1.18) rotate(${-tilt}deg)`,easing:'cubic-bezier(.62,0,.94,.4)'},
+  {offset:at(ATTACK_TIMING.lift+110),transform:`translate(${-ux*back}px,${-uy*back-18}px) scale(1.18) rotate(${-tilt}deg)`,easing:'cubic-bezier(.62,0,.94,.4)'},
   {offset:at(ATTACK_TIMING.contact),transform:`${hit} scale(1.1,.94) rotate(${tilt}deg)`,easing:'linear'},
   {offset:at(ATTACK_TIMING.contact+ATTACK_TIMING.hold),transform:`${hit} scale(1.06,.97) rotate(${tilt*.8}deg)`,easing:died?'ease-in':'cubic-bezier(.25,1.4,.5,1)'},
   died

@@ -10,6 +10,8 @@ export interface CardDragSource {
 export interface CardDropLocation {
   targetId?: string;
   boardId?: string;
+  /** Released over the table after lifting the card clear of the hand tray. */
+  leftHand?: boolean;
 }
 
 /** Only caller-authorized actions are eligible; never infer costs or game rules. */
@@ -39,9 +41,9 @@ export function commandsForDrop(
     );
     if (targeted.length) return targeted;
   }
-  // The friendly row is also a staging area: targeted cards open Battle's
-  // existing target chooser instead of silently cancelling or guessing a target.
-  if (location.boardId === selfId) return actions;
+  // Anywhere on the table counts once the card has left the hand: a plain card is played,
+  // a targeted one opens Battle's target chooser instead of silently cancelling or guessing a target.
+  if (location.boardId === selfId || location.leftHand) return actions;
   return [];
 }
 

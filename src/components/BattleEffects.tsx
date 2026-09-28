@@ -1,7 +1,7 @@
 import {useEffect,useLayoutEffect,useRef,useState,type CSSProperties,type RefObject} from 'react';
 import {createPortal} from 'react-dom';
 import type {BattleAnchor,BattleChange,BattleCue,MatchView} from '../game/types';
-import {ATTACK_REWRITE_AT,ATTACK_REWRITE_MS,ATTACK_TIMING,CARD_TIMING,DEPLOY_TIMING,REWRITE_MS,SKILL_TIMING,attackKeyframes,cueOffset,groupBattleCues,type MotionGroup,type Point} from './battle-motion';
+import {ATTACK_REWRITE_AT,ATTACK_REWRITE_MS,ATTACK_TIMING,CARD_TIMING,DEPLOY_TIMING,RETIRE_SHIVER,REWRITE_MS,SKILL_TIMING,attackKeyframes,cueOffset,groupBattleCues,type MotionGroup,type Point} from './battle-motion';
 import {motionDirector,type MotionContext,type MotionEndReason} from '../motion/MotionDirector';
 import {BattleEventAdapter,commandUsesUnstableTarget,groupActors,motionKey,type BattleMotionControl} from '../motion/eventAdapter';
 import {clonePaperRig} from '../motion/paperRig';
@@ -9,33 +9,40 @@ import {useMotionPreferences,getMotionPreferences} from '../motion/useMotionPref
 import {setBattlePresentationBusy} from '../motion/presentationGate';
 import {playResultMotion,resultMotionDuration} from './result-motion';
 import {StatLedger} from './stat-holds';
-import {banner,confetti,pencilRewrite,popStat,recoil,ring,rosette,shake,sparkles,speedLines,splat,stamp,tear,type Fx} from './battle-fx';
+import {banner,confetti,eraCeremony,type EraCard,pencilRewrite,popStat,recoil,ring,rosette,shake,shiver,sparkles,speedLines,splat,stamp,tear,type Fx} from './battle-fx';
 import {BATTLE_SOUND_EVENT,soundsForBatch,soundsForGroup,type CueSound} from '../sound-effects';
-import {cardById} from '../game/catalog';
+import {cardById,rules} from '../game/catalog';
 import {CommonCard} from '../ui';
 import '../styles/battle-effects.css';
 import '../styles/result-motion.css';
 
-interface Props {view:MatchView;arenaRef:RefObject<HTMLElement|null>;onBusyChange?:(busy:boolean)=>void;onInputLockChange?:(locked:boolean)=>void;onDepartureComplete?:(id:string)=>void;onResultPending?:(pending:boolean)=>void;controlRef?:RefObject<BattleMotionControl|null>}
+interface Props {view:MatchView;arenaRef:RefObject<HTMLElement|null>;onBusyChange?:(busy:boolean)=>void;onInputLockChange?:(locked:boolean)=>void;onDepartureComplete?:(id:string)=>void;onResultPending?:(pending:boolean)=>void;onEraShown?:(era:number)=>void;controlRef?:RefObject<BattleMotionControl|null>}
 interface Rect {left:number;top:number;width:number;height:number}
 interface Anchor {point:Point;rect:Rect;clone?:HTMLElement}
 /** `blocking` groups show the opponent's move (or the turn banner): the player waits for them, like at a real table. */
 interface Pending {group:MotionGroup;actors:Set<string>;blocking:boolean}
 interface Showcase {key:string;cardId:string;ms:number;from:Point;rest:Point;to:Point|null}
 interface LeftHand {id:string;definitionId:string;anchor:Anchor}
-const TURN_BANNER_MS=1150;
+const TURN_BANNER_MS=1600,ERA_MS=3400;
+/** Three acts follow the default topics: rounds 1–3, 4–6 and 7–12. */
+export const eraOf=(round:number):1|2|3=>round<4?1:round<7?2:3;
+const ERA_COPY:Record<1|2|3,Omit<EraCard,'era'|'round'|'effect'>>={
+ 1:{act:'第一幕',name:'聊年包',rounds:'第 1–3 轮',tagline:'刚拿到 Offer，先比数字。'},
+ 2:{act:'第二幕',name:'聊生活',rounds:'第 4–6 轮',tagline:'入职之后，才开始算生活。',milestone:'第二学历毕业：进修技能从本轮起可以发动（每局一次）。'},
+ 3:{act:'第三幕',name:'聊以后',rounds:'第 7–12 轮',tagline:'三十岁前后，开始聊以后。',milestone:'终局在第 12 轮：结束时心态更高的一方胜出。'},
+};
 let instance=0;
 const rectOf=(element:Element):{point:Point;rect:Rect}=>{const r=element.getBoundingClientRect();return {point:{x:r.left+r.width/2,y:r.top+r.height/2},rect:{left:r.left,top:r.top,width:r.width,height:r.height}}};
 
 /** One public event consumer. The director owns all temporary nodes, animations and callbacks;
  * the stat ledger keeps every number on the table honest to what has been shown so far. */
-export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockChange,onDepartureComplete,onResultPending,controlRef}:Props){
+export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockChange,onDepartureComplete,onResultPending,onEraShown,controlRef}:Props){
  const layerRef=useRef<HTMLDivElement>(null),cache=useRef(new Map<string,Anchor>()),adapter=useRef(new BattleEventAdapter());
  const scope=useRef(`battle:${view.matchId}:${++instance}`).current,pending=useRef(new Map<string,Pending>()),alive=useRef(true);
  const ledgerRef=useRef<StatLedger|null>(null);if(!ledgerRef.current)ledgerRef.current=new StatLedger(()=>arenaRef.current);const ledger=ledgerRef.current;
  const landed=useRef(new Set<string>()),revealed=useRef(new Set<string>()),leftHand=useRef<LeftHand[]>([]),previousView=useRef(view);
  const current=useRef(view);current.current=view;
- const callbacks=useRef({onBusyChange,onInputLockChange,onDepartureComplete,onResultPending});callbacks.current={onBusyChange,onInputLockChange,onDepartureComplete,onResultPending};
+ const callbacks=useRef({onBusyChange,onInputLockChange,onDepartureComplete,onResultPending,onEraShown});callbacks.current={onBusyChange,onInputLockChange,onDepartureComplete,onResultPending,onEraShown};
  const prefs=useMotionPreferences(),[busy,setBusy]=useState(false),[kind,setKind]=useState(''),[catchUps,setCatchUps]=useState(0),[diagnostics,setDiagnostics]=useState(()=>motionDirector.diagnostics());
  const [showcase,setShowcase]=useState<Showcase|null>(null);
  const [effectiveReduced,setEffectiveReduced]=useState(prefs.reduced);
@@ -75,7 +82,7 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
  function catchUp(reason='catch-up'){
   motionDirector.cancelScope(scope,reason==='hidden'?'hidden':'catch-up');
   for(const {group}of pending.current.values())completeDepartures(group);pending.current.clear();
-  ledger.release();revealed.current.clear();revealEntrances();for(const node of arenaRef.current?.querySelectorAll<HTMLElement>('[data-rewrite]')??[])delete node.dataset.rewrite;leftHand.current=[];if(alive.current)setShowcase(null);
+  ledger.release();revealed.current.clear();revealEntrances();markEra(eraOf(current.current.round));for(const node of arenaRef.current?.querySelectorAll<HTMLElement>('[data-rewrite]')??[])delete node.dataset.rewrite;leftHand.current=[];if(alive.current)setShowcase(null);
   adapter.current.sync(current.current);terminal.current=false;callbacks.current.onResultPending?.(false);
   if(alive.current)setCatchUps(value=>value+1);announce();
  }
@@ -201,7 +208,9 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
    }else fx.later(()=>{wrapper.remove();landedHome()},ATTACK_TIMING.duration);
   }
   function departure(cue:BattleCue,at:number){
-   const exit=cue.kind==='bounce'?560:ATTACK_TIMING.departure;
+   // A falling stand-up trembles on its base first (the loss reads), then tears; a returning one just flips away.
+   const bounce=cue.kind==='bounce',lead=bounce||ctx.reduced?0:RETIRE_SHIVER,exit=(bounce?760:ATTACK_TIMING.departure)-lead;
+   if(lead)fx.later(()=>{const id=departureId(cue),live=find(id);if(live&&!fallen.has(id??''))shiver(fx,live.querySelector('.unit-main')??live,lead)},at);
    fx.later(()=>{
     const id=departureId(cue),live=find(id),base:Anchor=fallen.get(id??'')??(live?rectOf(live):locate(id,cue.kind==='bounce'?cue.source:cue.target??cue.source));
     const copy=()=>{const node=live?clonePaperRig(live):base.clone?clonePaperRig(base.clone):undefined;node?.querySelectorAll('.unit-info,.unit-status').forEach(item=>item.remove());return node};
@@ -220,8 +229,8 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
      const ghost=tear(fx,base.rect,copy,exit,id);fx.later(()=>ghost.remove(),exit);
     }
     fx.later(()=>{if(id)callbacks.current.onDepartureComplete?.(id)},exit);
-   },at);
-   fx.later(()=>land(cue),at+140);
+   },at+lead);
+   fx.later(()=>land(cue),at+lead);
   }
   function deploy(cue:BattleCue,at:number){
    fx.later(()=>{
@@ -278,30 +287,30 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
    const from=locate(cue.sourceId,cue.source).point,to=locate(cue.targetId??cue.playerId,cue.target).point;
    onTable(find(cue.sourceId),[{filter:'brightness(1)',scale:'1'},{filter:'brightness(1.45) drop-shadow(0 0 14px #F2BC45)',scale:'1.14',offset:.3,easing:'cubic-bezier(.3,1.5,.5,1)'},{filter:'brightness(1)',scale:'1'}],560);
    ring(fx,from,'skill',1.25);sparkles(fx,from,'skill',10);
-   stamp(fx,{x:to.x,y:to.y-44},cue.kind==='secondary_skill'?'进修技能':'学历技能','skill',Math.min(group.duration,900));
-   if(cue.kind==='secondary_skill'||cue.effectId==='jlu_ultimate')rosette(fx,{x:(from.x+to.x)/2,y:(from.y+to.y)/2},cue.kind==='secondary_skill'?'进修':'撑腰','buff',Math.min(group.duration,980));
+   stamp(fx,{x:to.x,y:to.y-44},cue.kind==='secondary_skill'?'进修技能':'学历技能','skill',group.duration);
+   if(cue.kind==='secondary_skill'||cue.effectId==='jlu_ultimate')rosette(fx,{x:(from.x+to.x)/2,y:(from.y+to.y)/2},cue.kind==='secondary_skill'?'进修':'撑腰','buff',group.duration);
    fx.later(()=>{ring(fx,to,'skill');land(cue,from)},ctx.reduced?0:SKILL_TIMING.impact);
   }
   function retort(cue:BattleCue){
    const to=locate(cue.targetId??cue.playerId,cue.target).point;
    const note=fx.append(Object.assign(document.createElement('div'),{className:'battle-fx-retort paper-contract',textContent:'合同生效'}));Object.assign(note.style,{left:to.x+'px',top:to.y+'px'});
-   fx.animate(note,ctx.reduced?[{opacity:0},{opacity:1,offset:.3},{opacity:0}]:[{opacity:0,transform:'translate(-50%,-50%) rotateY(-80deg) scale(.8)'},{opacity:1,transform:'translate(-50%,-50%) rotateY(0deg) scale(1.06)',offset:.3,easing:'cubic-bezier(.3,1.4,.5,1)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.75},{opacity:0,transform:'translate(-50%,-62%) scale(.96)'}],640);
-   fx.later(()=>{stamp(fx,{x:to.x+46,y:to.y-30},'反话!','retort',520);land(cue)},ctx.reduced?0:300);
+   fx.animate(note,ctx.reduced?[{opacity:0},{opacity:1,offset:.3},{opacity:0}]:[{opacity:0,transform:'translate(-50%,-50%) rotateY(-80deg) scale(.8)'},{opacity:1,transform:'translate(-50%,-50%) rotateY(0deg) scale(1.06)',offset:.3,easing:'cubic-bezier(.3,1.4,.5,1)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.8},{opacity:0,transform:'translate(-50%,-62%) scale(.96)'}],900);
+   fx.later(()=>{stamp(fx,{x:to.x+46,y:to.y-30},'反话!','retort',900);land(cue)},ctx.reduced?0:380);
   }
   function draw(cue:BattleCue,at:number){
    if(ctx.reduced){fx.later(()=>{landed.current.add(cue.id);revealDrawnCard()},at);return}
    const from=locate(cue.sourceId,cue.source).point,to=locate(cue.targetId,cue.target).point,mine=cue.playerId===selfId;
    fx.later(()=>{
     const back=fx.append(Object.assign(document.createElement('div'),{className:'paper-fx-draw'}));Object.assign(back.style,{left:from.x+'px',top:from.y+'px'});
-    fx.animate(back,[{opacity:0,transform:'translate(-50%,-50%) scale(.7) rotate(-12deg)'},{opacity:1,transform:`translate(calc(-50% + ${(to.x-from.x)*.45}px),calc(-50% + ${(to.y-from.y)*.45-40}px)) scale(1.1) rotate(4deg)`,offset:.45},{opacity:0,transform:`translate(calc(-50% + ${to.x-from.x}px),calc(-50% + ${to.y-from.y}px)) scale(.9) rotate(0deg)`}],330);
-    fx.later(()=>{landed.current.add(cue.id);const card=mine?revealDrawnCard():null;if(card)onTable(card,[{opacity:0,transform:'translateY(36px) scale(.8)'},{opacity:1,transform:'translateY(-8px) scale(1.04)',offset:.6},{opacity:1,transform:'none'}],260)},300);
+    fx.animate(back,[{opacity:0,transform:'translate(-50%,-50%) scale(.7) rotate(-12deg)'},{opacity:1,transform:`translate(calc(-50% + ${(to.x-from.x)*.45}px),calc(-50% + ${(to.y-from.y)*.45-40}px)) scale(1.1) rotate(4deg)`,offset:.45},{opacity:0,transform:`translate(calc(-50% + ${to.x-from.x}px),calc(-50% + ${to.y-from.y}px)) scale(.9) rotate(0deg)`}],440);
+    fx.later(()=>{landed.current.add(cue.id);const card=mine?revealDrawnCard():null;if(card)onTable(card,[{opacity:0,transform:'translateY(36px) scale(.8)'},{opacity:1,transform:'translateY(-8px) scale(1.04)',offset:.6},{opacity:1,transform:'none'}],320)},400);
    },at);
   }
   function status(cue:BattleCue,at:number){
    const to=locate(cue.targetId??cue.playerId,cue.target).point;
    const note=cue.effectId==='notice'?'优化通知':cue.effectId==='management'?'转管理':cue.effectId==='age'?cue.label??'年龄 +1':cue.effectId==='protection'?'保障条款':cue.effectId==='freeze'?'暂停开怼':cue.kind==='topic'?'换话题':cue.label??'状态更新';
    fx.later(()=>{
-    stamp(fx,{x:to.x,y:to.y-30},note.length>12?note.slice(0,12)+'…':note,cue.effectId==='notice'||cue.effectId==='freeze'?'damage':cue.kind==='topic'?'buff':'plain',760);
+    stamp(fx,{x:to.x,y:to.y-30},note.length>12?note.slice(0,12)+'…':note,cue.effectId==='notice'||cue.effectId==='freeze'?'damage':cue.kind==='topic'?'buff':'plain',Math.max(900,group.duration));
     if(cue.kind==='topic')onTable(arenaRef.current?.querySelector('.topic-bar'),[{transform:'rotateX(0deg)'},{transform:'rotateX(88deg)',offset:.45,easing:'ease-in'},{transform:'rotateX(0deg)',easing:'cubic-bezier(.3,1.5,.5,1)'}],460);
     land(cue);
    },at);
@@ -338,6 +347,20 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
    settle(group);pending.current.delete(group.id);if(final){terminal.current=false;callbacks.current.onResultPending?.(false)}
    if(reason==='catch-up'&&alive.current)setCatchUps(value=>value+1);announce();
   }});
+ }
+ /** The era the table shows: the theme, and (through Battle) the topic bar, change with the ceremony's stamp, not before it. */
+ function markEra(era:number){if(arenaRef.current)arenaRef.current.dataset.era=String(era);callbacks.current.onEraShown?.(era)}
+ /** A new era is announced in full before the next turn begins, like a new age in a strategy game. */
+ function eraChange(era:1|2|3,round:number){
+  const id=`era:${round}`,marker:MotionGroup={id,cues:[],duration:ERA_MS,mine:false};
+  pending.current.set(id,{group:marker,actors:new Set(),blocking:true});announce();
+  motionDirector.play({cue:'topicChange',channel:'battle',id,scope,confirmed:true,durationMs:ERA_MS,run:ctx=>{
+   if(alive.current)setKind('era');markEra(era);
+   const fx=makeFx(ctx,ctx.durationMs/ERA_MS),strip=arenaRef.current?.querySelector('.topic-bar')?.getBoundingClientRect();
+   const topic=rules.public_topics[era-1];
+   eraCeremony(fx,{era,round,...ERA_COPY[era],effect:`${topic?.name??''}：${topic?.effect??''}`},ERA_MS,strip?{x:strip.left+70,y:strip.top+strip.height/2}:undefined);
+   emitSounds([{file:era===3?'jlu_ultimate':'graduation',delay:180,duck:.3,protectMs:1200},{file:'deploy',delay:Math.round(ERA_MS*.38)}],ctx.durationMs/ERA_MS);
+  },onSettled:()=>{markEra(era);pending.current.delete(id);announce()}});
  }
  /** "Your turn" waits behind the opponent's last blow instead of cutting it off. */
  function turnBanner(version:number){
@@ -383,15 +406,20 @@ export default function BattleEffects({view,arenaRef,onBusyChange,onInputLockCha
    capture();return;
   }
   ledger.stage(fresh);stageEntrances(fresh,previous,view);capture();
+  // The last turn start in the batch divides the old turn's aftermath from the new turn;
+  // a new era and the "your turn" ribbon are announced in between.
   let split=-1;
-  if(batch.newOwnTurn)for(let i=fresh.length-1;i>=0;i--)if(fresh[i].kind==='turn'&&fresh[i].targetId===view.selfId){split=i;break}
+  for(let i=fresh.length-1;i>=0;i--)if(fresh[i].kind==='turn'){split=i;break}
   const before=split>=0?fresh.slice(0,split):fresh,after=split>=0?fresh.slice(split+1):[];
   for(const group of groupBattleCues(before,effectiveReduced,view.selfId))enqueue(group);
+  const newEra=previous.matchId===view.matchId&&eraOf(view.round)>eraOf(previous.round);
+  if(previous.matchId!==view.matchId)markEra(eraOf(view.round));
+  if(newEra)eraChange(eraOf(view.round),view.round);
   if(batch.newOwnTurn)turnBanner(view.version);
   for(const group of groupBattleCues(after,effectiveReduced,view.selfId))enqueue(group);
  },[view.matchId,view.version,view.visualCues]);
  useEffect(()=>{
-  alive.current=true;capture();const unsubscribe=motionDirector.subscribe(()=>{if(alive.current)setDiagnostics(motionDirector.diagnostics())});
+  alive.current=true;capture();markEra(eraOf(current.current.round));const unsubscribe=motionDirector.subscribe(()=>{if(alive.current)setDiagnostics(motionDirector.diagnostics())});
   const resize=()=>{catchUp('resize');capture()};window.addEventListener('resize',resize);
   return()=>{alive.current=false;motionDirector.cancelScope(scope,'disposed');pending.current.clear();cache.current.clear();ledger.release();revealEntrances();setBattlePresentationBusy(false);window.removeEventListener('resize',resize);unsubscribe();callbacks.current.onBusyChange?.(false);callbacks.current.onInputLockChange?.(false);callbacks.current.onResultPending?.(false);if(controlRef)controlRef.current=null};
  },[scope]);

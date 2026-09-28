@@ -8,6 +8,10 @@ async function temporaryRoom(page:Page):Promise<{room:{id:string;tutorial:{stepI
     return {room:{id:saved.room.id,tutorial:saved.room.tutorial}};
   });
 }
+async function playFromHand(page:Page,width:number,card:ReturnType<Page['locator']>){
+  if(width>=1024){const a=(await card.boundingBox())!,b=(await page.locator('.friendly-row').boundingBox())!;await page.mouse.move(a.x+a.width/2,a.y+a.height/2);await page.mouse.down();await page.mouse.move(a.x+a.width/2,a.y+a.height/2-40,{steps:4});await page.mouse.move(b.x+b.width/2,b.y+b.height/2,{steps:12});await page.mouse.up()}
+  else{await card.click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click()}
+}
 async function settled(page:Page){await expect(page.locator('[data-tutorial="endTurn"]')).not.toContainText('结算中')}
 
 for(const width of [1440,390])test(`static guest ${width}px: blocked API, real tutorial actions, refresh recovery and temporary-data cleanup`,async({page},testInfo)=>{
@@ -24,7 +28,8 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await expect(page.locator('.tutorial-coach')).toBeVisible();
   const first=await temporaryRoom(page);expect(first.room.id).toMatch(/^local_/);
   if(width<1024)await page.getByRole('button',{name:/^我的 Offer/}).click();
-  await page.locator('[data-offer-id="E02"] button.offer-card').click();
+  // Desktop lifts cards out of the hand onto the table; the phone reads them close with a tap, then uses them.
+  await playFromHand(page,width,page.locator('[data-offer-id="E02"] button.offer-card'));
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(1);
   await page.reload();await expect(page.locator('.tutorial-coach')).toBeVisible();
   expect((await temporaryRoom(page)).room.id).toBe(first.room.id);
@@ -34,7 +39,7 @@ for(const width of [1440,390])test(`static guest ${width}px: blocked API, real t
   await settled(page);await page.locator('.friendly .unit-main').filter({hasText:'国企综合岗'}).click();
   await page.locator('.hero-avatar[data-battle-id="p2"]').click();
   await expect.poll(async()=>(await temporaryRoom(page)).room.tutorial!.stepIndex).toBe(3);
-  await settled(page);await page.getByRole('button',{name:'实习搭子',exact:true}).click();
+  await settled(page);await playFromHand(page,width,page.getByRole('button',{name:'实习搭子',exact:true}));
   await expect(page.locator('.lesson-complete-overlay')).toBeVisible();
   const completion=await page.locator('.lesson-complete').boundingBox();expect(completion).not.toBeNull();expect(completion!.x).toBeGreaterThanOrEqual(0);expect(completion!.x+completion!.width).toBeLessThanOrEqual(width);expect(completion!.y).toBeGreaterThanOrEqual(0);expect(completion!.y+completion!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
   expect(await page.evaluate(()=>sessionStorage.getItem('offer-local-active-v1'))).toBeNull();

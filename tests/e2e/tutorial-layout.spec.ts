@@ -21,7 +21,7 @@ for(const width of [390,1440])test(`${width}px L02 coach leaves opponent skills 
  await page.goto('/');await expect(page.locator('.tutorial-coach')).toBeVisible();
  const coach=page.locator('.tutorial-coach');
  if(width===1440)expect((await coach.boundingBox())!.height).toBeLessThan(190);
- await page.locator(`[data-hand-id="${command.cardId}"] button`).first().click();await expect(page.locator('.paper-plane-aim')).toBeVisible();
+ await page.locator(`[data-hand-id="${command.cardId}"] button`).first().click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await expect(page.locator('.paper-plane-aim')).toBeVisible();
  const target=page.locator(`[data-battle-id="${command.targetId}"] .unit-main`);
  await target.hover();await expect(page.locator('.paper-plane-aim')).toHaveAttribute('data-valid-target','true');
  await uncovered(target);

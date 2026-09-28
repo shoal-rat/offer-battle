@@ -1,6 +1,6 @@
 import {publicUrl} from './deployment';
 import type { BattleCue } from "./game/types";
-import { ATTACK_TIMING, DEPLOY_TIMING, cueOffset, groupBattleCues, type MotionGroup } from "./components/battle-motion";
+import { ATTACK_TIMING, DEPLOY_TIMING, RETIRE_SHIVER, cueOffset, groupBattleCues, type MotionGroup } from "./components/battle-motion";
 import { resultMotionDuration } from "./components/result-motion";
 
 export type SoundFile =
@@ -94,6 +94,8 @@ export function soundsForCue(cue: BattleCue, selfId?: string): CueSound[] {
 
 /** Window event the battle table dispatches when a group's animation begins. */
 export const BATTLE_SOUND_EVENT = "offer-battle-sounds";
+/** Fired on window each time a Web Audio clip starts. */
+export const SFX_PLAYED_EVENT = "offer-sfx-played";
 export interface SoundGroup {
   id: string;
   sounds: CueSound[];
@@ -124,7 +126,8 @@ export function soundsForGroup(
         ["primary_skill", "secondary_skill", "card"].includes(lead.kind)
       )
         delay = cueOffset(group, index);
-      if (index > 0 && sound.file === "optimization") delay = cueOffset(group,index);
+      // The tear sound lands when the paper actually rips, after the stand-up's shiver.
+      if (index > 0 && sound.file === "optimization") delay = cueOffset(group,index) + (cue.kind === "retire" ? RETIRE_SHIVER : 0);
       layers.set(sound.file, { ...sound, delay: reduced ? 0 : delay });
     }
   return {
@@ -177,7 +180,52 @@ export function soundsForBatch(
   return groups;
 }
 
+const SOUND_FILES: SoundFile[] = ["attack","damage","heal","deploy","retort","draw","card_pick","negotiate","age_up","optimization","graduation","jlu_collect","jlu_ultimate","win","lose"];
+const clipUrl = (file: SoundFile) => publicUrl(`/assets/audio/sfx/${file}.wav?rev=2`);
+/** Decoded clips on one AudioContext. A clip starts on the exact audio clock tick it was scheduled for,
+ * with no fetch or decode in between — the delay that made hits sound late on a fresh HTMLAudio element. */
+class ClipBank {
+  private context?: AudioContext;
+  private buffers = new Map<SoundFile, AudioBuffer>();
+  private loading?: Promise<void>;
+  readonly voices = new Set<{ source: AudioBufferSourceNode; gain: GainNode }>();
+  /** Needs a user gesture: browsers keep audio suspended until then. */
+  unlock() {
+    const Context = typeof window === "undefined" ? undefined : window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!Context) return;
+    this.context ??= new Context({ latencyHint: "interactive" });
+    if (this.context.state === "suspended") void this.context.resume().catch(() => {});
+    this.loading ??= Promise.all(SOUND_FILES.map(async (file) => {
+      const response = await fetch(clipUrl(file));
+      if (!response.ok) return;
+      this.buffers.set(file, await this.context!.decodeAudioData(await response.arrayBuffer()));
+    })).then(() => {}, () => {});
+  }
+  ready(file: SoundFile) {
+    return this.context?.state === "running" && this.buffers.has(file);
+  }
+  /** Schedules on the audio clock; returns false when the caller should fall back to HTMLAudio. */
+  schedule(sound: CueSound, delayMs: number, volume: number): boolean {
+    if (!this.ready(sound.file)) return false;
+    const context = this.context!, source = context.createBufferSource(), gain = context.createGain();
+    source.buffer = this.buffers.get(sound.file)!;
+    source.playbackRate.value = sound.rate ?? 1;
+    gain.gain.value = volume;
+    source.connect(gain).connect(context.destination);
+    const voice = { source, gain };
+    this.voices.add(voice);
+    source.onended = () => { this.voices.delete(voice); source.disconnect(); gain.disconnect(); };
+    source.start(context.currentTime + Math.max(0, delayMs) / 1000);
+    // Announce the clip when it actually sounds (diagnostics and browser tests listen for this).
+    setTimeout(() => window.dispatchEvent(new CustomEvent(SFX_PLAYED_EVENT, { detail: { file: sound.file } })), Math.max(0, delayMs));
+    return true;
+  }
+  setVolume(volume: number) { for (const voice of this.voices) voice.gain.gain.value = volume; }
+  stop() { for (const voice of [...this.voices]) try { voice.source.stop(); } catch {} this.voices.clear(); }
+}
+
 export class SoundEffects {
+  private bank = new ClipBank();
   private enabled = false;
   private volume = 0.35;
   private matchId = "";
@@ -206,7 +254,14 @@ export class SoundEffects {
       ? Math.max(0, Math.min(1, volume))
       : 0.35;
     if (!enabled) this.stop();
-    else for (const audio of this.playing) audio.volume = this.volume;
+    else {
+      for (const audio of this.playing) audio.volume = this.volume;
+      this.bank.setVolume(this.volume);
+    }
+  }
+  /** Call from a user gesture: resumes the audio clock and decodes every clip once. */
+  unlock() {
+    this.bank.unlock();
   }
   /** Hand timing to the visual director: each group's sounds start when its animation starts. */
   setPresentationDriven(value: boolean) {
@@ -219,8 +274,13 @@ export class SoundEffects {
   playGroup(sounds: CueSound[], scale = 1) {
     if (!this.enabled || (typeof document !== "undefined" && document.hidden))
       return;
-    for (const sound of sounds)
-      this.later(() => this.play(sound), Math.max(0, sound.delay * scale));
+    for (const sound of sounds) {
+      const delay = Math.max(0, sound.delay * scale);
+      // Sample-accurate when the clips are decoded; otherwise the old timer path.
+      if (this.bank.schedule(sound, delay, this.volume)) {
+        if (sound.duck !== undefined) this.later(() => this.duck?.(sound.duck!, sound.file === "graduation" || sound.file === "jlu_ultimate" ? 950 : 450), delay);
+      } else this.later(() => this.play(sound), delay);
+    }
   }
   /** Call for every snapshot, including while muted, so old sounds never replay. */
   consume(matchId: string, cues: BattleCue[], selfId?: string) {
@@ -288,6 +348,10 @@ export class SoundEffects {
   private play(sound: CueSound) {
     if (!this.enabled || (typeof document !== "undefined" && document.hidden))
       return;
+    if (this.bank.schedule(sound, 0, this.volume)) {
+      if (sound.duck !== undefined) this.duck?.(sound.duck, sound.file === "graduation" || sound.file === "jlu_ultimate" ? 950 : 450);
+      return;
+    }
     // Short tails can overlap, but a new impact should never create an unbounded chorus.
     while (this.playing.size >= 4) {
       const tail = [...this.playing].find(
@@ -320,6 +384,7 @@ export class SoundEffects {
     } catch {}
   }
   private stop() {
+    this.bank.stop();
     for (const timer of this.pending) clearTimeout(timer);
     this.pending.clear();
     this.queue = [];

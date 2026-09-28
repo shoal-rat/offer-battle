@@ -7,9 +7,11 @@ async function fixture(page:Page,lessonId:string){await page.goto('/');await pag
 async function idle(page:Page){await expect(page.locator('.battle-effects')).toHaveAttribute('data-busy','false')}
 
 test('attack flies to its actual target and a lethal defender retains a retirement ghost',async({page})=>{
- await page.addInitScript(()=>{const NativeAudio=window.Audio;(window as any).__soundStarts=[];window.Audio=function(src?:string){const a=new NativeAudio(src);a.addEventListener('play',()=>{if(src?.includes('/sfx/'))(window as any).__soundStarts.push(src)});return a} as unknown as typeof Audio;});
+ await page.addInitScript(()=>{const NativeAudio=window.Audio;(window as any).__soundStarts=[];window.Audio=function(src?:string){const a=new NativeAudio(src);a.addEventListener('play',()=>{if(src?.includes('/sfx/'))(window as any).__soundStarts.push(src)});return a} as unknown as typeof Audio;
+  // Decoded clips play through Web Audio and announce themselves instead.
+  window.addEventListener('offer-sfx-played',e=>(window as any).__soundStarts.push(`/assets/audio/sfx/${(e as CustomEvent).detail.file}.wav`));});
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await fixture(page,'L02');
- let s=await state(page),c=s.room.tutorial.allowedCommands[0];await page.locator(`[data-hand-id="${c.cardId}"] .common-card`).click();await page.locator(`[data-battle-id="${c.targetId}"] .unit-main`).click();await expect.poll(async()=>(await state(page)).room.tutorial.stepIndex).toBe(1);await idle(page);
+ let s=await state(page),c=s.room.tutorial.allowedCommands[0];await page.locator(`[data-hand-id="${c.cardId}"] .common-card`).click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click();await page.locator(`[data-battle-id="${c.targetId}"] .unit-main`).click();await expect.poll(async()=>(await state(page)).room.tutorial.stepIndex).toBe(1);await idle(page);
  s=await state(page);c=s.room.tutorial.allowedCommands[0];const targetId=c.targetId;const soundIndex=await page.evaluate(()=>(window as any).__soundStarts.length);
  const enemy=s.view.players.find((p:any)=>p.id!==s.view.selfId),followerId=enemy.board.find((u:any)=>u.definitionId==='N01').id;
  const row=page.locator(`[data-battle-row="${enemy.id}"]`),dead=row.locator(`[data-battle-id="${targetId}"]`),follower=row.locator(`[data-battle-id="${followerId}"]`);

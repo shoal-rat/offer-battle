@@ -1,4 +1,4 @@
-import type {Point} from './battle-motion';
+import {READ_MS,type Point} from './battle-motion';
 
 /** Paper-craft effect primitives. Every node lives in the fixed effects layer, is appended
  * through `append` (so the director removes it on cancel) and never takes pointer input. */
@@ -41,15 +41,15 @@ export function splat(fx:Fx,point:Point,text:string,tone:Tone,size=1){
  const back=div('fx-splat-back'),face=div('fx-splat-face'),label=document.createElement('strong');
  back.style.clipPath=shape;back.style.background=colors.ink;face.style.clipPath=shape;face.style.background=colors.fill;
  label.textContent=text;node.append(back,face,label);
- if(fx.reduced){fx.animate(node,[{opacity:0},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0}],700);return node}
+ if(fx.reduced){fx.animate(node,[{opacity:0},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0}],READ_MS);return node}
  const spin=(rand()-.5)*24;
  fx.animate(node,[
   {opacity:0,transform:`translate(-50%,-50%) scale(.2) rotate(${spin-40}deg)`},
-  {opacity:1,transform:`translate(-50%,-50%) scale(1.28) rotate(${spin+6}deg)`,offset:.16,easing:'cubic-bezier(.3,1.6,.5,1)'},
-  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${spin}deg)`,offset:.3},
-  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${spin}deg)`,offset:.78},
+  {opacity:1,transform:`translate(-50%,-50%) scale(1.28) rotate(${spin+6}deg)`,offset:.1,easing:'cubic-bezier(.3,1.6,.5,1)'},
+  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${spin}deg)`,offset:.2},
+  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${spin}deg)`,offset:.84},
   {opacity:0,transform:`translate(-50%,-62%) scale(.86) rotate(${spin}deg)`},
- ],900,{easing:'ease-out'});
+ ],READ_MS,{easing:'ease-out'});
  return node;
 }
 
@@ -72,7 +72,7 @@ export function confetti(fx:Fx,point:Point,tone:Tone,count=12,spread=1){
 export function ring(fx:Fx,point:Point,tone:Tone,scale=1){
  if(fx.reduced)return;
  const node=fx.append(div('fx-ring',point));node.style.borderColor=TONE[tone].fill;node.style.setProperty('--ring-size',`${Math.round(96*scale)}px`);
- fx.animate(node,[{opacity:.95,transform:'translate(-50%,-50%) scale(.3)',borderWidth:'10px'},{opacity:0,transform:'translate(-50%,-50%) scale(1.5)',borderWidth:'1px'}],380,{easing:'cubic-bezier(.1,.8,.3,1)'});
+ fx.animate(node,[{opacity:.95,transform:'translate(-50%,-50%) scale(.3)',borderWidth:'10px'},{opacity:0,transform:'translate(-50%,-50%) scale(1.5)',borderWidth:'1px'}],480,{easing:'cubic-bezier(.1,.8,.3,1)'});
 }
 /** Short ink strokes radiating from the hit, drawn along the attack direction. */
 export function speedLines(fx:Fx,point:Point,angle:number,tone:Tone='damage'){
@@ -80,7 +80,7 @@ export function speedLines(fx:Fx,point:Point,angle:number,tone:Tone='damage'){
  for(let i=0;i<7;i++){
   const line=fx.append(div('fx-speed',point)),a=angle+(i-3)*.32+(rand()-.5)*.2;line.style.background=TONE[tone].ink;
   const deg=a*180/Math.PI,start=22+rand()*10,end=70+rand()*40;
-  fx.animate(line,[{opacity:0,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${start}px) scaleX(.2)`},{opacity:1,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${start+14}px) scaleX(1)`,offset:.3},{opacity:0,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${end}px) scaleX(.4)`}],300,{easing:'ease-out'});
+  fx.animate(line,[{opacity:0,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${start}px) scaleX(.2)`},{opacity:1,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${start+14}px) scaleX(1)`,offset:.3},{opacity:0,transform:`translate(-50%,-50%) rotate(${deg}deg) translateX(${end}px) scaleX(.4)`}],380,{easing:'ease-out'});
  }
 }
 /** Table shake. Uses the independent `translate` property so layout transforms are untouched. */
@@ -89,7 +89,7 @@ export function shake(fx:Fx,element:Element|null|undefined,strength:number){
  const s=Math.min(12,strength),frames:Keyframe[]=[{translate:'0 0'}];
  for(let i=1;i<=6;i++){const k=s*(1-i/7);frames.push({translate:`${(i%2?1:-1)*k*(.6+rand()*.4)}px ${(rand()-.5)*k*1.2}px`,offset:i/7})}
  frames.push({translate:'0 0'});
- fx.animate(element,frames,300,{easing:'linear',fill:'none'});
+ fx.animate(element,frames,360,{easing:'linear',fill:'none'});
 }
 /** The struck figure snaps back, flashes white and settles, like a knocked paper stand-up. */
 export function recoil(fx:Fx,body:Element|null|undefined,direction:number,heavy=false){
@@ -102,13 +102,13 @@ export function recoil(fx:Fx,body:Element|null|undefined,direction:number,heavy=
   {transform:`rotate(${-lean*.45}deg) translateX(${-direction*3}px)`,filter:'brightness(1.15)',offset:.45},
   {transform:`rotate(${lean*.18}deg)`,filter:'brightness(1)',offset:.72},
   {transform:'rotate(0deg) translateX(0)',filter:'brightness(1)'},
- ],460,{easing:'cubic-bezier(.2,.8,.3,1)',fill:'none'});
+ ],560,{easing:'cubic-bezier(.2,.8,.3,1)',fill:'none'});
 }
 /** Numbers pop when their held value is finally revealed. */
 export function popStat(fx:Fx,element:HTMLElement,amount:number){
  const tone=amount<0?'#E4574A':'#3E9E6C';
  if(fx.reduced){fx.animate(element,[{opacity:.4},{opacity:1}],200,{fill:'none'});return}
- fx.animate(element,[{scale:'1'},{scale:'1.75',color:tone,offset:.25,easing:'cubic-bezier(.3,1.5,.5,1)'},{scale:'1'}],520,{fill:'none'});
+ fx.animate(element,[{scale:'1'},{scale:'1.75',color:tone,offset:.25,easing:'cubic-bezier(.3,1.5,.5,1)'},{scale:'1'}],700,{fill:'none'});
 }
 /** Rising sparkles for heals, buffs and skills. */
 export function sparkles(fx:Fx,point:Point,tone:Tone,count=9){
@@ -148,15 +148,15 @@ export function tear(fx:Fx,rect:{left:number;top:number;width:number;height:numb
  return group;
 }
 /** A rubber stamp slammed onto the table: skills, retorts and status changes. */
-export function stamp(fx:Fx,point:Point,text:string,tone:Tone,ms=900){
+export function stamp(fx:Fx,point:Point,text:string,tone:Tone,ms=READ_MS){
  const node=fx.append(div(`fx-stamp tone-${tone}`,point));node.textContent=text;
  if(fx.reduced){fx.animate(node,[{opacity:0},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0}],ms);return node}
  const tilt=(rand()-.5)*14;
  fx.animate(node,[
   {opacity:0,transform:`translate(-50%,-50%) scale(2.1) rotate(${tilt-10}deg)`},
-  {opacity:1,transform:`translate(-50%,-50%) scale(.94) rotate(${tilt}deg)`,offset:.16,easing:'cubic-bezier(.5,0,.9,.5)'},
-  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${tilt}deg)`,offset:.26},
-  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${tilt}deg)`,offset:.82},
+  {opacity:1,transform:`translate(-50%,-50%) scale(.94) rotate(${tilt}deg)`,offset:.1,easing:'cubic-bezier(.5,0,.9,.5)'},
+  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${tilt}deg)`,offset:.18},
+  {opacity:1,transform:`translate(-50%,-50%) scale(1) rotate(${tilt}deg)`,offset:.86},
   {opacity:0,transform:`translate(-50%,-56%) scale(1) rotate(${tilt}deg)`},
  ],ms);
  return node;
@@ -178,7 +178,7 @@ export function banner(fx:Fx,title:string,subtitle:string,ms:number,mine=true){
  return node;
 }
 /** Paper award rosette for big skills: scalloped petals unfold, spin a quarter turn and burst into confetti. */
-export function rosette(fx:Fx,point:Point,text:string,tone:Tone,ms=980){
+export function rosette(fx:Fx,point:Point,text:string,tone:Tone,ms=1300){
  const node=fx.append(div(`fx-rosette tone-${tone}`,point)),petals=div('fx-rosette-petals'),core=div('fx-rosette-core'),tails=div('fx-rosette-tails');
  core.textContent=text;node.append(tails,petals,core);
  if(fx.reduced){fx.animate(node,[{opacity:0},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0}],ms);return node}
@@ -225,4 +225,45 @@ export function pencilRewrite(fx:Fx,element:HTMLElement,from:string,to:string,re
  // Lift, turn the pencil round, and write with the lead.
  fx.later(()=>pencil.classList.remove('erasing'),delay+ms*.46);
  fx.later(release,delay+ms*.82);
+}
+/** A stand-up that is about to fall trembles on its base first, so the loss reads before the tear. */
+export function shiver(fx:Fx,element:Element|null|undefined,ms:number){
+ if(fx.reduced||!element)return;
+ const frames:Keyframe[]=[{transform:'translateX(0) rotate(0deg)',filter:'saturate(1)'}];
+ for(let i=1;i<8;i++)frames.push({transform:`translateX(${(i%2?-1:1)*(3-i*.25)}px) rotate(${(i%2?1:-1)*1.6}deg)`,filter:`saturate(${1-i*.08}) brightness(${1+i*.03})`,offset:i/8});
+ frames.push({transform:'translateX(0) rotate(0deg)',filter:'saturate(.4) brightness(1.2)'});
+ fx.animate(element,frames,ms,{fill:'forwards'});
+}
+export interface EraCard {era:1|2|3;act:string;name:string;rounds:string;tagline:string;effect:string;milestone?:string;round:number}
+const ERA_ACTS=['聊年包','聊生活','聊以后'];
+/** An era turns over: the table dims, paper rays turn behind a title page that stands up from the mat,
+ * the new act's seal is stamped on the timeline, then the page folds into the topic strip. */
+export function eraCeremony(fx:Fx,card:EraCard,ms:number,into?:{x:number;y:number}){
+ const root=fx.append(div(`fx-era era-${card.era}`)),veil=div('fx-era-veil'),rays=div('fx-era-rays'),page=div('fx-era-page');
+ const icon=div('fx-era-icon'),kicker=document.createElement('small'),title=document.createElement('strong'),line=document.createElement('p');
+ kicker.className='fx-era-kicker';kicker.textContent=`时代更替 · 第 ${card.round} 轮`;
+ title.className='fx-era-title';title.textContent=`${card.act} · ${card.name}`;
+ line.className='fx-era-tagline';line.textContent=`${card.rounds} · ${card.tagline}`;
+ const effect=div('fx-era-effect');effect.textContent=card.effect;
+ page.append(icon,kicker,title,line,effect);
+ if(card.milestone){const milestone=div('fx-era-milestone');milestone.textContent=card.milestone;page.append(milestone)}
+ const track=div('fx-era-track'),seals:HTMLElement[]=[];
+ ERA_ACTS.forEach((name,index)=>{const seal=div(`fx-era-seal ${index+1<card.era?'past':index+1===card.era?'now':'later'}`);seal.textContent=name;seals.push(seal);track.append(seal)});
+ page.append(track);root.append(veil,rays,page);
+ if(fx.reduced){fx.animate(root,[{opacity:0},{opacity:1,offset:.1},{opacity:1,offset:.9},{opacity:0}],ms);return root}
+ fx.animate(veil,[{opacity:0},{opacity:1,offset:.1},{opacity:1,offset:.84},{opacity:0}],ms);
+ fx.animate(rays,[{opacity:0,transform:'translate(-50%,-50%) rotate(0deg) scale(.6)'},{opacity:.9,transform:'translate(-50%,-50%) rotate(20deg) scale(1)',offset:.18},{opacity:.9,transform:'translate(-50%,-50%) rotate(60deg) scale(1.04)',offset:.8},{opacity:0,transform:'translate(-50%,-50%) rotate(75deg) scale(1.1)'}],ms);
+ const home=into?`translate(calc(-50% + ${into.x-innerWidth/2}px),calc(-50% + ${into.y-innerHeight/2}px)) scale(.12) rotateX(0deg)`:'translate(-50%,-50%) scale(.9)';
+ fx.animate(page,[
+  {opacity:0,transform:'translate(-50%,-38%) rotateX(78deg) scale(.9)'},
+  {opacity:1,transform:'translate(-50%,-50%) rotateX(-6deg) scale(1.03)',offset:.14,easing:'cubic-bezier(.2,1.2,.4,1)'},
+  {opacity:1,transform:'translate(-50%,-50%) rotateX(0deg) scale(1)',offset:.22},
+  {opacity:1,transform:'translate(-50%,-50%) rotateX(0deg) scale(1)',offset:.8,easing:'cubic-bezier(.5,0,.8,.4)'},
+  {opacity:0,transform:home},
+ ],ms);
+ fx.animate(icon,[{transform:'translateY(18px) scale(.4) rotate(-20deg)',opacity:0},{transform:'translateY(18px) scale(.4) rotate(-20deg)',opacity:0,offset:.12},{transform:'translateY(-6px) scale(1.12) rotate(6deg)',opacity:1,offset:.24,easing:'cubic-bezier(.3,1.6,.5,1)'},{transform:'none',opacity:1,offset:.3},{transform:'none',opacity:1}],ms);
+ const now=seals[card.era-1];
+ fx.animate(now,[{transform:'scale(1)'},{transform:'scale(1)',offset:.34},{transform:'scale(2.2) rotate(-14deg)',offset:.38,easing:'cubic-bezier(.5,0,.9,.5)'},{transform:'scale(.92) rotate(-6deg)',offset:.44},{transform:'scale(1) rotate(-6deg)',offset:.5},{transform:'scale(1) rotate(-6deg)'}],ms);
+ fx.later(()=>{now.classList.add('stamped');const r=now.getBoundingClientRect();confetti(fx,{x:r.left+r.width/2,y:r.top+r.height/2},card.era===3?'skill':card.era===2?'heal':'buff',18,1.4)},ms*.44);
+ return root;
 }

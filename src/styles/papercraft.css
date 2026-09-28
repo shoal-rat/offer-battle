@@ -51,26 +51,26 @@ body,.app{background:var(--tex-fiber),var(--tex-flecks),radial-gradient(ellipse 
 .app .modal .eyebrow{letter-spacing:3px;color:var(--pc-red);font-weight:800}
 
 /* Cards: cream card stock, deckled edge, a stitched inner line and a coloured band behind the art. */
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card){--card-band:#F7DFA9;--card-band-dark:#D9A94E;background:none!important;border:0!important;box-shadow:none!important;border-radius:10px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 8px 9px #3B2A1A26);isolation:isolate;transition:translate .16s cubic-bezier(.3,1.4,.5,1),rotate .16s,scale .16s,filter .16s}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::before{content:'';display:block!important;position:absolute;inset:0;z-index:-2;pointer-events:none;clip-path:var(--torn-soft);background:var(--tex-fiber),linear-gradient(180deg,#FFFFFF66,transparent 30%),var(--pc-paper)}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::after{content:'';position:absolute;inset:5px;z-index:-1;pointer-events:none;border:1.5px dashed #CDB891;border-radius:8px}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-support{--card-band:#CBE7D3;--card-band-dark:#6DAA83}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-action{--card-band:#D6E2F6;--card-band-dark:#7D9BD0}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .common-card.type-retort{--card-band:#E3D6F3;--card-band-dark:#9B7AC9}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card .card-art,.common-art){background:var(--tex-fiber),radial-gradient(ellipse at 50% 30%,#FFFFFF80,transparent 65%),var(--card-band)!important;border-radius:6px 9px 5px 8px!important;box-shadow:inset 0 0 0 2px #FFFDF7,inset 0 3px 6px #3B2A1A26!important}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card):hover{transform:none;translate:0 -4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 14px 14px #3B2A1A33)}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card).selected{outline:3px dashed var(--pc-blue-dark);outline-offset:4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 0 12px #6F93D6aa)}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card).unavailable{opacity:1;filter:drop-shadow(0 3px 0 #BCA47C) grayscale(.35) brightness(.97)}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .card-ribbon{font-family:var(--ob-font-display);font-weight:900}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) .card-ribbon::before{background:var(--tex-fiber),var(--pc-paper-hi);clip-path:var(--torn-3)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card){--card-band:#F7DFA9;--card-band-dark:#D9A94E;background:none!important;border:0!important;box-shadow:none!important;border-radius:10px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 8px 9px #3B2A1A26);isolation:isolate;transition:translate .16s cubic-bezier(.3,1.4,.5,1),rotate .16s,scale .16s,filter .16s}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card)::before{content:'';display:block!important;position:absolute;inset:0;z-index:-2;pointer-events:none;clip-path:var(--torn-soft);background:var(--tex-fiber),linear-gradient(180deg,#FFFFFF66,transparent 30%),var(--pc-paper)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card)::after{content:'';position:absolute;inset:5px;z-index:-1;pointer-events:none;border:1.5px dashed #CDB891;border-radius:8px}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) .common-card.type-support{--card-band:#CBE7D3;--card-band-dark:#6DAA83}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) .common-card.type-action{--card-band:#D6E2F6;--card-band-dark:#7D9BD0}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) .common-card.type-retort{--card-band:#E3D6F3;--card-band-dark:#9B7AC9}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card .card-art,.common-art){background:var(--tex-fiber),radial-gradient(ellipse at 50% 30%,#FFFFFF80,transparent 65%),var(--card-band)!important;border-radius:6px 9px 5px 8px!important;box-shadow:inset 0 0 0 2px #FFFDF7,inset 0 3px 6px #3B2A1A26!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card):hover{transform:none;translate:0 -4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 14px 14px #3B2A1A33)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card).selected{outline:3px dashed var(--pc-blue-dark);outline-offset:4px;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(0 0 12px #6F93D6aa)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card).unavailable{opacity:1;filter:drop-shadow(0 3px 0 #BCA47C) grayscale(.35) brightness(.97)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) .card-ribbon{font-family:var(--ob-font-display);font-weight:900}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) .card-ribbon::before{background:var(--tex-fiber),var(--pc-paper-hi);clip-path:var(--torn-3)}
 /* Cost: a yellow clock coin. Attack: a sun burst. Health: a paper heart. White numbers with an ink edge. */
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost{background:var(--badge-clock) center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:50%!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px #6B4A12;paint-order:stroke fill;text-shadow:none!important}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost small{color:#fff;-webkit-text-stroke:3px #6B4A12;paint-order:stroke fill}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .card-cost.discounted{filter:hue-rotate(80deg) saturate(1.1)}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat{background:transparent center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:0!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px var(--stat-edge,#5B1A15);paint-order:stroke fill;text-shadow:none!important}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.attack{background-image:var(--badge-burst)!important;--stat-edge:#6B4A12}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.health{background-image:var(--badge-heart)!important;--stat-edge:#6E1F18}
-:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card) .stat.health.damaged{color:#FFD6D0!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .card-cost{background:var(--badge-clock) center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:50%!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px #6B4A12;paint-order:stroke fill;text-shadow:none!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .card-cost small{color:#fff;-webkit-text-stroke:3px #6B4A12;paint-order:stroke fill}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .card-cost.discounted{filter:hue-rotate(80deg) saturate(1.1)}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .stat{background:transparent center/contain no-repeat!important;border:0!important;box-shadow:none!important;border-radius:0!important;color:#fff!important;font-family:var(--ob-font-number)!important;-webkit-text-stroke:4px var(--stat-edge,#5B1A15);paint-order:stroke fill;text-shadow:none!important}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .stat.attack{background-image:var(--badge-burst)!important;--stat-edge:#6B4A12}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .stat.health{background-image:var(--badge-heart)!important;--stat-edge:#6E1F18}
+:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card) .stat.health.damaged{color:#FFD6D0!important}
 
 /* Page headings and panels shared by the collection, loadout and account pages. */
 .app .page-heading h1{font-size:clamp(28px,3vw,44px);color:var(--pc-ink);text-shadow:2px 3px 0 #E6D2AE}
@@ -101,4 +101,27 @@ body,.app{background:var(--tex-fiber),var(--tex-flecks),radial-gradient(ellipse 
 .app .stage-sky{clip-path:var(--torn-deep)}
 .app .stage-world::after{content:'';position:absolute;inset:0;z-index:6;pointer-events:none;background:var(--tex-fiber);mix-blend-mode:multiply;opacity:.85}
 @media(prefers-reduced-motion:reduce){html:not([data-reduced=false]) .app :is(.offer-card,.common-card,.btn){transition:none}}
-@media(forced-colors:active){.app .modal,.modal{border:2px solid CanvasText!important;border-image:none!important;filter:none}:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::before,:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase) :is(.offer-card,.common-card)::after{display:none}}
+@media(forced-colors:active){.app .modal,.modal{border:2px solid CanvasText!important;border-image:none!important;filter:none}:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card)::before,:is(.app,.card-drag-overlay,.card-drag-return,.fx-showcase,.card-inspect) :is(.offer-card,.common-card)::after{display:none}}
+
+/* ── Card tilt under the pointer, lit like matte paper: a broad soft light on the side facing the lamp, a little shade
+   on the side that dips away, no glossy streak. The shadow slides the other way, as if the card lifted off the table. ─ */
+:is(.hand-card-wrapper,.offer-hand>div,.collection-card,.loadout-card,.card-inspect-card)>:is(.offer-card,.common-card){transition:transform .3s cubic-bezier(.2,.8,.3,1),translate .16s cubic-bezier(.3,1.4,.5,1),scale .16s,filter .16s}
+:is(.hand-card-wrapper,.offer-hand>div,.collection-card,.loadout-card,.card-inspect-card,.forge-card-stage)[data-tilting]>:is(.offer-card,.common-card){transform:perspective(760px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))!important;transition:transform .08s linear,translate .16s,scale .16s,filter .12s;filter:drop-shadow(0 3px 0 #BCA47C) drop-shadow(var(--shadow-x,0px) var(--shadow-y,9px) 12px #3B2A1A40)!important}
+:is(.hand-card-wrapper,.offer-hand>div,.collection-card,.loadout-card,.card-inspect-card,.forge-card-stage)[data-tilting]>:is(.offer-card,.common-card)::before{background:var(--paper-light,linear-gradient(transparent,transparent)),var(--tex-fiber),linear-gradient(180deg,#FFFFFF66,transparent 30%),var(--pc-paper)!important}
+.battle-page.battle-fit .hand-card-wrapper[data-card-drag-enabled=true][data-tilting]>:is(.offer-card,.common-card){filter:drop-shadow(0 0 5px #6DD89A) drop-shadow(0 3px 0 #BCA47C) drop-shadow(var(--shadow-x,0px) var(--shadow-y,9px) 12px #3B2A1A40)!important}
+
+/* ── Friend-room lobby: the room code is a ticket stub taped to the desk, each seat a paper standee on its own card.
+   An empty seat shows the little paper chair from the home stage; a ready player gets a rubber stamp. */
+.app .room-lobby .room-code{position:relative;max-width:460px;padding:26px 30px 22px;border:18px solid transparent;border-image:var(--sheet-cream-thick) 24 round;border-radius:0;background:var(--tex-fiber),linear-gradient(180deg,#FFFDF6,#F6ECD6);background-clip:padding-box;box-shadow:0 22px 34px -22px #3B2A1A99;transform:rotate(-1.2deg)}
+.app .room-lobby .room-code::before{content:'';position:absolute;left:50%;top:-30px;width:150px;height:40px;margin-left:-75px;background:linear-gradient(90deg,#F7E7A8d9,#F4D98Cd9);-webkit-mask:var(--torn-strip) center/100% 100%;mask:var(--torn-strip) center/100% 100%;transform:rotate(2deg);box-shadow:0 2px 3px #0002}
+.app .room-lobby .room-code strong{font-family:var(--ob-font-hand);font-size:56px;letter-spacing:10px;margin:10px 0 16px;padding:6px 0 12px;border-bottom:2px dashed #C9B48F;color:#2F2A25}
+.app .room-lobby .room-seats{gap:34px}
+.app .room-lobby .room-seat{position:relative;width:220px;padding:14px 16px 18px;border:16px solid transparent;border-image:var(--sheet-cream-thick) 24 round;border-radius:0;background:var(--tex-fiber),linear-gradient(180deg,#FFFBF0,#F3E6CB);background-clip:padding-box;box-shadow:0 18px 28px -20px #3B2A1A99;transform:rotate(-1.6deg)}
+.app .room-lobby .room-seat+.room-seat{transform:rotate(1.4deg)}
+.app .room-lobby .room-seat-art{height:162px;display:flex;align-items:flex-end;justify-content:center;margin:-6px 0 6px;background:radial-gradient(ellipse 46% 9% at 50% 94%,#3B2A1A33,transparent 70%)}
+.app .room-lobby .room-seat-art img{max-height:158px;max-width:140px;object-fit:contain;filter:drop-shadow(0 2px 0 #fff) drop-shadow(0 6px 5px #3B2A1A55)}
+.app .room-lobby .room-seat.empty .room-seat-art img{max-height:96px;opacity:.72;filter:grayscale(.35) drop-shadow(0 6px 5px #3B2A1A40)}
+.app .room-lobby .room-seat.empty h3{color:#8B7D6B}
+.app .room-lobby .room-seat h3{font-size:18px;margin:8px 0 10px}
+.app .room-lobby .room-seat.ready::after{content:'已准备';position:absolute;right:-8px;top:10px;padding:4px 10px 3px;font-family:var(--ob-font-hand);font-size:17px;color:#2E8A5C;border:3px double #2E8A5C;border-radius:6px;background:#FFFDF6cc;transform:rotate(12deg);box-shadow:0 1px 0 #fff}
+@media(max-width:760px){.app .room-lobby .room-seat{width:46%;padding:10px 8px 14px}.app .room-lobby .room-seat-art{height:104px}.app .room-lobby .room-seat-art img{max-height:100px}.app .room-lobby .room-code strong{font-size:44px}}

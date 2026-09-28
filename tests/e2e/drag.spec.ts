@@ -114,7 +114,7 @@ test("Offer mouse drag preserves the compact card, highlights the board and subm
   await expect(page.locator(".card-drag-target")).toHaveCount(0);
 });
 
-test("off-board, Escape, tutorial-locked cards and read mode never submit a drag", async ({
+test("off-board, Escape, tutorial-locked cards and card inspection never submit a drag", async ({
   page,
   request,
 }) => {
@@ -138,11 +138,11 @@ test("off-board, Escape, tutorial-locked cards and read mode never submit a drag
   await moveCard(page, page.locator('[data-offer-id="E01"]'), board(page));
   await expect(page.locator(".card-drag-overlay")).toHaveCount(0);
   await page.mouse.up();
-  await page.getByRole("button", { name: "放大读牌", exact: true }).click();
-  await expect(source).toHaveAttribute("data-card-drag-enabled", "false");
-  await moveCard(page, source, board(page));
-  await expect(page.locator(".card-drag-overlay")).toHaveCount(0);
-  await page.mouse.up();
+  // A click only lifts the card close to read; a click anywhere else puts it back.
+  await source.locator(".offer-card").click();
+  await expect(page.locator(".card-inspect")).toBeVisible();
+  await page.mouse.click(8, 450);
+  await expect(page.locator(".card-inspect")).toHaveCount(0);
   expect(saved.commands()).toBe(0);
   expect((await saved.state()).room.tutorial.stepIndex).toBe(0);
 });
@@ -186,10 +186,12 @@ test("targeted hand card can stage on the board, or drop directly on its legal t
   expect(saved.commands()).toBe(1);
 });
 
-test("movement below the drag threshold plays the card once as a single click", async ({page,request}) => {
+test("movement below the drag threshold is a click: it lifts the card to read, and only an explicit use plays it once", async ({page,request}) => {
   const saved=await lesson(page,request),from=await center(page.locator('[data-offer-id="E02"]'));
   await page.mouse.move(from.x,from.y);await page.mouse.down();await page.mouse.move(from.x+3,from.y+2);
   await expect(page.locator('.card-drag-overlay')).toHaveCount(0);await page.mouse.up();
+  await expect(page.locator('.card-inspect')).toBeVisible();expect(saved.commands()).toBe(0);
+  await page.getByRole('button',{name:'使用这张牌',exact:true}).click();
   await expect.poll(async()=>(await saved.state()).room.tutorial.stepIndex).toBe(1);
   expect(saved.commands()).toBe(1);await expect(page.locator('.action-confirm-tray')).toHaveCount(0);
 });

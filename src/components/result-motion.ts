@@ -1,7 +1,7 @@
 import type {BattleCue,MatchView} from '../game/types';
 
 /** The losing portrait needs time to crack and fall; the old 650 ms squeeze played it at 3.7x speed. */
-export function resultMotionDuration(cue:BattleCue,reduced=false){return reduced?100:cue.effectId==='draw'?1100:1600}
+export function resultMotionDuration(cue:BattleCue,reduced=false){return reduced?100:cue.effectId==='draw'?1400:2000}
 interface Options{
  layer:HTMLElement;arena:HTMLElement;view:MatchView;cue:BattleCue;reduced:boolean;
  later:(fn:()=>void,ms:number)=>unknown;

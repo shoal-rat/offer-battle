@@ -11,7 +11,7 @@
 
 `2.3 公测`　`单人练习 / 好友联机`　`桌面 / 手机`
 
-[![秋招斗兽棋宣传封面：年包48万，就一定赢我？](public/about/media/cover-1600x900.webp)](https://weikezhang.cn/offer-battle/about/#film)
+[![秋招斗兽棋宣传封面：工资先亮，底牌后出](public/about/media/cover-1600x900.webp)](https://weikezhang.cn/offer-battle/about/#film)
 
 *工资之外，还有底牌。点击画面，看看实机。*
 
@@ -20,13 +20,14 @@
 ## 一张牌桌，四个位置。你准备出哪一手？
 
 - **Offer 变角色。** 大厂算法岗、投行做债、制造业研发——具体工作各有排面与底气，也各有打法。
-- **点下就出牌。** 单击或拖牌上桌；需要目标时，点选目标，让纸飞机送出这张牌。
+- **拖出去就出牌。** 把牌拖离手牌区，放到牌桌任意位置就打出；需要目标时拖到发光的目标上，纸飞机会把牌送过去。单击则把牌拿近细看，鼠标划过时纸牌会跟着倾斜。
 - **小鼠也有大场面。** 六位动物助阵，一张不起眼的小牌，也可能改变局面。
+- **三幕时代更替。** 第 4、7 轮进入「聊生活」「聊以后」，牌桌换色、盖章宣告新规则；数值由铅笔擦掉重写，退场的角色被撕成纸屑。
 - **同学群，牌桌见。** 创建好友房，分享链接或房间码。打完再看回放，聊聊刚才的名场面。
 
 ## 桌上长这样
 
-| 秋招纸片广场 | 单击、选目标，纸飞机出牌 |
+| 秋招纸片广场 | 拖到目标上，纸飞机出牌 |
 | --- | --- |
 | ![当前公测版的真实纸艺大厅](public/about/media/home.webp) | ![真实对局里纸飞机将行动牌送向目标](public/about/media/paper-plane.webp) |
 | 做卡、开打、卡册与教学，都在这里。 | 画面来自演示对局实录；小鼠也能做关键事。 |
@@ -34,9 +35,9 @@
 | 把自己的 Offer 做成卡 | 好友房间 |
 | --- | --- |
 | ![制造业研发的真实造卡界面，年包28万、双休](public/about/media/created-card.webp) | ![实际创建的好友房间与邀请入口](public/about/media/friend-room.webp) |
-| 已保存的制造业研发卡，资料与卡面一起预览。 | 复制邀请链接，或分享房间码，等朋友入席。 |
+| 资料确认后，卡牌像刚打印出来一样吐出。 | 复制邀请链接，或分享房间码，等朋友入席。 |
 
-*以上为 2.2 公测版真实截图（2.3 已换为手工纸艺牌桌与铅笔手写体）；[图文介绍里可以查看完整原图和 30 秒实机](https://weikezhang.cn/offer-battle/about/)。*
+*以上为 2.3 公测版真实截图；[图文介绍里可以查看完整原图和 30 秒实机](https://weikezhang.cn/offer-battle/about/)。*
 
 ## 第一局，三步就上桌
 
@@ -69,7 +70,7 @@ npm start
 | 玩法、造卡、账号、联机与工程结构 | [完整项目与技术指南](docs/PROJECT_GUIDE.md) |
 | 数值、职业扩展与历史兼容 | [规则与扩展](RULES_AND_EXTENSION.md) |
 | 纸艺、角色、音乐与素材来源 | [设计手记](NOTES.md) · [宣传片制作](docs/TRAILER.md) · [美术报告](ASSET_REPORT.md) · [素材许可](ASSET_LICENSE.md) |
-| 部署与当前线上版本 | [部署记录](DEPLOYMENT.md) · [2.2 发布准备](docs/RELEASE_2_2.md) |
+| 部署与当前线上版本 | [部署记录](DEPLOYMENT.md) · [2.3 纸艺与动画报告](reports/PAPERCRAFT_2_3.md) · [2.2 发布准备](docs/RELEASE_2_2.md) |
 | 验证范围与已知边界 | [测试报告](TEST_REPORT.md) · [公测 QA](docs/QA_BETA_2.md) |
 | 提问题、修 bug 或加一张新卡 | [参与贡献](CONTRIBUTING.md) · [Issues](https://github.com/shoal-rat/offer-battle/issues) |
 
@@ -98,7 +99,7 @@ npm run test:cloudflare
 
 **Offer Battle** is an original Chinese-language strategy card game about job offers. Build a team from three offers and two education cards, click or drag cards onto a handmade paper stage, and turn the match with animal allies. Play against four levels of bots without an account, or invite a friend to a private room.
 
-Version 2.2 is in public beta. Built-in art and audio ship with the repository; playing does not require an AI API key. The frontend is hosted on GitHub Pages, multiplayer uses Cloudflare Workers and Durable Objects, and Node self-hosting is supported. See the [project guide](docs/PROJECT_GUIDE.md), [deployment record](DEPLOYMENT.md), and [test report](TEST_REPORT.md) for current capabilities and verification limits.
+Version 2.3 is in public beta. Built-in art and audio ship with the repository; playing does not require an AI API key. The frontend is hosted on GitHub Pages, multiplayer uses Cloudflare Workers and Durable Objects, and Node self-hosting is supported. See the [project guide](docs/PROJECT_GUIDE.md), [deployment record](DEPLOYMENT.md), and [test report](TEST_REPORT.md) for current capabilities and verification limits.
 
 </details>
 

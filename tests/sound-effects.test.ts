@@ -5,11 +5,12 @@ import {
   soundsForCue,
   soundsForBatch,
 } from "../src/sound-effects";
-import { ATTACK_TIMING, CARD_TIMING, RETIRE_AFTER_IMPACT, REWRITE_MS } from "../src/components/battle-motion";
+import { ATTACK_TIMING, CARD_TIMING, RETIRE_AFTER_IMPACT, RETIRE_SHIVER, REWRITE_MS } from "../src/components/battle-motion";
 import { resultMotionDuration } from "../src/components/result-motion";
 const LIFT = ATTACK_TIMING.lift,
   CONTACT = ATTACK_TIMING.contact,
-  EXIT = ATTACK_TIMING.contact + ATTACK_TIMING.hold;
+  EXIT = ATTACK_TIMING.contact + ATTACK_TIMING.hold,
+  TEAR = EXIT + RETIRE_SHIVER;
 import type { BattleCue, Command, MatchState } from "../src/game/types";
 import {
   createMatch,
@@ -203,7 +204,7 @@ test("ending preserves one shared retirement layer and does not invent an attack
  const [group]=soundsForBatch(cues,"a");
  const attackGroup=EXIT+ATTACK_TIMING.departure;
  assert.equal(group.duration,attackGroup+resultMotionDuration(cues[4]));
- assert.deepEqual(group.sounds.map(s=>[s.file,s.delay]),[["attack",LIFT],["damage",CONTACT],["optimization",EXIT],["win",attackGroup+160]]);
+ assert.deepEqual(group.sounds.map(s=>[s.file,s.delay]),[["attack",LIFT],["damage",CONTACT],["optimization",TEAR],["win",attackGroup+160]]);
  const [noncombat]=soundsForBatch([cues[4]],"b");
  assert.equal(noncombat.duration,resultMotionDuration(cues[4]));
  assert.deepEqual(noncombat.sounds.map(s=>[s.file,s.delay]),[["lose",160]]);
@@ -241,7 +242,7 @@ test("real simultaneous combat death produces one impact at contact and a shared
     [
       ["attack", LIFT],
       ["damage", CONTACT],
-      ["optimization", EXIT],
+      ["optimization", TEAR],
     ],
   );
   const env = fakeAudioEnvironment();
@@ -255,7 +256,7 @@ test("real simultaneous combat death produces one impact at contact and a shared
     env.tick(CONTACT - LIFT - 1);assert.deepEqual(filenames(env.instances), ["attack.wav"]);
     env.tick(1);
     assert.deepEqual(filenames(env.instances), ["attack.wav", "damage.wav"]);
-    env.tick(EXIT - CONTACT);
+    env.tick(TEAR - CONTACT);
     assert.deepEqual(filenames(env.instances), [
       "attack.wav",
       "damage.wav",
@@ -288,7 +289,7 @@ test("real eight-target action coalesces eight damage and retirement cues into o
     [
       ["card_pick", 0],
       ["damage", CARD_TIMING.ownImpact],
-      ["optimization", CARD_TIMING.ownImpact + RETIRE_AFTER_IMPACT],
+      ["optimization", CARD_TIMING.ownImpact + RETIRE_AFTER_IMPACT + RETIRE_SHIVER],
     ],
   );
 });

@@ -104,3 +104,15 @@ test("drop preserves real clause/topic choices for the existing chooser and neve
     [optional[1]],
   );
 });
+
+test("a card lifted clear of the hand plays anywhere on the table; back in the hand it cancels", () => {
+  const plain: Command = { type: "PLAY_CARD", cardId: "h1" },
+    targeted: Command = { type: "PLAY_CARD", cardId: "h2", targetId: "enemy-unit" };
+  assert.deepEqual(commandsForDrop([plain], { boardId: "enemy", leftHand: true }, "me"), [plain]);
+  assert.deepEqual(commandsForDrop([plain], { leftHand: true }, "me"), [plain]);
+  assert.deepEqual(commandsForDrop([plain], { leftHand: false }, "me"), []);
+  // A targeted card dropped on open table stages the chooser; on its legal target it resolves directly.
+  assert.deepEqual(commandsForDrop([targeted], { leftHand: true }, "me"), [targeted]);
+  assert.equal(dropNeedsTarget([targeted], { leftHand: true }), true);
+  assert.equal(dropNeedsTarget([targeted], { targetId: "enemy-unit", leftHand: true }), false);
+});

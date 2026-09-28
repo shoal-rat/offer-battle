@@ -181,3 +181,17 @@
 @media(prefers-reduced-motion:reduce) {
  .offer-forge .forge-card-stage .offer-card,.offer-forge .forge-card-stage .offer-card:hover { transform:none; transition:none; }
 }
+
+/* The card is "printed" the moment the draft is complete: fed out top-first like a sheet leaving the little printer,
+   then it drops the last few millimetres and settles at its slant. Runs once per appearance (the card element stays
+   mounted while fields change). */
+.offer-forge .forge-card-stage .offer-card { animation:forge-card-print 1.05s cubic-bezier(.22,.8,.28,1) both; transform-origin:50% 0; }
+@keyframes forge-card-print {
+  0% { clip-path:inset(0 0 100% 0); transform:translateY(-34px) rotate(0deg); filter:brightness(1.06); }
+  55% { clip-path:inset(0 0 0 0); transform:translateY(-6px) rotate(0deg); }
+  74% { transform:translateY(5px) rotate(-2.6deg); filter:none; }
+  88% { transform:translateY(-1px) rotate(-1.1deg); }
+  100% { clip-path:inset(0 0 0 0); transform:rotate(-1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) { html:not([data-reduced="false"]) .offer-forge .forge-card-stage .offer-card { animation:none; } }
+html[data-reduced="true"] .offer-forge .forge-card-stage .offer-card { animation:none; }

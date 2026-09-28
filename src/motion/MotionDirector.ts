@@ -96,7 +96,9 @@ export class MotionDirector {
  setPreferences(next:MotionPreferences){
   const previous=this.preferences;this.preferences={...next};
   if(next.hidden&&!previous.hidden){for(const job of [...this.active,...this.queue])this.end(job,'hidden',false)}
-  else if(next.reduced!==previous.reduced||next.quality!==previous.quality){for(const job of [...this.active,...this.queue])this.end(job,'preference',false)}
+  // A quality step-down (the frame-budget governor) only affects cues that start afterwards: cutting running ones would
+  // drop a player's card mid-drag. Held jobs are live input (a drag under the pointer) and end with the pointer.
+  else if(next.reduced!==previous.reduced){for(const job of [...this.active,...this.queue])if(!job.request.hold)this.end(job,'preference',false)}
   else if(next.ambientPaused&&!previous.ambientPaused){for(const job of [...this.active,...this.queue])if(job.channel==='ambient')this.end(job,'preference',false)}
   this.pump();
  }

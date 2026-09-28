@@ -13,13 +13,13 @@ const hand=(s:MatchState,id:string)=>own(s).hand.find(h=>h.definitionId===id)!.i
 const end:Command={type:'END_TURN'};
 const steps:Record<LessonId,Step[]>={
  L01:[
-  {objective:'花 3 小时，让国企综合岗上桌',coachLine:'先把第一份底气摆上来。左上角是耗时；上桌后，时间会立即扣除。',hint:'单击「我的 Offer」里的国企综合岗，或把它拖到桌上。新上桌的角色要等到自己的下一回合才能开怼。',zone:'offer',command:()=>({type:'DEPLOY_OFFER',offerId:'E02'})},
+  {objective:'花 3 小时，让国企综合岗上桌',coachLine:'先把第一份底气摆上来。左上角是耗时；上桌后，时间会立即扣除。',hint:'把「我的 Offer」里的国企综合岗拖到牌桌上。新上桌的角色要等到自己的下一回合才能开怼。',zone:'offer',command:()=>({type:'DEPLOY_OFFER',offerId:'E02'})},
   {objective:'结束回合，等角色准备好',coachLine:'现在时间花完了。放心结束回合，我会让你看到时间补满和角色就绪。',hint:'点击金色「结束回合」。导师只会结束自己的回合。',zone:'endTurn',command:()=>end},
   {objective:'用国企综合岗开怼导师主角',coachLine:'它脚下亮了，说明可以行动。排面决定伤害；主角的心态归零就输了。',hint:'先点击己方国企综合岗，再选择导师主角。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E02').id,targetId:enemy(s).id})},
-  {objective:'花 1 小时，打出实习搭子',coachLine:'开怼不花时间，每个角色通常每回合一次。剩下的时间可以继续铺场。',hint:'点击手牌「实习搭子」。助阵角色也能在下回合开怼。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'N01')})},
+  {objective:'花 1 小时，打出实习搭子',coachLine:'开怼不花时间，每个角色通常每回合一次。剩下的时间可以继续铺场。',hint:'把手牌「实习搭子」拖到牌桌上。助阵角色也能在下回合开怼。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'N01')})},
  ],
  L02:[
-  {objective:'用打听工时削弱挡话的老员工',coachLine:'老员工有「挡话」，你不能绕过它去开怼主角。先用一张行动牌处理它。',hint:'点击手牌「打听工时」，纸飞机就会待发；点击发光的敌方老员工即可发射。它会失去 3 点底气。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'N10'),targetId:unit(s,1,'N05').id})},
+  {objective:'用打听工时削弱挡话的老员工',coachLine:'老员工有「挡话」，你不能绕过它去开怼主角。先用一张行动牌处理它。',hint:'把手牌「打听工时」拖到发光的敌方老员工身上，纸飞机就会飞过去。它会失去 3 点底气。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'N10'),targetId:unit(s,1,'N05').id})},
   {objective:'用制造业研发击退老员工',coachLine:'它的底气已经降到制造业研发的排面以内。角色交锋时，双方会同时用排面伤害对方。',hint:'选择己方制造业研发，再点击敌方老员工；你的角色也会受伤。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E04').id,targetId:unit(s,1,'N05').id})},
   {objective:'挡话退场后，开怼导师主角',coachLine:'路让出来了。另一个还没行动的角色，现在可以直接冲主角。',hint:'选择己方国企综合岗，再选择导师主角。',zone:'target',command:s=>({type:'ATTACK',cardId:unit(s,0,'E02').id,targetId:enemy(s).id})},
  ],
@@ -37,13 +37,13 @@ const steps:Record<LessonId,Step[]>={
  L05:[
   {objective:'结束回合，观察 31 岁成长到 35 岁',coachLine:'Offer 每逢自己的回合开始都会长一档年龄：22、27、31、35。年龄不是自动退场倒计时。',hint:'点击「结束回合」。导师让过后，观察大厂算法岗的年龄牌。',zone:'endTurn',command:()=>end},
   {objective:'再结束一次回合，观察优化通知',coachLine:'35 岁的一线 Offer 会成为「三十五岁」的目标。我现在会演示挂通知，给你完整的应对窗口。',hint:'点击「结束回合」。导师只会合法打出「三十五岁」并交还回合。',zone:'endTurn',command:()=>end},
-  {objective:'打出转管理，让大厂算法岗离开一线',coachLine:'通知并非立即退场：到发通知者下回合开始才检查。转管理会失去一线标签，代价是 −2 排面。',hint:'点击手牌「转管理」，选择己方收到通知的大厂算法岗。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'F03'),targetId:unit(s,0,'E01').id})},
+  {objective:'打出转管理，让大厂算法岗离开一线',coachLine:'通知并非立即退场：到发通知者下回合开始才检查。转管理会失去一线标签，代价是 −2 排面。',hint:'把手牌「转管理」拖到己方收到通知的大厂算法岗身上。',zone:'hand',command:s=>({type:'PLAY_CARD',cardId:hand(s,'F03'),targetId:unit(s,0,'E01').id})},
   {objective:'结束回合，亲眼看到优化通知失效',coachLine:'这次让规则自己验证：当导师下回合开始，角色已不在一线，通知就会失效。',hint:'点击「结束回合」。保住角色后，你就完成了全部入门课程。',zone:'endTurn',command:()=>end},
  ],
 };
 export const tutorialCatalog=[
  {id:'L01',title:'第一份底气',summary:['时间用于出牌，每回合开始补满。','新上桌的角色通常下回合才能开怼。','每个角色通常每回合开怼一次；主角心态归零即输。']},
- {id:'L02',title:'有话好好挡',summary:['挡话会阻止角色绕过去开怼其他目标。','单击或拖牌即可出牌；需要目标时，纸飞机瞄准后点击发射。','角色交锋双方同时受伤，底气归零就退场。']},
+ {id:'L02',title:'有话好好挡',summary:['挡话会阻止角色绕过去开怼其他目标。','把牌拖出手牌区即可出牌；直接拖到发光目标上会立刻命中，也可以松手后用纸飞机瞄准。单击只会拿近细看。','角色交锋双方同时受伤，底气归零就退场。']},
  {id:'L03',title:'另一份筹码',summary:['谈薪消耗一份从未上桌的 Offer，每局一次。','减费等于筹码原始耗时的一半，向下取整。','岗位名保留具体工作；玩法类型决定技能与代价。']},
  {id:'L04',title:'母校来撑腰',summary:['主技能通常每回合可用。','进修第 4 轮解锁，每局一次。','主技能与进修共享每回合一次学历行动。']},
  {id:'L05',title:'过了三十五',summary:['年龄只在自己的回合开始成长，35 岁不会自动退场。','优化通知在发起者的下个回合开始才检查。','转管理用 2 点排面换掉一线标签，能让通知失效。']},

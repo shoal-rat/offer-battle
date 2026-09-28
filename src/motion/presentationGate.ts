@@ -10,7 +10,7 @@ export function setBattlePresentationBusy(value:boolean){
  if(value)busySince=clock();else idleSince=clock();
 }
 /** True once the table has been still for `quietMs`. A stuck presentation never blocks play longer than `maxBusyMs`. */
-export function battlePresentationSettled(quietMs=380,maxBusyMs=9000){
+export function battlePresentationSettled(quietMs=700,maxBusyMs=12000){
  const now=clock();
  if(busy)return now-busySince>=maxBusyMs;
  return now-idleSince>=quietMs;

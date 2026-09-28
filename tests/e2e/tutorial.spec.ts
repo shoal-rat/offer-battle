@@ -8,18 +8,31 @@ async function screenshot(page:Page,name:string){await mkdir(shots,{recursive:tr
 async function play(page:Page,c:Command){
  await expect(page.locator('[data-tutorial="endTurn"]')).not.toContainText('结算中',{timeout:20000});
  const by=(attr:string,id?:string)=>page.locator(`[${attr}="${id}"]`);
+ // Cards are played the way a player does: lifted out of the hand onto the table, or straight onto their target.
+ // When either end is off screen (a scrolled phone layout) the keyboard path is used: click to read, then use.
+ let dropped=false;
+ const handCard=async(source:ReturnType<Page['locator']>)=>{
+  const dest=c.targetId?by('data-battle-id',c.targetId):page.locator('.friendly-row');
+  const a=await source.boundingBox(),b=await dest.boundingBox(),size=page.viewportSize()!;
+  const visible=(r:typeof a)=>!!r&&r.y>=0&&r.y+r.height<=size.height;
+  if(visible(a)&&visible(b)){
+   await page.mouse.move(a!.x+a!.width/2,a!.y+a!.height/2);await page.mouse.down();
+   await page.mouse.move(a!.x+a!.width/2,a!.y+a!.height/2-40,{steps:4});await page.mouse.move(b!.x+b!.width/2,b!.y+b!.height/2,{steps:12});await page.mouse.up();
+   dropped=!!c.targetId;
+  }else{await source.click();await page.getByRole('button',{name:'使用这张牌',exact:true}).click()}
+ };
  if(c.type==='DEPLOY_OFFER'){
   if(!await by('data-offer-id',c.offerId).count())await page.getByRole('button',{name:/^我的 Offer/}).click();
-  await by('data-offer-id',c.offerId).locator('button.offer-card').click();
+  await handCard(by('data-offer-id',c.offerId).locator('button.offer-card'));
  }else if(c.type==='PLAY_CARD'){
-  await by('data-hand-id',c.cardId).locator('button').first().click();
+  await handCard(by('data-hand-id',c.cardId).locator('button').first());
  }else if(c.type==='ATTACK')await by('data-battle-id',c.cardId).locator('.unit-main').click();
  else if(c.type==='USE_PRIMARY'||c.type==='USE_SECONDARY'){
   await page.locator(`[data-tutorial="${c.type==='USE_PRIMARY'?'primary':'secondary'}"]`).click();await page.getByRole('button',{name:c.type==='USE_PRIMARY'?'选择发动主技能':'选择发动进修技能',exact:true}).click();
  }else if(c.type==='NEGOTIATE')await page.locator('[data-tutorial="negotiate"]').click();
  else if(c.type==='END_TURN'){await page.locator('[data-tutorial="endTurn"]').click();return}
  else throw Error('Unexpected tutorial command '+c.type);
- if(c.targetId){const target=by('data-battle-id',c.targetId);if(await target.locator('.unit-main').count())await target.locator('.unit-main').click();else await target.click();}
+ if(c.targetId&&!dropped){const target=by('data-battle-id',c.targetId);if(await target.locator('.unit-main').count())await target.locator('.unit-main').click();else await target.click();}
  else if(c.type==='NEGOTIATE')await page.locator('[data-tutorial-action="0"]').click();
  if(c.type==='NEGOTIATE')await page.getByRole('button',{name:'确认谈薪',exact:true}).click();
 }
